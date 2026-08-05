@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+:root {
+  --ink: #0f1115;
+  --panel: #181b21;
+  --panel-2: #1f232b;
+  --ivory: #f3efe6;
+  --ivory-dim: rgba(243, 239, 230, 0.62);
+  --sapphire: #7e9bd4;
+  --gold: #c6a54d;
+  --risk: #c97b5a;
+  --line: rgba(243, 239, 230, 0.14);
+  --font-body-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+}
+
+@theme inline {
+  --color-ink: var(--ink);
+  --color-panel: var(--panel);
+  --color-panel-2: var(--panel-2);
+  --color-ivory: var(--ivory);
+  --color-ivory-dim: var(--ivory-dim);
+  --color-sapphire: var(--sapphire);
+  --color-gold: var(--gold);
+  --color-risk: var(--risk);
+  --color-line: var(--line);
+  --font-display: var(--font-cormorant);
+  --font-sans: var(--font-body-sans);
+}
+
+body {
+  background: var(--ink);
+  color: var(--ivory);
+}
