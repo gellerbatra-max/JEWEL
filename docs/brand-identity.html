@@ -1,0 +1,247 @@
+<title>Visual Identity Direction — Working Names</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --ink: #0F1115;
+    --panel: #181B21;
+    --panel-2: #1F232B;
+    --ivory: #F3EFE6;
+    --ivory-dim: rgba(243,239,230,0.62);
+    --sapphire: #7E9BD4;
+    --gold: #C6A54D;
+    --gold-dim: rgba(198,165,77,0.55);
+    --line: rgba(243,239,230,0.14);
+    --risk: #C97B5A;
+  }
+  *{ box-sizing: border-box; }
+  body{
+    background: var(--ink);
+    color: var(--ivory);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3{ font-family: Georgia, "Iowan Old Style", Baskerville, "Times New Roman", serif; font-weight: 400; text-wrap: balance; color: var(--ivory); }
+  a{ color: var(--sapphire); }
+  a:focus-visible, button:focus-visible{ outline: 2px solid var(--sapphire); outline-offset: 3px; }
+
+  .page{ max-width: 860px; margin: 0 auto; padding: 6vw 24px 100px; }
+
+  header.cover{
+    padding: 6vw 0 40px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 56px;
+    opacity: 0; animation: rise .8s ease-out forwards;
+  }
+  .eyebrow{ font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin: 0 0 16px; font-weight: 600; }
+  header.cover h1{ font-size: clamp(1.9rem, 4.6vw, 2.6rem); margin: 0 0 16px; }
+  .dek{ max-width: 58ch; color: var(--ivory-dim); font-size: 1.02rem; margin: 0; }
+
+  section{ margin-bottom: 72px; }
+  section > .eyebrow{ margin-bottom: 10px; }
+  section h2{ font-size: 1.6rem; margin: 0 0 8px; }
+  section > p.lead{ max-width: 64ch; color: var(--ivory-dim); font-size: 0.98rem; margin: 0 0 28px; }
+
+  /* ---- wordmark hero specimens ---- */
+  .specimen{
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 64px 32px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .wordmark-a{
+    font-family: Georgia, serif;
+    font-size: clamp(2.4rem, 8vw, 4.4rem);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ivory);
+    margin: 0;
+  }
+  .wordmark-b{
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: clamp(2rem, 6vw, 3.2rem);
+    color: var(--ivory);
+    margin: 0 0 14px;
+  }
+  .rule{ width: 64px; height: 1px; background: var(--gold); margin: 0 auto; }
+  .tag-label{ display:block; margin-top: 18px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ivory-dim); }
+
+  .specimen.placeholder{ border-color: var(--risk); background: #1D1512; }
+  .risk-flag{
+    display: inline-block; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--risk); border: 1px solid var(--risk); border-radius: 2px; padding: 4px 10px; margin-bottom: 22px;
+  }
+  .wordmark-c{
+    font-family: Georgia, serif; font-size: clamp(2rem, 6vw, 3.2rem); letter-spacing: 0.1em;
+    text-transform: uppercase; color: rgba(243,239,230,0.75); margin: 0;
+  }
+
+  /* ---- motif ---- */
+  .motif-row{ display: flex; gap: 32px; flex-wrap: wrap; align-items: center; justify-content: center; margin: 8px 0 28px; }
+  .motif-card{ background: var(--panel); border: 1px solid var(--line); border-radius: 4px; padding: 32px; text-align: center; }
+  .motif-card svg{ display: block; margin: 0 auto 12px; }
+  .motif-card .cap{ font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ivory-dim); }
+
+  /* ---- color system ---- */
+  .swatch-grid{ display: grid; grid-template-columns: repeat(auto-fit, minmax(150px,1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  .swatch{ background: var(--ink); padding: 0; }
+  .swatch .fill{ height: 90px; }
+  .swatch .meta{ padding: 14px 16px; }
+  .swatch .name{ font-size: 13px; letter-spacing: 0.02em; margin-bottom: 4px; }
+  .swatch .hex{ font-size: 11.5px; color: var(--ivory-dim); font-variant-numeric: tabular-nums; }
+  .swatch .use{ font-size: 11px; color: var(--ivory-dim); margin-top: 6px; }
+
+  /* ---- type system ---- */
+  .type-row{ display: flex; align-items: baseline; gap: 20px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+  .type-row:last-child{ border-bottom: none; }
+  .type-row .label{ width: 90px; flex-shrink: 0; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gold); }
+  .type-row .sample-display{ font-family: Georgia, serif; }
+  .type-row .sample-body{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+
+  /* ---- applications ---- */
+  .apps{ display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 28px; }
+
+  .tag-mockup{
+    background: linear-gradient(180deg, #EDE7D8, #E3DCC8);
+    color: #262115;
+    border-radius: 10px;
+    padding: 30px 22px 26px;
+    position: relative;
+    box-shadow: 0 18px 40px rgba(0,0,0,0.45);
+    max-width: 260px; margin: 0 auto;
+  }
+  .tag-mockup::before{
+    content: ""; position: absolute; top: 14px; left: 50%; transform: translateX(-50%);
+    width: 12px; height: 12px; border-radius: 50%; background: var(--ink); box-shadow: inset 0 0 0 2px rgba(0,0,0,0.3);
+  }
+  .tag-mockup .tw{ font-family: Georgia, serif; letter-spacing: 0.12em; text-transform: uppercase; font-size: 1.3rem; text-align: center; margin: 22px 0 6px; }
+  .tag-mockup .tr{ width: 40px; height: 1px; background: #8F6C24; margin: 0 auto 14px; }
+  .tag-mockup .td{ font-size: 11.5px; text-align: center; letter-spacing: 0.04em; color: #5b5340; }
+  .tag-mockup .tsku{ font-size: 10px; text-align: center; letter-spacing: 0.1em; color: #8a8066; margin-top: 16px; font-variant-numeric: tabular-nums; }
+
+  .header-mockup{
+    background: var(--panel-2); border: 1px solid var(--line); border-radius: 6px;
+    padding: 18px 22px; display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  }
+  .header-mockup .brand{ display:flex; align-items:center; gap:10px; font-family: Georgia, serif; letter-spacing: 0.1em; text-transform: uppercase; font-size: 0.95rem; }
+  .header-mockup nav{ display:flex; gap: 18px; font-size: 11.5px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ivory-dim); }
+  .header-mockup nav span{ white-space: nowrap; }
+
+  footer{ border-top: 1px solid var(--line); padding-top: 24px; font-size: 0.88rem; color: var(--ivory-dim); }
+  footer p{ margin: 0 0 8px; }
+
+  @keyframes rise{ from{ opacity:0; transform: translateY(10px);} to{ opacity:1; transform: translateY(0);} }
+  @media (prefers-reduced-motion: reduce){ header.cover{ animation:none; opacity:1; } }
+</style>
+
+<div class="page">
+
+  <header class="cover">
+    <p class="eyebrow">Visual Identity Direction · v1</p>
+    <h1>A wordmark, a mark, and a system built to sit beside Cartier and Bulgari — not to try to out-shout them.</h1>
+    <p class="dek">Two names are live right now: <strong>Cassian</strong>, vetted and lower-risk, and <strong>"Taigerian,"</strong> a flagged placeholder. Both are shown below so the choice can be made with the actual look in front of you, not just the word on a page.</p>
+  </header>
+
+  <main>
+
+    <section id="wordmark">
+      <p class="eyebrow">01 · Wordmark</p>
+      <h2>Cassian — recommended direction</h2>
+      <p class="lead">Wide-tracked engraved capitals for the primary lockup; a quieter italic for editorial and packaging use where the all-caps mark would feel heavy.</p>
+
+      <div class="specimen">
+        <p class="wordmark-a">Cassian</p>
+        <div class="rule" style="margin-top:20px;"></div>
+        <span class="tag-label">Primary lockup — wide tracking, engraved-capital serif</span>
+      </div>
+
+      <div class="specimen">
+        <p class="wordmark-b">Cassian</p>
+        <span class="tag-label">Secondary — refined italic, for editorial &amp; packaging copy</span>
+      </div>
+
+      <span class="risk-flag">Placeholder · high legal risk</span>
+      <div class="specimen placeholder">
+        <p class="wordmark-c">Taigerian</p>
+        <span class="tag-label" style="color:var(--risk);">Shown for internal comparison only — sounds like Targaryen (Game of Thrones); not cleared for any public or filed use</span>
+      </div>
+    </section>
+
+    <section id="mark">
+      <p class="eyebrow">02 · The Mark</p>
+      <h2>An abstract facet, not a borrowed symbol</h2>
+      <p class="lead">Rather than a literal emblem, the mark is built from the step-cut facet pattern of the stones themselves — reads as "gemstone" without leaning on any one culture's iconography, and works equally as a monogram seal, a hallmark stamp, or a favicon.</p>
+      <div class="motif-row">
+        <div class="motif-card">
+          <svg width="140" height="140" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="60,20 140,20 180,60 180,140 140,180 60,180 20,140 20,60" fill="none" stroke="#C6A54D" stroke-width="2.5"/>
+            <polygon points="70,40 130,40 160,70 160,130 130,160 70,160 40,130 40,70" fill="none" stroke="#C6A54D" stroke-width="1.6" opacity="0.75"/>
+            <polygon points="80,60 120,60 140,80 140,120 120,140 80,140 60,120 60,80" fill="none" stroke="#C6A54D" stroke-width="1.2" opacity="0.55"/>
+          </svg>
+          <span class="cap">Standalone facet mark</span>
+        </div>
+        <div class="motif-card">
+          <svg width="140" height="140" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="60,20 140,20 180,60 180,140 140,180 60,180 20,140 20,60" fill="none" stroke="#C6A54D" stroke-width="2.5"/>
+            <polygon points="70,40 130,40 160,70 160,130 130,160 70,160 40,130 40,70" fill="none" stroke="#C6A54D" stroke-width="1.6" opacity="0.75"/>
+            <text x="100" y="118" font-family="Georgia, serif" font-size="58" fill="#F3EFE6" text-anchor="middle">C</text>
+          </svg>
+          <span class="cap">Monogram seal (Cassian)</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="color">
+      <p class="eyebrow">03 · Color System</p>
+      <h2>Velvet, not cream</h2>
+      <p class="lead">Jewellery photographs on dark, neutral backdrops — this identity commits to that register throughout rather than a bright retail palette, with two accents doing all the work.</p>
+      <div class="swatch-grid">
+        <div class="swatch"><div class="fill" style="background:#0F1115"></div><div class="meta"><div class="name">Ink</div><div class="hex">#0F1115</div><div class="use">Ground / backdrop</div></div></div>
+        <div class="swatch"><div class="fill" style="background:#F3EFE6"></div><div class="meta"><div class="name">Ivory</div><div class="hex">#F3EFE6</div><div class="use">Primary text on dark</div></div></div>
+        <div class="swatch"><div class="fill" style="background:#7E9BD4"></div><div class="meta"><div class="name">House Sapphire</div><div class="hex">#7E9BD4</div><div class="use">Links, secondary accent</div></div></div>
+        <div class="swatch"><div class="fill" style="background:#C6A54D"></div><div class="meta"><div class="name">Antique Gold</div><div class="hex">#C6A54D</div><div class="use">Rules, foil-stamp, the mark</div></div></div>
+      </div>
+    </section>
+
+    <section id="type">
+      <p class="eyebrow">04 · Type System</p>
+      <h2>Heritage in the mark, plain speech in the interface</h2>
+      <p class="lead">The wordmark and headings carry the personality; body copy and UI stay quiet and legible — the interface shouldn't compete with the product photography.</p>
+      <div class="type-row"><span class="label">Display</span><span class="sample-display" style="font-size:2.1rem;">Provenance, verified.</span></div>
+      <div class="type-row"><span class="label">H2</span><span class="sample-display" style="font-size:1.5rem;">High Jewellery, by appointment.</span></div>
+      <div class="type-row"><span class="label">Eyebrow</span><span class="sample-body" style="font-size:0.75rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold);">Ceylon Provenance</span></div>
+      <div class="type-row"><span class="label">Body</span><span class="sample-body" style="font-size:1rem; color:var(--ivory-dim);">Every signature piece ships with a lab origin report and a house‑issued provenance mark.</span></div>
+    </section>
+
+    <section id="applications">
+      <p class="eyebrow">05 · In Application</p>
+      <h2>How it holds up outside a mood board</h2>
+      <p class="lead">Two quick tests: a physical product tag, and the site's own header — the two places the identity has to work hardest.</p>
+      <div class="apps">
+        <div class="tag-mockup">
+          <div class="tw">Cassian</div>
+          <div class="tr"></div>
+          <div class="td">Ceylon Sapphire · Platinum</div>
+          <div class="tsku">REF. CS‑1042 · CERTIFIED GIA</div>
+        </div>
+        <div class="header-mockup">
+          <div class="brand">
+            <svg width="22" height="22" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><polygon points="60,20 140,20 180,60 180,140 140,180 60,180 20,140 20,60" fill="none" stroke="#C6A54D" stroke-width="8"/></svg>
+            Cassian
+          </div>
+          <nav><span>High Jewellery</span><span>Bridal</span><span>Our Story</span></nav>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Recommendation: proceed with the Cassian primary lockup + facet mark as the working identity system; keep the Taigerian specimen strictly for internal comparison until the client makes a final, legally-informed call.</p>
+    <p>Source strategy: docs/01-brand-strategy.md · Roadmap: docs/04-roadmap.md</p>
+  </footer>
+
+</div>

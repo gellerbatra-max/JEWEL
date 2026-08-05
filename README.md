@@ -11,6 +11,7 @@ This repo holds the brand strategy, UX research, technical architecture, and pha
 - [docs/03-technical-architecture.md](docs/03-technical-architecture.md) — platform, frontend, payments, security, PIM/inventory architecture
 - [docs/04-roadmap.md](docs/04-roadmap.md) — phased build plan, Phase 0 → Year 2+
 - [docs/brand-roadmap.html](docs/brand-roadmap.html) — single-page visual summary of the above (open in a browser)
+- [docs/brand-identity.html](docs/brand-identity.html) — wordmark, mark, color and type system (open in a browser)
 
 ## TL;DR
 
