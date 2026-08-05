@@ -1,0 +1,503 @@
+<title>Ceylon House — Brand &amp; Platform Roadmap</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --ink: #1B1D22;
+    --paper: #F3F1EA;
+    --paper-raised: #E9E5DA;
+    --sapphire: #2F4C82;
+    --sapphire-soft: #5872A0;
+    --gold: #8F6C24;
+    --line: rgba(27,29,34,0.14);
+    --shadow: rgba(27,29,34,0.08);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --ink: #EDEAE1;
+      --paper: #15171C;
+      --paper-raised: #1D2027;
+      --sapphire: #7E9BD4;
+      --sapphire-soft: #9CB2DE;
+      --gold: #CBA34E;
+      --line: rgba(237,234,225,0.14);
+      --shadow: rgba(0,0,0,0.35);
+    }
+  }
+  :root[data-theme="dark"]{
+    --ink: #EDEAE1;
+    --paper: #15171C;
+    --paper-raised: #1D2027;
+    --sapphire: #7E9BD4;
+    --sapphire-soft: #9CB2DE;
+    --gold: #CBA34E;
+    --line: rgba(237,234,225,0.14);
+    --shadow: rgba(0,0,0,0.35);
+  }
+  :root[data-theme="light"]{
+    --ink: #1B1D22;
+    --paper: #F3F1EA;
+    --paper-raised: #E9E5DA;
+    --sapphire: #2F4C82;
+    --sapphire-soft: #5872A0;
+    --gold: #8F6C24;
+    --line: rgba(27,29,34,0.14);
+    --shadow: rgba(27,29,34,0.08);
+  }
+
+  *{ box-sizing: border-box; }
+  body{
+    background: var(--paper);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3{
+    font-family: Georgia, "Iowan Old Style", Baskerville, "Times New Roman", serif;
+    font-weight: 400;
+    text-wrap: balance;
+    color: var(--ink);
+  }
+  a{ color: var(--sapphire); }
+  a:focus-visible, button:focus-visible{
+    outline: 2px solid var(--sapphire);
+    outline-offset: 3px;
+  }
+
+  .page{
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 5vw 24px 96px;
+  }
+
+  /* ---- cover ---- */
+  .cover{
+    padding: 8vw 0 48px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 56px;
+    opacity: 0;
+    animation: rise .7s ease-out forwards;
+  }
+  .eyebrow{
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--sapphire-soft);
+    margin: 0 0 18px;
+    font-weight: 600;
+  }
+  .cover h1{
+    font-size: clamp(2.4rem, 6vw, 3.6rem);
+    line-height: 1.08;
+    margin: 0 0 22px;
+    letter-spacing: -0.01em;
+  }
+  .dek{
+    font-size: 1.08rem;
+    max-width: 54ch;
+    color: color-mix(in srgb, var(--ink) 78%, transparent);
+    margin: 0 0 28px;
+  }
+  .meta{
+    display: flex;
+    gap: 18px;
+    font-size: 13px;
+    letter-spacing: 0.03em;
+    color: var(--sapphire-soft);
+  }
+  .meta span:not(:last-child)::after{
+    content: "·";
+    margin-left: 18px;
+    color: var(--line);
+  }
+
+  section{ margin-bottom: 64px; }
+  section > .eyebrow{ margin-bottom: 10px; }
+  section h2{
+    font-size: 1.7rem;
+    margin: 0 0 20px;
+  }
+  section > p.lead{
+    max-width: 66ch;
+    font-size: 1.02rem;
+  }
+
+  /* ---- diamond divider ---- */
+  .gem{
+    width: 9px; height: 9px;
+    background: var(--gold);
+    transform: rotate(45deg);
+    margin: 0 0 14px;
+  }
+
+  /* ---- callout ---- */
+  .callout{
+    border-left: 3px solid var(--sapphire);
+    background: var(--paper-raised);
+    padding: 20px 24px;
+    border-radius: 2px;
+    margin: 28px 0;
+  }
+  .callout p{ margin: 0; font-size: 1.02rem; }
+  .callout strong{ color: var(--sapphire); }
+
+  /* ---- stat row ---- */
+  .stats{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    margin: 32px 0;
+  }
+  .stat{
+    background: var(--paper);
+    padding: 22px 16px;
+  }
+  .stat .n{
+    font-family: Georgia, serif;
+    font-size: 2rem;
+    color: var(--sapphire);
+    font-variant-numeric: tabular-nums;
+    display: block;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .stat .l{
+    font-size: 12.5px;
+    color: color-mix(in srgb, var(--ink) 70%, transparent);
+  }
+
+  /* ---- pillar cards ---- */
+  .pillars{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin: 28px 0;
+  }
+  .pillar{
+    background: var(--paper-raised);
+    padding: 20px;
+    border-radius: 3px;
+  }
+  .pillar h3{
+    font-size: 1.02rem;
+    margin: 0 0 8px;
+  }
+  .pillar p{ font-size: 0.94rem; margin: 0; }
+
+  /* ---- name table ---- */
+  .names{ width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 0.95rem; }
+  .names th{
+    text-align: left;
+    font-size: 11.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--sapphire-soft);
+    padding: 0 16px 10px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .names td{
+    padding: 14px 16px 14px 0;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+  .names td:first-child{
+    font-family: Georgia, serif;
+    white-space: nowrap;
+    color: var(--ink);
+  }
+
+  /* ---- swatches ---- */
+  .swatches{ display: flex; gap: 16px; flex-wrap: wrap; margin: 24px 0; }
+  .swatch{ text-align: left; }
+  .swatch .chip{ width: 64px; height: 64px; border-radius: 3px; margin-bottom: 8px; border: 1px solid var(--line); }
+  .swatch .name{ font-size: 12px; letter-spacing: 0.04em; }
+  .swatch .hex{ font-size: 11px; color: var(--sapphire-soft); font-variant-numeric: tabular-nums; }
+
+  /* ---- research columns ---- */
+  .research{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 28px 32px;
+    margin: 28px 0;
+  }
+  .research h3{
+    font-size: 1rem;
+    margin: 0 0 10px;
+    color: var(--sapphire);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-weight: 600;
+  }
+  .research ul{ margin: 0; padding-left: 18px; font-size: 0.93rem; }
+  .research li{ margin-bottom: 8px; }
+
+  /* ---- mermaid container ---- */
+  .diagram{
+    overflow-x: auto;
+    background: var(--paper-raised);
+    padding: 20px;
+    border-radius: 3px;
+    margin: 28px 0;
+  }
+
+  /* ---- timeline ---- */
+  .timeline{ position: relative; margin: 32px 0; padding-left: 28px; }
+  .timeline::before{
+    content: "";
+    position: absolute; left: 4px; top: 6px; bottom: 6px;
+    width: 1px; background: var(--line);
+  }
+  .phase{ position: relative; padding-bottom: 34px; }
+  .phase:last-child{ padding-bottom: 0; }
+  .phase::before{
+    content: "";
+    position: absolute; left: -28px; top: 5px;
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--gold);
+  }
+  .phase .when{
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--sapphire-soft);
+    margin-bottom: 4px;
+  }
+  .phase h3{ font-size: 1.15rem; margin: 0 0 10px; }
+  .phase ul{ margin: 0; padding-left: 18px; font-size: 0.94rem; }
+  .phase li{ margin-bottom: 6px; }
+
+  .notlist{ font-size: 0.95rem; padding-left: 18px; }
+  .notlist li{ margin-bottom: 8px; }
+
+  footer{
+    border-top: 1px solid var(--line);
+    padding-top: 24px;
+    font-size: 0.88rem;
+    color: var(--sapphire-soft);
+  }
+  footer p{ margin: 0 0 8px; }
+
+  @keyframes rise{
+    from{ opacity: 0; transform: translateY(10px); }
+    to{ opacity: 1; transform: translateY(0); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .cover{ animation: none; opacity: 1; }
+  }
+</style>
+
+<div class="page">
+
+  <header class="cover">
+    <p class="eyebrow">Brand &amp; Platform Roadmap</p>
+    <h1>From Ratnapura<br>to the World</h1>
+    <p class="dek">A blueprint for a Sri Lankan gem and jewellery house — gold, silver, platinum, house‑cut Ceylon stones — built to stand beside Graff, Bulgari, and Cartier, grounded in the one asset none of them can claim: verified Ceylon origin.</p>
+    <div class="meta">
+      <span>Working draft · v1</span>
+      <span>5 August 2026</span>
+      <span>Full detail in /docs</span>
+    </div>
+  </header>
+
+  <main>
+
+    <section id="opportunity">
+      <p class="eyebrow">01 · The Opportunity</p>
+      <h2>The asset competitors can't copy</h2>
+      <p class="lead">Every heritage house sells lineage, a signature motif, and control over the object's origin story. Cartier, Bulgari, Tiffany, and Van Cleef &amp; Arpels buy colored stones on the open market — none can make a geographic‑origin claim as credible as a house that owns the relationship with Ratnapura miners and in‑house cutters. Ceylon‑origin sapphires already carry a real market premium when backed by a lab origin report; right now dealers and auction houses capture that premium. A vertically integrated brand can capture it directly and build the whole identity around it.</p>
+      <div class="callout">
+        <p><strong>The differentiator:</strong> Graff‑style vertical control (mine to masterpiece) combined with lab‑verified Ceylon provenance on every signature piece — a claim no reference brand studied can make for colored stones.</p>
+      </div>
+      <div class="stats">
+        <div class="stat"><span class="n">20–50%</span><span class="l">price premium for lab‑verified Ceylon origin vs. undisclosed origin</span></div>
+        <div class="stat"><span class="n">94%</span><span class="l">higher conversion on product pages with AR visualization</span></div>
+        <div class="stat"><span class="n">3×</span><span class="l">AOV for customers who book an advisor consultation</span></div>
+        <div class="stat"><span class="n">3–5</span><span class="l">visits a luxury jewellery customer makes before buying</span></div>
+      </div>
+    </section>
+
+    <section id="brand">
+      <div class="gem"></div>
+      <p class="eyebrow">02 · Brand Strategy</p>
+      <h2>Positioning &amp; identity</h2>
+      <p class="lead">Full rationale in <em>docs/01-brand-strategy.md</em>. Four pillars anchor the house:</p>
+      <div class="pillars">
+        <div class="pillar"><h3>Verifiable provenance</h3><p>Every signature piece ships with a lab origin report and a house‑issued provenance mark — not just a claim.</p></div>
+        <div class="pillar"><h3>The maker is named</h3><p>Cutter and setter credited by name or atelier, in place of borrowed heritage.</p></div>
+        <div class="pillar"><h3>An island, not a footnote</h3><p>Sri Lanka — "Serendib," "Ratnapura" — is the story, not a sourcing detail.</p></div>
+        <div class="pillar"><h3>Modern craft, old material</h3><p>Contemporary design in gold, silver and platinum — not costume‑heritage pastiche.</p></div>
+      </div>
+
+      <table class="names">
+        <tr><th>Name direction</th><th>Rationale</th></tr>
+        <tr><td>Ratnapura &amp; Co.</td><td>Names the actual "City of Gems"; follows the Tiffany/Cartier "House of / &amp; Co." convention with real provenance built in.</td></tr>
+        <tr><td>Serendib House</td><td>The historic name for Sri Lanka — old‑world mystique that's unmistakably island‑specific.</td></tr>
+        <tr><td>Cornflower &amp; Co.</td><td>The trade term for the finest Ceylon sapphire hue — a quality claim inside the name itself.</td></tr>
+        <tr><td>Mayura</td><td>Peacock, Sri Lanka's national bird — a signature local motif in place of a borrowed European one.</td></tr>
+      </table>
+      <p style="font-size:0.88rem; color:var(--sapphire-soft); margin-top:-8px;">Verify trademark and domain availability before committing to any candidate.</p>
+
+      <div class="swatches">
+        <div class="swatch"><div class="chip" style="background:#2F4C82"></div><div class="name">House Sapphire</div><div class="hex">#2F4C82</div></div>
+        <div class="swatch"><div class="chip" style="background:#8F6C24"></div><div class="name">Antique Gold</div><div class="hex">#8F6C24</div></div>
+        <div class="swatch"><div class="chip" style="background:#1B1D22"></div><div class="name">Ink</div><div class="hex">#1B1D22</div></div>
+        <div class="swatch"><div class="chip" style="background:#F3F1EA;border:1px solid rgba(0,0,0,0.15)"></div><div class="name">Ivory Paper</div><div class="hex">#F3F1EA</div></div>
+      </div>
+    </section>
+
+    <section id="ux">
+      <div class="gem"></div>
+      <p class="eyebrow">03 · What the Research Says</p>
+      <h2>UX &amp; conversion patterns</h2>
+      <p class="lead">Full detail in <em>docs/02-ux-design-patterns.md</em>. Luxury jewellery converts far below general e‑commerce because customers research across multiple visits — design for trust built over time, not a single fast checkout.</p>
+      <div class="research">
+        <div>
+          <h3>Product pages</h3>
+          <ul>
+            <li>360° spin (drag, not autoplay), macro zoom on prongs and hallmarks, as‑worn lifestyle shots.</li>
+            <li>Certification (GIA/GRS/AGL) shown on‑page, beside the price — not linked off‑site.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Trust &amp; conversion</h3>
+          <ul>
+            <li>Catalog pricing for bridal/fine jewellery; "Price on Request" reserved for one‑of‑a‑kind pieces behind an advisor.</li>
+            <li>A persistent "Book a Video Consultation" CTA on high‑value pages — the single highest‑leverage mechanic found.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>AR &amp; configurators</h3>
+          <ul>
+            <li>Fewer returns (25–40%) and longer engagement with AR try‑on; ship strong 360° photography first, AR in Phase 2.</li>
+            <li>Even category leaders (James Allen, Blue Nile) still mail physical ring sizers — camera sizing remains an open opportunity.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Retention</h3>
+          <ul>
+            <li>Access and recognition, not discounts — private‑sale invites outperform points programs at this tier.</li>
+            <li>Care reminders and anniversary triggers are the highest‑converting lifecycle emails in the category.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Mobile</h3>
+          <ul>
+            <li>Mobile drives discovery; desktop and advisor‑assisted channels close the sale. Cart and wishlist must persist across devices.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Checkout</h3>
+          <ul>
+            <li>Guest checkout stays available at every phase; itemized duty/tax shown upfront for international orders.</li>
+            <li>Financing (Affirm/Klarna) is table stakes at this price point once international volume justifies it.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="architecture">
+      <div class="gem"></div>
+      <p class="eyebrow">04 · Technical Architecture</p>
+      <h2>Platform &amp; systems</h2>
+      <p class="lead">Full detail in <em>docs/03-technical-architecture.md</em>. Shopify Plus + Hydrogen (Next.js) now — fast to market, PCI scope mostly handled — with a custom PIM layer to work around Shopify's variant limits for metal/stone/size configurability. Move to composable commerce (commercetools) only once genuinely outgrowing it.</p>
+      <div class="callout">
+        <p><strong>The hard problem:</strong> Stripe, Adyen, and PayPal don't onboard Sri Lanka–domiciled merchants directly. The standard route is a foreign holding entity (US, UK, Singapore, or UAE) for the international merchant account, paired with PayHere/WebXPay for local LKR traffic — routine for Sri Lankan exporters, but a real legal step, not just an engineering one.</p>
+      </div>
+      <div class="diagram">
+        <pre class="mermaid">
+flowchart TB
+    subgraph Frontend["Frontend — Next.js (Hydrogen)"]
+        PDP["Product pages: 360 viewer, zoom, cert display"]
+        Config["Metal / stone / size configurator"]
+    end
+    subgraph Commerce["Shopify Plus"]
+        Catalog["Catalog + metafields"]
+        Checkout["Hosted checkout (PCI SAQ-A)"]
+    end
+    subgraph PIM["Custom PIM (Postgres)"]
+        Certs["GIA / GRS / AGL certificate records"]
+        Stock["One-of-a-kind / made-to-order / configurable stock"]
+    end
+    subgraph Payments["Payments"]
+        Stripe["Stripe via foreign entity — global cards"]
+        Local["PayHere / WebXPay — LKR local"]
+    end
+    subgraph Trust["Security"]
+        Radar["Stripe Radar → Signifyd/Riskified at scale"]
+    end
+    Frontend --> Commerce --> PIM
+    Commerce --> Payments --> Trust
+        </pre>
+      </div>
+    </section>
+
+    <section id="roadmap">
+      <div class="gem"></div>
+      <p class="eyebrow">05 · Roadmap</p>
+      <h2>Sequenced build plan</h2>
+      <p class="lead">Full detail in <em>docs/04-roadmap.md</em>. Each phase is justified by evidence from the one before it, not built speculatively.</p>
+      <div class="timeline">
+        <div class="phase">
+          <div class="when">Phase 0 · Weeks 1–4</div>
+          <h3>Foundation</h3>
+          <ul>
+            <li>Lock name, motif, identity; clear trademark and domain.</li>
+            <li>Incorporate the foreign entity for global payments; open local PayHere/WebXPay account.</li>
+            <li>Photography direction and story‑page IA locked.</li>
+          </ul>
+        </div>
+        <div class="phase">
+          <div class="when">Phase 1 · Months 2–4</div>
+          <h3>MVP Launch</h3>
+          <ul>
+            <li>Shopify Plus + Hydrogen storefront live; 360°/zoom PDPs with on‑page certification.</li>
+            <li>Guest checkout, Stripe + local rail both live, itemized international duty.</li>
+            <li>WhatsApp/video consultation booking on every high‑value page — not deferred.</li>
+          </ul>
+        </div>
+        <div class="phase">
+          <div class="when">Phase 2 · Months 4–8</div>
+          <h3>Growth</h3>
+          <ul>
+            <li>AR try‑on and metal/stone/size configurator; mailed ring‑sizer fallback.</li>
+            <li>Clienteling CRM, private‑sale access, lifecycle care/anniversary email‑SMS.</li>
+            <li>Financing at checkout; multi‑currency pricing.</li>
+          </ul>
+        </div>
+        <div class="phase">
+          <div class="when">Phase 3 · Months 8–14</div>
+          <h3>Scale</h3>
+          <ul>
+            <li>NFC tag + certificate lookup page for signature pieces.</li>
+            <li>Personalization engine; Gulf market financing (Tabby/Tamara) if warranted.</li>
+            <li>Migrate PIM/commerce only if genuinely outgrowing Shopify Plus.</li>
+          </ul>
+        </div>
+        <div class="phase">
+          <div class="when">Phase 4 · Year 2+</div>
+          <h3>Global Prestige</h3>
+          <ul>
+            <li>High Jewellery private‑sale tier, by‑appointment, POR pricing.</li>
+            <li>RJC certification decision; flagship boutique and PR strategy.</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 style="font-size:1.05rem;">Deliberately not building first</h3>
+      <ul class="notlist">
+        <li>No bespoke blockchain — NFC + a certificate lookup page carries the trust value at a fraction of the cost.</li>
+        <li>No AR/configurator before MVP traction — strong photography carries Phase 1.</li>
+        <li>No loyalty‑points/discount program, at any phase — it undercuts luxury positioning.</li>
+        <li>No forced account creation at checkout, ever — guest checkout stays available.</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>This is a working draft, not a final decision. Open items: house name and motif, RJC certification path, and whether the founder/family story is used publicly.</p>
+    <p>Full source documents: docs/01-brand-strategy.md · docs/02-ux-design-patterns.md · docs/03-technical-architecture.md · docs/04-roadmap.md</p>
+  </footer>
+
+</div>
