@@ -29,15 +29,21 @@ First shortlist (Ratnapura & Co., Serendib House, Cornflower & Co., Mayura, Isle
 
 **Rejected from the international round:** *Castellane* — collides directly with Victoire de Castellane, the globally known creative director of Dior Joaillerie for 25 years; using this name in the same industry would be actively confusing, not just crowded. *Aurelle* — already used by at least four existing jewellery brands (Dutch Aurelle, Maison Aurelle in Sherman Oaks, Aurielle Co, and others). *Amaury* — an existing Miami/Coral Gables jewelry chain (amauryjewelry.com). *Solenne* — heavily saturated: at least six existing jewelry brands (Solenne & Co., Solenne Atelier, Solène Jewelry, Solene Jewellers, and others).
 
-## Working name: Cassian
+## Vetted candidate: Cassian
 
-Client asked specifically for a **single word** — no "Maison" prefix, no "& Co." construction, matching how Cartier, Bulgari, Chopard, and Graff actually stand alone. Of everything checked, **Cassian** is the one candidate with no existing jewellery-brand conflict found *and* it already works cleanly as a standalone single word without needing a prefix to sound complete. This is now the working house name pending formal trademark clearance.
+Client asked specifically for a **single word** — no "Maison" prefix, no "& Co." construction, matching how Cartier, Bulgari, Chopard, and Graff actually stand alone. Of everything checked, **Cassian** is the one candidate with no existing jewellery-brand conflict found *and* it already works cleanly as a standalone single word without needing a prefix to sound complete.
 
 - **Sound/read:** two clean syllables, soft consonants, plausible as an old French/Italian surname — sits comfortably next to Cartier, Chopard, Graff without straining.
-- **Flexibility:** works alone on a wordmark, engraved inside a ring, or spoken aloud in any market without a pronunciation stumble — unlike some of the longer French constructions considered earlier.
-- **Still open:** whether "Cassian" is used as a surname-style single mark (à la Chopard) or given a founder first name for the brand story (à la "Cassian Devereux" as a narrative founder, real or not) — a decision for the brand-story pass, not the naming pass.
+- **Flexibility:** works alone on a wordmark, engraved inside a ring, or spoken aloud in any market without a pronunciation stumble.
+- **Legal profile:** no conflict found in web-search diligence; still needs formal trademark search before real commitment, but nothing here suggests a structural problem.
 
-**Recommendation:** treat Cassian as locked for planning purposes (visual identity, domain, motif work can proceed against it) but flag it clearly to the client as *pending formal trademark search* — the checks in this document are web-search diligence, not legal clearance, across every market this brand intends to sell into.
+## Current working placeholder: "Taigerian" — ⚠️ flagged high legal risk, not cleared
+
+The client has asked to use **"Taigerian"** (following an earlier "Targerian" spelling) as the working placeholder name for now, having heard the concern below and chosen to proceed anyway for planning purposes. Recording this clearly so it isn't mistaken for a cleared decision by anyone picking this up later:
+
+- **The concern:** spoken aloud, "Taigerian" lands almost identically to **Targaryen**, the royal house from *Game of Thrones* — copyrighted/trademarked IP that HBO/Warner Bros. Discovery protects aggressively. Trademark conflict analysis tests sound and overall commercial impression, not just spelling, and famous marks get broad protection against exactly this kind of close variant (a doctrine sometimes called dilution/confusing similarity). Respelling does not meaningfully reduce this risk.
+- **The positioning cost:** the rest of this brand's credibility strategy leans on reading as an authentic old-world house, the way Chopard or Boucheron do. A name that evokes a pop-culture fantasy franchise cuts against that, independent of the legal question.
+- **Status:** this is a **temporary placeholder for internal planning only** (wireframes, working docs, internal conversation) — it should not be used for domain registration, trademark filing, packaging, or any public-facing asset until the client has taken independent legal advice and made a final, informed call. **Cassian remains the vetted, lower-risk candidate** if/when the client wants a name that can actually be built on without a cloud over it.
 
 **Still required before final commitment, for whichever name is chosen:** a formal trademark search across the relevant classes (jewellery/Class 14 at minimum) in every market the brand will sell into, run by an actual trademark attorney — the checks above are web-search diligence, not legal clearance — plus live domain availability (`.com` and the client's preferred ccTLDs).
 
