@@ -11,11 +11,12 @@ Sequenced so each phase is justified by evidence from a prior phase, not built s
 
 ## Phase 1 — MVP Launch (Months 2–4)
 
-- Shopify Plus + Hydrogen storefront live with core collections (bridal, fine jewellery, signature Ceylon sapphire line).
+- Medusa.js (self-hosted) storefront live with core collections (bridal, fine jewellery, signature Ceylon sapphire line) — see [Technical Architecture](03-technical-architecture.md) for why this replaced the original Shopify Plus recommendation (client doesn't want recurring platform fees).
 - Product pages with 360° viewer, macro zoom, and on-page GIA/GRS certification display.
 - Guest checkout; Stripe (global) + PayHere/WebXPay (local LKR) both live; itemized international duty/tax shown at checkout.
 - WhatsApp/video "Book a Consultation" channel live on all high-value PDPs — this is the single highest-leverage conversion mechanic found in research (see [UX patterns](02-ux-design-patterns.md)) and should not be deferred to a later phase.
-- Custom PIM v1 (Postgres) tracking certificates and one-of-a-kind vs. made-to-order vs. configurable stock status, synced to Shopify via metafields.
+- Certificate/stock tracking (Postgres or Medusa metadata) for one-of-a-kind vs. made-to-order vs. configurable status — no platform variant-cap workaround needed with Medusa.
+- Hosting/ops plan settled: who owns uptime, backups, and patching for the self-hosted stack (a managed PaaS or a part-time devops arrangement) before this goes live with real payments.
 - Core SEO/content: Ceylon Provenance story, The Maison/founder story, care & warranty pages.
 
 ## Phase 2 — Growth (Months 4–8)
@@ -24,13 +25,13 @@ Sequenced so each phase is justified by evidence from a prior phase, not built s
 - Clienteling CRM: advisor-customer relationship continuity, private-sale early access, invitation-only previews — access and recognition, not discounts (see [UX patterns](02-ux-design-patterns.md) on why loyalty discounts erode luxury positioning).
 - Lifecycle email/SMS (Klaviyo or similar): 48-hour post-purchase care sequence, 2–3 year appraisal/cleaning reminders, anniversary/birthday reminders timed ~30 days ahead.
 - Financing at checkout: Affirm and/or Klarna.
-- Multi-currency pricing via Shopify Markets (USD/EUR/GBP/AED, market-based pricing).
+- Multi-currency pricing (USD/EUR/GBP/AED, market-based pricing) — modeled natively in Medusa's multi-region support.
 - Fraud layer upgrade: Signifyd or Riskified once order volume justifies the fee.
 
 ## Phase 3 — Scale (Months 8–14)
 
 - Provenance layer: NFC tag + serial lookup page linking to lab certificate and care record for signature pieces (stop short of bespoke blockchain — see [Technical Architecture](03-technical-architecture.md) verdict on Tracr vs. building your own).
-- PIM upgrade if Shopify's variant limits are being hit regularly; evaluate commercetools/Saleor migration only if genuinely outgrowing Shopify Plus.
+- Evaluate commercetools/Saleor migration only if genuinely outgrowing Medusa — unlikely before real scale given Medusa has no variant-count ceiling to force the issue.
 - Personalization/recommendation engine driven by CRM purchase history.
 - Gulf market expansion: Tabby/Tamara financing, Arabic localization if warranted by traffic.
 - Physical boutique POS integration if a flagship retail location is part of the plan.

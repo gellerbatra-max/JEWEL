@@ -18,7 +18,7 @@ This repo holds the brand strategy, UX research, technical architecture, and pha
 
 **The brand asset competitors can't copy:** direct control of Ceylon sapphire sourcing + lab-verified origin certification. Graff controls diamond mine-to-market; Chopard owns the ethical-sourcing story; Monaco Chain substitutes transparency for heritage. This business can combine vertical control *and* genuine geographic provenance — something none of the reference brands can claim for colored stones.
 
-**The stack:** Shopify Plus + Hydrogen (Next.js) storefront now, with a jewellery-specific PIM layer to work around Shopify's variant limits; Stripe via a foreign holding entity for global cards (Sri Lanka isn't directly supported) + PayHere/WebXPay for local LKR traffic; AR try-on and a metal/stone/size configurator once MVP traction is proven; migrate to composable commerce (commercetools) only if/when scale demands it.
+**The stack:** Next.js storefront (already scaffolded, see `storefront/`) over **Medusa.js**, a self-hosted open-source commerce backend — no Shopify, no recurring platform license fee, just hosting costs (client's explicit preference: not paying Shopify). Stripe via a foreign holding entity for global cards (Sri Lanka isn't directly supported) + PayHere/WebXPay for local LKR traffic; AR try-on and a metal/stone/size configurator once MVP traction is proven; migrate to composable commerce (commercetools) only if/when scale demands it.
 
 **Sequencing:** brand lock → MVP storefront with guest checkout + certification display + WhatsApp/consultation booking → AR + configurator + clienteling CRM + financing → provenance tech (NFC/digital passport) + Gulf market expansion → High Jewellery private-sale tier.
 
