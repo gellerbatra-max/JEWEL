@@ -27,9 +27,17 @@ First shortlist (Ratnapura & Co., Serendib House, Cornflower & Co., Mayura, Isle
 | **Cassian & Vale** | Same root name; no conflict found. | Two-surname construction in the register of Van Cleef & Arpels — if a founder-duo story (real or narrative) is wanted, this reads more "house" than a single name. |
 | **Maison Auvray** | No direct jewellery-brand conflict; one near-neighbor spelling exists (Maison Aubry, a real but small Cannes jewellery shop) — not a legal conflict but worth a final check. | Same French-heritage register, slightly softer sound than Cassian. |
 
-**Rejected from the international round:** *Castellane* — collides directly with Victoire de Castellane, the globally known creative director of Dior Joaillerie for 25 years; using this name in the same industry would be actively confusing, not just crowded. *Aurelle* — already used by at least four existing jewellery brands (Dutch Aurelle, Maison Aurelle in Sherman Oaks, Aurielle Co, and others).
+**Rejected from the international round:** *Castellane* — collides directly with Victoire de Castellane, the globally known creative director of Dior Joaillerie for 25 years; using this name in the same industry would be actively confusing, not just crowded. *Aurelle* — already used by at least four existing jewellery brands (Dutch Aurelle, Maison Aurelle in Sherman Oaks, Aurielle Co, and others). *Amaury* — an existing Miami/Coral Gables jewelry chain (amauryjewelry.com). *Solenne* — heavily saturated: at least six existing jewelry brands (Solenne & Co., Solenne Atelier, Solène Jewelry, Solene Jewellers, and others).
 
-**Recommendation:** lead with **Maison Cassian** (or **Cassian & Vale** if a two-name "house" construction is preferred). Reserve a motif — not tied to a literal Sri Lankan symbol unless the client wants that — as the recurring emblem across packaging, engraving, and site iconography; don't rely on the wordmark alone to carry recognition.
+## Working name: Cassian
+
+Client asked specifically for a **single word** — no "Maison" prefix, no "& Co." construction, matching how Cartier, Bulgari, Chopard, and Graff actually stand alone. Of everything checked, **Cassian** is the one candidate with no existing jewellery-brand conflict found *and* it already works cleanly as a standalone single word without needing a prefix to sound complete. This is now the working house name pending formal trademark clearance.
+
+- **Sound/read:** two clean syllables, soft consonants, plausible as an old French/Italian surname — sits comfortably next to Cartier, Chopard, Graff without straining.
+- **Flexibility:** works alone on a wordmark, engraved inside a ring, or spoken aloud in any market without a pronunciation stumble — unlike some of the longer French constructions considered earlier.
+- **Still open:** whether "Cassian" is used as a surname-style single mark (à la Chopard) or given a founder first name for the brand story (à la "Cassian Devereux" as a narrative founder, real or not) — a decision for the brand-story pass, not the naming pass.
+
+**Recommendation:** treat Cassian as locked for planning purposes (visual identity, domain, motif work can proceed against it) but flag it clearly to the client as *pending formal trademark search* — the checks in this document are web-search diligence, not legal clearance, across every market this brand intends to sell into.
 
 **Still required before final commitment, for whichever name is chosen:** a formal trademark search across the relevant classes (jewellery/Class 14 at minimum) in every market the brand will sell into, run by an actual trademark attorney — the checks above are web-search diligence, not legal clearance — plus live domain availability (`.com` and the client's preferred ccTLDs).
 
@@ -47,6 +55,7 @@ Follow the pattern the reference brands actually use, not pure "price on request
 
 ## Open decisions for the client
 
-- Final house name + motif (trademark and `.com` / relevant ccTLD availability check needed before any design work starts).
+- Formal trademark clearance for **Cassian** (Class 14 at minimum) across every market the brand will sell into, run by a trademark attorney — plus `.com` / relevant ccTLD domain availability check — before any design work starts.
+- The motif to pair with the Cassian wordmark.
 - Whether to formally pursue Responsible Jewellery Council (RJC) certification as a supporting ethical-sourcing credential alongside the geographic-provenance story.
 - Whether family/founder story is used publicly (founder-authenticity is a strong substitute for centuries of heritage, per the DTC brands studied — Mejuri, Vrai, Aurate all lead with founder narrative).
