@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import { AddToBagButton } from "@/components/AddToBagButton";
 import { ConsultationCTA } from "@/components/ConsultationCTA";
 import { getProduct, formatPrice, products } from "@/lib/products";
@@ -14,16 +15,15 @@ export default async function ProductPage(props: PageProps<"/products/[handle]">
 
   return (
     <div className="mx-auto max-w-6xl px-6 py-16 grid sm:grid-cols-2 gap-12 lg:gap-16">
-      <div className="space-y-3">
-        <div
-          className="aspect-[4/5] border border-line-soft bg-cloud"
-          style={{
-            background: `radial-gradient(circle at 50% 42%, ${product.swatch}45, ${product.swatch}14 46%, transparent 74%)`,
-          }}
+      <div className="relative aspect-[4/5] bg-cloud overflow-hidden">
+        <Image
+          src={product.image}
+          alt={product.title}
+          fill
+          priority
+          sizes="(max-width: 640px) 100vw, 50vw"
+          className="object-cover"
         />
-        <p className="font-sans text-[10px] tracking-[0.04em] text-stone text-center">
-          Placeholder — production swaps in 360° spin + macro zoom photography
-        </p>
       </div>
 
       <div className="sm:pt-6">

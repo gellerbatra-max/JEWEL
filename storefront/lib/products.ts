@@ -17,6 +17,7 @@ export type Product = {
   certification?: Certification;
   description: string;
   swatch: string;
+  image: string;
 };
 
 export type Collection = {
@@ -62,6 +63,7 @@ export const products: Product[] = [
     description:
       "A single cornflower-blue Ratnapura sapphire set in a hand-forged platinum band. Cut and set entirely in-house.",
     swatch: "#3B5A8C",
+    image: "/images/cornflower-solitaire-ring.jpg",
   },
   {
     id: "cs-1043",
@@ -77,6 +79,7 @@ export const products: Product[] = [
     description:
       "A matched pair, hand-selected for color consistency — a rare match outside a private collection.",
     swatch: "#4A6DA8",
+    image: "/images/ratnapura-drop-earrings.jpg",
   },
   {
     id: "fj-2210",
@@ -90,6 +93,7 @@ export const products: Product[] = [
     oneOfAKind: false,
     description: "A step-cut faceted band, the house's signature line, in three widths.",
     swatch: "#C6A54D",
+    image: "/images/facet-band-gold.jpg",
   },
   {
     id: "fj-2211",
@@ -103,6 +107,7 @@ export const products: Product[] = [
     oneOfAKind: false,
     description: "The entry point into the house's signature facet line.",
     swatch: "#9AA3AD",
+    image: "/images/facet-band-silver.jpg",
   },
   {
     id: "br-3301",
@@ -117,6 +122,7 @@ export const products: Product[] = [
     certification: { lab: "GIA", reportNumber: "GIA-6601883321", origin: "Ceylon (Sri Lanka)" },
     description: "Made to order, 3–4 week lead time. Ceylon white sapphire in place of a diamond, by request.",
     swatch: "#E7E3D8",
+    image: "/images/vow-solitaire.jpg",
   },
   {
     id: "br-3302",
@@ -130,6 +136,7 @@ export const products: Product[] = [
     oneOfAKind: false,
     description: "A matched pair of wedding bands, sized to order.",
     swatch: "#B98F3E",
+    image: "/images/vow-band-pair.jpg",
   },
 ];
 
