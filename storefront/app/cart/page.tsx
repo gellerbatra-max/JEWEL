@@ -27,17 +27,19 @@ export default function CartPage() {
       <h1 className="font-display text-3xl text-ink mb-10 text-center">Your Bag</h1>
       <div className="divide-y divide-line border-y border-line">
         {lines.map((line) => (
-          <div key={line.handle} className="flex items-center justify-between py-5">
+          <div key={line.lineId} className="flex items-center justify-between py-5">
             <div>
               <p className="font-display text-lg text-ink">{line.title}</p>
-              <p className="font-sans text-[11px] tracking-[0.08em] uppercase text-stone mt-1">
-                {line.size ? `Size ${line.size} · ` : ""}Qty {line.qty}
-              </p>
+              {line.size && (
+                <p className="font-sans text-[11px] tracking-[0.08em] uppercase text-stone mt-1">
+                  Size {line.size}
+                </p>
+              )}
             </div>
             <div className="flex items-center gap-5">
               <p className="tabular-nums text-ink">{formatPrice(line.price * line.qty, line.currency)}</p>
               <button
-                onClick={() => remove(line.handle)}
+                onClick={() => remove(line.lineId)}
                 className="font-sans text-[11px] tracking-[0.08em] uppercase text-stone hover:text-risk transition-colors"
               >
                 Remove

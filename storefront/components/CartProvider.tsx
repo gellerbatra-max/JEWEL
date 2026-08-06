@@ -2,26 +2,42 @@
 
 import { createContext, useCallback, useContext, useSyncExternalStore, type ReactNode } from "react";
 
-type CartLine = { handle: string; title: string; price: number; currency: string; qty: number; size?: string };
+type CartLine = {
+  lineId: string;
+  handle: string;
+  title: string;
+  price: number;
+  currency: string;
+  qty: number;
+  size?: string;
+};
 
 type CartContextValue = {
   lines: CartLine[];
   count: number;
-  add: (line: Omit<CartLine, "qty">) => void;
-  remove: (handle: string) => void;
+  add: (line: Omit<CartLine, "qty" | "lineId">) => void;
+  remove: (lineId: string) => void;
 };
 
 const CartContext = createContext<CartContextValue | null>(null);
 
-const STORAGE_KEY = "taigerian:cart";
+const STORAGE_KEY = "taygerian:cart";
 const EMPTY: CartLine[] = [];
 const listeners = new Set<() => void>();
 let cached: CartLine[] | null = null;
 
+function newLineId(): string {
+  const c = globalThis.crypto;
+  if (c && typeof c.randomUUID === "function") return c.randomUUID();
+  return `l_${Math.random().toString(36).slice(2)}`;
+}
+
 function readFromStorage(): CartLine[] {
   try {
     const raw = window.localStorage.getItem(STORAGE_KEY);
-    return raw ? JSON.parse(raw) : [];
+    const parsed: CartLine[] = raw ? JSON.parse(raw) : [];
+    // Backfill lineId for any lines saved before per-line ids existed.
+    return parsed.map((l) => (l.lineId ? l : { ...l, lineId: newLineId() }));
   } catch {
     return [];
   }
@@ -54,19 +70,14 @@ function getServerSnapshot(): CartLine[] {
 export function CartProvider({ children }: { children: ReactNode }) {
   const lines = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
-  const add = useCallback((line: Omit<CartLine, "qty">) => {
-    const current = getSnapshot();
-    const existing = current.find((l) => l.handle === line.handle);
-    const next = existing
-      ? current.map((l) =>
-          l.handle === line.handle ? { ...l, qty: l.qty + 1, size: line.size ?? l.size } : l
-        )
-      : [...current, { ...line, qty: 1 }];
-    setLines(next);
+  // Every add is its own line item — no merging into quantity, so the same
+  // piece added twice (or in two sizes) shows as two distinct lines.
+  const add = useCallback((line: Omit<CartLine, "qty" | "lineId">) => {
+    setLines([...getSnapshot(), { ...line, lineId: newLineId(), qty: 1 }]);
   }, []);
 
-  const remove = useCallback((handle: string) => {
-    setLines(getSnapshot().filter((l) => l.handle !== handle));
+  const remove = useCallback((lineId: string) => {
+    setLines(getSnapshot().filter((l) => l.lineId !== lineId));
   }, []);
 
   const count = lines.reduce((sum, l) => sum + l.qty, 0);
