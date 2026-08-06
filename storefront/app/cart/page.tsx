@@ -30,7 +30,9 @@ export default function CartPage() {
           <div key={line.handle} className="flex items-center justify-between py-5">
             <div>
               <p className="font-display text-lg text-ink">{line.title}</p>
-              <p className="font-sans text-[11px] tracking-[0.08em] uppercase text-stone mt-1">Qty {line.qty}</p>
+              <p className="font-sans text-[11px] tracking-[0.08em] uppercase text-stone mt-1">
+                {line.size ? `Size ${line.size} · ` : ""}Qty {line.qty}
+              </p>
             </div>
             <div className="flex items-center gap-5">
               <p className="tabular-nums text-ink">{formatPrice(line.price * line.qty, line.currency)}</p>

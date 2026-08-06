@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import { AddToBagButton } from "@/components/AddToBagButton";
+import { PurchasePanel } from "@/components/PurchasePanel";
 import { ConsultationCTA } from "@/components/ConsultationCTA";
 import { ProductAccordion } from "@/components/ProductAccordion";
 import { getProduct, formatPrice, products } from "@/lib/products";
@@ -58,7 +58,7 @@ export default async function ProductPage(props: PageProps<"/products/[handle]">
         )}
 
         <div className="space-y-3">
-          <AddToBagButton product={product} />
+          <PurchasePanel product={product} />
           <ConsultationCTA productTitle={product.title} />
         </div>
 

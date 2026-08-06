@@ -40,16 +40,30 @@ const IconShip = (
     <path d="M3 6h11v9H3zM14 9h4l3 3v3h-7z" /><circle cx="7" cy="18" r="1.6" /><circle cx="17" cy="18" r="1.6" />
   </svg>
 );
+const IconRuler = (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" aria-hidden="true">
+    <path d="M4 8l12-4 4 12-12 4z" /><path d="M8 8.5l1 2M11 7.5l1.5 3M14 6.5l1 2" />
+  </svg>
+);
 
 export function ProductAccordion({ product }: { product: Product }) {
   const finalSale = product.oneOfAKind || product.collectionHandle === "bridal";
 
   return (
-    <div className="mt-8">
+    <div className="mt-8" id="size-fit">
       <div className="border-t border-line">
         <Row icon={IconDoc} title="Description" open>
           {product.description}
         </Row>
+
+        {product.isRing && (
+          <Row icon={IconRuler} title="Size & Fit">
+            Sizes shown are US ring sizes. Every ring is made to your chosen size, and we offer one
+            complimentary resizing within the first year on catalogue pieces. Unsure of your size?
+            Request a complimentary ring sizer, or book a video consultation and we&rsquo;ll measure
+            you together. One-of-a-kind pieces are hand-finished to your exact size to order.
+          </Row>
+        )}
 
         <Row icon={IconBox} title="The Taygerian Box">
           Every piece arrives in the Taygerian presentation box — a lacquered case bearing the house

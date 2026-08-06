@@ -2,7 +2,7 @@
 
 import { createContext, useCallback, useContext, useSyncExternalStore, type ReactNode } from "react";
 
-type CartLine = { handle: string; title: string; price: number; currency: string; qty: number };
+type CartLine = { handle: string; title: string; price: number; currency: string; qty: number; size?: string };
 
 type CartContextValue = {
   lines: CartLine[];
@@ -58,7 +58,9 @@ export function CartProvider({ children }: { children: ReactNode }) {
     const current = getSnapshot();
     const existing = current.find((l) => l.handle === line.handle);
     const next = existing
-      ? current.map((l) => (l.handle === line.handle ? { ...l, qty: l.qty + 1 } : l))
+      ? current.map((l) =>
+          l.handle === line.handle ? { ...l, qty: l.qty + 1, size: line.size ?? l.size } : l
+        )
       : [...current, { ...line, qty: 1 }];
     setLines(next);
   }, []);
