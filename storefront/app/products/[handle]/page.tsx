@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import { AddToBagButton } from "@/components/AddToBagButton";
 import { ConsultationCTA } from "@/components/ConsultationCTA";
+import { ProductAccordion } from "@/components/ProductAccordion";
 import { getProduct, formatPrice, products } from "@/lib/products";
 
 export function generateStaticParams() {
@@ -56,12 +57,12 @@ export default async function ProductPage(props: PageProps<"/products/[handle]">
           </div>
         )}
 
-        <p className="text-stone leading-relaxed mb-8">{product.description}</p>
-
         <div className="space-y-3">
           <AddToBagButton product={product} />
           <ConsultationCTA productTitle={product.title} />
         </div>
+
+        <ProductAccordion product={product} />
       </div>
     </div>
   );
