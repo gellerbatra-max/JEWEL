@@ -1,34 +1,44 @@
 @import "tailwindcss";
 
+/* Light, editorial luxury palette — inspired by the whitish, airy
+   backgrounds top jewellery houses (Tiffany, Cartier, Graff, Bulgari)
+   use. Warm off-white ground, deep ink text, gold + sapphire accents
+   used sparingly. */
 :root {
-  --ink: #0f1115;
-  --panel: #181b21;
-  --panel-2: #1f232b;
-  --ivory: #f3efe6;
-  --ivory-dim: rgba(243, 239, 230, 0.62);
-  --sapphire: #7e9bd4;
-  --gold: #c6a54d;
-  --risk: #c97b5a;
-  --line: rgba(243, 239, 230, 0.14);
-  --font-body-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+  --porcelain: #fbfaf7;
+  --cloud: #f3f0e9;
+  --ink: #1c1b19;
+  --stone: #6e6a63;
+  --gold: #9a7b3f;
+  --sapphire: #2f4c82;
+  --risk: #b4553a;
+  --line: rgba(28, 27, 25, 0.12);
+  --line-soft: rgba(28, 27, 25, 0.07);
+  --fallback-serif: Georgia, "Times New Roman", serif;
+  --fallback-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Helvetica, Arial, sans-serif;
 }
 
 @theme inline {
+  --color-porcelain: var(--porcelain);
+  --color-cloud: var(--cloud);
   --color-ink: var(--ink);
-  --color-panel: var(--panel);
-  --color-panel-2: var(--panel-2);
-  --color-ivory: var(--ivory);
-  --color-ivory-dim: var(--ivory-dim);
-  --color-sapphire: var(--sapphire);
+  --color-stone: var(--stone);
   --color-gold: var(--gold);
+  --color-sapphire: var(--sapphire);
   --color-risk: var(--risk);
   --color-line: var(--line);
-  --font-display: var(--font-cormorant);
-  --font-sans: var(--font-body-sans);
+  --color-line-soft: var(--line-soft);
+  /* Display headlines — high-contrast elegant serif */
+  --font-display: var(--font-cormorant), var(--fallback-serif);
+  /* Body / editorial copy — text serif, non-rounded */
+  --font-serif: var(--font-eb), var(--fallback-serif);
+  /* Labels / nav / buttons — structured Franklin-Gothic sans */
+  --font-sans: var(--font-franklin), var(--fallback-sans);
 }
 
 body {
-  background: var(--ink);
-  color: var(--ivory);
+  background: var(--porcelain);
+  color: var(--ink);
+  font-family: var(--font-eb), var(--fallback-serif);
 }

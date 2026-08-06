@@ -13,7 +13,7 @@ type CartContextValue = {
 
 const CartContext = createContext<CartContextValue | null>(null);
 
-const STORAGE_KEY = "cassian:cart";
+const STORAGE_KEY = "taigerian:cart";
 const EMPTY: CartLine[] = [];
 const listeners = new Set<() => void>();
 let cached: CartLine[] | null = null;

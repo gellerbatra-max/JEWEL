@@ -15,10 +15,12 @@ export default async function CollectionPage(props: PageProps<"/collections/[han
 
   return (
     <div className="mx-auto max-w-6xl px-6 py-16">
-      <p className="text-[11px] tracking-[0.16em] uppercase text-gold mb-4">Collection</p>
-      <h1 className="font-display text-3xl mb-3">{collection.title}</h1>
-      <p className="max-w-2xl text-ivory-dim mb-10">{collection.description}</p>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div className="text-center max-w-2xl mx-auto mb-12">
+        <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-gold mb-4">Collection</p>
+        <h1 className="font-display text-4xl text-ink mb-4">{collection.title}</h1>
+        <p className="text-lg text-stone leading-relaxed">{collection.description}</p>
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {items.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}

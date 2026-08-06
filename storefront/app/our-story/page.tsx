@@ -1,11 +1,16 @@
+import { FacetMark } from "@/components/FacetMark";
+
 export default function OurStoryPage() {
   return (
-    <div className="mx-auto max-w-3xl px-6 py-16">
-      <p className="text-[11px] tracking-[0.16em] uppercase text-gold mb-4">Our Story</p>
-      <h1 className="font-display text-3xl mb-8 text-balance">
-        An island, not a footnote.
-      </h1>
-      <div className="space-y-6 text-ivory-dim">
+    <div className="mx-auto max-w-2xl px-6 py-20">
+      <div className="text-center mb-14">
+        <FacetMark size={30} className="text-gold mx-auto mb-6" />
+        <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-gold mb-4">Our Story</p>
+        <h1 className="font-display text-4xl sm:text-5xl leading-tight text-balance text-ink">
+          An island, not a footnote.
+        </h1>
+      </div>
+      <div className="space-y-6 text-lg text-stone leading-relaxed">
         <p>
           Every heritage jewellery house sells lineage, a signature motif, and control over the
           object&rsquo;s origin story. Cartier, Bulgari, Tiffany, and Van Cleef &amp; Arpels buy
@@ -24,8 +29,8 @@ export default function OurStoryPage() {
           platinum, not costume-heritage pastiche.
         </p>
       </div>
-      <p className="text-[12px] text-ivory-dim mt-10 border-t border-line pt-6">
-        Placeholder copy for the working prototype — see docs/01-brand-strategy.md for the full narrative brief.
+      <p className="font-sans text-[12px] text-stone mt-14 border-t border-line pt-6 text-center">
+        Placeholder copy for the working prototype.
       </p>
     </div>
   );

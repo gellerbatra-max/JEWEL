@@ -13,48 +13,50 @@ export default async function ProductPage(props: PageProps<"/products/[handle]">
   if (!product) notFound();
 
   return (
-    <div className="mx-auto max-w-6xl px-6 py-16 grid sm:grid-cols-2 gap-12">
+    <div className="mx-auto max-w-6xl px-6 py-16 grid sm:grid-cols-2 gap-12 lg:gap-16">
       <div className="space-y-3">
         <div
-          className="aspect-square rounded-sm border border-line"
+          className="aspect-[4/5] border border-line-soft bg-cloud"
           style={{
-            background: `radial-gradient(circle at 35% 30%, ${product.swatch}66, ${product.swatch}18 55%, transparent 80%)`,
+            background: `radial-gradient(circle at 50% 42%, ${product.swatch}45, ${product.swatch}14 46%, transparent 74%)`,
           }}
         />
-        <p className="text-[11px] text-ivory-dim text-center">
-          Placeholder — production build swaps in 360° spin + macro zoom photography per docs/02-ux-design-patterns.md
+        <p className="font-sans text-[10px] tracking-[0.04em] text-stone text-center">
+          Placeholder — production swaps in 360° spin + macro zoom photography
         </p>
       </div>
 
-      <div>
-        <p className="text-[11px] tracking-[0.16em] uppercase text-gold mb-3">
+      <div className="sm:pt-6">
+        <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-gold mb-4">
           {product.collectionHandle.replace("-", " ")}
         </p>
-        <h1 className="font-display text-3xl mb-2">{product.title}</h1>
-        <p className="text-ivory-dim mb-5">
+        <h1 className="font-display text-4xl text-ink mb-3 leading-tight">{product.title}</h1>
+        <p className="font-sans text-[11px] tracking-[0.08em] uppercase text-stone mb-6">
           {product.metal}
           {product.stone !== "—" ? ` · ${product.stone}` : ""}
         </p>
 
-        <p className="font-display text-2xl text-gold mb-8 tabular-nums">
+        <p className="font-display text-2xl text-ink mb-8 tabular-nums">
           {product.oneOfAKind ? "Price on Request" : formatPrice(product.price, product.currency)}
         </p>
 
         {product.certification && (
-          <div className="rounded-sm border border-line bg-panel p-5 mb-6">
-            <p className="text-[11px] tracking-[0.08em] uppercase text-sapphire mb-2">Certification</p>
-            <dl className="grid grid-cols-2 gap-y-1 text-[13px]">
-              <dt className="text-ivory-dim">Laboratory</dt>
+          <div className="border border-line bg-cloud/60 p-5 mb-7">
+            <p className="font-sans text-[10px] tracking-[0.14em] uppercase text-sapphire mb-3">
+              Certified Provenance
+            </p>
+            <dl className="grid grid-cols-2 gap-y-1.5 text-[14px]">
+              <dt className="text-stone">Laboratory</dt>
               <dd className="text-right tabular-nums">{product.certification.lab}</dd>
-              <dt className="text-ivory-dim">Report No.</dt>
+              <dt className="text-stone">Report No.</dt>
               <dd className="text-right tabular-nums">{product.certification.reportNumber}</dd>
-              <dt className="text-ivory-dim">Verified origin</dt>
+              <dt className="text-stone">Verified origin</dt>
               <dd className="text-right">{product.certification.origin}</dd>
             </dl>
           </div>
         )}
 
-        <p className="text-ivory-dim mb-8">{product.description}</p>
+        <p className="text-stone leading-relaxed mb-8">{product.description}</p>
 
         <div className="space-y-3">
           <AddToBagButton product={product} />

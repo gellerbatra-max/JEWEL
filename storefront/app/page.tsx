@@ -8,72 +8,83 @@ export default function Home() {
 
   return (
     <div>
-      <section className="mx-auto max-w-6xl px-6 pt-20 pb-24 text-center">
-        <FacetMark size={40} className="text-gold mx-auto mb-8" />
-        <p className="text-[11px] tracking-[0.18em] uppercase text-gold mb-5">
+      {/* Hero — airy, light, editorial */}
+      <section className="mx-auto max-w-3xl px-6 pt-24 pb-20 text-center">
+        <FacetMark size={34} className="text-gold mx-auto mb-8" />
+        <p className="font-sans text-[11px] tracking-[0.24em] uppercase text-gold mb-6">
           Mine to Masterpiece, Verified
         </p>
-        <h1 className="font-display text-4xl sm:text-5xl max-w-2xl mx-auto leading-tight text-balance">
-          Ceylon sapphires, sourced and cut in-house — certified, not just claimed.
+        <h1 className="font-display text-5xl sm:text-6xl leading-[1.05] text-balance text-ink">
+          Ceylon sapphires, sourced and cut in-house.
         </h1>
-        <p className="max-w-xl mx-auto mt-6 text-ivory-dim">
-          Working prototype storefront for Cassian. Gold, silver, and platinum, set with
-          lab-verified Ceylon gemstones — every signature piece ships with an origin report.
+        <p className="max-w-xl mx-auto mt-7 text-lg text-stone leading-relaxed">
+          Certified, not just claimed. Gold, silver, and platinum set with lab-verified
+          Ceylon gemstones — every signature piece ships with its own origin report.
         </p>
-        <div className="mt-9 flex items-center justify-center gap-4">
+        <div className="mt-10 flex items-center justify-center gap-4">
           <Link
             href="/collections/ceylon-signature"
-            className="rounded-sm bg-ivory text-ink px-6 py-3 text-[13px] tracking-[0.08em] uppercase hover:bg-gold transition-colors"
+            className="bg-ink text-porcelain px-8 py-3.5 font-sans text-[12px] tracking-[0.16em] uppercase hover:bg-gold transition-colors"
           >
-            Discover Ceylon Signature
-          </Link>
-          <Link
-            href="/our-story"
-            className="rounded-sm border border-line px-6 py-3 text-[13px] tracking-[0.08em] uppercase text-ivory-dim hover:text-ivory hover:border-gold/60 transition-colors"
-          >
-            Our Story
+            Discover the Collection
           </Link>
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-6 pb-24">
-        <div className="flex items-baseline justify-between mb-6">
-          <h2 className="font-display text-2xl">Ceylon Signature</h2>
-          <Link href="/collections/ceylon-signature" className="text-[12px] uppercase tracking-[0.06em] text-sapphire hover:text-ivory transition-colors">
-            View all
-          </Link>
+      {/* Hairline-framed signature grid */}
+      <section className="mx-auto max-w-6xl px-6 pb-4">
+        <div className="text-center mb-10">
+          <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-gold mb-3">Ceylon Signature</p>
+          <h2 className="font-display text-3xl text-ink">The house sapphires</h2>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {signature.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
+        <div className="text-center mt-10">
+          <Link
+            href="/collections/ceylon-signature"
+            className="font-sans text-[11px] tracking-[0.16em] uppercase text-ink border-b border-gold pb-1 hover:text-gold transition-colors"
+          >
+            View all Ceylon Signature
+          </Link>
+        </div>
       </section>
 
-      <section className="border-t border-line">
-        <div className="mx-auto max-w-6xl px-6 py-20 grid sm:grid-cols-2 gap-10 items-center">
-          <div>
-            <p className="text-[11px] tracking-[0.16em] uppercase text-gold mb-4">The Differentiator</p>
-            <h2 className="font-display text-2xl mb-4 text-balance">
-              No house buying on the open market can claim what we can.
-            </h2>
-            <p className="text-ivory-dim">
-              Cartier, Bulgari, and Van Cleef &amp; Arpels buy colored stones from dealers. We own the
-              relationship with Ratnapura miners and in-house cutters — every signature piece carries
-              a lab origin report, not just a provenance story.
-            </p>
+      {/* Differentiator — editorial band */}
+      <section className="mt-24 border-y border-line bg-cloud">
+        <div className="mx-auto max-w-3xl px-6 py-20 text-center">
+          <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-gold mb-5">The Difference</p>
+          <h2 className="font-display text-3xl sm:text-4xl leading-tight text-balance text-ink">
+            No house buying on the open market can claim what we can.
+          </h2>
+          <p className="max-w-2xl mx-auto mt-6 text-lg text-stone leading-relaxed">
+            Cartier, Bulgari, and Van Cleef &amp; Arpels buy their colored stones from dealers.
+            We own the relationship with the Ratnapura miners and our in-house cutters — so every
+            signature piece carries a lab origin report, not just a provenance story.
+          </p>
+          <div className="mt-12 grid grid-cols-2 gap-10 max-w-md mx-auto">
+            <div>
+              <p className="font-display text-4xl text-gold">20–50%</p>
+              <p className="font-sans text-[11px] tracking-[0.08em] uppercase text-stone mt-2">
+                Ceylon origin premium
+              </p>
+            </div>
+            <div>
+              <p className="font-display text-4xl text-gold">GIA · GRS</p>
+              <p className="font-sans text-[11px] tracking-[0.08em] uppercase text-stone mt-2">
+                Certified on every piece
+              </p>
+            </div>
           </div>
-          <div className="rounded-sm border border-line bg-panel p-8">
-            <dl className="grid grid-cols-2 gap-6 text-center">
-              <div>
-                <dt className="text-[11px] uppercase tracking-[0.06em] text-ivory-dim">Origin premium</dt>
-                <dd className="font-display text-3xl text-gold mt-2">20–50%</dd>
-              </div>
-              <div>
-                <dt className="text-[11px] uppercase tracking-[0.06em] text-ivory-dim">Cert on every piece</dt>
-                <dd className="font-display text-3xl text-gold mt-2">GIA / GRS</dd>
-              </div>
-            </dl>
+          <div className="mt-12">
+            <Link
+              href="/our-story"
+              className="font-sans text-[11px] tracking-[0.16em] uppercase text-ink border-b border-gold pb-1 hover:text-gold transition-colors"
+            >
+              Read our story
+            </Link>
           </div>
         </div>
       </section>

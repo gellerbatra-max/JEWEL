@@ -15,7 +15,7 @@ export function AddToBagButton({ product }: { product: Product }) {
         setAdded(true);
         window.setTimeout(() => setAdded(false), 1800);
       }}
-      className="w-full rounded-sm bg-ivory text-ink py-3 text-[13px] tracking-[0.08em] uppercase font-medium hover:bg-gold transition-colors"
+      className="w-full bg-ink text-porcelain py-3.5 font-sans text-[12px] tracking-[0.16em] uppercase hover:bg-gold transition-colors"
     >
       {added ? "Added to Bag" : product.oneOfAKind ? "Reserve — Request Callback" : "Add to Bag"}
     </button>

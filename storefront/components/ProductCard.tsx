@@ -4,24 +4,30 @@ import { formatPrice } from "@/lib/products";
 
 export function ProductCard({ product }: { product: Product }) {
   return (
-    <Link
-      href={`/products/${product.handle}`}
-      className="group block rounded-sm border border-line bg-panel overflow-hidden transition-colors hover:border-gold/60"
-    >
-      <div
-        className="aspect-square"
-        style={{
-          background: `radial-gradient(circle at 35% 30%, ${product.swatch}55, ${product.swatch}15 60%, transparent 80%)`,
-        }}
-      />
-      <div className="p-4">
-        <p className="font-display text-base">{product.title}</p>
-        <p className="text-[12px] text-ivory-dim mt-1">
+    <Link href={`/products/${product.handle}`} className="group block">
+      <div className="relative overflow-hidden bg-cloud border border-line-soft">
+        <div
+          className="aspect-[4/5] transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+          style={{
+            background: `radial-gradient(circle at 50% 42%, ${product.swatch}40, ${product.swatch}12 45%, transparent 72%)`,
+          }}
+        />
+        {product.oneOfAKind && (
+          <span className="absolute top-3 left-3 bg-porcelain/90 text-ink text-[10px] tracking-[0.14em] uppercase px-2.5 py-1 font-sans">
+            One of a Kind
+          </span>
+        )}
+      </div>
+      <div className="pt-4 text-center">
+        <p className="font-display text-lg text-ink group-hover:text-gold transition-colors">
+          {product.title}
+        </p>
+        <p className="font-sans text-[11px] tracking-[0.08em] uppercase text-stone mt-1.5">
           {product.metal}
           {product.stone !== "—" ? ` · ${product.stone}` : ""}
         </p>
-        <p className="text-[13px] text-gold mt-2 tabular-nums">
-          {product.oneOfAKind ? "Price on request" : formatPrice(product.price, product.currency)}
+        <p className="font-sans text-[13px] text-ink mt-2 tabular-nums">
+          {product.oneOfAKind ? "Price on Request" : formatPrice(product.price, product.currency)}
         </p>
       </div>
     </Link>
