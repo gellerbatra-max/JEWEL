@@ -29,16 +29,14 @@
   --color-risk: var(--risk);
   --color-line: var(--line);
   --color-line-soft: var(--line-soft);
-  /* Display headlines — high-contrast elegant serif */
+  /* Display headlines + wordmark — high-contrast elegant serif */
   --font-display: var(--font-cormorant), var(--fallback-serif);
-  /* Body / editorial copy — text serif, non-rounded */
-  --font-serif: var(--font-eb), var(--fallback-serif);
-  /* Labels / nav / buttons — structured Franklin-Gothic sans */
-  --font-sans: var(--font-franklin), var(--fallback-sans);
+  /* Everything else — system sans */
+  --font-sans: var(--fallback-sans);
 }
 
 body {
   background: var(--porcelain);
   color: var(--ink);
-  font-family: var(--font-eb), var(--fallback-serif);
+  font-family: var(--fallback-sans);
 }
