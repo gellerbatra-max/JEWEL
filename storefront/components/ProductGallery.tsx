@@ -3,6 +3,14 @@
 import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 
+function Chevron({ dir }: { dir: "up" | "down" }) {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+      {dir === "up" ? <path d="M6 15l6-6 6 6" /> : <path d="M6 9l6 6 6-6" />}
+    </svg>
+  );
+}
+
 export function ProductGallery({ images, alt }: { images: string[]; alt: string }) {
   const [active, setActive] = useState(0);
   const [zoomed, setZoomed] = useState(false);
@@ -11,7 +19,6 @@ export function ProductGallery({ images, alt }: { images: string[]; alt: string 
   const next = useCallback(() => setActive((i) => (i + 1) % list.length), [list.length]);
   const prev = useCallback(() => setActive((i) => (i - 1 + list.length) % list.length), [list.length]);
 
-  // Keyboard controls + scroll lock while the lightbox is open.
   useEffect(() => {
     if (!zoomed) return;
     const onKey = (e: KeyboardEvent) => {
@@ -32,25 +39,43 @@ export function ProductGallery({ images, alt }: { images: string[]; alt: string 
     <>
       <div className="flex flex-col-reverse sm:flex-row gap-4">
         {list.length > 1 && (
-          <div className="flex sm:flex-col gap-3 sm:w-20 shrink-0">
-            {list.map((src, i) => (
-              <button
-                key={src}
-                onClick={() => setActive(i)}
-                aria-label={`View image ${i + 1}`}
-                className={`relative aspect-square w-16 sm:w-full overflow-hidden bg-cloud border transition-colors ${
-                  i === active ? "border-gold" : "border-line-soft hover:border-stone"
-                }`}
-              >
-                <Image src={src} alt="" fill sizes="80px" className="object-cover" />
-              </button>
-            ))}
+          <div className="flex sm:flex-col items-center gap-2 sm:w-[76px] shrink-0">
+            <button
+              onClick={prev}
+              aria-label="Previous image"
+              className="hidden sm:flex items-center justify-center w-6 h-6 text-stone hover:text-ink transition-colors"
+            >
+              <Chevron dir="up" />
+            </button>
+            <div className="flex sm:flex-col gap-3 overflow-x-auto sm:overflow-visible">
+              {list.map((src, i) => (
+                <button
+                  key={src}
+                  onClick={() => setActive(i)}
+                  aria-label={`View image ${i + 1}`}
+                  aria-current={i === active}
+                  className={`relative aspect-square w-16 sm:w-full shrink-0 overflow-hidden bg-porcelain border transition-colors ${
+                    i === active ? "border-gold" : "border-line-soft hover:border-stone"
+                  }`}
+                >
+                  <Image src={src} alt="" fill sizes="76px" className="object-contain" />
+                </button>
+              ))}
+            </div>
+            <button
+              onClick={next}
+              aria-label="Next image"
+              className="hidden sm:flex items-center justify-center w-6 h-6 text-stone hover:text-ink transition-colors"
+            >
+              <Chevron dir="down" />
+            </button>
           </div>
         )}
+
         <button
           onClick={() => setZoomed(true)}
           aria-label="Enlarge image"
-          className="relative aspect-[4/5] flex-1 overflow-hidden bg-cloud cursor-zoom-in group"
+          className="relative aspect-[4/5] flex-1 overflow-hidden bg-porcelain cursor-zoom-in group"
         >
           <Image
             src={list[active]}
@@ -58,7 +83,7 @@ export function ProductGallery({ images, alt }: { images: string[]; alt: string 
             fill
             priority
             sizes="(max-width: 640px) 100vw, 45vw"
-            className="object-cover"
+            className="object-contain"
           />
           <span className="absolute bottom-3 right-3 bg-porcelain/85 text-ink text-[10px] tracking-[0.12em] uppercase px-2.5 py-1 opacity-0 group-hover:opacity-100 transition-opacity">
             Click to enlarge
@@ -105,17 +130,8 @@ export function ProductGallery({ images, alt }: { images: string[]; alt: string 
             </>
           )}
 
-          <div
-            className="relative w-[92vw] h-[82vh] max-w-5xl"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <Image
-              src={list[active]}
-              alt={alt}
-              fill
-              sizes="92vw"
-              className="object-contain"
-            />
+          <div className="relative w-[92vw] h-[86vh] max-w-4xl" onClick={(e) => e.stopPropagation()}>
+            <Image src={list[active]} alt={alt} fill sizes="92vw" className="object-contain" />
           </div>
         </div>
       )}
