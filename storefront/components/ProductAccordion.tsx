@@ -60,8 +60,17 @@ export function ProductAccordion({ product }: { product: Product }) {
           <Row icon={IconRuler} title="Size & Fit">
             Sizes shown are US ring sizes. Every ring is made to your chosen size, and we offer one
             complimentary resizing within the first year on catalogue pieces. Unsure of your size?
-            Request a complimentary ring sizer, or book a video consultation and we&rsquo;ll measure
-            you together. One-of-a-kind pieces are hand-finished to your exact size to order.
+            Book a video consultation and we&rsquo;ll measure you together, or use our printable guide.
+            One-of-a-kind pieces are hand-finished to your exact size to order.
+            <a
+              href="/taygerian-ring-size-guide.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-3 inline-flex items-center gap-2 text-[12px] tracking-[0.08em] uppercase text-ink border-b border-gold pb-0.5 hover:text-gold transition-colors"
+            >
+              {IconRuler}
+              Download Ring Size Guide (PDF)
+            </a>
           </Row>
         )}
 
