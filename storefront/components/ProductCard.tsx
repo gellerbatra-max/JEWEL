@@ -5,7 +5,10 @@ import { formatPrice } from "@/lib/products";
 
 export function ProductCard({ product }: { product: Product }) {
   return (
-    <Link href={`/products/${product.handle}`} className="group block">
+    <Link
+      href={`/products/${product.handle}`}
+      className="group block p-3 border border-transparent hover:border-line hover:bg-porcelain hover:shadow-[0_20px_46px_-28px_rgba(28,27,25,0.45)] hover:-translate-y-0.5 transition-all duration-300 ease-out"
+    >
       <div className="relative overflow-hidden bg-cloud aspect-[4/5]">
         <Image
           src={product.image}
