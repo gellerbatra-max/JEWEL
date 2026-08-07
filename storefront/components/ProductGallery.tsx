@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
 const isVideo = (s: string) => /\.(mp4|webm|mov|m4v)$/i.test(s);
@@ -26,6 +26,21 @@ export function ProductGallery({ images, alt }: { images: string[]; alt: string 
 
   const next = useCallback(() => setActive((i) => (i + 1) % list.length), [list.length]);
   const prev = useCallback(() => setActive((i) => (i - 1 + list.length) % list.length), [list.length]);
+
+  // Auto-start the video when it becomes the active media. Try with sound
+  // first (the selection was a user gesture); fall back to muted if the
+  // browser blocks unmuted autoplay.
+  const mainVideoRef = useRef<HTMLVideoElement>(null);
+  useEffect(() => {
+    if (!isVideo(current)) return;
+    const v = mainVideoRef.current;
+    if (!v) return;
+    v.currentTime = 0;
+    v.play().catch(() => {
+      v.muted = true;
+      v.play().catch(() => {});
+    });
+  }, [current]);
 
   useEffect(() => {
     if (!zoomed) return;
@@ -55,8 +70,10 @@ export function ProductGallery({ images, alt }: { images: string[]; alt: string 
             {isVideo(current) ? (
               <video
                 key={current}
+                ref={mainVideoRef}
                 src={current}
                 controls
+                autoPlay
                 playsInline
                 controlsList="nodownload"
                 disablePictureInPicture
