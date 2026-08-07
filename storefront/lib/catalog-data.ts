@@ -19,13 +19,13 @@ export const products: Product[] = [
     "certification": null,
     "description": "A round white sapphire set in 18k Gold, from the Aurelia line — hand-finished in our Colombo atelier.",
     "swatch": "#dfdbd0",
-    "image": "/images/products/rings/rings-001-1.avif",
+    "image": "/images/catalog/rings/rings-001-1.avif",
     "images": [
-      "/images/products/rings/rings-001-1.avif",
-      "/images/products/rings/rings-001-2.avif",
-      "/images/products/rings/rings-001-3.avif",
-      "/images/products/rings/rings-001-4.avif",
-      "/images/products/rings/rings-001-5.avif"
+      "/images/catalog/rings/rings-001-1.avif",
+      "/images/catalog/rings/rings-001-2.avif",
+      "/images/catalog/rings/rings-001-3.avif",
+      "/images/catalog/rings/rings-001-4.avif",
+      "/images/catalog/rings/rings-001-5.avif"
     ],
     "isRing": true
   },
@@ -43,14 +43,14 @@ export const products: Product[] = [
     "certification": null,
     "description": "A octagon emerald set in 18k Gold, from the Celestine line — hand-finished in our Colombo atelier.",
     "swatch": "#2f6b4c",
-    "image": "/images/products/rings/rings-002-1.avif",
+    "image": "/images/catalog/rings/rings-002-1.avif",
     "images": [
-      "/images/products/rings/rings-002-1.avif",
-      "/images/products/rings/rings-002-2.avif",
-      "/images/products/rings/rings-002-3.avif",
-      "/images/products/rings/rings-002-4.avif",
-      "/images/products/rings/rings-002-5.avif",
-      "/images/products/rings/rings-002-6.webm"
+      "/images/catalog/rings/rings-002-1.avif",
+      "/images/catalog/rings/rings-002-2.avif",
+      "/images/catalog/rings/rings-002-3.avif",
+      "/images/catalog/rings/rings-002-4.avif",
+      "/images/catalog/rings/rings-002-5.avif",
+      "/images/catalog/rings/rings-002-6.webm"
     ],
     "isRing": true
   },
@@ -68,12 +68,12 @@ export const products: Product[] = [
     "certification": null,
     "description": "A yellow sapphire set in 18k Gold, from the Vespera line — hand-finished in our Colombo atelier.",
     "swatch": "#c6a54d",
-    "image": "/images/products/rings/rings-003-1.avif",
+    "image": "/images/catalog/rings/rings-003-1.avif",
     "images": [
-      "/images/products/rings/rings-003-1.avif",
-      "/images/products/rings/rings-003-2.avif",
-      "/images/products/rings/rings-003-3.avif",
-      "/images/products/rings/rings-003-4.avif"
+      "/images/catalog/rings/rings-003-1.avif",
+      "/images/catalog/rings/rings-003-2.avif",
+      "/images/catalog/rings/rings-003-3.avif",
+      "/images/catalog/rings/rings-003-4.avif"
     ],
     "isRing": true
   },
@@ -91,13 +91,13 @@ export const products: Product[] = [
     "certification": null,
     "description": "A round mixed gemstones set in 18k Gold, from the Seraphine line — hand-finished in our Colombo atelier.",
     "swatch": "#8a6fae",
-    "image": "/images/products/rings/rings-004-1.avif",
+    "image": "/images/catalog/rings/rings-004-1.avif",
     "images": [
-      "/images/products/rings/rings-004-1.avif",
-      "/images/products/rings/rings-004-2.avif",
-      "/images/products/rings/rings-004-3.avif",
-      "/images/products/rings/rings-004-4.avif",
-      "/images/products/rings/rings-004-5.avif"
+      "/images/catalog/rings/rings-004-1.avif",
+      "/images/catalog/rings/rings-004-2.avif",
+      "/images/catalog/rings/rings-004-3.avif",
+      "/images/catalog/rings/rings-004-4.avif",
+      "/images/catalog/rings/rings-004-5.avif"
     ],
     "isRing": true
   },
@@ -115,13 +115,13 @@ export const products: Product[] = [
     "certification": null,
     "description": "A white sapphire set in White Gold, from the Ondine line — hand-finished in our Colombo atelier.",
     "swatch": "#dfdbd0",
-    "image": "/images/products/rings/rings-005-1.avif",
+    "image": "/images/catalog/rings/rings-005-1.avif",
     "images": [
-      "/images/products/rings/rings-005-1.avif",
-      "/images/products/rings/rings-005-2.avif",
-      "/images/products/rings/rings-005-3.avif",
-      "/images/products/rings/rings-005-4.avif",
-      "/images/products/rings/rings-005-5.avif"
+      "/images/catalog/rings/rings-005-1.avif",
+      "/images/catalog/rings/rings-005-2.avif",
+      "/images/catalog/rings/rings-005-3.avif",
+      "/images/catalog/rings/rings-005-4.avif",
+      "/images/catalog/rings/rings-005-5.avif"
     ],
     "isRing": true
   },
@@ -139,15 +139,15 @@ export const products: Product[] = [
     "certification": null,
     "description": "A mixed gemstones set in 18k Gold, from the Calliope line — hand-finished in our Colombo atelier.",
     "swatch": "#8a6fae",
-    "image": "/images/products/rings/rings-006-1.avif",
+    "image": "/images/catalog/rings/rings-006-1.avif",
     "images": [
-      "/images/products/rings/rings-006-1.avif",
-      "/images/products/rings/rings-006-2.avif",
-      "/images/products/rings/rings-006-3.avif",
-      "/images/products/rings/rings-006-4.avif",
-      "/images/products/rings/rings-006-5.avif",
-      "/images/products/rings/rings-006-6.avif",
-      "/images/products/rings/rings-006-7.avif"
+      "/images/catalog/rings/rings-006-1.avif",
+      "/images/catalog/rings/rings-006-2.avif",
+      "/images/catalog/rings/rings-006-3.avif",
+      "/images/catalog/rings/rings-006-4.avif",
+      "/images/catalog/rings/rings-006-5.avif",
+      "/images/catalog/rings/rings-006-6.avif",
+      "/images/catalog/rings/rings-006-7.avif"
     ],
     "isRing": true
   },
@@ -165,12 +165,12 @@ export const products: Product[] = [
     "certification": null,
     "description": "A cushion white sapphire set in 18k Gold, from the Isolde line — hand-finished in our Colombo atelier.",
     "swatch": "#dfdbd0",
-    "image": "/images/products/rings/rings-007-1.avif",
+    "image": "/images/catalog/rings/rings-007-1.avif",
     "images": [
-      "/images/products/rings/rings-007-1.avif",
-      "/images/products/rings/rings-007-2.avif",
-      "/images/products/rings/rings-007-3.avif",
-      "/images/products/rings/rings-007-4.avif"
+      "/images/catalog/rings/rings-007-1.avif",
+      "/images/catalog/rings/rings-007-2.avif",
+      "/images/catalog/rings/rings-007-3.avif",
+      "/images/catalog/rings/rings-007-4.avif"
     ],
     "isRing": true
   },
@@ -188,13 +188,13 @@ export const products: Product[] = [
     "certification": null,
     "description": "A mixed gemstones set in White Gold, from the Marguerite line — hand-finished in our Colombo atelier.",
     "swatch": "#8a6fae",
-    "image": "/images/products/rings/rings-008-1.avif",
+    "image": "/images/catalog/rings/rings-008-1.avif",
     "images": [
-      "/images/products/rings/rings-008-1.avif",
-      "/images/products/rings/rings-008-2.avif",
-      "/images/products/rings/rings-008-3.avif",
-      "/images/products/rings/rings-008-4.avif",
-      "/images/products/rings/rings-008-5.avif"
+      "/images/catalog/rings/rings-008-1.avif",
+      "/images/catalog/rings/rings-008-2.avif",
+      "/images/catalog/rings/rings-008-3.avif",
+      "/images/catalog/rings/rings-008-4.avif",
+      "/images/catalog/rings/rings-008-5.avif"
     ],
     "isRing": true
   },
@@ -212,14 +212,14 @@ export const products: Product[] = [
     "certification": null,
     "description": "A mixed gemstones set in 18k Gold, from the Colette line — hand-finished in our Colombo atelier.",
     "swatch": "#8a6fae",
-    "image": "/images/products/rings/rings-009-1.avif",
+    "image": "/images/catalog/rings/rings-009-1.avif",
     "images": [
-      "/images/products/rings/rings-009-1.avif",
-      "/images/products/rings/rings-009-2.avif",
-      "/images/products/rings/rings-009-3.avif",
-      "/images/products/rings/rings-009-4.avif",
-      "/images/products/rings/rings-009-5.avif",
-      "/images/products/rings/rings-009-6.webm"
+      "/images/catalog/rings/rings-009-1.avif",
+      "/images/catalog/rings/rings-009-2.avif",
+      "/images/catalog/rings/rings-009-3.avif",
+      "/images/catalog/rings/rings-009-4.avif",
+      "/images/catalog/rings/rings-009-5.avif",
+      "/images/catalog/rings/rings-009-6.webm"
     ],
     "isRing": true
   },
@@ -237,14 +237,14 @@ export const products: Product[] = [
     "certification": null,
     "description": "A cushion mixed gemstones set in 18k Gold, from the Genevieve line — hand-finished in our Colombo atelier.",
     "swatch": "#8a6fae",
-    "image": "/images/products/rings/rings-010-1.avif",
+    "image": "/images/catalog/rings/rings-010-1.avif",
     "images": [
-      "/images/products/rings/rings-010-1.avif",
-      "/images/products/rings/rings-010-2.avif",
-      "/images/products/rings/rings-010-3.avif",
-      "/images/products/rings/rings-010-4.avif",
-      "/images/products/rings/rings-010-5.avif",
-      "/images/products/rings/rings-010-6.webm"
+      "/images/catalog/rings/rings-010-1.avif",
+      "/images/catalog/rings/rings-010-2.avif",
+      "/images/catalog/rings/rings-010-3.avif",
+      "/images/catalog/rings/rings-010-4.avif",
+      "/images/catalog/rings/rings-010-5.avif",
+      "/images/catalog/rings/rings-010-6.webm"
     ],
     "isRing": true
   },
@@ -262,12 +262,12 @@ export const products: Product[] = [
     "certification": null,
     "description": "A white sapphire set in 18k Gold, from the Amandine line — hand-finished in our Colombo atelier.",
     "swatch": "#dfdbd0",
-    "image": "/images/products/rings/rings-011-1.webp",
+    "image": "/images/catalog/rings/rings-011-1.webp",
     "images": [
-      "/images/products/rings/rings-011-1.webp",
-      "/images/products/rings/rings-011-2.webp",
-      "/images/products/rings/rings-011-3.webp",
-      "/images/products/rings/rings-011-4.webm"
+      "/images/catalog/rings/rings-011-1.webp",
+      "/images/catalog/rings/rings-011-2.webp",
+      "/images/catalog/rings/rings-011-3.webp",
+      "/images/catalog/rings/rings-011-4.webm"
     ],
     "isRing": true
   },
@@ -285,12 +285,12 @@ export const products: Product[] = [
     "certification": null,
     "description": "A white sapphire set in 18k Gold, from the Delphine line — hand-finished in our Colombo atelier.",
     "swatch": "#dfdbd0",
-    "image": "/images/products/rings/rings-012-1.webp",
+    "image": "/images/catalog/rings/rings-012-1.webp",
     "images": [
-      "/images/products/rings/rings-012-1.webp",
-      "/images/products/rings/rings-012-2.webp",
-      "/images/products/rings/rings-012-3.webp",
-      "/images/products/rings/rings-012-4.webm"
+      "/images/catalog/rings/rings-012-1.webp",
+      "/images/catalog/rings/rings-012-2.webp",
+      "/images/catalog/rings/rings-012-3.webp",
+      "/images/catalog/rings/rings-012-4.webm"
     ],
     "isRing": true
   },
@@ -308,13 +308,13 @@ export const products: Product[] = [
     "certification": null,
     "description": "A white sapphire set in 18k Gold, from the Oceane line — hand-finished in our Colombo atelier.",
     "swatch": "#dfdbd0",
-    "image": "/images/products/rings/rings-013-1.webp",
+    "image": "/images/catalog/rings/rings-013-1.webp",
     "images": [
-      "/images/products/rings/rings-013-1.webp",
-      "/images/products/rings/rings-013-2.webp",
-      "/images/products/rings/rings-013-3.webp",
-      "/images/products/rings/rings-013-4.webp",
-      "/images/products/rings/rings-013-5.webm"
+      "/images/catalog/rings/rings-013-1.webp",
+      "/images/catalog/rings/rings-013-2.webp",
+      "/images/catalog/rings/rings-013-3.webp",
+      "/images/catalog/rings/rings-013-4.webp",
+      "/images/catalog/rings/rings-013-5.webm"
     ],
     "isRing": true
   },
@@ -332,12 +332,12 @@ export const products: Product[] = [
     "certification": null,
     "description": "A white sapphire set in 18k Gold, from the Sylvie line — hand-finished in our Colombo atelier.",
     "swatch": "#dfdbd0",
-    "image": "/images/products/rings/rings-014-1.webp",
+    "image": "/images/catalog/rings/rings-014-1.webp",
     "images": [
-      "/images/products/rings/rings-014-1.webp",
-      "/images/products/rings/rings-014-2.webp",
-      "/images/products/rings/rings-014-3.webp",
-      "/images/products/rings/rings-014-4.webm"
+      "/images/catalog/rings/rings-014-1.webp",
+      "/images/catalog/rings/rings-014-2.webp",
+      "/images/catalog/rings/rings-014-3.webp",
+      "/images/catalog/rings/rings-014-4.webm"
     ],
     "isRing": true
   },
@@ -355,13 +355,13 @@ export const products: Product[] = [
     "certification": null,
     "description": "A white sapphire suspended in Mixed Metals, from the Fleur line — hand-finished in our Colombo atelier.",
     "swatch": "#dfdbd0",
-    "image": "/images/products/necklaces/necklaces-001-1.avif",
+    "image": "/images/catalog/necklaces/necklaces-001-1.avif",
     "images": [
-      "/images/products/necklaces/necklaces-001-1.avif",
-      "/images/products/necklaces/necklaces-001-2.avif",
-      "/images/products/necklaces/necklaces-001-3.avif",
-      "/images/products/necklaces/necklaces-001-4.avif",
-      "/images/products/necklaces/necklaces-001-5.webm"
+      "/images/catalog/necklaces/necklaces-001-1.avif",
+      "/images/catalog/necklaces/necklaces-001-2.avif",
+      "/images/catalog/necklaces/necklaces-001-3.avif",
+      "/images/catalog/necklaces/necklaces-001-4.avif",
+      "/images/catalog/necklaces/necklaces-001-5.webm"
     ],
     "isRing": false
   },
@@ -379,13 +379,13 @@ export const products: Product[] = [
     "certification": null,
     "description": "A emerald suspended in White Gold, from the Margaux line — hand-finished in our Colombo atelier.",
     "swatch": "#2f6b4c",
-    "image": "/images/products/necklaces/necklaces-002-1.avif",
+    "image": "/images/catalog/necklaces/necklaces-002-1.avif",
     "images": [
-      "/images/products/necklaces/necklaces-002-1.avif",
-      "/images/products/necklaces/necklaces-002-2.avif",
-      "/images/products/necklaces/necklaces-002-3.avif",
-      "/images/products/necklaces/necklaces-002-4.avif",
-      "/images/products/necklaces/necklaces-002-5.avif"
+      "/images/catalog/necklaces/necklaces-002-1.avif",
+      "/images/catalog/necklaces/necklaces-002-2.avif",
+      "/images/catalog/necklaces/necklaces-002-3.avif",
+      "/images/catalog/necklaces/necklaces-002-4.avif",
+      "/images/catalog/necklaces/necklaces-002-5.avif"
     ],
     "isRing": false
   },
@@ -403,12 +403,12 @@ export const products: Product[] = [
     "certification": null,
     "description": "A pink sapphire suspended in 18k Rose Gold, from the Noemie line — hand-finished in our Colombo atelier.",
     "swatch": "#b76e79",
-    "image": "/images/products/necklaces/necklaces-003-1.avif",
+    "image": "/images/catalog/necklaces/necklaces-003-1.avif",
     "images": [
-      "/images/products/necklaces/necklaces-003-1.avif",
-      "/images/products/necklaces/necklaces-003-2.avif",
-      "/images/products/necklaces/necklaces-003-3.avif",
-      "/images/products/necklaces/necklaces-003-4.avif"
+      "/images/catalog/necklaces/necklaces-003-1.avif",
+      "/images/catalog/necklaces/necklaces-003-2.avif",
+      "/images/catalog/necklaces/necklaces-003-3.avif",
+      "/images/catalog/necklaces/necklaces-003-4.avif"
     ],
     "isRing": false
   },
@@ -426,13 +426,13 @@ export const products: Product[] = [
     "certification": null,
     "description": "A white sapphire suspended in 18k Rose Gold, from the Clemence line — hand-finished in our Colombo atelier.",
     "swatch": "#dfdbd0",
-    "image": "/images/products/necklaces/necklaces-004-1.avif",
+    "image": "/images/catalog/necklaces/necklaces-004-1.avif",
     "images": [
-      "/images/products/necklaces/necklaces-004-1.avif",
-      "/images/products/necklaces/necklaces-004-2.avif",
-      "/images/products/necklaces/necklaces-004-3.avif",
-      "/images/products/necklaces/necklaces-004-4.avif",
-      "/images/products/necklaces/necklaces-004-5.avif"
+      "/images/catalog/necklaces/necklaces-004-1.avif",
+      "/images/catalog/necklaces/necklaces-004-2.avif",
+      "/images/catalog/necklaces/necklaces-004-3.avif",
+      "/images/catalog/necklaces/necklaces-004-4.avif",
+      "/images/catalog/necklaces/necklaces-004-5.avif"
     ],
     "isRing": false
   },
@@ -450,14 +450,14 @@ export const products: Product[] = [
     "certification": null,
     "description": "A white sapphire suspended in White Gold, from the Lucienne line — hand-finished in our Colombo atelier.",
     "swatch": "#dfdbd0",
-    "image": "/images/products/necklaces/necklaces-005-1.avif",
+    "image": "/images/catalog/necklaces/necklaces-005-1.avif",
     "images": [
-      "/images/products/necklaces/necklaces-005-1.avif",
-      "/images/products/necklaces/necklaces-005-2.avif",
-      "/images/products/necklaces/necklaces-005-3.avif",
-      "/images/products/necklaces/necklaces-005-4.avif",
-      "/images/products/necklaces/necklaces-005-5.avif",
-      "/images/products/necklaces/necklaces-005-6.webm"
+      "/images/catalog/necklaces/necklaces-005-1.avif",
+      "/images/catalog/necklaces/necklaces-005-2.avif",
+      "/images/catalog/necklaces/necklaces-005-3.avif",
+      "/images/catalog/necklaces/necklaces-005-4.avif",
+      "/images/catalog/necklaces/necklaces-005-5.avif",
+      "/images/catalog/necklaces/necklaces-005-6.webm"
     ],
     "isRing": false
   },
@@ -475,13 +475,13 @@ export const products: Product[] = [
     "certification": null,
     "description": "A white sapphire suspended in White Gold, from the Adele line — hand-finished in our Colombo atelier.",
     "swatch": "#dfdbd0",
-    "image": "/images/products/necklaces/necklaces-006-1.avif",
+    "image": "/images/catalog/necklaces/necklaces-006-1.avif",
     "images": [
-      "/images/products/necklaces/necklaces-006-1.avif",
-      "/images/products/necklaces/necklaces-006-2.avif",
-      "/images/products/necklaces/necklaces-006-3.avif",
-      "/images/products/necklaces/necklaces-006-4.avif",
-      "/images/products/necklaces/necklaces-006-5.avif"
+      "/images/catalog/necklaces/necklaces-006-1.avif",
+      "/images/catalog/necklaces/necklaces-006-2.avif",
+      "/images/catalog/necklaces/necklaces-006-3.avif",
+      "/images/catalog/necklaces/necklaces-006-4.avif",
+      "/images/catalog/necklaces/necklaces-006-5.avif"
     ],
     "isRing": false
   },
@@ -499,14 +499,14 @@ export const products: Product[] = [
     "certification": null,
     "description": "A mixed gemstones suspended in 18k Gold, from the Elodie line — hand-finished in our Colombo atelier.",
     "swatch": "#8a6fae",
-    "image": "/images/products/necklaces/necklaces-007-1.avif",
+    "image": "/images/catalog/necklaces/necklaces-007-1.avif",
     "images": [
-      "/images/products/necklaces/necklaces-007-1.avif",
-      "/images/products/necklaces/necklaces-007-2.avif",
-      "/images/products/necklaces/necklaces-007-3.avif",
-      "/images/products/necklaces/necklaces-007-4.avif",
-      "/images/products/necklaces/necklaces-007-5.avif",
-      "/images/products/necklaces/necklaces-007-6.webm"
+      "/images/catalog/necklaces/necklaces-007-1.avif",
+      "/images/catalog/necklaces/necklaces-007-2.avif",
+      "/images/catalog/necklaces/necklaces-007-3.avif",
+      "/images/catalog/necklaces/necklaces-007-4.avif",
+      "/images/catalog/necklaces/necklaces-007-5.avif",
+      "/images/catalog/necklaces/necklaces-007-6.webm"
     ],
     "isRing": false
   },
@@ -524,14 +524,14 @@ export const products: Product[] = [
     "certification": null,
     "description": "A white sapphire suspended in White Gold, from the Rosalind line — hand-finished in our Colombo atelier.",
     "swatch": "#dfdbd0",
-    "image": "/images/products/necklaces/necklaces-008-1.avif",
+    "image": "/images/catalog/necklaces/necklaces-008-1.avif",
     "images": [
-      "/images/products/necklaces/necklaces-008-1.avif",
-      "/images/products/necklaces/necklaces-008-2.avif",
-      "/images/products/necklaces/necklaces-008-3.avif",
-      "/images/products/necklaces/necklaces-008-4.avif",
-      "/images/products/necklaces/necklaces-008-5.avif",
-      "/images/products/necklaces/necklaces-008-6.webm"
+      "/images/catalog/necklaces/necklaces-008-1.avif",
+      "/images/catalog/necklaces/necklaces-008-2.avif",
+      "/images/catalog/necklaces/necklaces-008-3.avif",
+      "/images/catalog/necklaces/necklaces-008-4.avif",
+      "/images/catalog/necklaces/necklaces-008-5.avif",
+      "/images/catalog/necklaces/necklaces-008-6.webm"
     ],
     "isRing": false
   },
@@ -549,14 +549,14 @@ export const products: Product[] = [
     "certification": null,
     "description": "A mixed gemstones suspended in White Gold, from the Vivienne line — hand-finished in our Colombo atelier.",
     "swatch": "#8a6fae",
-    "image": "/images/products/necklaces/necklaces-009-1.avif",
+    "image": "/images/catalog/necklaces/necklaces-009-1.avif",
     "images": [
-      "/images/products/necklaces/necklaces-009-1.avif",
-      "/images/products/necklaces/necklaces-009-2.avif",
-      "/images/products/necklaces/necklaces-009-3.avif",
-      "/images/products/necklaces/necklaces-009-4.avif",
-      "/images/products/necklaces/necklaces-009-5.avif",
-      "/images/products/necklaces/necklaces-009-6.webm"
+      "/images/catalog/necklaces/necklaces-009-1.avif",
+      "/images/catalog/necklaces/necklaces-009-2.avif",
+      "/images/catalog/necklaces/necklaces-009-3.avif",
+      "/images/catalog/necklaces/necklaces-009-4.avif",
+      "/images/catalog/necklaces/necklaces-009-5.avif",
+      "/images/catalog/necklaces/necklaces-009-6.webm"
     ],
     "isRing": false
   },
@@ -578,13 +578,13 @@ export const products: Product[] = [
     },
     "description": "A blue sapphire suspended in White Gold, from the Camille line — hand-finished in our Colombo atelier.",
     "swatch": "#2f4c82",
-    "image": "/images/products/necklaces/necklaces-010-1.avif",
+    "image": "/images/catalog/necklaces/necklaces-010-1.avif",
     "images": [
-      "/images/products/necklaces/necklaces-010-1.avif",
-      "/images/products/necklaces/necklaces-010-2.avif",
-      "/images/products/necklaces/necklaces-010-3.avif",
-      "/images/products/necklaces/necklaces-010-4.avif",
-      "/images/products/necklaces/necklaces-010-5.avif"
+      "/images/catalog/necklaces/necklaces-010-1.avif",
+      "/images/catalog/necklaces/necklaces-010-2.avif",
+      "/images/catalog/necklaces/necklaces-010-3.avif",
+      "/images/catalog/necklaces/necklaces-010-4.avif",
+      "/images/catalog/necklaces/necklaces-010-5.avif"
     ],
     "isRing": false
   },
@@ -602,13 +602,13 @@ export const products: Product[] = [
     "certification": null,
     "description": "A mixed gemstones suspended in White Gold, from the Beatrix line — hand-finished in our Colombo atelier.",
     "swatch": "#8a6fae",
-    "image": "/images/products/necklaces/necklaces-011-1.avif",
+    "image": "/images/catalog/necklaces/necklaces-011-1.avif",
     "images": [
-      "/images/products/necklaces/necklaces-011-1.avif",
-      "/images/products/necklaces/necklaces-011-2.avif",
-      "/images/products/necklaces/necklaces-011-3.avif",
-      "/images/products/necklaces/necklaces-011-4.avif",
-      "/images/products/necklaces/necklaces-011-5.avif"
+      "/images/catalog/necklaces/necklaces-011-1.avif",
+      "/images/catalog/necklaces/necklaces-011-2.avif",
+      "/images/catalog/necklaces/necklaces-011-3.avif",
+      "/images/catalog/necklaces/necklaces-011-4.avif",
+      "/images/catalog/necklaces/necklaces-011-5.avif"
     ],
     "isRing": false
   },
@@ -626,13 +626,13 @@ export const products: Product[] = [
     "certification": null,
     "description": "A white sapphire suspended in White Gold, from the Ophelie line — hand-finished in our Colombo atelier.",
     "swatch": "#dfdbd0",
-    "image": "/images/products/necklaces/necklaces-012-1.avif",
+    "image": "/images/catalog/necklaces/necklaces-012-1.avif",
     "images": [
-      "/images/products/necklaces/necklaces-012-1.avif",
-      "/images/products/necklaces/necklaces-012-2.avif",
-      "/images/products/necklaces/necklaces-012-3.avif",
-      "/images/products/necklaces/necklaces-012-4.avif",
-      "/images/products/necklaces/necklaces-012-5.webm"
+      "/images/catalog/necklaces/necklaces-012-1.avif",
+      "/images/catalog/necklaces/necklaces-012-2.avif",
+      "/images/catalog/necklaces/necklaces-012-3.avif",
+      "/images/catalog/necklaces/necklaces-012-4.avif",
+      "/images/catalog/necklaces/necklaces-012-5.webm"
     ],
     "isRing": false
   },
@@ -650,13 +650,13 @@ export const products: Product[] = [
     "certification": null,
     "description": "A mixed gemstones suspended in 18k Gold, from the Anouk line — hand-finished in our Colombo atelier.",
     "swatch": "#8a6fae",
-    "image": "/images/products/necklaces/necklaces-013-1.avif",
+    "image": "/images/catalog/necklaces/necklaces-013-1.avif",
     "images": [
-      "/images/products/necklaces/necklaces-013-1.avif",
-      "/images/products/necklaces/necklaces-013-2.avif",
-      "/images/products/necklaces/necklaces-013-3.avif",
-      "/images/products/necklaces/necklaces-013-4.avif",
-      "/images/products/necklaces/necklaces-013-5.avif"
+      "/images/catalog/necklaces/necklaces-013-1.avif",
+      "/images/catalog/necklaces/necklaces-013-2.avif",
+      "/images/catalog/necklaces/necklaces-013-3.avif",
+      "/images/catalog/necklaces/necklaces-013-4.avif",
+      "/images/catalog/necklaces/necklaces-013-5.avif"
     ],
     "isRing": false
   },
@@ -674,12 +674,12 @@ export const products: Product[] = [
     "certification": null,
     "description": "A white sapphire suspended in White Gold, from the Mirabelle line — hand-finished in our Colombo atelier.",
     "swatch": "#dfdbd0",
-    "image": "/images/products/pendants/pendants-001-1.avif",
+    "image": "/images/catalog/pendants/pendants-001-1.avif",
     "images": [
-      "/images/products/pendants/pendants-001-1.avif",
-      "/images/products/pendants/pendants-001-2.avif",
-      "/images/products/pendants/pendants-001-3.avif",
-      "/images/products/pendants/pendants-001-4.avif"
+      "/images/catalog/pendants/pendants-001-1.avif",
+      "/images/catalog/pendants/pendants-001-2.avif",
+      "/images/catalog/pendants/pendants-001-3.avif",
+      "/images/catalog/pendants/pendants-001-4.avif"
     ],
     "isRing": false
   },
@@ -697,13 +697,13 @@ export const products: Product[] = [
     "certification": null,
     "description": "A white sapphire suspended in 18k Gold, from the Cosima line — hand-finished in our Colombo atelier.",
     "swatch": "#dfdbd0",
-    "image": "/images/products/pendants/pendants-002-1.avif",
+    "image": "/images/catalog/pendants/pendants-002-1.avif",
     "images": [
-      "/images/products/pendants/pendants-002-1.avif",
-      "/images/products/pendants/pendants-002-2.avif",
-      "/images/products/pendants/pendants-002-3.avif",
-      "/images/products/pendants/pendants-002-4.avif",
-      "/images/products/pendants/pendants-002-5.webm"
+      "/images/catalog/pendants/pendants-002-1.avif",
+      "/images/catalog/pendants/pendants-002-2.avif",
+      "/images/catalog/pendants/pendants-002-3.avif",
+      "/images/catalog/pendants/pendants-002-4.avif",
+      "/images/catalog/pendants/pendants-002-5.webm"
     ],
     "isRing": false
   },
@@ -721,13 +721,13 @@ export const products: Product[] = [
     "certification": null,
     "description": "A round white sapphire suspended in 18k Gold, from the Leontine line — hand-finished in our Colombo atelier.",
     "swatch": "#dfdbd0",
-    "image": "/images/products/pendants/pendants-003-1.avif",
+    "image": "/images/catalog/pendants/pendants-003-1.avif",
     "images": [
-      "/images/products/pendants/pendants-003-1.avif",
-      "/images/products/pendants/pendants-003-2.avif",
-      "/images/products/pendants/pendants-003-3.avif",
-      "/images/products/pendants/pendants-003-4.avif",
-      "/images/products/pendants/pendants-003-5.avif"
+      "/images/catalog/pendants/pendants-003-1.avif",
+      "/images/catalog/pendants/pendants-003-2.avif",
+      "/images/catalog/pendants/pendants-003-3.avif",
+      "/images/catalog/pendants/pendants-003-4.avif",
+      "/images/catalog/pendants/pendants-003-5.avif"
     ],
     "isRing": false
   },
@@ -749,13 +749,13 @@ export const products: Product[] = [
     },
     "description": "A octagon blue sapphire suspended in White Gold, from the Perrine line — hand-finished in our Colombo atelier.",
     "swatch": "#2f4c82",
-    "image": "/images/products/pendants/pendants-004-1.avif",
+    "image": "/images/catalog/pendants/pendants-004-1.avif",
     "images": [
-      "/images/products/pendants/pendants-004-1.avif",
-      "/images/products/pendants/pendants-004-2.avif",
-      "/images/products/pendants/pendants-004-3.avif",
-      "/images/products/pendants/pendants-004-4.avif",
-      "/images/products/pendants/pendants-004-5.webm"
+      "/images/catalog/pendants/pendants-004-1.avif",
+      "/images/catalog/pendants/pendants-004-2.avif",
+      "/images/catalog/pendants/pendants-004-3.avif",
+      "/images/catalog/pendants/pendants-004-4.avif",
+      "/images/catalog/pendants/pendants-004-5.webm"
     ],
     "isRing": false
   },
@@ -773,13 +773,13 @@ export const products: Product[] = [
     "certification": null,
     "description": "A mixed gemstones suspended in 18k Rose Gold, from the Sidonie line — hand-finished in our Colombo atelier.",
     "swatch": "#8a6fae",
-    "image": "/images/products/pendants/pendants-005-1.avif",
+    "image": "/images/catalog/pendants/pendants-005-1.avif",
     "images": [
-      "/images/products/pendants/pendants-005-1.avif",
-      "/images/products/pendants/pendants-005-2.avif",
-      "/images/products/pendants/pendants-005-3.avif",
-      "/images/products/pendants/pendants-005-4.avif",
-      "/images/products/pendants/pendants-005-5.avif"
+      "/images/catalog/pendants/pendants-005-1.avif",
+      "/images/catalog/pendants/pendants-005-2.avif",
+      "/images/catalog/pendants/pendants-005-3.avif",
+      "/images/catalog/pendants/pendants-005-4.avif",
+      "/images/catalog/pendants/pendants-005-5.avif"
     ],
     "isRing": false
   },
@@ -797,13 +797,13 @@ export const products: Product[] = [
     "certification": null,
     "description": "A white sapphire suspended in White Gold, from the Albane line — hand-finished in our Colombo atelier.",
     "swatch": "#dfdbd0",
-    "image": "/images/products/pendants/pendants-006-1.avif",
+    "image": "/images/catalog/pendants/pendants-006-1.avif",
     "images": [
-      "/images/products/pendants/pendants-006-1.avif",
-      "/images/products/pendants/pendants-006-2.avif",
-      "/images/products/pendants/pendants-006-3.avif",
-      "/images/products/pendants/pendants-006-4.avif",
-      "/images/products/pendants/pendants-006-5.avif"
+      "/images/catalog/pendants/pendants-006-1.avif",
+      "/images/catalog/pendants/pendants-006-2.avif",
+      "/images/catalog/pendants/pendants-006-3.avif",
+      "/images/catalog/pendants/pendants-006-4.avif",
+      "/images/catalog/pendants/pendants-006-5.avif"
     ],
     "isRing": false
   },
@@ -821,14 +821,14 @@ export const products: Product[] = [
     "certification": null,
     "description": "A blue sapphire suspended in White Gold, from the Capucine line — hand-finished in our Colombo atelier.",
     "swatch": "#2f4c82",
-    "image": "/images/products/pendants/pendants-007-1.avif",
+    "image": "/images/catalog/pendants/pendants-007-1.avif",
     "images": [
-      "/images/products/pendants/pendants-007-1.avif",
-      "/images/products/pendants/pendants-007-2.avif",
-      "/images/products/pendants/pendants-007-3.avif",
-      "/images/products/pendants/pendants-007-4.avif",
-      "/images/products/pendants/pendants-007-5.avif",
-      "/images/products/pendants/pendants-007-6.webm"
+      "/images/catalog/pendants/pendants-007-1.avif",
+      "/images/catalog/pendants/pendants-007-2.avif",
+      "/images/catalog/pendants/pendants-007-3.avif",
+      "/images/catalog/pendants/pendants-007-4.avif",
+      "/images/catalog/pendants/pendants-007-5.avif",
+      "/images/catalog/pendants/pendants-007-6.webm"
     ],
     "isRing": false
   },
@@ -846,13 +846,13 @@ export const products: Product[] = [
     "certification": null,
     "description": "A pink sapphire suspended in White Gold, from the Lisette line — hand-finished in our Colombo atelier.",
     "swatch": "#b76e79",
-    "image": "/images/products/pendants/pendants-008-1.avif",
+    "image": "/images/catalog/pendants/pendants-008-1.avif",
     "images": [
-      "/images/products/pendants/pendants-008-1.avif",
-      "/images/products/pendants/pendants-008-2.avif",
-      "/images/products/pendants/pendants-008-3.avif",
-      "/images/products/pendants/pendants-008-4.avif",
-      "/images/products/pendants/pendants-008-5.avif"
+      "/images/catalog/pendants/pendants-008-1.avif",
+      "/images/catalog/pendants/pendants-008-2.avif",
+      "/images/catalog/pendants/pendants-008-3.avif",
+      "/images/catalog/pendants/pendants-008-4.avif",
+      "/images/catalog/pendants/pendants-008-5.avif"
     ],
     "isRing": false
   },
@@ -870,13 +870,13 @@ export const products: Product[] = [
     "certification": null,
     "description": "A white sapphire suspended in White Gold, from the Yseult line — hand-finished in our Colombo atelier.",
     "swatch": "#dfdbd0",
-    "image": "/images/products/pendants/pendants-009-1.avif",
+    "image": "/images/catalog/pendants/pendants-009-1.avif",
     "images": [
-      "/images/products/pendants/pendants-009-1.avif",
-      "/images/products/pendants/pendants-009-2.avif",
-      "/images/products/pendants/pendants-009-3.avif",
-      "/images/products/pendants/pendants-009-4.avif",
-      "/images/products/pendants/pendants-009-5.avif"
+      "/images/catalog/pendants/pendants-009-1.avif",
+      "/images/catalog/pendants/pendants-009-2.avif",
+      "/images/catalog/pendants/pendants-009-3.avif",
+      "/images/catalog/pendants/pendants-009-4.avif",
+      "/images/catalog/pendants/pendants-009-5.avif"
     ],
     "isRing": false
   },
@@ -894,13 +894,13 @@ export const products: Product[] = [
     "certification": null,
     "description": "A marquise white sapphire suspended in 18k Rose Gold, from the Bathilde line — hand-finished in our Colombo atelier.",
     "swatch": "#dfdbd0",
-    "image": "/images/products/pendants/pendants-010-1.avif",
+    "image": "/images/catalog/pendants/pendants-010-1.avif",
     "images": [
-      "/images/products/pendants/pendants-010-1.avif",
-      "/images/products/pendants/pendants-010-2.avif",
-      "/images/products/pendants/pendants-010-3.avif",
-      "/images/products/pendants/pendants-010-4.avif",
-      "/images/products/pendants/pendants-010-5.avif"
+      "/images/catalog/pendants/pendants-010-1.avif",
+      "/images/catalog/pendants/pendants-010-2.avif",
+      "/images/catalog/pendants/pendants-010-3.avif",
+      "/images/catalog/pendants/pendants-010-4.avif",
+      "/images/catalog/pendants/pendants-010-5.avif"
     ],
     "isRing": false
   },
@@ -918,14 +918,14 @@ export const products: Product[] = [
     "certification": null,
     "description": "A cushion blue sapphire suspended in White Gold, from the Sabine line — hand-finished in our Colombo atelier.",
     "swatch": "#2f4c82",
-    "image": "/images/products/pendants/pendants-011-1.avif",
+    "image": "/images/catalog/pendants/pendants-011-1.avif",
     "images": [
-      "/images/products/pendants/pendants-011-1.avif",
-      "/images/products/pendants/pendants-011-2.avif",
-      "/images/products/pendants/pendants-011-3.avif",
-      "/images/products/pendants/pendants-011-4.avif",
-      "/images/products/pendants/pendants-011-5.avif",
-      "/images/products/pendants/pendants-011-6.webm"
+      "/images/catalog/pendants/pendants-011-1.avif",
+      "/images/catalog/pendants/pendants-011-2.avif",
+      "/images/catalog/pendants/pendants-011-3.avif",
+      "/images/catalog/pendants/pendants-011-4.avif",
+      "/images/catalog/pendants/pendants-011-5.avif",
+      "/images/catalog/pendants/pendants-011-6.webm"
     ],
     "isRing": false
   },
@@ -947,13 +947,13 @@ export const products: Product[] = [
     },
     "description": "A round blue sapphire suspended in White Gold, from the Honorine line — hand-finished in our Colombo atelier.",
     "swatch": "#2f4c82",
-    "image": "/images/products/pendants/pendants-012-1.avif",
+    "image": "/images/catalog/pendants/pendants-012-1.avif",
     "images": [
-      "/images/products/pendants/pendants-012-1.avif",
-      "/images/products/pendants/pendants-012-2.avif",
-      "/images/products/pendants/pendants-012-3.avif",
-      "/images/products/pendants/pendants-012-4.avif",
-      "/images/products/pendants/pendants-012-5.avif"
+      "/images/catalog/pendants/pendants-012-1.avif",
+      "/images/catalog/pendants/pendants-012-2.avif",
+      "/images/catalog/pendants/pendants-012-3.avif",
+      "/images/catalog/pendants/pendants-012-4.avif",
+      "/images/catalog/pendants/pendants-012-5.avif"
     ],
     "isRing": false
   },
@@ -971,13 +971,13 @@ export const products: Product[] = [
     "certification": null,
     "description": "A cushion white sapphire suspended in White Gold, from the Emmeline line — hand-finished in our Colombo atelier.",
     "swatch": "#dfdbd0",
-    "image": "/images/products/pendants/pendants-013-1.avif",
+    "image": "/images/catalog/pendants/pendants-013-1.avif",
     "images": [
-      "/images/products/pendants/pendants-013-1.avif",
-      "/images/products/pendants/pendants-013-2.avif",
-      "/images/products/pendants/pendants-013-3.avif",
-      "/images/products/pendants/pendants-013-4.avif",
-      "/images/products/pendants/pendants-013-5.avif"
+      "/images/catalog/pendants/pendants-013-1.avif",
+      "/images/catalog/pendants/pendants-013-2.avif",
+      "/images/catalog/pendants/pendants-013-3.avif",
+      "/images/catalog/pendants/pendants-013-4.avif",
+      "/images/catalog/pendants/pendants-013-5.avif"
     ],
     "isRing": false
   },
@@ -995,13 +995,13 @@ export const products: Product[] = [
     "certification": null,
     "description": "A round white sapphire suspended in Mixed Metals, from the Aurore line — hand-finished in our Colombo atelier.",
     "swatch": "#dfdbd0",
-    "image": "/images/products/pendants/pendants-014-1.avif",
+    "image": "/images/catalog/pendants/pendants-014-1.avif",
     "images": [
-      "/images/products/pendants/pendants-014-1.avif",
-      "/images/products/pendants/pendants-014-2.avif",
-      "/images/products/pendants/pendants-014-3.avif",
-      "/images/products/pendants/pendants-014-4.avif",
-      "/images/products/pendants/pendants-014-5.avif"
+      "/images/catalog/pendants/pendants-014-1.avif",
+      "/images/catalog/pendants/pendants-014-2.avif",
+      "/images/catalog/pendants/pendants-014-3.avif",
+      "/images/catalog/pendants/pendants-014-4.avif",
+      "/images/catalog/pendants/pendants-014-5.avif"
     ],
     "isRing": false
   },
@@ -1019,13 +1019,13 @@ export const products: Product[] = [
     "certification": null,
     "description": "A white sapphire suspended in White Gold, from the Ninon line — hand-finished in our Colombo atelier.",
     "swatch": "#dfdbd0",
-    "image": "/images/products/pendants/pendants-015-1.avif",
+    "image": "/images/catalog/pendants/pendants-015-1.avif",
     "images": [
-      "/images/products/pendants/pendants-015-1.avif",
-      "/images/products/pendants/pendants-015-2.avif",
-      "/images/products/pendants/pendants-015-3.avif",
-      "/images/products/pendants/pendants-015-4.avif",
-      "/images/products/pendants/pendants-015-5.avif"
+      "/images/catalog/pendants/pendants-015-1.avif",
+      "/images/catalog/pendants/pendants-015-2.avif",
+      "/images/catalog/pendants/pendants-015-3.avif",
+      "/images/catalog/pendants/pendants-015-4.avif",
+      "/images/catalog/pendants/pendants-015-5.avif"
     ],
     "isRing": false
   },
@@ -1043,14 +1043,14 @@ export const products: Product[] = [
     "certification": null,
     "description": "A white sapphire suspended in White Gold, from the Aurelia line — hand-finished in our Colombo atelier.",
     "swatch": "#dfdbd0",
-    "image": "/images/products/pendants/pendants-016-1.avif",
+    "image": "/images/catalog/pendants/pendants-016-1.avif",
     "images": [
-      "/images/products/pendants/pendants-016-1.avif",
-      "/images/products/pendants/pendants-016-2.avif",
-      "/images/products/pendants/pendants-016-3.avif",
-      "/images/products/pendants/pendants-016-4.avif",
-      "/images/products/pendants/pendants-016-5.avif",
-      "/images/products/pendants/pendants-016-6.webm"
+      "/images/catalog/pendants/pendants-016-1.avif",
+      "/images/catalog/pendants/pendants-016-2.avif",
+      "/images/catalog/pendants/pendants-016-3.avif",
+      "/images/catalog/pendants/pendants-016-4.avif",
+      "/images/catalog/pendants/pendants-016-5.avif",
+      "/images/catalog/pendants/pendants-016-6.webm"
     ],
     "isRing": false
   },
@@ -1068,14 +1068,14 @@ export const products: Product[] = [
     "certification": null,
     "description": "A mixed gemstones suspended in White Gold, from the Celestine line — hand-finished in our Colombo atelier.",
     "swatch": "#8a6fae",
-    "image": "/images/products/pendants/pendants-017-1.avif",
+    "image": "/images/catalog/pendants/pendants-017-1.avif",
     "images": [
-      "/images/products/pendants/pendants-017-1.avif",
-      "/images/products/pendants/pendants-017-2.avif",
-      "/images/products/pendants/pendants-017-3.avif",
-      "/images/products/pendants/pendants-017-4.avif",
-      "/images/products/pendants/pendants-017-5.avif",
-      "/images/products/pendants/pendants-017-6.webm"
+      "/images/catalog/pendants/pendants-017-1.avif",
+      "/images/catalog/pendants/pendants-017-2.avif",
+      "/images/catalog/pendants/pendants-017-3.avif",
+      "/images/catalog/pendants/pendants-017-4.avif",
+      "/images/catalog/pendants/pendants-017-5.avif",
+      "/images/catalog/pendants/pendants-017-6.webm"
     ],
     "isRing": false
   },
@@ -1093,13 +1093,13 @@ export const products: Product[] = [
     "certification": null,
     "description": "A ruby suspended in 18k Gold, from the Vespera line — hand-finished in our Colombo atelier.",
     "swatch": "#7a2230",
-    "image": "/images/products/pendants/pendants-018-1.avif",
+    "image": "/images/catalog/pendants/pendants-018-1.avif",
     "images": [
-      "/images/products/pendants/pendants-018-1.avif",
-      "/images/products/pendants/pendants-018-2.avif",
-      "/images/products/pendants/pendants-018-3.avif",
-      "/images/products/pendants/pendants-018-4.avif",
-      "/images/products/pendants/pendants-018-5.webm"
+      "/images/catalog/pendants/pendants-018-1.avif",
+      "/images/catalog/pendants/pendants-018-2.avif",
+      "/images/catalog/pendants/pendants-018-3.avif",
+      "/images/catalog/pendants/pendants-018-4.avif",
+      "/images/catalog/pendants/pendants-018-5.webm"
     ],
     "isRing": false
   },
@@ -1117,12 +1117,12 @@ export const products: Product[] = [
     "certification": null,
     "description": "A round white sapphire suspended in White Gold, from the Seraphine line — hand-finished in our Colombo atelier.",
     "swatch": "#dfdbd0",
-    "image": "/images/products/pendants/pendants-019-1.avif",
+    "image": "/images/catalog/pendants/pendants-019-1.avif",
     "images": [
-      "/images/products/pendants/pendants-019-1.avif",
-      "/images/products/pendants/pendants-019-2.avif",
-      "/images/products/pendants/pendants-019-3.avif",
-      "/images/products/pendants/pendants-019-4.avif"
+      "/images/catalog/pendants/pendants-019-1.avif",
+      "/images/catalog/pendants/pendants-019-2.avif",
+      "/images/catalog/pendants/pendants-019-3.avif",
+      "/images/catalog/pendants/pendants-019-4.avif"
     ],
     "isRing": false
   },
@@ -1140,12 +1140,12 @@ export const products: Product[] = [
     "certification": null,
     "description": "A white sapphire suspended in White Gold, from the Ondine line — hand-finished in our Colombo atelier.",
     "swatch": "#dfdbd0",
-    "image": "/images/products/pendants/pendants-020-1.avif",
+    "image": "/images/catalog/pendants/pendants-020-1.avif",
     "images": [
-      "/images/products/pendants/pendants-020-1.avif",
-      "/images/products/pendants/pendants-020-2.avif",
-      "/images/products/pendants/pendants-020-3.avif",
-      "/images/products/pendants/pendants-020-4.avif"
+      "/images/catalog/pendants/pendants-020-1.avif",
+      "/images/catalog/pendants/pendants-020-2.avif",
+      "/images/catalog/pendants/pendants-020-3.avif",
+      "/images/catalog/pendants/pendants-020-4.avif"
     ],
     "isRing": false
   },
@@ -1163,12 +1163,12 @@ export const products: Product[] = [
     "certification": null,
     "description": "A blue sapphire suspended in White Gold, from the Calliope line — hand-finished in our Colombo atelier.",
     "swatch": "#2f4c82",
-    "image": "/images/products/pendants/pendants-021-1.avif",
+    "image": "/images/catalog/pendants/pendants-021-1.avif",
     "images": [
-      "/images/products/pendants/pendants-021-1.avif",
-      "/images/products/pendants/pendants-021-2.avif",
-      "/images/products/pendants/pendants-021-3.avif",
-      "/images/products/pendants/pendants-021-4.avif"
+      "/images/catalog/pendants/pendants-021-1.avif",
+      "/images/catalog/pendants/pendants-021-2.avif",
+      "/images/catalog/pendants/pendants-021-3.avif",
+      "/images/catalog/pendants/pendants-021-4.avif"
     ],
     "isRing": false
   },
@@ -1186,13 +1186,13 @@ export const products: Product[] = [
     "certification": null,
     "description": "A round white sapphire suspended in White Gold, from the Isolde line — hand-finished in our Colombo atelier.",
     "swatch": "#dfdbd0",
-    "image": "/images/products/earrings/earrings-001-1.avif",
+    "image": "/images/catalog/earrings/earrings-001-1.avif",
     "images": [
-      "/images/products/earrings/earrings-001-1.avif",
-      "/images/products/earrings/earrings-001-2.avif",
-      "/images/products/earrings/earrings-001-3.avif",
-      "/images/products/earrings/earrings-001-4.avif",
-      "/images/products/earrings/earrings-001-5.avif"
+      "/images/catalog/earrings/earrings-001-1.avif",
+      "/images/catalog/earrings/earrings-001-2.avif",
+      "/images/catalog/earrings/earrings-001-3.avif",
+      "/images/catalog/earrings/earrings-001-4.avif",
+      "/images/catalog/earrings/earrings-001-5.avif"
     ],
     "isRing": false
   },
@@ -1210,12 +1210,12 @@ export const products: Product[] = [
     "certification": null,
     "description": "A pink sapphire suspended in White Gold, from the Marguerite line — hand-finished in our Colombo atelier.",
     "swatch": "#b76e79",
-    "image": "/images/products/earrings/earrings-002-1.avif",
+    "image": "/images/catalog/earrings/earrings-002-1.avif",
     "images": [
-      "/images/products/earrings/earrings-002-1.avif",
-      "/images/products/earrings/earrings-002-2.avif",
-      "/images/products/earrings/earrings-002-3.avif",
-      "/images/products/earrings/earrings-002-4.avif"
+      "/images/catalog/earrings/earrings-002-1.avif",
+      "/images/catalog/earrings/earrings-002-2.avif",
+      "/images/catalog/earrings/earrings-002-3.avif",
+      "/images/catalog/earrings/earrings-002-4.avif"
     ],
     "isRing": false
   },
@@ -1233,12 +1233,12 @@ export const products: Product[] = [
     "certification": null,
     "description": "A mixed gemstones suspended in 18k Gold, from the Colette line — hand-finished in our Colombo atelier.",
     "swatch": "#8a6fae",
-    "image": "/images/products/earrings/earrings-003-1.avif",
+    "image": "/images/catalog/earrings/earrings-003-1.avif",
     "images": [
-      "/images/products/earrings/earrings-003-1.avif",
-      "/images/products/earrings/earrings-003-2.avif",
-      "/images/products/earrings/earrings-003-3.avif",
-      "/images/products/earrings/earrings-003-4.webm"
+      "/images/catalog/earrings/earrings-003-1.avif",
+      "/images/catalog/earrings/earrings-003-2.avif",
+      "/images/catalog/earrings/earrings-003-3.avif",
+      "/images/catalog/earrings/earrings-003-4.webm"
     ],
     "isRing": false
   },
@@ -1256,12 +1256,12 @@ export const products: Product[] = [
     "certification": null,
     "description": "A mixed gemstones suspended in 18k Gold, from the Genevieve line — hand-finished in our Colombo atelier.",
     "swatch": "#8a6fae",
-    "image": "/images/products/earrings/earrings-004-1.avif",
+    "image": "/images/catalog/earrings/earrings-004-1.avif",
     "images": [
-      "/images/products/earrings/earrings-004-1.avif",
-      "/images/products/earrings/earrings-004-2.avif",
-      "/images/products/earrings/earrings-004-3.avif",
-      "/images/products/earrings/earrings-004-4.avif"
+      "/images/catalog/earrings/earrings-004-1.avif",
+      "/images/catalog/earrings/earrings-004-2.avif",
+      "/images/catalog/earrings/earrings-004-3.avif",
+      "/images/catalog/earrings/earrings-004-4.avif"
     ],
     "isRing": false
   },
@@ -1279,13 +1279,13 @@ export const products: Product[] = [
     "certification": null,
     "description": "A emerald suspended in White Gold, from the Amandine line — hand-finished in our Colombo atelier.",
     "swatch": "#2f6b4c",
-    "image": "/images/products/earrings/earrings-005-1.avif",
+    "image": "/images/catalog/earrings/earrings-005-1.avif",
     "images": [
-      "/images/products/earrings/earrings-005-1.avif",
-      "/images/products/earrings/earrings-005-2.avif",
-      "/images/products/earrings/earrings-005-3.avif",
-      "/images/products/earrings/earrings-005-4.avif",
-      "/images/products/earrings/earrings-005-5.avif"
+      "/images/catalog/earrings/earrings-005-1.avif",
+      "/images/catalog/earrings/earrings-005-2.avif",
+      "/images/catalog/earrings/earrings-005-3.avif",
+      "/images/catalog/earrings/earrings-005-4.avif",
+      "/images/catalog/earrings/earrings-005-5.avif"
     ],
     "isRing": false
   },
@@ -1303,13 +1303,13 @@ export const products: Product[] = [
     "certification": null,
     "description": "A round white sapphire suspended in White Gold, from the Delphine line — hand-finished in our Colombo atelier.",
     "swatch": "#dfdbd0",
-    "image": "/images/products/earrings/earrings-006-1.avif",
+    "image": "/images/catalog/earrings/earrings-006-1.avif",
     "images": [
-      "/images/products/earrings/earrings-006-1.avif",
-      "/images/products/earrings/earrings-006-2.avif",
-      "/images/products/earrings/earrings-006-3.avif",
-      "/images/products/earrings/earrings-006-4.avif",
-      "/images/products/earrings/earrings-006-5.avif"
+      "/images/catalog/earrings/earrings-006-1.avif",
+      "/images/catalog/earrings/earrings-006-2.avif",
+      "/images/catalog/earrings/earrings-006-3.avif",
+      "/images/catalog/earrings/earrings-006-4.avif",
+      "/images/catalog/earrings/earrings-006-5.avif"
     ],
     "isRing": false
   },
@@ -1327,12 +1327,12 @@ export const products: Product[] = [
     "certification": null,
     "description": "A round white sapphire suspended in 18k Gold, from the Oceane line — hand-finished in our Colombo atelier.",
     "swatch": "#dfdbd0",
-    "image": "/images/products/earrings/earrings-007-1.avif",
+    "image": "/images/catalog/earrings/earrings-007-1.avif",
     "images": [
-      "/images/products/earrings/earrings-007-1.avif",
-      "/images/products/earrings/earrings-007-2.avif",
-      "/images/products/earrings/earrings-007-3.avif",
-      "/images/products/earrings/earrings-007-4.avif"
+      "/images/catalog/earrings/earrings-007-1.avif",
+      "/images/catalog/earrings/earrings-007-2.avif",
+      "/images/catalog/earrings/earrings-007-3.avif",
+      "/images/catalog/earrings/earrings-007-4.avif"
     ],
     "isRing": false
   },
@@ -1350,13 +1350,13 @@ export const products: Product[] = [
     "certification": null,
     "description": "A white sapphire arranged in 18k Rose Gold, from the Sylvie line — hand-finished in our Colombo atelier.",
     "swatch": "#dfdbd0",
-    "image": "/images/products/bracelets/bracelets-001-1.avif",
+    "image": "/images/catalog/bracelets/bracelets-001-1.avif",
     "images": [
-      "/images/products/bracelets/bracelets-001-1.avif",
-      "/images/products/bracelets/bracelets-001-2.avif",
-      "/images/products/bracelets/bracelets-001-3.avif",
-      "/images/products/bracelets/bracelets-001-4.avif",
-      "/images/products/bracelets/bracelets-001-5.avif"
+      "/images/catalog/bracelets/bracelets-001-1.avif",
+      "/images/catalog/bracelets/bracelets-001-2.avif",
+      "/images/catalog/bracelets/bracelets-001-3.avif",
+      "/images/catalog/bracelets/bracelets-001-4.avif",
+      "/images/catalog/bracelets/bracelets-001-5.avif"
     ],
     "isRing": false
   },
@@ -1374,13 +1374,13 @@ export const products: Product[] = [
     "certification": null,
     "description": "A white sapphire arranged in White Gold, from the Fleur line — hand-finished in our Colombo atelier.",
     "swatch": "#dfdbd0",
-    "image": "/images/products/bracelets/bracelets-002-1.avif",
+    "image": "/images/catalog/bracelets/bracelets-002-1.avif",
     "images": [
-      "/images/products/bracelets/bracelets-002-1.avif",
-      "/images/products/bracelets/bracelets-002-2.avif",
-      "/images/products/bracelets/bracelets-002-3.avif",
-      "/images/products/bracelets/bracelets-002-4.avif",
-      "/images/products/bracelets/bracelets-002-5.avif"
+      "/images/catalog/bracelets/bracelets-002-1.avif",
+      "/images/catalog/bracelets/bracelets-002-2.avif",
+      "/images/catalog/bracelets/bracelets-002-3.avif",
+      "/images/catalog/bracelets/bracelets-002-4.avif",
+      "/images/catalog/bracelets/bracelets-002-5.avif"
     ],
     "isRing": false
   },
@@ -1398,13 +1398,13 @@ export const products: Product[] = [
     "certification": null,
     "description": "A white sapphire arranged in White Gold, from the Margaux line — hand-finished in our Colombo atelier.",
     "swatch": "#dfdbd0",
-    "image": "/images/products/bracelets/bracelets-003-1.avif",
+    "image": "/images/catalog/bracelets/bracelets-003-1.avif",
     "images": [
-      "/images/products/bracelets/bracelets-003-1.avif",
-      "/images/products/bracelets/bracelets-003-2.avif",
-      "/images/products/bracelets/bracelets-003-3.avif",
-      "/images/products/bracelets/bracelets-003-4.avif",
-      "/images/products/bracelets/bracelets-003-5.avif"
+      "/images/catalog/bracelets/bracelets-003-1.avif",
+      "/images/catalog/bracelets/bracelets-003-2.avif",
+      "/images/catalog/bracelets/bracelets-003-3.avif",
+      "/images/catalog/bracelets/bracelets-003-4.avif",
+      "/images/catalog/bracelets/bracelets-003-5.avif"
     ],
     "isRing": false
   },
@@ -1422,12 +1422,12 @@ export const products: Product[] = [
     "certification": null,
     "description": "A white sapphire arranged in White Gold, from the Noemie line — hand-finished in our Colombo atelier.",
     "swatch": "#dfdbd0",
-    "image": "/images/products/bracelets/bracelets-004-1.avif",
+    "image": "/images/catalog/bracelets/bracelets-004-1.avif",
     "images": [
-      "/images/products/bracelets/bracelets-004-1.avif",
-      "/images/products/bracelets/bracelets-004-2.avif",
-      "/images/products/bracelets/bracelets-004-3.avif",
-      "/images/products/bracelets/bracelets-004-4.avif"
+      "/images/catalog/bracelets/bracelets-004-1.avif",
+      "/images/catalog/bracelets/bracelets-004-2.avif",
+      "/images/catalog/bracelets/bracelets-004-3.avif",
+      "/images/catalog/bracelets/bracelets-004-4.avif"
     ],
     "isRing": false
   },
@@ -1445,12 +1445,12 @@ export const products: Product[] = [
     "certification": null,
     "description": "A emerald arranged in White Gold, from the Clemence line — hand-finished in our Colombo atelier.",
     "swatch": "#2f6b4c",
-    "image": "/images/products/bracelets/bracelets-005-1.avif",
+    "image": "/images/catalog/bracelets/bracelets-005-1.avif",
     "images": [
-      "/images/products/bracelets/bracelets-005-1.avif",
-      "/images/products/bracelets/bracelets-005-2.avif",
-      "/images/products/bracelets/bracelets-005-3.avif",
-      "/images/products/bracelets/bracelets-005-4.avif"
+      "/images/catalog/bracelets/bracelets-005-1.avif",
+      "/images/catalog/bracelets/bracelets-005-2.avif",
+      "/images/catalog/bracelets/bracelets-005-3.avif",
+      "/images/catalog/bracelets/bracelets-005-4.avif"
     ],
     "isRing": false
   },
@@ -1468,15 +1468,15 @@ export const products: Product[] = [
     "certification": null,
     "description": "A white sapphire arranged in White Gold, from the Lucienne line — hand-finished in our Colombo atelier.",
     "swatch": "#dfdbd0",
-    "image": "/images/products/bracelets/bracelets-006-1.avif",
+    "image": "/images/catalog/bracelets/bracelets-006-1.avif",
     "images": [
-      "/images/products/bracelets/bracelets-006-1.avif",
-      "/images/products/bracelets/bracelets-006-2.avif",
-      "/images/products/bracelets/bracelets-006-3.avif",
-      "/images/products/bracelets/bracelets-006-4.avif",
-      "/images/products/bracelets/bracelets-006-5.avif",
-      "/images/products/bracelets/bracelets-006-6.webm",
-      "/images/products/bracelets/bracelets-006-7.webm"
+      "/images/catalog/bracelets/bracelets-006-1.avif",
+      "/images/catalog/bracelets/bracelets-006-2.avif",
+      "/images/catalog/bracelets/bracelets-006-3.avif",
+      "/images/catalog/bracelets/bracelets-006-4.avif",
+      "/images/catalog/bracelets/bracelets-006-5.avif",
+      "/images/catalog/bracelets/bracelets-006-6.webm",
+      "/images/catalog/bracelets/bracelets-006-7.webm"
     ],
     "isRing": false
   },
@@ -1494,12 +1494,12 @@ export const products: Product[] = [
     "certification": null,
     "description": "A round mixed gemstones arranged in 18k Gold, from the Adele line — hand-finished in our Colombo atelier.",
     "swatch": "#8a6fae",
-    "image": "/images/products/bracelets/bracelets-007-1.avif",
+    "image": "/images/catalog/bracelets/bracelets-007-1.avif",
     "images": [
-      "/images/products/bracelets/bracelets-007-1.avif",
-      "/images/products/bracelets/bracelets-007-2.avif",
-      "/images/products/bracelets/bracelets-007-3.avif",
-      "/images/products/bracelets/bracelets-007-4.avif"
+      "/images/catalog/bracelets/bracelets-007-1.avif",
+      "/images/catalog/bracelets/bracelets-007-2.avif",
+      "/images/catalog/bracelets/bracelets-007-3.avif",
+      "/images/catalog/bracelets/bracelets-007-4.avif"
     ],
     "isRing": false
   },
@@ -1517,12 +1517,12 @@ export const products: Product[] = [
     "certification": null,
     "description": "A mixed gemstones arranged in 18k Gold, from the Elodie line — hand-finished in our Colombo atelier.",
     "swatch": "#8a6fae",
-    "image": "/images/products/bangles/bangles-001-1.avif",
+    "image": "/images/catalog/bangles/bangles-001-1.avif",
     "images": [
-      "/images/products/bangles/bangles-001-1.avif",
-      "/images/products/bangles/bangles-001-2.avif",
-      "/images/products/bangles/bangles-001-3.avif",
-      "/images/products/bangles/bangles-001-4.avif"
+      "/images/catalog/bangles/bangles-001-1.avif",
+      "/images/catalog/bangles/bangles-001-2.avif",
+      "/images/catalog/bangles/bangles-001-3.avif",
+      "/images/catalog/bangles/bangles-001-4.avif"
     ],
     "isRing": false
   },
@@ -1540,13 +1540,13 @@ export const products: Product[] = [
     "certification": null,
     "description": "A pear ruby arranged in 18k Gold, from the Rosalind line — hand-finished in our Colombo atelier.",
     "swatch": "#7a2230",
-    "image": "/images/products/bangles/bangles-002-1.avif",
+    "image": "/images/catalog/bangles/bangles-002-1.avif",
     "images": [
-      "/images/products/bangles/bangles-002-1.avif",
-      "/images/products/bangles/bangles-002-2.avif",
-      "/images/products/bangles/bangles-002-3.avif",
-      "/images/products/bangles/bangles-002-4.avif",
-      "/images/products/bangles/bangles-002-5.webm"
+      "/images/catalog/bangles/bangles-002-1.avif",
+      "/images/catalog/bangles/bangles-002-2.avif",
+      "/images/catalog/bangles/bangles-002-3.avif",
+      "/images/catalog/bangles/bangles-002-4.avif",
+      "/images/catalog/bangles/bangles-002-5.webm"
     ],
     "isRing": false
   },
@@ -1564,13 +1564,13 @@ export const products: Product[] = [
     "certification": null,
     "description": "A white sapphire arranged in White Gold, from the Vivienne line — hand-finished in our Colombo atelier.",
     "swatch": "#dfdbd0",
-    "image": "/images/products/bangles/bangles-003-1.avif",
+    "image": "/images/catalog/bangles/bangles-003-1.avif",
     "images": [
-      "/images/products/bangles/bangles-003-1.avif",
-      "/images/products/bangles/bangles-003-2.avif",
-      "/images/products/bangles/bangles-003-3.avif",
-      "/images/products/bangles/bangles-003-4.avif",
-      "/images/products/bangles/bangles-003-5.webm"
+      "/images/catalog/bangles/bangles-003-1.avif",
+      "/images/catalog/bangles/bangles-003-2.avif",
+      "/images/catalog/bangles/bangles-003-3.avif",
+      "/images/catalog/bangles/bangles-003-4.avif",
+      "/images/catalog/bangles/bangles-003-5.webm"
     ],
     "isRing": false
   },
@@ -1588,12 +1588,12 @@ export const products: Product[] = [
     "certification": null,
     "description": "A round white sapphire arranged in 18k Gold, from the Camille line — hand-finished in our Colombo atelier.",
     "swatch": "#dfdbd0",
-    "image": "/images/products/bangles/bangles-004-1.avif",
+    "image": "/images/catalog/bangles/bangles-004-1.avif",
     "images": [
-      "/images/products/bangles/bangles-004-1.avif",
-      "/images/products/bangles/bangles-004-2.avif",
-      "/images/products/bangles/bangles-004-3.avif",
-      "/images/products/bangles/bangles-004-4.avif"
+      "/images/catalog/bangles/bangles-004-1.avif",
+      "/images/catalog/bangles/bangles-004-2.avif",
+      "/images/catalog/bangles/bangles-004-3.avif",
+      "/images/catalog/bangles/bangles-004-4.avif"
     ],
     "isRing": false
   }
