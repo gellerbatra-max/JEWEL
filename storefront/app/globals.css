@@ -40,3 +40,15 @@ body {
   color: var(--ink);
   font-family: var(--fallback-sans);
 }
+
+/* Casual-download deterrence on product media (Amazon-style): block
+   drag-to-save and text selection. True prevention is impossible; this
+   only stops casual right-click/drag saving. */
+img,
+video {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  user-select: none;
+  -webkit-user-select: none;
+}

@@ -1,12 +1,35 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
+import type { Metadata } from "next";
 import { PurchasePanel } from "@/components/PurchasePanel";
 import { ConsultationCTA } from "@/components/ConsultationCTA";
 import { ProductAccordion } from "@/components/ProductAccordion";
+import { ShareButtons } from "@/components/ShareButtons";
 import { getProduct, formatPrice, products } from "@/lib/products";
 
 export function generateStaticParams() {
   return products.map((p) => ({ handle: p.handle }));
+}
+
+export async function generateMetadata(
+  props: PageProps<"/products/[handle]">
+): Promise<Metadata> {
+  const { handle } = await props.params;
+  const product = getProduct(handle);
+  if (!product) return {};
+  const title = `${product.title} — Taygerian`;
+  const description = product.description;
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      images: [{ url: product.image }],
+      type: "website",
+    },
+    twitter: { card: "summary_large_image", title, description, images: [product.image] },
+  };
 }
 
 export default async function ProductPage(props: PageProps<"/products/[handle]">) {
@@ -60,6 +83,10 @@ export default async function ProductPage(props: PageProps<"/products/[handle]">
         <div className="space-y-3">
           <PurchasePanel product={product} />
           <ConsultationCTA productTitle={product.title} />
+        </div>
+
+        <div className="mt-6">
+          <ShareButtons title={product.title} />
         </div>
 
         <ProductAccordion product={product} />

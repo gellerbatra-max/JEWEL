@@ -4,6 +4,7 @@ import "./globals.css";
 import { CartProvider } from "@/components/CartProvider";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { MediaProtection } from "@/components/MediaProtection";
 
 // Display: Cinzel — squared, chiseled Roman capitals (the free relative of
 // Trajan, the classic luxury-packaging / film-title typeface). Structured
@@ -25,6 +26,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html lang="en" className={`${cinzel.variable} h-full`}>
       <body className="min-h-full flex flex-col bg-porcelain text-ink font-sans antialiased">
         <CartProvider>
+          <MediaProtection />
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />
