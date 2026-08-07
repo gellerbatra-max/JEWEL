@@ -1,5 +1,5 @@
 // AUTO-GENERATED prototype catalog. Do not edit by hand.
-// Placeholder data + images for the prototype only — replace with the
+// Placeholder data + media for the prototype only — replace with the
 // brand's own product names, photos, and details before launch.
 // Product IDs, names, and filenames are original to Taygerian.
 import type { Product } from "./products";
@@ -49,7 +49,8 @@ export const products: Product[] = [
       "/images/products/rings/rings-002-2.avif",
       "/images/products/rings/rings-002-3.avif",
       "/images/products/rings/rings-002-4.avif",
-      "/images/products/rings/rings-002-5.avif"
+      "/images/products/rings/rings-002-5.avif",
+      "/images/products/rings/rings-002-6.webm"
     ],
     "isRing": true
   },
@@ -144,7 +145,9 @@ export const products: Product[] = [
       "/images/products/rings/rings-006-2.avif",
       "/images/products/rings/rings-006-3.avif",
       "/images/products/rings/rings-006-4.avif",
-      "/images/products/rings/rings-006-5.avif"
+      "/images/products/rings/rings-006-5.avif",
+      "/images/products/rings/rings-006-6.avif",
+      "/images/products/rings/rings-006-7.avif"
     ],
     "isRing": true
   },
@@ -215,7 +218,8 @@ export const products: Product[] = [
       "/images/products/rings/rings-009-2.avif",
       "/images/products/rings/rings-009-3.avif",
       "/images/products/rings/rings-009-4.avif",
-      "/images/products/rings/rings-009-5.avif"
+      "/images/products/rings/rings-009-5.avif",
+      "/images/products/rings/rings-009-6.webm"
     ],
     "isRing": true
   },
@@ -239,14 +243,108 @@ export const products: Product[] = [
       "/images/products/rings/rings-010-2.avif",
       "/images/products/rings/rings-010-3.avif",
       "/images/products/rings/rings-010-4.avif",
-      "/images/products/rings/rings-010-5.avif"
+      "/images/products/rings/rings-010-5.avif",
+      "/images/products/rings/rings-010-6.webm"
+    ],
+    "isRing": true
+  },
+  {
+    "id": "TAY-RNG-011",
+    "handle": "rings-011",
+    "title": "Amandine Ring",
+    "sku": "TAY-RNG-011",
+    "collectionHandle": "rings",
+    "metal": "18k Gold",
+    "stone": "White Sapphire",
+    "price": 1950,
+    "currency": "USD",
+    "oneOfAKind": false,
+    "certification": null,
+    "description": "A white sapphire set in 18k Gold, from the Amandine line — hand-finished in our Colombo atelier.",
+    "swatch": "#dfdbd0",
+    "image": "/images/products/rings/rings-011-1.webp",
+    "images": [
+      "/images/products/rings/rings-011-1.webp",
+      "/images/products/rings/rings-011-2.webp",
+      "/images/products/rings/rings-011-3.webp",
+      "/images/products/rings/rings-011-4.webm"
+    ],
+    "isRing": true
+  },
+  {
+    "id": "TAY-RNG-012",
+    "handle": "rings-012",
+    "title": "Delphine Ring",
+    "sku": "TAY-RNG-012",
+    "collectionHandle": "rings",
+    "metal": "18k Gold",
+    "stone": "White Sapphire",
+    "price": 1800,
+    "currency": "USD",
+    "oneOfAKind": false,
+    "certification": null,
+    "description": "A white sapphire set in 18k Gold, from the Delphine line — hand-finished in our Colombo atelier.",
+    "swatch": "#dfdbd0",
+    "image": "/images/products/rings/rings-012-1.webp",
+    "images": [
+      "/images/products/rings/rings-012-1.webp",
+      "/images/products/rings/rings-012-2.webp",
+      "/images/products/rings/rings-012-3.webp",
+      "/images/products/rings/rings-012-4.webm"
+    ],
+    "isRing": true
+  },
+  {
+    "id": "TAY-RNG-013",
+    "handle": "rings-013",
+    "title": "Oceane Ring",
+    "sku": "TAY-RNG-013",
+    "collectionHandle": "rings",
+    "metal": "18k Gold",
+    "stone": "White Sapphire",
+    "price": 1650,
+    "currency": "USD",
+    "oneOfAKind": false,
+    "certification": null,
+    "description": "A white sapphire set in 18k Gold, from the Oceane line — hand-finished in our Colombo atelier.",
+    "swatch": "#dfdbd0",
+    "image": "/images/products/rings/rings-013-1.webp",
+    "images": [
+      "/images/products/rings/rings-013-1.webp",
+      "/images/products/rings/rings-013-2.webp",
+      "/images/products/rings/rings-013-3.webp",
+      "/images/products/rings/rings-013-4.webp",
+      "/images/products/rings/rings-013-5.webm"
+    ],
+    "isRing": true
+  },
+  {
+    "id": "TAY-RNG-014",
+    "handle": "rings-014",
+    "title": "Sylvie Ring",
+    "sku": "TAY-RNG-014",
+    "collectionHandle": "rings",
+    "metal": "18k Gold",
+    "stone": "White Sapphire",
+    "price": 1500,
+    "currency": "USD",
+    "oneOfAKind": false,
+    "certification": null,
+    "description": "A white sapphire set in 18k Gold, from the Sylvie line — hand-finished in our Colombo atelier.",
+    "swatch": "#dfdbd0",
+    "image": "/images/products/rings/rings-014-1.webp",
+    "images": [
+      "/images/products/rings/rings-014-1.webp",
+      "/images/products/rings/rings-014-2.webp",
+      "/images/products/rings/rings-014-3.webp",
+      "/images/products/rings/rings-014-4.webm"
     ],
     "isRing": true
   },
   {
     "id": "TAY-NCK-001",
     "handle": "necklaces-001",
-    "title": "Amandine Necklace",
+    "title": "Fleur Necklace",
     "sku": "TAY-NCK-001",
     "collectionHandle": "necklaces",
     "metal": "Mixed Metals",
@@ -255,21 +353,22 @@ export const products: Product[] = [
     "currency": "USD",
     "oneOfAKind": false,
     "certification": null,
-    "description": "A white sapphire suspended in Mixed Metals, from the Amandine line — hand-finished in our Colombo atelier.",
+    "description": "A white sapphire suspended in Mixed Metals, from the Fleur line — hand-finished in our Colombo atelier.",
     "swatch": "#dfdbd0",
     "image": "/images/products/necklaces/necklaces-001-1.avif",
     "images": [
       "/images/products/necklaces/necklaces-001-1.avif",
       "/images/products/necklaces/necklaces-001-2.avif",
       "/images/products/necklaces/necklaces-001-3.avif",
-      "/images/products/necklaces/necklaces-001-4.avif"
+      "/images/products/necklaces/necklaces-001-4.avif",
+      "/images/products/necklaces/necklaces-001-5.webm"
     ],
     "isRing": false
   },
   {
     "id": "TAY-NCK-002",
     "handle": "necklaces-002",
-    "title": "Delphine Necklace",
+    "title": "Margaux Necklace",
     "sku": "TAY-NCK-002",
     "collectionHandle": "necklaces",
     "metal": "White Gold",
@@ -278,7 +377,7 @@ export const products: Product[] = [
     "currency": "USD",
     "oneOfAKind": false,
     "certification": null,
-    "description": "A emerald suspended in White Gold, from the Delphine line — hand-finished in our Colombo atelier.",
+    "description": "A emerald suspended in White Gold, from the Margaux line — hand-finished in our Colombo atelier.",
     "swatch": "#2f6b4c",
     "image": "/images/products/necklaces/necklaces-002-1.avif",
     "images": [
@@ -293,7 +392,7 @@ export const products: Product[] = [
   {
     "id": "TAY-NCK-003",
     "handle": "necklaces-003",
-    "title": "Oceane Necklace",
+    "title": "Noemie Necklace",
     "sku": "TAY-NCK-003",
     "collectionHandle": "necklaces",
     "metal": "18k Rose Gold",
@@ -302,7 +401,7 @@ export const products: Product[] = [
     "currency": "USD",
     "oneOfAKind": false,
     "certification": null,
-    "description": "A pink sapphire suspended in 18k Rose Gold, from the Oceane line — hand-finished in our Colombo atelier.",
+    "description": "A pink sapphire suspended in 18k Rose Gold, from the Noemie line — hand-finished in our Colombo atelier.",
     "swatch": "#b76e79",
     "image": "/images/products/necklaces/necklaces-003-1.avif",
     "images": [
@@ -316,7 +415,7 @@ export const products: Product[] = [
   {
     "id": "TAY-NCK-004",
     "handle": "necklaces-004",
-    "title": "Sylvie Necklace",
+    "title": "Clemence Necklace",
     "sku": "TAY-NCK-004",
     "collectionHandle": "necklaces",
     "metal": "18k Rose Gold",
@@ -325,7 +424,7 @@ export const products: Product[] = [
     "currency": "USD",
     "oneOfAKind": false,
     "certification": null,
-    "description": "A white sapphire suspended in 18k Rose Gold, from the Sylvie line — hand-finished in our Colombo atelier.",
+    "description": "A white sapphire suspended in 18k Rose Gold, from the Clemence line — hand-finished in our Colombo atelier.",
     "swatch": "#dfdbd0",
     "image": "/images/products/necklaces/necklaces-004-1.avif",
     "images": [
@@ -340,7 +439,7 @@ export const products: Product[] = [
   {
     "id": "TAY-NCK-005",
     "handle": "necklaces-005",
-    "title": "Fleur Necklace",
+    "title": "Lucienne Necklace",
     "sku": "TAY-NCK-005",
     "collectionHandle": "necklaces",
     "metal": "White Gold",
@@ -349,7 +448,7 @@ export const products: Product[] = [
     "currency": "USD",
     "oneOfAKind": false,
     "certification": null,
-    "description": "A white sapphire suspended in White Gold, from the Fleur line — hand-finished in our Colombo atelier.",
+    "description": "A white sapphire suspended in White Gold, from the Lucienne line — hand-finished in our Colombo atelier.",
     "swatch": "#dfdbd0",
     "image": "/images/products/necklaces/necklaces-005-1.avif",
     "images": [
@@ -357,14 +456,15 @@ export const products: Product[] = [
       "/images/products/necklaces/necklaces-005-2.avif",
       "/images/products/necklaces/necklaces-005-3.avif",
       "/images/products/necklaces/necklaces-005-4.avif",
-      "/images/products/necklaces/necklaces-005-5.avif"
+      "/images/products/necklaces/necklaces-005-5.avif",
+      "/images/products/necklaces/necklaces-005-6.webm"
     ],
     "isRing": false
   },
   {
     "id": "TAY-NCK-006",
     "handle": "necklaces-006",
-    "title": "Margaux Necklace",
+    "title": "Adele Necklace",
     "sku": "TAY-NCK-006",
     "collectionHandle": "necklaces",
     "metal": "White Gold",
@@ -373,7 +473,7 @@ export const products: Product[] = [
     "currency": "USD",
     "oneOfAKind": false,
     "certification": null,
-    "description": "A white sapphire suspended in White Gold, from the Margaux line — hand-finished in our Colombo atelier.",
+    "description": "A white sapphire suspended in White Gold, from the Adele line — hand-finished in our Colombo atelier.",
     "swatch": "#dfdbd0",
     "image": "/images/products/necklaces/necklaces-006-1.avif",
     "images": [
@@ -388,7 +488,7 @@ export const products: Product[] = [
   {
     "id": "TAY-NCK-007",
     "handle": "necklaces-007",
-    "title": "Noemie Necklace",
+    "title": "Elodie Necklace",
     "sku": "TAY-NCK-007",
     "collectionHandle": "necklaces",
     "metal": "18k Gold",
@@ -397,7 +497,7 @@ export const products: Product[] = [
     "currency": "USD",
     "oneOfAKind": false,
     "certification": null,
-    "description": "A mixed gemstones suspended in 18k Gold, from the Noemie line — hand-finished in our Colombo atelier.",
+    "description": "A mixed gemstones suspended in 18k Gold, from the Elodie line — hand-finished in our Colombo atelier.",
     "swatch": "#8a6fae",
     "image": "/images/products/necklaces/necklaces-007-1.avif",
     "images": [
@@ -405,14 +505,15 @@ export const products: Product[] = [
       "/images/products/necklaces/necklaces-007-2.avif",
       "/images/products/necklaces/necklaces-007-3.avif",
       "/images/products/necklaces/necklaces-007-4.avif",
-      "/images/products/necklaces/necklaces-007-5.avif"
+      "/images/products/necklaces/necklaces-007-5.avif",
+      "/images/products/necklaces/necklaces-007-6.webm"
     ],
     "isRing": false
   },
   {
     "id": "TAY-NCK-008",
     "handle": "necklaces-008",
-    "title": "Clemence Necklace",
+    "title": "Rosalind Necklace",
     "sku": "TAY-NCK-008",
     "collectionHandle": "necklaces",
     "metal": "White Gold",
@@ -421,7 +522,7 @@ export const products: Product[] = [
     "currency": "USD",
     "oneOfAKind": false,
     "certification": null,
-    "description": "A white sapphire suspended in White Gold, from the Clemence line — hand-finished in our Colombo atelier.",
+    "description": "A white sapphire suspended in White Gold, from the Rosalind line — hand-finished in our Colombo atelier.",
     "swatch": "#dfdbd0",
     "image": "/images/products/necklaces/necklaces-008-1.avif",
     "images": [
@@ -429,14 +530,15 @@ export const products: Product[] = [
       "/images/products/necklaces/necklaces-008-2.avif",
       "/images/products/necklaces/necklaces-008-3.avif",
       "/images/products/necklaces/necklaces-008-4.avif",
-      "/images/products/necklaces/necklaces-008-5.avif"
+      "/images/products/necklaces/necklaces-008-5.avif",
+      "/images/products/necklaces/necklaces-008-6.webm"
     ],
     "isRing": false
   },
   {
     "id": "TAY-NCK-009",
     "handle": "necklaces-009",
-    "title": "Lucienne Necklace",
+    "title": "Vivienne Necklace",
     "sku": "TAY-NCK-009",
     "collectionHandle": "necklaces",
     "metal": "White Gold",
@@ -445,7 +547,7 @@ export const products: Product[] = [
     "currency": "USD",
     "oneOfAKind": false,
     "certification": null,
-    "description": "A mixed gemstones suspended in White Gold, from the Lucienne line — hand-finished in our Colombo atelier.",
+    "description": "A mixed gemstones suspended in White Gold, from the Vivienne line — hand-finished in our Colombo atelier.",
     "swatch": "#8a6fae",
     "image": "/images/products/necklaces/necklaces-009-1.avif",
     "images": [
@@ -453,14 +555,15 @@ export const products: Product[] = [
       "/images/products/necklaces/necklaces-009-2.avif",
       "/images/products/necklaces/necklaces-009-3.avif",
       "/images/products/necklaces/necklaces-009-4.avif",
-      "/images/products/necklaces/necklaces-009-5.avif"
+      "/images/products/necklaces/necklaces-009-5.avif",
+      "/images/products/necklaces/necklaces-009-6.webm"
     ],
     "isRing": false
   },
   {
     "id": "TAY-NCK-010",
     "handle": "necklaces-010",
-    "title": "Adele Necklace",
+    "title": "Camille Necklace",
     "sku": "TAY-NCK-010",
     "collectionHandle": "necklaces",
     "metal": "White Gold",
@@ -473,7 +576,7 @@ export const products: Product[] = [
       "reportNumber": "GIA-NCK1000370",
       "origin": "Ceylon (Sri Lanka)"
     },
-    "description": "A blue sapphire suspended in White Gold, from the Adele line — hand-finished in our Colombo atelier.",
+    "description": "A blue sapphire suspended in White Gold, from the Camille line — hand-finished in our Colombo atelier.",
     "swatch": "#2f4c82",
     "image": "/images/products/necklaces/necklaces-010-1.avif",
     "images": [
@@ -488,7 +591,7 @@ export const products: Product[] = [
   {
     "id": "TAY-NCK-011",
     "handle": "necklaces-011",
-    "title": "Elodie Necklace",
+    "title": "Beatrix Necklace",
     "sku": "TAY-NCK-011",
     "collectionHandle": "necklaces",
     "metal": "White Gold",
@@ -497,7 +600,7 @@ export const products: Product[] = [
     "currency": "USD",
     "oneOfAKind": false,
     "certification": null,
-    "description": "A mixed gemstones suspended in White Gold, from the Elodie line — hand-finished in our Colombo atelier.",
+    "description": "A mixed gemstones suspended in White Gold, from the Beatrix line — hand-finished in our Colombo atelier.",
     "swatch": "#8a6fae",
     "image": "/images/products/necklaces/necklaces-011-1.avif",
     "images": [
@@ -512,7 +615,7 @@ export const products: Product[] = [
   {
     "id": "TAY-NCK-012",
     "handle": "necklaces-012",
-    "title": "Rosalind Necklace",
+    "title": "Ophelie Necklace",
     "sku": "TAY-NCK-012",
     "collectionHandle": "necklaces",
     "metal": "White Gold",
@@ -521,21 +624,22 @@ export const products: Product[] = [
     "currency": "USD",
     "oneOfAKind": false,
     "certification": null,
-    "description": "A white sapphire suspended in White Gold, from the Rosalind line — hand-finished in our Colombo atelier.",
+    "description": "A white sapphire suspended in White Gold, from the Ophelie line — hand-finished in our Colombo atelier.",
     "swatch": "#dfdbd0",
     "image": "/images/products/necklaces/necklaces-012-1.avif",
     "images": [
       "/images/products/necklaces/necklaces-012-1.avif",
       "/images/products/necklaces/necklaces-012-2.avif",
       "/images/products/necklaces/necklaces-012-3.avif",
-      "/images/products/necklaces/necklaces-012-4.avif"
+      "/images/products/necklaces/necklaces-012-4.avif",
+      "/images/products/necklaces/necklaces-012-5.webm"
     ],
     "isRing": false
   },
   {
     "id": "TAY-NCK-013",
     "handle": "necklaces-013",
-    "title": "Vivienne Necklace",
+    "title": "Anouk Necklace",
     "sku": "TAY-NCK-013",
     "collectionHandle": "necklaces",
     "metal": "18k Gold",
@@ -544,7 +648,7 @@ export const products: Product[] = [
     "currency": "USD",
     "oneOfAKind": false,
     "certification": null,
-    "description": "A mixed gemstones suspended in 18k Gold, from the Vivienne line — hand-finished in our Colombo atelier.",
+    "description": "A mixed gemstones suspended in 18k Gold, from the Anouk line — hand-finished in our Colombo atelier.",
     "swatch": "#8a6fae",
     "image": "/images/products/necklaces/necklaces-013-1.avif",
     "images": [
@@ -559,7 +663,7 @@ export const products: Product[] = [
   {
     "id": "TAY-PND-001",
     "handle": "pendants-001",
-    "title": "Camille Pendant",
+    "title": "Mirabelle Pendant",
     "sku": "TAY-PND-001",
     "collectionHandle": "pendants",
     "metal": "White Gold",
@@ -568,7 +672,7 @@ export const products: Product[] = [
     "currency": "USD",
     "oneOfAKind": false,
     "certification": null,
-    "description": "A white sapphire suspended in White Gold, from the Camille line — hand-finished in our Colombo atelier.",
+    "description": "A white sapphire suspended in White Gold, from the Mirabelle line — hand-finished in our Colombo atelier.",
     "swatch": "#dfdbd0",
     "image": "/images/products/pendants/pendants-001-1.avif",
     "images": [
@@ -582,7 +686,7 @@ export const products: Product[] = [
   {
     "id": "TAY-PND-002",
     "handle": "pendants-002",
-    "title": "Beatrix Pendant",
+    "title": "Cosima Pendant",
     "sku": "TAY-PND-002",
     "collectionHandle": "pendants",
     "metal": "18k Gold",
@@ -591,21 +695,22 @@ export const products: Product[] = [
     "currency": "USD",
     "oneOfAKind": false,
     "certification": null,
-    "description": "A white sapphire suspended in 18k Gold, from the Beatrix line — hand-finished in our Colombo atelier.",
+    "description": "A white sapphire suspended in 18k Gold, from the Cosima line — hand-finished in our Colombo atelier.",
     "swatch": "#dfdbd0",
     "image": "/images/products/pendants/pendants-002-1.avif",
     "images": [
       "/images/products/pendants/pendants-002-1.avif",
       "/images/products/pendants/pendants-002-2.avif",
       "/images/products/pendants/pendants-002-3.avif",
-      "/images/products/pendants/pendants-002-4.avif"
+      "/images/products/pendants/pendants-002-4.avif",
+      "/images/products/pendants/pendants-002-5.webm"
     ],
     "isRing": false
   },
   {
     "id": "TAY-PND-003",
     "handle": "pendants-003",
-    "title": "Ophelie Pendant",
+    "title": "Leontine Pendant",
     "sku": "TAY-PND-003",
     "collectionHandle": "pendants",
     "metal": "18k Gold",
@@ -614,7 +719,7 @@ export const products: Product[] = [
     "currency": "USD",
     "oneOfAKind": false,
     "certification": null,
-    "description": "A round white sapphire suspended in 18k Gold, from the Ophelie line — hand-finished in our Colombo atelier.",
+    "description": "A round white sapphire suspended in 18k Gold, from the Leontine line — hand-finished in our Colombo atelier.",
     "swatch": "#dfdbd0",
     "image": "/images/products/pendants/pendants-003-1.avif",
     "images": [
@@ -629,7 +734,7 @@ export const products: Product[] = [
   {
     "id": "TAY-PND-004",
     "handle": "pendants-004",
-    "title": "Anouk Pendant",
+    "title": "Perrine Pendant",
     "sku": "TAY-PND-004",
     "collectionHandle": "pendants",
     "metal": "White Gold",
@@ -642,21 +747,22 @@ export const products: Product[] = [
       "reportNumber": "GRS-PND1000148",
       "origin": "Ceylon (Sri Lanka)"
     },
-    "description": "A octagon blue sapphire suspended in White Gold, from the Anouk line — hand-finished in our Colombo atelier.",
+    "description": "A octagon blue sapphire suspended in White Gold, from the Perrine line — hand-finished in our Colombo atelier.",
     "swatch": "#2f4c82",
     "image": "/images/products/pendants/pendants-004-1.avif",
     "images": [
       "/images/products/pendants/pendants-004-1.avif",
       "/images/products/pendants/pendants-004-2.avif",
       "/images/products/pendants/pendants-004-3.avif",
-      "/images/products/pendants/pendants-004-4.avif"
+      "/images/products/pendants/pendants-004-4.avif",
+      "/images/products/pendants/pendants-004-5.webm"
     ],
     "isRing": false
   },
   {
     "id": "TAY-PND-005",
     "handle": "pendants-005",
-    "title": "Mirabelle Pendant",
+    "title": "Sidonie Pendant",
     "sku": "TAY-PND-005",
     "collectionHandle": "pendants",
     "metal": "18k Rose Gold",
@@ -665,7 +771,7 @@ export const products: Product[] = [
     "currency": "USD",
     "oneOfAKind": false,
     "certification": null,
-    "description": "A mixed gemstones suspended in 18k Rose Gold, from the Mirabelle line — hand-finished in our Colombo atelier.",
+    "description": "A mixed gemstones suspended in 18k Rose Gold, from the Sidonie line — hand-finished in our Colombo atelier.",
     "swatch": "#8a6fae",
     "image": "/images/products/pendants/pendants-005-1.avif",
     "images": [
@@ -680,7 +786,7 @@ export const products: Product[] = [
   {
     "id": "TAY-PND-006",
     "handle": "pendants-006",
-    "title": "Cosima Pendant",
+    "title": "Albane Pendant",
     "sku": "TAY-PND-006",
     "collectionHandle": "pendants",
     "metal": "White Gold",
@@ -689,7 +795,7 @@ export const products: Product[] = [
     "currency": "USD",
     "oneOfAKind": false,
     "certification": null,
-    "description": "A white sapphire suspended in White Gold, from the Cosima line — hand-finished in our Colombo atelier.",
+    "description": "A white sapphire suspended in White Gold, from the Albane line — hand-finished in our Colombo atelier.",
     "swatch": "#dfdbd0",
     "image": "/images/products/pendants/pendants-006-1.avif",
     "images": [
@@ -704,7 +810,7 @@ export const products: Product[] = [
   {
     "id": "TAY-PND-007",
     "handle": "pendants-007",
-    "title": "Leontine Pendant",
+    "title": "Capucine Pendant",
     "sku": "TAY-PND-007",
     "collectionHandle": "pendants",
     "metal": "White Gold",
@@ -713,7 +819,7 @@ export const products: Product[] = [
     "currency": "USD",
     "oneOfAKind": false,
     "certification": null,
-    "description": "A blue sapphire suspended in White Gold, from the Leontine line — hand-finished in our Colombo atelier.",
+    "description": "A blue sapphire suspended in White Gold, from the Capucine line — hand-finished in our Colombo atelier.",
     "swatch": "#2f4c82",
     "image": "/images/products/pendants/pendants-007-1.avif",
     "images": [
@@ -721,14 +827,15 @@ export const products: Product[] = [
       "/images/products/pendants/pendants-007-2.avif",
       "/images/products/pendants/pendants-007-3.avif",
       "/images/products/pendants/pendants-007-4.avif",
-      "/images/products/pendants/pendants-007-5.avif"
+      "/images/products/pendants/pendants-007-5.avif",
+      "/images/products/pendants/pendants-007-6.webm"
     ],
     "isRing": false
   },
   {
     "id": "TAY-PND-008",
     "handle": "pendants-008",
-    "title": "Perrine Pendant",
+    "title": "Lisette Pendant",
     "sku": "TAY-PND-008",
     "collectionHandle": "pendants",
     "metal": "White Gold",
@@ -737,7 +844,7 @@ export const products: Product[] = [
     "currency": "USD",
     "oneOfAKind": false,
     "certification": null,
-    "description": "A pink sapphire suspended in White Gold, from the Perrine line — hand-finished in our Colombo atelier.",
+    "description": "A pink sapphire suspended in White Gold, from the Lisette line — hand-finished in our Colombo atelier.",
     "swatch": "#b76e79",
     "image": "/images/products/pendants/pendants-008-1.avif",
     "images": [
@@ -752,7 +859,7 @@ export const products: Product[] = [
   {
     "id": "TAY-PND-009",
     "handle": "pendants-009",
-    "title": "Sidonie Pendant",
+    "title": "Yseult Pendant",
     "sku": "TAY-PND-009",
     "collectionHandle": "pendants",
     "metal": "White Gold",
@@ -761,7 +868,7 @@ export const products: Product[] = [
     "currency": "USD",
     "oneOfAKind": false,
     "certification": null,
-    "description": "A white sapphire suspended in White Gold, from the Sidonie line — hand-finished in our Colombo atelier.",
+    "description": "A white sapphire suspended in White Gold, from the Yseult line — hand-finished in our Colombo atelier.",
     "swatch": "#dfdbd0",
     "image": "/images/products/pendants/pendants-009-1.avif",
     "images": [
@@ -776,7 +883,7 @@ export const products: Product[] = [
   {
     "id": "TAY-PND-010",
     "handle": "pendants-010",
-    "title": "Albane Pendant",
+    "title": "Bathilde Pendant",
     "sku": "TAY-PND-010",
     "collectionHandle": "pendants",
     "metal": "18k Rose Gold",
@@ -785,7 +892,7 @@ export const products: Product[] = [
     "currency": "USD",
     "oneOfAKind": false,
     "certification": null,
-    "description": "A marquise white sapphire suspended in 18k Rose Gold, from the Albane line — hand-finished in our Colombo atelier.",
+    "description": "A marquise white sapphire suspended in 18k Rose Gold, from the Bathilde line — hand-finished in our Colombo atelier.",
     "swatch": "#dfdbd0",
     "image": "/images/products/pendants/pendants-010-1.avif",
     "images": [
@@ -800,7 +907,7 @@ export const products: Product[] = [
   {
     "id": "TAY-PND-011",
     "handle": "pendants-011",
-    "title": "Capucine Pendant",
+    "title": "Sabine Pendant",
     "sku": "TAY-PND-011",
     "collectionHandle": "pendants",
     "metal": "White Gold",
@@ -809,7 +916,7 @@ export const products: Product[] = [
     "currency": "USD",
     "oneOfAKind": false,
     "certification": null,
-    "description": "A cushion blue sapphire suspended in White Gold, from the Capucine line — hand-finished in our Colombo atelier.",
+    "description": "A cushion blue sapphire suspended in White Gold, from the Sabine line — hand-finished in our Colombo atelier.",
     "swatch": "#2f4c82",
     "image": "/images/products/pendants/pendants-011-1.avif",
     "images": [
@@ -817,14 +924,15 @@ export const products: Product[] = [
       "/images/products/pendants/pendants-011-2.avif",
       "/images/products/pendants/pendants-011-3.avif",
       "/images/products/pendants/pendants-011-4.avif",
-      "/images/products/pendants/pendants-011-5.avif"
+      "/images/products/pendants/pendants-011-5.avif",
+      "/images/products/pendants/pendants-011-6.webm"
     ],
     "isRing": false
   },
   {
     "id": "TAY-PND-012",
     "handle": "pendants-012",
-    "title": "Lisette Pendant",
+    "title": "Honorine Pendant",
     "sku": "TAY-PND-012",
     "collectionHandle": "pendants",
     "metal": "White Gold",
@@ -837,7 +945,7 @@ export const products: Product[] = [
       "reportNumber": "GRS-PND1000444",
       "origin": "Ceylon (Sri Lanka)"
     },
-    "description": "A round blue sapphire suspended in White Gold, from the Lisette line — hand-finished in our Colombo atelier.",
+    "description": "A round blue sapphire suspended in White Gold, from the Honorine line — hand-finished in our Colombo atelier.",
     "swatch": "#2f4c82",
     "image": "/images/products/pendants/pendants-012-1.avif",
     "images": [
@@ -852,7 +960,7 @@ export const products: Product[] = [
   {
     "id": "TAY-PND-013",
     "handle": "pendants-013",
-    "title": "Yseult Pendant",
+    "title": "Emmeline Pendant",
     "sku": "TAY-PND-013",
     "collectionHandle": "pendants",
     "metal": "White Gold",
@@ -861,7 +969,7 @@ export const products: Product[] = [
     "currency": "USD",
     "oneOfAKind": false,
     "certification": null,
-    "description": "A cushion white sapphire suspended in White Gold, from the Yseult line — hand-finished in our Colombo atelier.",
+    "description": "A cushion white sapphire suspended in White Gold, from the Emmeline line — hand-finished in our Colombo atelier.",
     "swatch": "#dfdbd0",
     "image": "/images/products/pendants/pendants-013-1.avif",
     "images": [
@@ -876,7 +984,7 @@ export const products: Product[] = [
   {
     "id": "TAY-PND-014",
     "handle": "pendants-014",
-    "title": "Bathilde Pendant",
+    "title": "Aurore Pendant",
     "sku": "TAY-PND-014",
     "collectionHandle": "pendants",
     "metal": "Mixed Metals",
@@ -885,7 +993,7 @@ export const products: Product[] = [
     "currency": "USD",
     "oneOfAKind": false,
     "certification": null,
-    "description": "A round white sapphire suspended in Mixed Metals, from the Bathilde line — hand-finished in our Colombo atelier.",
+    "description": "A round white sapphire suspended in Mixed Metals, from the Aurore line — hand-finished in our Colombo atelier.",
     "swatch": "#dfdbd0",
     "image": "/images/products/pendants/pendants-014-1.avif",
     "images": [
@@ -900,7 +1008,7 @@ export const products: Product[] = [
   {
     "id": "TAY-PND-015",
     "handle": "pendants-015",
-    "title": "Sabine Pendant",
+    "title": "Ninon Pendant",
     "sku": "TAY-PND-015",
     "collectionHandle": "pendants",
     "metal": "White Gold",
@@ -909,7 +1017,7 @@ export const products: Product[] = [
     "currency": "USD",
     "oneOfAKind": false,
     "certification": null,
-    "description": "A white sapphire suspended in White Gold, from the Sabine line — hand-finished in our Colombo atelier.",
+    "description": "A white sapphire suspended in White Gold, from the Ninon line — hand-finished in our Colombo atelier.",
     "swatch": "#dfdbd0",
     "image": "/images/products/pendants/pendants-015-1.avif",
     "images": [
@@ -924,7 +1032,7 @@ export const products: Product[] = [
   {
     "id": "TAY-PND-016",
     "handle": "pendants-016",
-    "title": "Honorine Pendant",
+    "title": "Aurelia Pendant",
     "sku": "TAY-PND-016",
     "collectionHandle": "pendants",
     "metal": "White Gold",
@@ -933,7 +1041,7 @@ export const products: Product[] = [
     "currency": "USD",
     "oneOfAKind": false,
     "certification": null,
-    "description": "A white sapphire suspended in White Gold, from the Honorine line — hand-finished in our Colombo atelier.",
+    "description": "A white sapphire suspended in White Gold, from the Aurelia line — hand-finished in our Colombo atelier.",
     "swatch": "#dfdbd0",
     "image": "/images/products/pendants/pendants-016-1.avif",
     "images": [
@@ -941,14 +1049,15 @@ export const products: Product[] = [
       "/images/products/pendants/pendants-016-2.avif",
       "/images/products/pendants/pendants-016-3.avif",
       "/images/products/pendants/pendants-016-4.avif",
-      "/images/products/pendants/pendants-016-5.avif"
+      "/images/products/pendants/pendants-016-5.avif",
+      "/images/products/pendants/pendants-016-6.webm"
     ],
     "isRing": false
   },
   {
     "id": "TAY-PND-017",
     "handle": "pendants-017",
-    "title": "Emmeline Pendant",
+    "title": "Celestine Pendant",
     "sku": "TAY-PND-017",
     "collectionHandle": "pendants",
     "metal": "White Gold",
@@ -957,7 +1066,7 @@ export const products: Product[] = [
     "currency": "USD",
     "oneOfAKind": false,
     "certification": null,
-    "description": "A mixed gemstones suspended in White Gold, from the Emmeline line — hand-finished in our Colombo atelier.",
+    "description": "A mixed gemstones suspended in White Gold, from the Celestine line — hand-finished in our Colombo atelier.",
     "swatch": "#8a6fae",
     "image": "/images/products/pendants/pendants-017-1.avif",
     "images": [
@@ -965,14 +1074,15 @@ export const products: Product[] = [
       "/images/products/pendants/pendants-017-2.avif",
       "/images/products/pendants/pendants-017-3.avif",
       "/images/products/pendants/pendants-017-4.avif",
-      "/images/products/pendants/pendants-017-5.avif"
+      "/images/products/pendants/pendants-017-5.avif",
+      "/images/products/pendants/pendants-017-6.webm"
     ],
     "isRing": false
   },
   {
     "id": "TAY-PND-018",
     "handle": "pendants-018",
-    "title": "Aurore Pendant",
+    "title": "Vespera Pendant",
     "sku": "TAY-PND-018",
     "collectionHandle": "pendants",
     "metal": "18k Gold",
@@ -981,21 +1091,22 @@ export const products: Product[] = [
     "currency": "USD",
     "oneOfAKind": false,
     "certification": null,
-    "description": "A ruby suspended in 18k Gold, from the Aurore line — hand-finished in our Colombo atelier.",
+    "description": "A ruby suspended in 18k Gold, from the Vespera line — hand-finished in our Colombo atelier.",
     "swatch": "#7a2230",
     "image": "/images/products/pendants/pendants-018-1.avif",
     "images": [
       "/images/products/pendants/pendants-018-1.avif",
       "/images/products/pendants/pendants-018-2.avif",
       "/images/products/pendants/pendants-018-3.avif",
-      "/images/products/pendants/pendants-018-4.avif"
+      "/images/products/pendants/pendants-018-4.avif",
+      "/images/products/pendants/pendants-018-5.webm"
     ],
     "isRing": false
   },
   {
     "id": "TAY-PND-019",
     "handle": "pendants-019",
-    "title": "Ninon Pendant",
+    "title": "Seraphine Pendant",
     "sku": "TAY-PND-019",
     "collectionHandle": "pendants",
     "metal": "White Gold",
@@ -1004,7 +1115,7 @@ export const products: Product[] = [
     "currency": "USD",
     "oneOfAKind": false,
     "certification": null,
-    "description": "A round white sapphire suspended in White Gold, from the Ninon line — hand-finished in our Colombo atelier.",
+    "description": "A round white sapphire suspended in White Gold, from the Seraphine line — hand-finished in our Colombo atelier.",
     "swatch": "#dfdbd0",
     "image": "/images/products/pendants/pendants-019-1.avif",
     "images": [
@@ -1018,7 +1129,7 @@ export const products: Product[] = [
   {
     "id": "TAY-PND-020",
     "handle": "pendants-020",
-    "title": "Aurelia Pendant",
+    "title": "Ondine Pendant",
     "sku": "TAY-PND-020",
     "collectionHandle": "pendants",
     "metal": "White Gold",
@@ -1027,7 +1138,7 @@ export const products: Product[] = [
     "currency": "USD",
     "oneOfAKind": false,
     "certification": null,
-    "description": "A white sapphire suspended in White Gold, from the Aurelia line — hand-finished in our Colombo atelier.",
+    "description": "A white sapphire suspended in White Gold, from the Ondine line — hand-finished in our Colombo atelier.",
     "swatch": "#dfdbd0",
     "image": "/images/products/pendants/pendants-020-1.avif",
     "images": [
@@ -1041,7 +1152,7 @@ export const products: Product[] = [
   {
     "id": "TAY-PND-021",
     "handle": "pendants-021",
-    "title": "Celestine Pendant",
+    "title": "Calliope Pendant",
     "sku": "TAY-PND-021",
     "collectionHandle": "pendants",
     "metal": "White Gold",
@@ -1050,7 +1161,7 @@ export const products: Product[] = [
     "currency": "USD",
     "oneOfAKind": false,
     "certification": null,
-    "description": "A blue sapphire suspended in White Gold, from the Celestine line — hand-finished in our Colombo atelier.",
+    "description": "A blue sapphire suspended in White Gold, from the Calliope line — hand-finished in our Colombo atelier.",
     "swatch": "#2f4c82",
     "image": "/images/products/pendants/pendants-021-1.avif",
     "images": [
@@ -1064,7 +1175,7 @@ export const products: Product[] = [
   {
     "id": "TAY-EAR-001",
     "handle": "earrings-001",
-    "title": "Vespera Drop Earrings",
+    "title": "Isolde Drop Earrings",
     "sku": "TAY-EAR-001",
     "collectionHandle": "earrings",
     "metal": "White Gold",
@@ -1073,7 +1184,7 @@ export const products: Product[] = [
     "currency": "USD",
     "oneOfAKind": false,
     "certification": null,
-    "description": "A round white sapphire suspended in White Gold, from the Vespera line — hand-finished in our Colombo atelier.",
+    "description": "A round white sapphire suspended in White Gold, from the Isolde line — hand-finished in our Colombo atelier.",
     "swatch": "#dfdbd0",
     "image": "/images/products/earrings/earrings-001-1.avif",
     "images": [
@@ -1088,7 +1199,7 @@ export const products: Product[] = [
   {
     "id": "TAY-EAR-002",
     "handle": "earrings-002",
-    "title": "Seraphine Drop Earrings",
+    "title": "Marguerite Drop Earrings",
     "sku": "TAY-EAR-002",
     "collectionHandle": "earrings",
     "metal": "White Gold",
@@ -1097,7 +1208,7 @@ export const products: Product[] = [
     "currency": "USD",
     "oneOfAKind": false,
     "certification": null,
-    "description": "A pink sapphire suspended in White Gold, from the Seraphine line — hand-finished in our Colombo atelier.",
+    "description": "A pink sapphire suspended in White Gold, from the Marguerite line — hand-finished in our Colombo atelier.",
     "swatch": "#b76e79",
     "image": "/images/products/earrings/earrings-002-1.avif",
     "images": [
@@ -1111,7 +1222,7 @@ export const products: Product[] = [
   {
     "id": "TAY-EAR-003",
     "handle": "earrings-003",
-    "title": "Ondine Drop Earrings",
+    "title": "Colette Drop Earrings",
     "sku": "TAY-EAR-003",
     "collectionHandle": "earrings",
     "metal": "18k Gold",
@@ -1120,20 +1231,21 @@ export const products: Product[] = [
     "currency": "USD",
     "oneOfAKind": false,
     "certification": null,
-    "description": "A mixed gemstones suspended in 18k Gold, from the Ondine line — hand-finished in our Colombo atelier.",
+    "description": "A mixed gemstones suspended in 18k Gold, from the Colette line — hand-finished in our Colombo atelier.",
     "swatch": "#8a6fae",
     "image": "/images/products/earrings/earrings-003-1.avif",
     "images": [
       "/images/products/earrings/earrings-003-1.avif",
       "/images/products/earrings/earrings-003-2.avif",
-      "/images/products/earrings/earrings-003-3.avif"
+      "/images/products/earrings/earrings-003-3.avif",
+      "/images/products/earrings/earrings-003-4.webm"
     ],
     "isRing": false
   },
   {
     "id": "TAY-EAR-004",
     "handle": "earrings-004",
-    "title": "Calliope Drop Earrings",
+    "title": "Genevieve Drop Earrings",
     "sku": "TAY-EAR-004",
     "collectionHandle": "earrings",
     "metal": "18k Gold",
@@ -1142,7 +1254,7 @@ export const products: Product[] = [
     "currency": "USD",
     "oneOfAKind": false,
     "certification": null,
-    "description": "A mixed gemstones suspended in 18k Gold, from the Calliope line — hand-finished in our Colombo atelier.",
+    "description": "A mixed gemstones suspended in 18k Gold, from the Genevieve line — hand-finished in our Colombo atelier.",
     "swatch": "#8a6fae",
     "image": "/images/products/earrings/earrings-004-1.avif",
     "images": [
@@ -1156,7 +1268,7 @@ export const products: Product[] = [
   {
     "id": "TAY-EAR-005",
     "handle": "earrings-005",
-    "title": "Isolde Drop Earrings",
+    "title": "Amandine Drop Earrings",
     "sku": "TAY-EAR-005",
     "collectionHandle": "earrings",
     "metal": "White Gold",
@@ -1165,7 +1277,7 @@ export const products: Product[] = [
     "currency": "USD",
     "oneOfAKind": false,
     "certification": null,
-    "description": "A emerald suspended in White Gold, from the Isolde line — hand-finished in our Colombo atelier.",
+    "description": "A emerald suspended in White Gold, from the Amandine line — hand-finished in our Colombo atelier.",
     "swatch": "#2f6b4c",
     "image": "/images/products/earrings/earrings-005-1.avif",
     "images": [
@@ -1180,7 +1292,7 @@ export const products: Product[] = [
   {
     "id": "TAY-EAR-006",
     "handle": "earrings-006",
-    "title": "Marguerite Drop Earrings",
+    "title": "Delphine Drop Earrings",
     "sku": "TAY-EAR-006",
     "collectionHandle": "earrings",
     "metal": "White Gold",
@@ -1189,7 +1301,7 @@ export const products: Product[] = [
     "currency": "USD",
     "oneOfAKind": false,
     "certification": null,
-    "description": "A round white sapphire suspended in White Gold, from the Marguerite line — hand-finished in our Colombo atelier.",
+    "description": "A round white sapphire suspended in White Gold, from the Delphine line — hand-finished in our Colombo atelier.",
     "swatch": "#dfdbd0",
     "image": "/images/products/earrings/earrings-006-1.avif",
     "images": [
@@ -1204,7 +1316,7 @@ export const products: Product[] = [
   {
     "id": "TAY-EAR-007",
     "handle": "earrings-007",
-    "title": "Colette Drop Earrings",
+    "title": "Oceane Drop Earrings",
     "sku": "TAY-EAR-007",
     "collectionHandle": "earrings",
     "metal": "18k Gold",
@@ -1213,7 +1325,7 @@ export const products: Product[] = [
     "currency": "USD",
     "oneOfAKind": false,
     "certification": null,
-    "description": "A round white sapphire suspended in 18k Gold, from the Colette line — hand-finished in our Colombo atelier.",
+    "description": "A round white sapphire suspended in 18k Gold, from the Oceane line — hand-finished in our Colombo atelier.",
     "swatch": "#dfdbd0",
     "image": "/images/products/earrings/earrings-007-1.avif",
     "images": [
@@ -1227,7 +1339,7 @@ export const products: Product[] = [
   {
     "id": "TAY-BRC-001",
     "handle": "bracelets-001",
-    "title": "Genevieve Bracelet",
+    "title": "Sylvie Bracelet",
     "sku": "TAY-BRC-001",
     "collectionHandle": "bracelets",
     "metal": "18k Rose Gold",
@@ -1236,7 +1348,7 @@ export const products: Product[] = [
     "currency": "USD",
     "oneOfAKind": false,
     "certification": null,
-    "description": "A white sapphire arranged in 18k Rose Gold, from the Genevieve line — hand-finished in our Colombo atelier.",
+    "description": "A white sapphire arranged in 18k Rose Gold, from the Sylvie line — hand-finished in our Colombo atelier.",
     "swatch": "#dfdbd0",
     "image": "/images/products/bracelets/bracelets-001-1.avif",
     "images": [
@@ -1251,7 +1363,7 @@ export const products: Product[] = [
   {
     "id": "TAY-BRC-002",
     "handle": "bracelets-002",
-    "title": "Amandine Bracelet",
+    "title": "Fleur Bracelet",
     "sku": "TAY-BRC-002",
     "collectionHandle": "bracelets",
     "metal": "White Gold",
@@ -1260,7 +1372,7 @@ export const products: Product[] = [
     "currency": "USD",
     "oneOfAKind": false,
     "certification": null,
-    "description": "A white sapphire arranged in White Gold, from the Amandine line — hand-finished in our Colombo atelier.",
+    "description": "A white sapphire arranged in White Gold, from the Fleur line — hand-finished in our Colombo atelier.",
     "swatch": "#dfdbd0",
     "image": "/images/products/bracelets/bracelets-002-1.avif",
     "images": [
@@ -1275,7 +1387,7 @@ export const products: Product[] = [
   {
     "id": "TAY-BRC-003",
     "handle": "bracelets-003",
-    "title": "Delphine Bracelet",
+    "title": "Margaux Bracelet",
     "sku": "TAY-BRC-003",
     "collectionHandle": "bracelets",
     "metal": "White Gold",
@@ -1284,7 +1396,7 @@ export const products: Product[] = [
     "currency": "USD",
     "oneOfAKind": false,
     "certification": null,
-    "description": "A white sapphire arranged in White Gold, from the Delphine line — hand-finished in our Colombo atelier.",
+    "description": "A white sapphire arranged in White Gold, from the Margaux line — hand-finished in our Colombo atelier.",
     "swatch": "#dfdbd0",
     "image": "/images/products/bracelets/bracelets-003-1.avif",
     "images": [
@@ -1299,7 +1411,7 @@ export const products: Product[] = [
   {
     "id": "TAY-BRC-004",
     "handle": "bracelets-004",
-    "title": "Oceane Bracelet",
+    "title": "Noemie Bracelet",
     "sku": "TAY-BRC-004",
     "collectionHandle": "bracelets",
     "metal": "White Gold",
@@ -1308,7 +1420,7 @@ export const products: Product[] = [
     "currency": "USD",
     "oneOfAKind": false,
     "certification": null,
-    "description": "A white sapphire arranged in White Gold, from the Oceane line — hand-finished in our Colombo atelier.",
+    "description": "A white sapphire arranged in White Gold, from the Noemie line — hand-finished in our Colombo atelier.",
     "swatch": "#dfdbd0",
     "image": "/images/products/bracelets/bracelets-004-1.avif",
     "images": [
@@ -1322,7 +1434,7 @@ export const products: Product[] = [
   {
     "id": "TAY-BRC-005",
     "handle": "bracelets-005",
-    "title": "Sylvie Bracelet",
+    "title": "Clemence Bracelet",
     "sku": "TAY-BRC-005",
     "collectionHandle": "bracelets",
     "metal": "White Gold",
@@ -1331,7 +1443,7 @@ export const products: Product[] = [
     "currency": "USD",
     "oneOfAKind": false,
     "certification": null,
-    "description": "A emerald arranged in White Gold, from the Sylvie line — hand-finished in our Colombo atelier.",
+    "description": "A emerald arranged in White Gold, from the Clemence line — hand-finished in our Colombo atelier.",
     "swatch": "#2f6b4c",
     "image": "/images/products/bracelets/bracelets-005-1.avif",
     "images": [
@@ -1345,7 +1457,7 @@ export const products: Product[] = [
   {
     "id": "TAY-BRC-006",
     "handle": "bracelets-006",
-    "title": "Fleur Bracelet",
+    "title": "Lucienne Bracelet",
     "sku": "TAY-BRC-006",
     "collectionHandle": "bracelets",
     "metal": "White Gold",
@@ -1354,7 +1466,7 @@ export const products: Product[] = [
     "currency": "USD",
     "oneOfAKind": false,
     "certification": null,
-    "description": "A white sapphire arranged in White Gold, from the Fleur line — hand-finished in our Colombo atelier.",
+    "description": "A white sapphire arranged in White Gold, from the Lucienne line — hand-finished in our Colombo atelier.",
     "swatch": "#dfdbd0",
     "image": "/images/products/bracelets/bracelets-006-1.avif",
     "images": [
@@ -1362,14 +1474,16 @@ export const products: Product[] = [
       "/images/products/bracelets/bracelets-006-2.avif",
       "/images/products/bracelets/bracelets-006-3.avif",
       "/images/products/bracelets/bracelets-006-4.avif",
-      "/images/products/bracelets/bracelets-006-5.avif"
+      "/images/products/bracelets/bracelets-006-5.avif",
+      "/images/products/bracelets/bracelets-006-6.webm",
+      "/images/products/bracelets/bracelets-006-7.webm"
     ],
     "isRing": false
   },
   {
     "id": "TAY-BRC-007",
     "handle": "bracelets-007",
-    "title": "Margaux Bracelet",
+    "title": "Adele Bracelet",
     "sku": "TAY-BRC-007",
     "collectionHandle": "bracelets",
     "metal": "18k Gold",
@@ -1378,7 +1492,7 @@ export const products: Product[] = [
     "currency": "USD",
     "oneOfAKind": false,
     "certification": null,
-    "description": "A round mixed gemstones arranged in 18k Gold, from the Margaux line — hand-finished in our Colombo atelier.",
+    "description": "A round mixed gemstones arranged in 18k Gold, from the Adele line — hand-finished in our Colombo atelier.",
     "swatch": "#8a6fae",
     "image": "/images/products/bracelets/bracelets-007-1.avif",
     "images": [
@@ -1392,7 +1506,7 @@ export const products: Product[] = [
   {
     "id": "TAY-BNG-001",
     "handle": "bangles-001",
-    "title": "Noemie Bangle",
+    "title": "Elodie Bangle",
     "sku": "TAY-BNG-001",
     "collectionHandle": "bangles",
     "metal": "18k Gold",
@@ -1401,7 +1515,7 @@ export const products: Product[] = [
     "currency": "USD",
     "oneOfAKind": false,
     "certification": null,
-    "description": "A mixed gemstones arranged in 18k Gold, from the Noemie line — hand-finished in our Colombo atelier.",
+    "description": "A mixed gemstones arranged in 18k Gold, from the Elodie line — hand-finished in our Colombo atelier.",
     "swatch": "#8a6fae",
     "image": "/images/products/bangles/bangles-001-1.avif",
     "images": [
@@ -1415,7 +1529,7 @@ export const products: Product[] = [
   {
     "id": "TAY-BNG-002",
     "handle": "bangles-002",
-    "title": "Clemence Bangle",
+    "title": "Rosalind Bangle",
     "sku": "TAY-BNG-002",
     "collectionHandle": "bangles",
     "metal": "18k Gold",
@@ -1424,21 +1538,22 @@ export const products: Product[] = [
     "currency": "USD",
     "oneOfAKind": false,
     "certification": null,
-    "description": "A pear ruby arranged in 18k Gold, from the Clemence line — hand-finished in our Colombo atelier.",
+    "description": "A pear ruby arranged in 18k Gold, from the Rosalind line — hand-finished in our Colombo atelier.",
     "swatch": "#7a2230",
     "image": "/images/products/bangles/bangles-002-1.avif",
     "images": [
       "/images/products/bangles/bangles-002-1.avif",
       "/images/products/bangles/bangles-002-2.avif",
       "/images/products/bangles/bangles-002-3.avif",
-      "/images/products/bangles/bangles-002-4.avif"
+      "/images/products/bangles/bangles-002-4.avif",
+      "/images/products/bangles/bangles-002-5.webm"
     ],
     "isRing": false
   },
   {
     "id": "TAY-BNG-003",
     "handle": "bangles-003",
-    "title": "Lucienne Bangle",
+    "title": "Vivienne Bangle",
     "sku": "TAY-BNG-003",
     "collectionHandle": "bangles",
     "metal": "White Gold",
@@ -1447,21 +1562,22 @@ export const products: Product[] = [
     "currency": "USD",
     "oneOfAKind": false,
     "certification": null,
-    "description": "A white sapphire arranged in White Gold, from the Lucienne line — hand-finished in our Colombo atelier.",
+    "description": "A white sapphire arranged in White Gold, from the Vivienne line — hand-finished in our Colombo atelier.",
     "swatch": "#dfdbd0",
     "image": "/images/products/bangles/bangles-003-1.avif",
     "images": [
       "/images/products/bangles/bangles-003-1.avif",
       "/images/products/bangles/bangles-003-2.avif",
       "/images/products/bangles/bangles-003-3.avif",
-      "/images/products/bangles/bangles-003-4.avif"
+      "/images/products/bangles/bangles-003-4.avif",
+      "/images/products/bangles/bangles-003-5.webm"
     ],
     "isRing": false
   },
   {
     "id": "TAY-BNG-004",
     "handle": "bangles-004",
-    "title": "Adele Bangle",
+    "title": "Camille Bangle",
     "sku": "TAY-BNG-004",
     "collectionHandle": "bangles",
     "metal": "18k Gold",
@@ -1470,15 +1586,14 @@ export const products: Product[] = [
     "currency": "USD",
     "oneOfAKind": false,
     "certification": null,
-    "description": "A round white sapphire arranged in 18k Gold, from the Adele line — hand-finished in our Colombo atelier.",
+    "description": "A round white sapphire arranged in 18k Gold, from the Camille line — hand-finished in our Colombo atelier.",
     "swatch": "#dfdbd0",
     "image": "/images/products/bangles/bangles-004-1.avif",
     "images": [
       "/images/products/bangles/bangles-004-1.avif",
       "/images/products/bangles/bangles-004-2.avif",
       "/images/products/bangles/bangles-004-3.avif",
-      "/images/products/bangles/bangles-004-4.avif",
-      "/images/products/bangles/bangles-004-5.avif"
+      "/images/products/bangles/bangles-004-4.avif"
     ],
     "isRing": false
   }
