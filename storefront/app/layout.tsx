@@ -16,6 +16,7 @@ const cinzel = Cinzel({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("http://localhost:3000"),
   title: "Taygerian — Fine Jewellery (working prototype)",
   description:
     "Storefront prototype for Taygerian — Ceylon-provenance fine jewellery. Mock data, not a live store.",

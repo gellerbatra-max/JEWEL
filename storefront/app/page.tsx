@@ -2,10 +2,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { FacetMark } from "@/components/FacetMark";
 import { ProductCard } from "@/components/ProductCard";
-import { getProductsByCollection } from "@/lib/products";
+import { getFeatured } from "@/lib/products";
 
 export default function Home() {
-  const signature = getProductsByCollection("ceylon-signature");
+  const signature = getFeatured(4);
 
   return (
     <div>
@@ -26,10 +26,10 @@ export default function Home() {
             </p>
             <div className="mt-9">
               <Link
-                href="/collections/ceylon-signature"
+                href="/jewellery"
                 className="inline-block bg-ink text-porcelain px-8 py-3.5 text-[12px] tracking-[0.16em] uppercase hover:bg-gold transition-colors"
               >
-                Discover the Collection
+                Explore the Jewellery
               </Link>
             </div>
           </div>
@@ -49,20 +49,20 @@ export default function Home() {
       {/* Signature grid */}
       <section className="mx-auto max-w-6xl px-6 pt-24">
         <div className="text-center mb-12">
-          <p className="text-[11px] tracking-[0.2em] uppercase text-gold mb-3">Ceylon Signature</p>
-          <h2 className="font-display text-3xl sm:text-4xl text-ink">The House Sapphires</h2>
+          <p className="text-[11px] tracking-[0.2em] uppercase text-gold mb-3">The House</p>
+          <h2 className="font-display text-3xl sm:text-4xl text-ink">Signature Pieces</h2>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           {signature.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
         <div className="text-center mt-12">
           <Link
-            href="/collections/ceylon-signature"
+            href="/jewellery"
             className="text-[11px] tracking-[0.16em] uppercase text-ink border-b border-gold pb-1 hover:text-gold transition-colors"
           >
-            View all Ceylon Signature
+            Explore all jewellery
           </Link>
         </div>
       </section>
@@ -99,7 +99,7 @@ export default function Home() {
               <div>
                 <p className="font-display text-4xl text-gold">GIA · GRS</p>
                 <p className="text-[11px] tracking-[0.08em] uppercase text-stone mt-2">
-                  Certified on every piece
+                  Certified on signature pieces
                 </p>
               </div>
             </div>

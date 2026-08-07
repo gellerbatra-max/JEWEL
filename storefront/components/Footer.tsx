@@ -15,8 +15,8 @@ export function Footer() {
         <div className="mt-10 pt-6 border-t border-line-soft flex flex-col gap-3 text-[12px] text-stone sm:flex-row sm:justify-between sm:items-center">
           <p>© {new Date().getFullYear()} Taygerian. Prototype — not a live store.</p>
           <div className="flex gap-6">
+            <Link href="/jewellery" className="hover:text-ink transition-colors">Jewellery</Link>
             <Link href="/our-story" className="hover:text-ink transition-colors">Our Story</Link>
-            <Link href="/collections/bridal" className="hover:text-ink transition-colors">Bridal</Link>
             <Link href="/cart" className="hover:text-ink transition-colors">Bag</Link>
           </div>
         </div>

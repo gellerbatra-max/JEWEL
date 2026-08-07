@@ -1,6 +1,18 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState, useSyncExternalStore } from "react";
+
+// Reads the current page URL on the client only. useSyncExternalStore
+// renders the server snapshot ("") during hydration, then the client
+// value after — hydration-safe, and no setState inside an effect.
+const noopSubscribe = () => () => {};
+function useClientUrl() {
+  return useSyncExternalStore(
+    noopSubscribe,
+    () => window.location.href,
+    () => ""
+  );
+}
 
 function Icon({ path }: { path: string }) {
   return (
@@ -26,10 +38,7 @@ const ICONS = {
 
 export function ShareButtons({ title }: { title: string }) {
   const [copied, setCopied] = useState(false);
-  // Read the URL only after mount so server and client render the same
-  // markup (avoids a hydration mismatch on window.location).
-  const [url, setUrl] = useState("");
-  useEffect(() => setUrl(window.location.href), []);
+  const url = useClientUrl();
 
   const shareText = `${title} — Taygerian`;
 

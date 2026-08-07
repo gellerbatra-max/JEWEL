@@ -47,7 +47,7 @@ const IconRuler = (
 );
 
 export function ProductAccordion({ product }: { product: Product }) {
-  const finalSale = product.oneOfAKind || product.collectionHandle === "bridal";
+  const finalSale = product.oneOfAKind;
 
   return (
     <div className="mt-8" id="size-fit">

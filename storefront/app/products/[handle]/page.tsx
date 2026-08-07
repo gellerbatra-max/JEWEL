@@ -1,11 +1,11 @@
 import { notFound } from "next/navigation";
-import Image from "next/image";
 import type { Metadata } from "next";
 import { PurchasePanel } from "@/components/PurchasePanel";
 import { ConsultationCTA } from "@/components/ConsultationCTA";
 import { ProductAccordion } from "@/components/ProductAccordion";
 import { ShareButtons } from "@/components/ShareButtons";
-import { getProduct, formatPrice, products } from "@/lib/products";
+import { ProductGallery } from "@/components/ProductGallery";
+import { getProduct, getCollection, formatPrice, products } from "@/lib/products";
 
 export function generateStaticParams() {
   return products.map((p) => ({ handle: p.handle }));
@@ -39,20 +39,11 @@ export default async function ProductPage(props: PageProps<"/products/[handle]">
 
   return (
     <div className="mx-auto max-w-6xl px-6 py-16 grid sm:grid-cols-2 gap-12 lg:gap-16">
-      <div className="relative aspect-[4/5] bg-cloud overflow-hidden">
-        <Image
-          src={product.image}
-          alt={product.title}
-          fill
-          priority
-          sizes="(max-width: 640px) 100vw, 50vw"
-          className="object-cover"
-        />
-      </div>
+      <ProductGallery images={product.images} alt={product.title} />
 
       <div className="sm:pt-6">
         <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-gold mb-4">
-          {product.collectionHandle.replace("-", " ")}
+          {getCollection(product.collectionHandle)?.title ?? product.collectionHandle}
         </p>
         <h1 className="font-display text-4xl text-ink mb-3 leading-tight">{product.title}</h1>
         <p className="font-sans text-[11px] tracking-[0.08em] uppercase text-stone mb-6">
