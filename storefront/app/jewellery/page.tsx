@@ -30,7 +30,11 @@ export default function JewelleryPage() {
         {collections.map((c) => {
           const { image, count } = categoryMeta(c.handle);
           return (
-            <Link key={c.handle} href={`/collections/${c.handle}`} className="group block">
+            <Link
+              key={c.handle}
+              href={`/collections/${c.handle}`}
+              className="group block p-3 border border-transparent hover:border-line hover:bg-porcelain hover:shadow-[0_20px_46px_-28px_rgba(28,27,25,0.45)] hover:-translate-y-0.5 transition-all duration-300 ease-out"
+            >
               <div className="relative aspect-[4/5] overflow-hidden bg-cloud">
                 <Image
                   src={image}

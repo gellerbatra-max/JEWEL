@@ -84,12 +84,15 @@ export default function GemstonesPage() {
       <section className="mx-auto max-w-6xl px-6 pt-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {STONES.map((s) => (
-            <div key={s.name} className="text-center">
+            <div
+              key={s.name}
+              className="group text-center p-5 border border-transparent hover:border-line hover:bg-porcelain hover:shadow-[0_20px_46px_-28px_rgba(28,27,25,0.45)] hover:-translate-y-0.5 transition-all duration-300 ease-out"
+            >
               <div
-                className="aspect-square rounded-full mx-auto max-w-[220px] mb-5 shadow-[0_20px_40px_-20px_rgba(28,27,25,0.4)]"
+                className="aspect-square rounded-full mx-auto max-w-[200px] mb-5 shadow-[0_20px_40px_-20px_rgba(28,27,25,0.4)] transition-transform duration-500 group-hover:scale-[1.03]"
                 style={{ background: `radial-gradient(circle at 38% 32%, ${s.to}, ${s.from} 62%, ${s.from})` }}
               />
-              <h2 className="font-display text-2xl text-ink">{s.name}</h2>
+              <h2 className="font-display text-2xl text-ink group-hover:text-gold transition-colors">{s.name}</h2>
               <p className="mt-2 text-[15px] text-stone leading-relaxed max-w-sm mx-auto">{s.note}</p>
             </div>
           ))}
