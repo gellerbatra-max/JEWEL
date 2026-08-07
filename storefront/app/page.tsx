@@ -36,7 +36,7 @@ export default function Home() {
         </div>
         <div className="relative order-1 md:order-2 min-h-[52vh] md:min-h-0 bg-porcelain">
           <Image
-            src="/images/hero-ruby.jpg"
+            src="/images/hero-ring.jpg"
             alt="Ceylon ruby and diamond ring"
             fill
             priority
