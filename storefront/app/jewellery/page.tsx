@@ -39,10 +39,12 @@ export default function JewelleryPage() {
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
                 />
-                <div className="absolute inset-0 bg-ink/20 group-hover:bg-ink/30 transition-colors" />
-                <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
+                {/* Soft scrim at the bottom only — keeps the product bright and
+                    on-theme, while the label stays legible. */}
+                <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-ink/55 via-ink/20 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 p-5 text-center">
                   <span className="font-display text-3xl text-porcelain tracking-[0.08em]">{c.title}</span>
-                  <span className="mt-2 text-[11px] tracking-[0.14em] uppercase text-porcelain/85">
+                  <span className="block mt-1 text-[11px] tracking-[0.14em] uppercase text-porcelain/85">
                     {count} {count === 1 ? "piece" : "pieces"}
                   </span>
                 </div>

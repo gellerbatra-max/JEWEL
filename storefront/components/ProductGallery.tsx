@@ -125,7 +125,14 @@ export function ProductGallery({ images, alt }: { images: string[]; alt: string 
               >
                 {isVideo(src) ? (
                   <>
-                    <video src={src} muted playsInline preload="metadata" className="absolute inset-0 w-full h-full object-cover" />
+                    <video
+                      src={`${src}#t=0.1`}
+                      muted
+                      playsInline
+                      preload="metadata"
+                      onLoadedMetadata={(e) => { try { e.currentTarget.currentTime = 0.1; } catch {} }}
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
                     <span className="absolute inset-0 flex items-center justify-center">
                       <PlayBadge size={24} />
                     </span>
