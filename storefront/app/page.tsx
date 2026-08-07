@@ -36,12 +36,12 @@ export default function Home() {
         </div>
         <div className="relative order-1 md:order-2 min-h-[52vh] md:min-h-0 bg-porcelain">
           <Image
-            src="/images/products/rings/rings-013-1.webp"
+            src="/images/hero-ruby.jpg"
             alt="Ceylon ruby and diamond ring"
             fill
             priority
             sizes="(max-width: 768px) 100vw, 50vw"
-            className="object-contain"
+            className="object-cover"
           />
         </div>
       </section>
