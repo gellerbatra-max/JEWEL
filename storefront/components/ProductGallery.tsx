@@ -54,11 +54,11 @@ export function ProductGallery({ images, alt }: { images: string[]; alt: string 
                   onClick={() => setActive(i)}
                   aria-label={`View image ${i + 1}`}
                   aria-current={i === active}
-                  className={`relative aspect-square w-16 sm:w-full shrink-0 overflow-hidden bg-porcelain border transition-colors ${
+                  className={`relative w-16 h-16 sm:w-[72px] sm:h-[72px] shrink-0 overflow-hidden bg-porcelain border transition-colors ${
                     i === active ? "border-gold" : "border-line-soft hover:border-stone"
                   }`}
                 >
-                  <Image src={src} alt="" fill sizes="76px" className="object-contain" />
+                  <Image src={src} alt="" fill sizes="72px" className="object-contain" />
                 </button>
               ))}
             </div>
