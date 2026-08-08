@@ -8,7 +8,7 @@ export function CartLink() {
   return (
     <Link
       href="/cart"
-      className="text-[11px] tracking-[0.12em] uppercase text-stone hover:text-ink transition-colors"
+      className="text-[13px] tracking-[0.12em] uppercase text-stone hover:text-ink transition-colors"
     >
       Bag{count > 0 ? ` (${count})` : ""}
     </Link>

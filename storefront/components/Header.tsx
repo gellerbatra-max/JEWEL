@@ -23,7 +23,7 @@ export function Header() {
             Taygerian
           </Link>
         </div>
-        <nav className="hidden md:flex items-center gap-8 text-[11px] tracking-[0.12em] uppercase text-stone">
+        <nav className="hidden md:flex items-center gap-8 text-[13px] tracking-[0.12em] uppercase text-stone">
           {NAV.map((item) => (
             <Link key={item.href} href={item.href} className="hover:text-ink transition-colors">
               {item.label}
