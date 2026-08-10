@@ -9,7 +9,8 @@
   --cloud: #f3f0e9;
   --ink: #1c1b19;
   --stone: #6e6a63;
-  --gold: #9a7b3f;
+  --gold: #c2a45c; /* champagne gold — single tone for the emblem + all accents (was #9a7b3f) */
+  --rose: var(--gold); /* emblem follows the gold tone */
   --sapphire: #2f4c82;
   --risk: #b4553a;
   --line: rgba(28, 27, 25, 0.12);
@@ -25,6 +26,7 @@
   --color-ink: var(--ink);
   --color-stone: var(--stone);
   --color-gold: var(--gold);
+  --color-rose: var(--rose);
   --color-sapphire: var(--sapphire);
   --color-risk: var(--risk);
   --color-line: var(--line);

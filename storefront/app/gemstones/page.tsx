@@ -63,7 +63,7 @@ export default function GemstonesPage() {
         />
         <div className="absolute inset-0 bg-ink/35" />
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
-          <FacetMark size={30} className="text-porcelain mb-5" />
+          <FacetMark size={30} className="text-rose mb-5" />
           <p className="text-[11px] tracking-[0.2em] uppercase text-porcelain/90 mb-3">Serendib&rsquo;s Stones</p>
           <h1 className="font-display text-4xl sm:text-5xl leading-tight text-balance text-porcelain">
             The Ceylon Gemstones

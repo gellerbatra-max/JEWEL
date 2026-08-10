@@ -1,0 +1,17 @@
+{
+  "name": "taygerian-dev-tools",
+  "private": true,
+  "type": "module",
+  "description": "Local dev database for the Medusa backend. Not part of the backend npm workspace.",
+  "scripts": {
+    "db": "node dev-db.mjs",
+    "db:info": "node db-info.mjs"
+  },
+  "dependencies": {
+    "embedded-postgres": "^18.4.0-beta.17",
+    "pg": "^8.22.0"
+  },
+  "allowScripts": {
+    "@embedded-postgres/windows-x64@18.4.0-beta.17": true
+  }
+}

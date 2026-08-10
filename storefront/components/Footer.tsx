@@ -6,7 +6,7 @@ export function Footer() {
     <footer className="border-t border-line mt-28">
       <div className="mx-auto max-w-6xl px-6 py-14">
         <div className="flex flex-col items-center gap-3 text-center">
-          <FacetMark size={22} className="text-gold" />
+          <FacetMark size={22} className="text-rose" />
           <p className="font-display text-lg tracking-[0.22em] uppercase text-ink">Taygerian</p>
           <p className="text-[12px] tracking-[0.04em] text-stone max-w-md">
             Ceylon-provenance fine jewellery. Sourced, cut, and set in Sri Lanka.

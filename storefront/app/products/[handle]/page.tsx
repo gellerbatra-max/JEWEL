@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { PurchasePanel } from "@/components/PurchasePanel";
 import { ConsultationCTA } from "@/components/ConsultationCTA";
+import { ProductActions } from "@/components/ProductActions";
 import { ProductAccordion } from "@/components/ProductAccordion";
 import { ShareButtons } from "@/components/ShareButtons";
 import { ProductGallery } from "@/components/ProductGallery";
@@ -74,6 +75,15 @@ export default async function ProductPage(props: PageProps<"/products/[handle]">
         <div className="space-y-3">
           <PurchasePanel product={product} />
           <ConsultationCTA productTitle={product.title} />
+        </div>
+
+        <div className="mt-5 border-y border-line-soft py-5">
+          <ProductActions
+            productTitle={product.title}
+            productHandle={product.handle}
+            productImage={product.image}
+            productSku={product.sku}
+          />
         </div>
 
         <div className="mt-6">

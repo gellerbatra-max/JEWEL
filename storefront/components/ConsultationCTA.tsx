@@ -5,7 +5,7 @@ export function ConsultationCTA({ productTitle }: { productTitle?: string }) {
 
   return (
     <a
-      href={`https://wa.me/94000000000?text=${encodeURIComponent(message)}`}
+      href={`https://wa.me/94712280818?text=${encodeURIComponent(message)}`}
       target="_blank"
       rel="noopener noreferrer"
       className="block w-full text-center border border-ink/25 text-ink py-3.5 font-sans text-[12px] tracking-[0.16em] uppercase hover:border-gold hover:text-gold transition-colors"
