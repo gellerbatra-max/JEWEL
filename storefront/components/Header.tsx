@@ -40,11 +40,9 @@ export function Header() {
   return (
     <header
       className={`${isHome ? "fixed" : "sticky"} inset-x-0 top-0 z-40 transition-[background-color,box-shadow] duration-500 ${
-        overlay
-          ? "bg-gradient-to-b from-black/75 via-black/45 to-transparent"
-          : scrolled
-            ? "bg-porcelain/90 backdrop-blur border-b border-line shadow-[0_12px_30px_-20px_rgba(28,27,25,0.45)]"
-            : "bg-porcelain border-b border-line shadow-[0_8px_24px_-18px_rgba(28,27,25,0.28)]"
+        scrolled
+          ? "bg-white/95 backdrop-blur border-b border-line shadow-[0_14px_30px_-18px_rgba(28,27,25,0.5)]"
+          : "bg-white border-b border-line shadow-[0_12px_26px_-16px_rgba(28,27,25,0.4)]"
       }`}
     >
       <div className="mx-auto max-w-6xl px-6">
@@ -55,7 +53,7 @@ export function Header() {
           }`}
         >
           <div className="flex items-center justify-self-start">
-            <MobileMenu items={NAV} light={overlay} />
+            <MobileMenu items={NAV} />
           </div>
 
           <Link
@@ -64,8 +62,8 @@ export function Header() {
             className="group flex flex-col items-center justify-self-center"
           >
             <span
-              className={`font-display uppercase leading-none whitespace-nowrap transition-all duration-500 ${
-                overlay ? "text-white" : "text-ink"
+              className={`font-display font-semibold uppercase leading-none whitespace-nowrap transition-all duration-500 ${
+                "text-ink"
               } ${
                 overlay
                   ? "text-4xl tracking-[0.28em] sm:text-6xl sm:tracking-[0.38em] mr-[-0.28em] sm:mr-[-0.38em]"
@@ -86,7 +84,7 @@ export function Header() {
         {/* Nav-tab row — centered beneath the wordmark; condenses on scroll */}
         <nav
           className={`hidden items-center justify-center uppercase transition-all duration-500 md:flex ${
-            overlay ? "text-white/90" : "text-stone"
+            "text-stone"
           } ${
             overlay
               ? "gap-14 pb-6 text-[16px] tracking-[0.26em]"
@@ -102,7 +100,7 @@ export function Header() {
               className={`relative py-1 transition-colors ${
                 i === NAV.length - 1 ? navTrail : ""
               } ${
-                overlay ? "hover:text-white" : "hover:text-ink"
+                "hover:text-ink"
               } after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-center after:scale-x-0 after:bg-gold after:transition-transform after:duration-300 hover:after:scale-x-100`}
             >
               {item.label}

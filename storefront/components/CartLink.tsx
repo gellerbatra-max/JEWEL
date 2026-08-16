@@ -10,7 +10,7 @@ export function CartLink({ light = false }: { light?: boolean }) {
       href="/cart"
       className={`uppercase transition-colors ${
         light
-          ? "text-[15px] tracking-[0.14em] text-white/90 hover:text-white"
+          ? "text-[15px] tracking-[0.14em] text-stone hover:text-ink"
           : "text-[13px] tracking-[0.12em] text-stone hover:text-ink"
       }`}
     >

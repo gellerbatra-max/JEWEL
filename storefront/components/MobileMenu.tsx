@@ -5,7 +5,7 @@ import Link from "next/link";
 
 type NavItem = { href: string; label: string };
 
-export function MobileMenu({ items, light = false }: { items: NavItem[]; light?: boolean }) {
+export function MobileMenu({ items }: { items: NavItem[] }) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -14,7 +14,7 @@ export function MobileMenu({ items, light = false }: { items: NavItem[]; light?:
         onClick={() => setOpen((o) => !o)}
         aria-label={open ? "Close menu" : "Open menu"}
         aria-expanded={open}
-        className={`flex flex-col justify-center gap-[5px] w-6 h-6 ${light ? "text-white" : "text-ink"}`}
+        className="flex flex-col justify-center gap-[5px] w-6 h-6 text-ink"
       >
         <span className={`block h-px w-6 bg-current transition-transform ${open ? "translate-y-[6px] rotate-45" : ""}`} />
         <span className={`block h-px w-6 bg-current transition-opacity ${open ? "opacity-0" : ""}`} />

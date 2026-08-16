@@ -11,24 +11,22 @@ export function HomeContent() {
   return (
     <div>
       {/* Full-bleed campaign hero — image with overlaid text (Swarovski-style) */}
-      <section className="relative w-full min-h-[80vh] md:min-h-screen flex items-center overflow-hidden">
+      <section className="relative w-full min-h-[80vh] md:min-h-screen flex items-end justify-center overflow-hidden bg-porcelain pb-4 md:pb-6">
         <div
-          className="absolute inset-x-0 bottom-0 top-[4vh] md:top-[6vh] bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('/images/hero-bg.avif')" }}
+          className="absolute inset-0 bg-[center_48%] bg-no-repeat mix-blend-multiply"
+          style={{ backgroundImage: "url('/images/hero-ruby-ring.webp')", backgroundSize: "auto 88%" }}
         />
-        <div className="relative mx-auto max-w-6xl px-6 w-full">
-          <div className="max-w-md">
-            <h1 className="font-display text-3xl sm:text-4xl leading-[1.08] text-balance text-ink">
-              Hand Crafted Fabulous Jewels
-            </h1>
-            <div className="mt-8">
-              <Link
-                href="/jewellery"
-                className="inline-block bg-ink text-porcelain px-9 py-4 text-[13px] tracking-[0.16em] uppercase hover:bg-gold transition-colors"
-              >
-                Explore the Jewellery
-              </Link>
-            </div>
+        <div className="relative text-center px-6">
+          <h1 className="font-sans text-lg leading-[1.08] md:whitespace-nowrap text-balance text-ink">
+            Hand Crafted Fabulous Jewels
+          </h1>
+          <div className="mt-4">
+            <Link
+              href="/jewellery"
+              className="inline-block border-2 border-ink text-ink px-6 py-2.5 text-[11px] tracking-[0.16em] uppercase hover:bg-gold hover:border-gold hover:text-porcelain transition-colors"
+            >
+              Explore the Jewellery
+            </Link>
           </div>
         </div>
       </section>
