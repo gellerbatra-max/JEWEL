@@ -24,7 +24,13 @@ let transportPromise: Promise<{ transport: nodemailer.Transporter; ethereal: boo
 function getTransport() {
   if (transportPromise) return transportPromise
   transportPromise = (async () => {
-    if (process.env.SMTP_HOST) {
+    // Use real SMTP only when it is fully configured. When SMTP_USER is set, a
+    // password must be too — otherwise fall back to the Ethereal dev preview
+    // rather than failing Gmail auth (avoids a broken-delivery window while
+    // SMTP_PASS is still blank).
+    const smtpConfigured =
+      !!process.env.SMTP_HOST && (!process.env.SMTP_USER || !!process.env.SMTP_PASS)
+    if (smtpConfigured) {
       return {
         transport: nodemailer.createTransport({
           host: process.env.SMTP_HOST,
