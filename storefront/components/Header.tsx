@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { CartLink } from "./CartLink";
 import { MobileMenu } from "./MobileMenu";
@@ -8,7 +9,7 @@ import { MobileMenu } from "./MobileMenu";
 const NAV = [
   { href: "/jewellery", label: "Jewellery" },
   { href: "/gemstones", label: "Gemstones" },
-  { href: "/our-story", label: "Our Story" },
+  { href: "/dynasty", label: "Dynasty" },
 ];
 
 // True once the page is scrolled past `threshold` px. Mirrors the pattern
@@ -28,13 +29,22 @@ function useScrolled(threshold = 28) {
 
 export function Header() {
   const scrolled = useScrolled(28);
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+  // On the home page the header floats transparently over the hero image
+  // (Swarovski-style) until you scroll, then condenses into a solid bar.
+  const overlay = isHome && !scrolled;
+  // Compensate the trailing letter-space so the letter-spaced nav centres visually.
+  const navTrail = overlay ? "mr-[-0.26em]" : scrolled ? "mr-[-0.16em]" : "mr-[-0.2em]";
 
   return (
     <header
-      className={`sticky top-0 z-40 border-b border-line transition-[background-color,box-shadow] duration-500 ${
-        scrolled
-          ? "bg-porcelain/90 backdrop-blur shadow-[0_12px_30px_-20px_rgba(28,27,25,0.45)]"
-          : "bg-porcelain shadow-[0_8px_24px_-18px_rgba(28,27,25,0.28)]"
+      className={`${isHome ? "fixed" : "sticky"} inset-x-0 top-0 z-40 transition-[background-color,box-shadow] duration-500 ${
+        overlay
+          ? "bg-gradient-to-b from-black/75 via-black/45 to-transparent"
+          : scrolled
+            ? "bg-porcelain/90 backdrop-blur border-b border-line shadow-[0_12px_30px_-20px_rgba(28,27,25,0.45)]"
+            : "bg-porcelain border-b border-line shadow-[0_8px_24px_-18px_rgba(28,27,25,0.28)]"
       }`}
     >
       <div className="mx-auto max-w-6xl px-6">
@@ -45,7 +55,7 @@ export function Header() {
           }`}
         >
           <div className="flex items-center justify-self-start">
-            <MobileMenu items={NAV} />
+            <MobileMenu items={NAV} light={overlay} />
           </div>
 
           <Link
@@ -54,10 +64,14 @@ export function Header() {
             className="group flex flex-col items-center justify-self-center"
           >
             <span
-              className={`font-display uppercase leading-none text-ink whitespace-nowrap transition-all duration-500 ${
-                scrolled
-                  ? "text-base tracking-[0.28em] sm:text-lg sm:tracking-[0.32em]"
-                  : "text-xl tracking-[0.34em] sm:text-3xl sm:tracking-[0.44em]"
+              className={`font-display uppercase leading-none whitespace-nowrap transition-all duration-500 ${
+                overlay ? "text-white" : "text-ink"
+              } ${
+                overlay
+                  ? "text-4xl tracking-[0.28em] sm:text-6xl sm:tracking-[0.38em] mr-[-0.28em] sm:mr-[-0.38em]"
+                  : scrolled
+                    ? "text-base tracking-[0.28em] sm:text-lg sm:tracking-[0.32em] mr-[-0.28em] sm:mr-[-0.32em]"
+                    : "text-xl tracking-[0.34em] sm:text-3xl sm:tracking-[0.44em] mr-[-0.34em] sm:mr-[-0.44em]"
               }`}
             >
               Taygerian
@@ -65,23 +79,31 @@ export function Header() {
           </Link>
 
           <div className="flex items-center justify-self-end">
-            <CartLink />
+            <CartLink light={overlay} />
           </div>
         </div>
 
         {/* Nav-tab row — centered beneath the wordmark; condenses on scroll */}
         <nav
-          className={`hidden items-center justify-center text-stone uppercase transition-all duration-500 md:flex ${
-            scrolled
-              ? "gap-8 pb-3 text-[11px] tracking-[0.16em]"
-              : "gap-10 pb-5 text-[12px] tracking-[0.2em]"
+          className={`hidden items-center justify-center uppercase transition-all duration-500 md:flex ${
+            overlay ? "text-white/90" : "text-stone"
+          } ${
+            overlay
+              ? "gap-14 pb-6 text-[16px] tracking-[0.26em]"
+              : scrolled
+                ? "gap-8 pb-3 text-[11px] tracking-[0.16em]"
+                : "gap-10 pb-5 text-[12px] tracking-[0.2em]"
           }`}
         >
-          {NAV.map((item) => (
+          {NAV.map((item, i) => (
             <Link
               key={item.href}
               href={item.href}
-              className="relative py-1 transition-colors hover:text-ink after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-center after:scale-x-0 after:bg-gold after:transition-transform after:duration-300 hover:after:scale-x-100"
+              className={`relative py-1 transition-colors ${
+                i === NAV.length - 1 ? navTrail : ""
+              } ${
+                overlay ? "hover:text-white" : "hover:text-ink"
+              } after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-center after:scale-x-0 after:bg-gold after:transition-transform after:duration-300 hover:after:scale-x-100`}
             >
               {item.label}
             </Link>

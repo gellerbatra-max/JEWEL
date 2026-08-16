@@ -1,53 +1,35 @@
 import Link from "next/link";
 import Image from "next/image";
-import { FacetMark } from "@/components/FacetMark";
 import { ProductCard } from "@/components/ProductCard";
 import { Reveal } from "@/components/Reveal";
 import { getFeatured } from "@/lib/products";
 
-// The home page body, shared by the real route (app/page.tsx) and the
-// temporary background lab (app/bg-lab). `heroBlend` multiplies the hero ring
-// into the page colour so it adapts when the lab overrides the background.
-export function HomeContent({ heroBlend = false }: { heroBlend?: boolean }) {
+// The home page body, rendered by the real route (app/page.tsx).
+export function HomeContent() {
   const signature = getFeatured(4);
 
   return (
     <div>
-      {/* Split hero — editorial text beside a dramatic sapphire image */}
-      <section className="grid md:grid-cols-2 min-h-[74vh]">
-        <div className="flex items-center justify-center order-2 md:order-1 px-6 py-16">
-          <div className="max-w-md text-center md:text-left">
-            <FacetMark size={30} className="text-rose mb-7 mx-auto md:mx-0" />
-            <p className="text-[13px] tracking-[0.24em] uppercase text-gold mb-6">
-              Mine to Masterpiece, Verified
-            </p>
-            <h1 className="font-display text-4xl sm:text-5xl leading-[1.08] text-balance text-ink">
-              Ceylon Sapphires, Sourced and Cut In-House
+      {/* Full-bleed campaign hero — image with overlaid text (Swarovski-style) */}
+      <section className="relative w-full min-h-[80vh] md:min-h-screen flex items-center overflow-hidden">
+        <div
+          className="absolute inset-x-0 bottom-0 top-[4vh] md:top-[6vh] bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: "url('/images/hero-bg.avif')" }}
+        />
+        <div className="relative mx-auto max-w-6xl px-6 w-full">
+          <div className="max-w-md">
+            <h1 className="font-display text-3xl sm:text-4xl leading-[1.08] text-balance text-ink">
+              Hand Crafted Fabulous Jewels
             </h1>
-            <p className="mt-6 text-lg text-stone leading-relaxed">
-              Certified, not just claimed. Gold, silver, and platinum set with lab-verified
-              Ceylon gemstones — every signature piece ships with its own origin report.
-            </p>
-            <div className="mt-9">
+            <div className="mt-8">
               <Link
                 href="/jewellery"
-                className="inline-block bg-ink text-porcelain px-8 py-3.5 text-[12px] tracking-[0.16em] uppercase hover:bg-gold transition-colors"
+                className="inline-block bg-ink text-porcelain px-9 py-4 text-[13px] tracking-[0.16em] uppercase hover:bg-gold transition-colors"
               >
                 Explore the Jewellery
               </Link>
             </div>
           </div>
-        </div>
-        <div className="order-1 md:order-2 flex items-center justify-center bg-porcelain py-10 md:py-0">
-          <Image
-            src="/images/hero-ring.jpg"
-            alt="Ceylon ruby and diamond ring"
-            width={2048}
-            height={2048}
-            priority
-            sizes="(max-width: 768px) 85vw, 560px"
-            className={`w-[85%] max-w-[560px] h-auto${heroBlend ? " mix-blend-multiply" : ""}`}
-          />
         </div>
       </section>
 

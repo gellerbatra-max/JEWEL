@@ -18,7 +18,7 @@ Open http://localhost:3000.
 - `/` — home, hero + Ceylon Signature teaser + differentiator callout
 - `/collections/[handle]` — collection grid (`ceylon-signature`, `fine-jewellery`, `bridal`)
 - `/products/[handle]` — product detail: certification display, catalog price vs. "Price on Request" for one-of-a-kind pieces, "Book a Video Consultation" CTA (per [../docs/02-ux-design-patterns.md](../docs/02-ux-design-patterns.md))
-- `/our-story` — Ceylon provenance narrative
+- `/dynasty` — Ceylon provenance narrative (the house story)
 - `/cart` — client-side bag (persisted to `localStorage`), checkout disabled pending a real commerce backend
 
 ## Identity system

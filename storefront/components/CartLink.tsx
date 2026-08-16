@@ -3,12 +3,16 @@
 import Link from "next/link";
 import { useCart } from "./CartProvider";
 
-export function CartLink() {
+export function CartLink({ light = false }: { light?: boolean }) {
   const { count } = useCart();
   return (
     <Link
       href="/cart"
-      className="text-[13px] tracking-[0.12em] uppercase text-stone hover:text-ink transition-colors"
+      className={`uppercase transition-colors ${
+        light
+          ? "text-[15px] tracking-[0.14em] text-white/90 hover:text-white"
+          : "text-[13px] tracking-[0.12em] text-stone hover:text-ink"
+      }`}
     >
       Bag{count > 0 ? ` (${count})` : ""}
     </Link>

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { FacetMark } from "@/components/FacetMark";
 
-export default function OurStoryPage() {
+export default function DynastyPage() {
   return (
     <div>
       <section className="relative h-[46vh] min-h-[320px]">
@@ -16,7 +16,7 @@ export default function OurStoryPage() {
         <div className="absolute inset-0 bg-ink/25" />
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
           <FacetMark size={30} className="text-rose mb-5" />
-          <p className="text-[11px] tracking-[0.2em] uppercase text-porcelain/90 mb-3">Our Story</p>
+          <p className="text-[11px] tracking-[0.2em] uppercase text-porcelain/90 mb-3">Dynasty</p>
           <h1 className="font-display text-4xl sm:text-5xl leading-tight text-balance text-porcelain">
             An Island, Not a Footnote
           </h1>

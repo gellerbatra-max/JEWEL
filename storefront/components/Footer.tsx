@@ -16,7 +16,7 @@ export function Footer() {
           <p>© {new Date().getFullYear()} Taygerian. Prototype — not a live store.</p>
           <div className="flex gap-6">
             <Link href="/jewellery" className="hover:text-ink transition-colors">Jewellery</Link>
-            <Link href="/our-story" className="hover:text-ink transition-colors">Our Story</Link>
+            <Link href="/dynasty" className="hover:text-ink transition-colors">Dynasty</Link>
             <Link href="/cart" className="hover:text-ink transition-colors">Bag</Link>
           </div>
         </div>
