@@ -4,6 +4,7 @@ import { PurchasePanel } from "@/components/PurchasePanel";
 import { ConsultationCTA } from "@/components/ConsultationCTA";
 import { ProductActions } from "@/components/ProductActions";
 import { ProductAccordion } from "@/components/ProductAccordion";
+import { ProductAssurances } from "@/components/ProductAssurances";
 import { ShareButtons } from "@/components/ShareButtons";
 import { ProductGallery } from "@/components/ProductGallery";
 import { getProduct, getCollection, formatPrice, products } from "@/lib/products";
@@ -91,6 +92,8 @@ export default async function ProductPage(props: PageProps<"/products/[handle]">
         </div>
 
         <ProductAccordion product={product} />
+
+        <ProductAssurances />
       </div>
     </div>
   );

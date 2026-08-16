@@ -80,10 +80,24 @@ export function ProductAccordion({ product }: { product: Product }) {
         </Row>
 
         <Row icon={IconHeart} title="Jewellery Care">
-          Store each piece separately in its pouch, away from other jewellery. Avoid contact with
-          perfume, lotion, and water, and remove before swimming or sleeping. Clean gently with a
-          soft, dry cloth. We offer complimentary professional cleaning and prong inspection for the
-          life of the piece.
+          <p>
+            Store each piece separately in its pouch, away from other jewellery. Avoid contact with
+            perfume, lotion, and water, and remove before swimming or sleeping. Clean gently with a
+            soft, dry cloth. We offer complimentary professional cleaning and prong inspection for
+            the life of the piece.
+          </p>
+          <p className="mt-4">
+            <span className="text-[12px] tracking-[0.08em] uppercase text-ink">Metal:</span> Use a
+            soft cloth to gently wipe clean, then remove any remaining impurities with mild diluted
+            soap. Rinse with warm water and dry thoroughly before storing in the jewellery pouch. Do
+            not use abrasive cleaners or steamers.
+          </p>
+          <p className="mt-4">
+            <span className="text-[12px] tracking-[0.08em] uppercase text-ink">Gemstone:</span> Use
+            a soft cloth to gently wipe clean, then remove any remaining impurities with mild diluted
+            soap and a soft bristled toothbrush. Rinse with warm water and dry thoroughly before
+            storing in the jewellery pouch.
+          </p>
         </Row>
 
         <Row icon={IconShip} title="Shipping & Returns">
