@@ -8,9 +8,10 @@ import { MediaProtection } from "@/components/MediaProtection";
 
 // Display: Cinzel — squared, chiseled Roman capitals (the free relative of
 // Trajan, the classic luxury-packaging / film-title typeface). Structured
-// and architectural rather than delicate. Everything else = system sans.
+// and architectural rather than delicate. This is the finalised wordmark +
+// heading font. Everything else uses the system sans (set in globals.css).
 const cinzel = Cinzel({
-  variable: "--font-cormorant",
+  variable: "--font-cinzel",
   subsets: ["latin"],
   weight: ["400", "500", "600"],
 });
