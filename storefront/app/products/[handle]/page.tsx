@@ -42,7 +42,7 @@ export default async function ProductPage(props: PageProps<"/products/[handle]">
   if (!product) notFound();
 
   return (
-    <div className="mx-auto max-w-7xl px-6 py-16 grid sm:grid-cols-2 gap-12 lg:gap-16">
+    <div className="mx-auto max-w-[1500px] px-6 py-16 grid gap-12 sm:grid-cols-2 lg:grid-cols-[2fr_1fr] lg:gap-16">
       <ProductGallery images={product.images} alt={product.title} />
 
       <div className="sm:pt-6">

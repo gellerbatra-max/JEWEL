@@ -5,6 +5,11 @@ import Image from "next/image";
 
 const isVideo = (s: string) => /\.(mp4|webm|mov|m4v)$/i.test(s);
 
+// Height of the whole gallery — kept within the viewport so the full image is
+// visible without scrolling the page. The thumbnail rail matches this height and
+// shows three thumbnails at a time.
+const GALLERY_H = "min(74vh, 660px)";
+
 function PlayBadge({ size = 26 }: { size?: number }) {
   return (
     <span
@@ -18,18 +23,37 @@ function PlayBadge({ size = 26 }: { size?: number }) {
   );
 }
 
+function Chevron({ dir }: { dir: "up" | "down" }) {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true">
+      {dir === "up" ? <path d="M6 15l6-6 6 6" /> : <path d="M6 9l6 6 6-6" />}
+    </svg>
+  );
+}
+
+// Bulgari-style gallery: a vertical thumbnail rail on the left (3 visible, scrolls
+// up/down for more), a large main image on the right over soft studio-grey. The
+// whole gallery fits the viewport height. Images enlarge in a lightbox; videos
+// play inline.
 export function ProductGallery({ images, alt }: { images: string[]; alt: string }) {
   const list = images.length ? images : ["/images/hero-sapphire.jpg"];
   const [active, setActive] = useState(0);
   const [zoomed, setZoomed] = useState(false);
   const current = list[active];
+  const railRef = useRef<HTMLDivElement>(null);
 
   const next = useCallback(() => setActive((i) => (i + 1) % list.length), [list.length]);
   const prev = useCallback(() => setActive((i) => (i - 1 + list.length) % list.length), [list.length]);
 
-  // Auto-start the video when it becomes the active media. Try with sound
-  // first (the selection was a user gesture); fall back to muted if the
-  // browser blocks unmuted autoplay.
+  const scrollRail = (dir: number) => {
+    const el = railRef.current;
+    if (!el) return;
+    el.scrollBy({ top: dir * (el.clientHeight / 3 + 12), behavior: "smooth" });
+  };
+
+  // Auto-start the video when it becomes the active media. Try with sound first
+  // (the selection was a user gesture); fall back to muted if the browser blocks
+  // unmuted autoplay.
   const mainVideoRef = useRef<HTMLVideoElement>(null);
   useEffect(() => {
     if (!isVideo(current)) return;
@@ -58,15 +82,87 @@ export function ProductGallery({ images, alt }: { images: string[]; alt: string 
     };
   }, [zoomed, next, prev]);
 
-  const arrowBtn =
-    "absolute top-1/2 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-porcelain/80 hover:bg-porcelain text-ink text-2xl leading-none shadow-[0_2px_10px_rgba(28,27,25,0.12)] transition-colors";
+  const scrollable = list.length > 3;
 
   return (
     <>
-      <div className="flex flex-col gap-4">
-        {/* Main viewer */}
-        <div className="relative">
-          <div className="relative aspect-square bg-porcelain overflow-hidden">
+      <div className="flex gap-3 sm:gap-4" style={{ height: GALLERY_H }}>
+        {/* Vertical thumbnail rail (left) — 3 visible, scrolls for more */}
+        {list.length > 1 && (
+          <div className="relative h-full w-[104px] shrink-0 sm:w-[150px] lg:w-[186px]">
+            <div
+              ref={railRef}
+              className="no-scrollbar flex h-full flex-col gap-3 overflow-y-auto scroll-smooth"
+            >
+              {list.map((src, i) => (
+                <button
+                  key={src}
+                  onClick={() => setActive(i)}
+                  aria-label={`View media ${i + 1}`}
+                  aria-current={i === active}
+                  className="group block shrink-0"
+                  style={{ height: "calc((100% - 1.5rem) / 3)" }}
+                >
+                  <div
+                    className={`relative h-full w-full overflow-hidden bg-porcelain transition-opacity duration-300 ${
+                      i === active ? "opacity-100" : "opacity-50 group-hover:opacity-90"
+                    }`}
+                  >
+                    {isVideo(src) ? (
+                      <>
+                        <video
+                          src={`${src}#t=0.1`}
+                          muted
+                          playsInline
+                          preload="metadata"
+                          onLoadedMetadata={(e) => {
+                            try {
+                              e.currentTarget.currentTime = 0.1;
+                            } catch {}
+                          }}
+                          className="absolute inset-0 h-full w-full object-cover"
+                        />
+                        <span className="absolute inset-0 flex items-center justify-center">
+                          <PlayBadge size={30} />
+                        </span>
+                      </>
+                    ) : (
+                      <Image src={src} alt="" fill sizes="186px" className="object-contain mix-blend-multiply" />
+                    )}
+                    {/* Active underline, Bulgari-style (overlaid so it doesn't shrink the image) */}
+                    {i === active && <span className="absolute inset-x-0 bottom-0 h-[3px] bg-ink" />}
+                  </div>
+                </button>
+              ))}
+            </div>
+
+            {/* Up / down scroll controls */}
+            {scrollable && (
+              <>
+                <button
+                  type="button"
+                  onClick={() => scrollRail(-1)}
+                  aria-label="Scroll thumbnails up"
+                  className="absolute left-1/2 top-1 z-10 flex h-7 w-7 -translate-x-1/2 items-center justify-center rounded-full border border-line bg-porcelain/90 text-ink shadow-sm backdrop-blur transition-colors hover:bg-porcelain"
+                >
+                  <Chevron dir="up" />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => scrollRail(1)}
+                  aria-label="Scroll thumbnails down"
+                  className="absolute bottom-1 left-1/2 z-10 flex h-7 w-7 -translate-x-1/2 items-center justify-center rounded-full border border-line bg-porcelain/90 text-ink shadow-sm backdrop-blur transition-colors hover:bg-porcelain"
+                >
+                  <Chevron dir="down" />
+                </button>
+              </>
+            )}
+          </div>
+        )}
+
+        {/* Main viewer (right) */}
+        <div className="relative min-w-0 flex-1">
+          <div className="relative h-full overflow-hidden bg-porcelain">
             {isVideo(current) ? (
               <video
                 key={current}
@@ -77,90 +173,29 @@ export function ProductGallery({ images, alt }: { images: string[]; alt: string 
                 playsInline
                 controlsList="nodownload"
                 disablePictureInPicture
-                className="absolute inset-0 w-full h-full object-contain bg-porcelain"
+                className="absolute inset-0 h-full w-full bg-porcelain object-contain"
               />
             ) : (
               <button
                 onClick={() => setZoomed(true)}
                 aria-label="Enlarge image"
-                className="absolute inset-0 cursor-zoom-in group"
+                className="group absolute inset-0 cursor-zoom-in"
               >
                 <Image
                   src={current}
                   alt={alt}
                   fill
                   priority
-                  sizes="(max-width: 640px) 100vw, 45vw"
-                  className="object-contain"
+                  sizes="(max-width: 640px) 80vw, 45vw"
+                  className="object-contain mix-blend-multiply"
                 />
-                <span className="absolute bottom-3 right-3 bg-porcelain/85 text-ink text-[10px] tracking-[0.12em] uppercase px-2.5 py-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                <span className="absolute bottom-3 right-3 bg-porcelain/85 px-2.5 py-1 text-[10px] uppercase tracking-[0.12em] text-ink opacity-0 transition-opacity group-hover:opacity-100">
                   Click to enlarge
                 </span>
               </button>
             )}
           </div>
-
-          {list.length > 1 && (
-            <>
-              <button onClick={prev} aria-label="Previous" className={`${arrowBtn} left-2`}>
-                &#8249;
-              </button>
-              <button onClick={next} aria-label="Next" className={`${arrowBtn} right-2`}>
-                &#8250;
-              </button>
-            </>
-          )}
         </div>
-
-        {/* Dots */}
-        {list.length > 1 && (
-          <div className="flex flex-wrap justify-center gap-1.5">
-            {list.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setActive(i)}
-                aria-label={`Go to media ${i + 1}`}
-                aria-current={i === active}
-                className={`h-1.5 rounded-full transition-all ${i === active ? "w-5 bg-gold" : "w-1.5 bg-line"}`}
-              />
-            ))}
-          </div>
-        )}
-
-        {/* Horizontal thumbnail strip */}
-        {list.length > 1 && (
-          <div className="flex gap-3 overflow-x-auto pb-1">
-            {list.map((src, i) => (
-              <button
-                key={src}
-                onClick={() => setActive(i)}
-                aria-label={`View media ${i + 1}`}
-                aria-current={i === active}
-                className={`relative w-16 h-16 sm:w-[74px] sm:h-[74px] shrink-0 overflow-hidden bg-porcelain border transition-colors ${
-                  i === active ? "border-gold" : "border-line-soft hover:border-stone"
-                }`}
-              >
-                {isVideo(src) ? (
-                  <>
-                    <video
-                      src={`${src}#t=0.1`}
-                      muted
-                      playsInline
-                      preload="metadata"
-                      onLoadedMetadata={(e) => { try { e.currentTarget.currentTime = 0.1; } catch {} }}
-                      className="absolute inset-0 w-full h-full object-cover"
-                    />
-                    <span className="absolute inset-0 flex items-center justify-center">
-                      <PlayBadge size={24} />
-                    </span>
-                  </>
-                ) : (
-                  <Image src={src} alt="" fill sizes="74px" className="object-contain" />
-                )}
-              </button>
-            ))}
-          </div>
-        )}
       </div>
 
       {/* Lightbox (images only) */}
@@ -169,38 +204,44 @@ export function ProductGallery({ images, alt }: { images: string[]; alt: string 
           role="dialog"
           aria-modal="true"
           aria-label={`${alt} — enlarged view`}
-          className="fixed inset-0 z-50 bg-ink/95 flex items-center justify-center"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-ink/95"
           onClick={() => setZoomed(false)}
         >
           <button
             onClick={() => setZoomed(false)}
             aria-label="Close"
-            className="absolute top-5 right-5 text-porcelain/80 hover:text-porcelain text-3xl leading-none"
+            className="absolute right-5 top-5 text-3xl leading-none text-porcelain/80 hover:text-porcelain"
           >
             &times;
           </button>
-          <span className="absolute top-6 left-1/2 -translate-x-1/2 text-porcelain/70 text-[11px] tracking-[0.16em] uppercase tabular-nums">
+          <span className="absolute left-1/2 top-6 -translate-x-1/2 text-[11px] uppercase tracking-[0.16em] tabular-nums text-porcelain/70">
             {active + 1} / {list.length}
           </span>
           {list.length > 1 && (
             <>
               <button
-                onClick={(e) => { e.stopPropagation(); prev(); }}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  prev();
+                }}
                 aria-label="Previous image"
-                className="absolute left-4 sm:left-8 text-porcelain/70 hover:text-porcelain text-4xl leading-none px-2"
+                className="absolute left-4 px-2 text-4xl leading-none text-porcelain/70 hover:text-porcelain sm:left-8"
               >
                 &#8249;
               </button>
               <button
-                onClick={(e) => { e.stopPropagation(); next(); }}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  next();
+                }}
                 aria-label="Next image"
-                className="absolute right-4 sm:right-8 text-porcelain/70 hover:text-porcelain text-4xl leading-none px-2"
+                className="absolute right-4 px-2 text-4xl leading-none text-porcelain/70 hover:text-porcelain sm:right-8"
               >
                 &#8250;
               </button>
             </>
           )}
-          <div className="relative w-[92vw] h-[86vh] max-w-4xl" onClick={(e) => e.stopPropagation()}>
+          <div className="relative h-[86vh] w-[92vw] max-w-4xl" onClick={(e) => e.stopPropagation()}>
             <Image src={current} alt={alt} fill sizes="92vw" className="object-contain" />
           </div>
         </div>
