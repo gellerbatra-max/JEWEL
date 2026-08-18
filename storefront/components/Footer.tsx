@@ -4,7 +4,7 @@ import { FacetMark } from "./FacetMark";
 export function Footer() {
   return (
     <footer className="border-t border-line mt-28">
-      <div className="mx-auto max-w-6xl px-6 py-14">
+      <div className="mx-auto max-w-[1600px] px-6 py-14">
         <div className="flex flex-col items-center gap-3 text-center">
           <FacetMark size={22} className="text-rose" />
           <p className="font-display text-lg tracking-[0.22em] uppercase text-ink">Taygerian</p>

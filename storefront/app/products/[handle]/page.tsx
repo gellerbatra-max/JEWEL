@@ -7,9 +7,11 @@ import { ProductAccordion } from "@/components/ProductAccordion";
 import { ProductAssurances } from "@/components/ProductAssurances";
 import { ShareButtons } from "@/components/ShareButtons";
 import { ProductGallery } from "@/components/ProductGallery";
-import { getProduct, getCollection, formatPrice, products } from "@/lib/products";
+import { getCollection, formatPrice } from "@/lib/products";
+import { getProduct, getAllProducts } from "@/lib/catalog-store";
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
+  const products = await getAllProducts();
   return products.map((p) => ({ handle: p.handle }));
 }
 
@@ -17,7 +19,7 @@ export async function generateMetadata(
   props: PageProps<"/products/[handle]">
 ): Promise<Metadata> {
   const { handle } = await props.params;
-  const product = getProduct(handle);
+  const product = await getProduct(handle);
   if (!product) return {};
   const title = `${product.title} — Taygerian`;
   const description = product.description;
@@ -36,11 +38,11 @@ export async function generateMetadata(
 
 export default async function ProductPage(props: PageProps<"/products/[handle]">) {
   const { handle } = await props.params;
-  const product = getProduct(handle);
+  const product = await getProduct(handle);
   if (!product) notFound();
 
   return (
-    <div className="mx-auto max-w-6xl px-6 py-16 grid sm:grid-cols-2 gap-12 lg:gap-16">
+    <div className="mx-auto max-w-7xl px-6 py-16 grid sm:grid-cols-2 gap-12 lg:gap-16">
       <ProductGallery images={product.images} alt={product.title} />
 
       <div className="sm:pt-6">

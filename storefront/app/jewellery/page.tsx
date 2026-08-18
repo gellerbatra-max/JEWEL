@@ -1,22 +1,33 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { collections, getProductsByCollection } from "@/lib/products";
+import { collections } from "@/lib/products";
+import { getAllProducts } from "@/lib/catalog-store";
+import { getCategoryCovers } from "@/lib/site-config-store";
 
 export const metadata: Metadata = {
   title: "Jewellery — Taygerian",
   description: "Explore Taygerian jewellery by category: rings, necklaces, pendants, earrings, bracelets, and bangles.",
 };
 
-// Representative image + count per category.
-function categoryMeta(handle: string) {
-  const items = getProductsByCollection(handle);
-  return { image: items[0]?.image ?? "/images/hero-sapphire.jpg", count: items.length };
-}
+export const dynamic = "force-dynamic";
 
-export default function JewelleryPage() {
+export default async function JewelleryPage() {
+  const [all, covers] = await Promise.all([getAllProducts(), getCategoryCovers()]);
+  // Representative image + count per category. The owner picks the cover piece
+  // per category in Manage; if unset, fall back to the first piece.
+  const categoryMeta = (handle: string) => {
+    const items = all.filter((p) => p.collectionHandle === handle);
+    const chosenId = covers[handle as keyof typeof covers];
+    const chosen = chosenId ? items.find((p) => p.id === chosenId) : undefined;
+    return {
+      image: chosen?.image ?? items[0]?.image ?? "/images/hero-sapphire.jpg",
+      count: items.length,
+    };
+  };
+
   return (
-    <div className="mx-auto max-w-6xl px-6 py-16">
+    <div className="mx-auto max-w-[1600px] px-6 py-16">
       <div className="text-center max-w-2xl mx-auto mb-14">
         <p className="text-[11px] tracking-[0.2em] uppercase text-gold mb-4">The Collections</p>
         <h1 className="font-display text-4xl sm:text-5xl text-ink mb-4">Jewellery</h1>

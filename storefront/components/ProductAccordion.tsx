@@ -58,10 +58,11 @@ export function ProductAccordion({ product }: { product: Product }) {
 
         {product.isRing && (
           <Row icon={IconRuler} title="Size & Fit">
-            Sizes shown are US ring sizes. Every ring is made to your chosen size, and we offer one
-            complimentary resizing within the first year on catalogue pieces. Unsure of your size?
-            Book a video consultation and we&rsquo;ll measure you together, or use our printable guide.
-            One-of-a-kind pieces are hand-finished to your exact size to order.
+            {product.sections?.sizeAndFit?.trim() ? (
+              <Paragraphs text={product.sections.sizeAndFit} />
+            ) : (
+              "Sizes shown are US ring sizes. Every ring is made to your chosen size, and we offer one complimentary resizing within the first year on catalogue pieces. Unsure of your size? Book a video consultation and we’ll measure you together, or use our printable guide. One-of-a-kind pieces are hand-finished to your exact size to order."
+            )}
             <a
               href="/taygerian-ring-size-guide.pdf"
               target="_blank"
@@ -75,36 +76,51 @@ export function ProductAccordion({ product }: { product: Product }) {
         )}
 
         <Row icon={IconBox} title="The Taygerian Box">
-          Every piece arrives in the Taygerian presentation box — a lacquered case bearing the house
-          facet seal — accompanied by its lab origin report and a certificate of authenticity.
+          {product.sections?.box?.trim() ? (
+            <Paragraphs text={product.sections.box} />
+          ) : (
+            "Every piece arrives in the Taygerian presentation box — a lacquered case bearing the house facet seal — accompanied by its lab origin report and a certificate of authenticity."
+          )}
         </Row>
 
         <Row icon={IconHeart} title="Jewellery Care">
-          <p>
-            Store each piece separately in its pouch, away from other jewellery. Avoid contact with
-            perfume, lotion, and water, and remove before swimming or sleeping. Clean gently with a
-            soft, dry cloth. We offer complimentary professional cleaning and prong inspection for
-            the life of the piece.
-          </p>
-          <p className="mt-4">
-            <span className="text-[12px] tracking-[0.08em] uppercase text-ink">Metal:</span> Use a
-            soft cloth to gently wipe clean, then remove any remaining impurities with mild diluted
-            soap. Rinse with warm water and dry thoroughly before storing in the jewellery pouch. Do
-            not use abrasive cleaners or steamers.
-          </p>
-          <p className="mt-4">
-            <span className="text-[12px] tracking-[0.08em] uppercase text-ink">Gemstone:</span> Use
-            a soft cloth to gently wipe clean, then remove any remaining impurities with mild diluted
-            soap and a soft bristled toothbrush. Rinse with warm water and dry thoroughly before
-            storing in the jewellery pouch.
-          </p>
+          {product.sections?.care?.trim() ? (
+            <Paragraphs text={product.sections.care} />
+          ) : (
+            <>
+              <p>
+                Store each piece separately in its pouch, away from other jewellery. Avoid contact with
+                perfume, lotion, and water, and remove before swimming or sleeping. Clean gently with a
+                soft, dry cloth. We offer complimentary professional cleaning and prong inspection for
+                the life of the piece.
+              </p>
+              <p className="mt-4">
+                <span className="text-[12px] tracking-[0.08em] uppercase text-ink">Metal:</span> Use a
+                soft cloth to gently wipe clean, then remove any remaining impurities with mild diluted
+                soap. Rinse with warm water and dry thoroughly before storing in the jewellery pouch. Do
+                not use abrasive cleaners or steamers.
+              </p>
+              <p className="mt-4">
+                <span className="text-[12px] tracking-[0.08em] uppercase text-ink">Gemstone:</span> Use
+                a soft cloth to gently wipe clean, then remove any remaining impurities with mild diluted
+                soap and a soft bristled toothbrush. Rinse with warm water and dry thoroughly before
+                storing in the jewellery pouch.
+              </p>
+            </>
+          )}
         </Row>
 
         <Row icon={IconShip} title="Shipping & Returns">
-          Complimentary insured, signature-required shipping worldwide, fully covered in transit.
-          {finalSale
-            ? " As a one-of-a-kind or made-to-order piece, this item is final sale."
-            : " Catalogue pieces may be returned within 30 days in original, unworn condition with all documentation."}
+          {product.sections?.shipping?.trim() ? (
+            <Paragraphs text={product.sections.shipping} />
+          ) : (
+            <>
+              Complimentary insured, signature-required shipping worldwide, fully covered in transit.
+              {finalSale
+                ? " As a one-of-a-kind or made-to-order piece, this item is final sale."
+                : " Catalogue pieces may be returned within 30 days in original, unworn condition with all documentation."}
+            </>
+          )}
         </Row>
       </div>
 
@@ -113,5 +129,20 @@ export function ProductAccordion({ product }: { product: Product }) {
         of what makes each piece uniquely yours.
       </p>
     </div>
+  );
+}
+
+// Renders owner-customised section text as paragraphs (a blank line starts a new
+// paragraph). Used when a piece overrides a section from the Manage dashboard.
+function Paragraphs({ text }: { text: string }) {
+  const paras = text.split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean);
+  return (
+    <>
+      {paras.map((p, i) => (
+        <p key={i} className={i === 0 ? "" : "mt-4"}>
+          {p}
+        </p>
+      ))}
+    </>
   );
 }

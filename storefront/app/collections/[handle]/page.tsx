@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { ProductCard } from "@/components/ProductCard";
-import { getCollection, getProductsByCollection, collections } from "@/lib/products";
+import { getCollection, collections } from "@/lib/products";
+import { getProductsByCollection } from "@/lib/catalog-store";
 
 export function generateStaticParams() {
   return collections.map((c) => ({ handle: c.handle }));
@@ -11,10 +12,10 @@ export default async function CollectionPage(props: PageProps<"/collections/[han
   const collection = getCollection(handle);
   if (!collection) notFound();
 
-  const items = getProductsByCollection(handle);
+  const items = await getProductsByCollection(handle);
 
   return (
-    <div className="mx-auto max-w-6xl px-6 py-16">
+    <div className="mx-auto max-w-[1600px] px-6 py-16">
       <div className="text-center max-w-2xl mx-auto mb-12">
         <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-gold mb-4">Collection</p>
         <h1 className="font-display text-4xl text-ink mb-4">{collection.title}</h1>

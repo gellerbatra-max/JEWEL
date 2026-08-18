@@ -9,7 +9,7 @@
   --cloud: #f3f0e9;
   --ink: #1c1b19;
   --stone: #6e6a63;
-  --gold: #c2a45c; /* champagne gold — single tone for the emblem + all accents (was #9a7b3f) */
+  --gold: #b07c66; /* rose gold — single accent tone for the wordmark, emblem + all accents (was champagne #c2a45c) */
   --rose: var(--gold); /* emblem follows the gold tone */
   --sapphire: #2f4c82;
   --risk: #b4553a;
@@ -53,4 +53,14 @@ video {
   -moz-user-drag: none;
   user-select: none;
   -webkit-user-select: none;
+}
+
+/* Hide the horizontal scrollbar on the Signature Pieces carousel (it scrolls
+   via arrows / auto-advance / swipe). */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }

@@ -1,4 +1,11 @@
-import { products as catalogProducts } from "./catalog-data";
+// Pure, client-safe catalog types + constants + formatting helpers.
+//
+// This module must stay free of any Node/filesystem code so it can be imported
+// from client components (ProductCard, PurchasePanel, cart) without bloating the
+// browser bundle. All product DATA (reads + owner edits) lives in the
+// server-only store at ./catalog-store.ts.
+
+import type { ProductSections } from "./product-sections";
 
 export type Certification = {
   lab: "GIA" | "GRS" | "AGL";
@@ -31,7 +38,18 @@ export type Product = {
   image: string;
   images: string[];
   isRing: boolean;
+  // Owner-controlled home-page placement (set from the Manage dashboard).
+  // showOnHome = appears in the "Signature Pieces" section; homeOrder sorts them.
+  showOnHome?: boolean;
+  homeOrder?: number;
+  // Per-item overrides for the product-page accordion sections. Any section left
+  // unset falls back to the shared house default (see ./product-sections.ts).
+  sections?: ProductSections;
 };
+
+// Maximum number of pieces that can be featured in the home "Signature Pieces"
+// carousel at once.
+export const MAX_SIGNATURE = 20;
 
 // US ring sizes offered. Made-to-order sizing available on request.
 export const RING_SIZES = [
@@ -78,33 +96,8 @@ export const collections: Collection[] = [
   },
 ];
 
-export const products: Product[] = catalogProducts;
-
-export function getProduct(handle: string) {
-  return products.find((p) => p.handle === handle);
-}
-
 export function getCollection(handle: string) {
   return collections.find((c) => c.handle === handle);
-}
-
-export function getProductsByCollection(handle: string) {
-  return products.filter((p) => p.collectionHandle === handle);
-}
-
-// A curated spread across categories for the homepage.
-export function getFeatured(count = 8) {
-  const out: Product[] = [];
-  const byCat = collections.map((c) => getProductsByCollection(c.handle));
-  let round = 0;
-  while (out.length < count && round < 12) {
-    for (const list of byCat) {
-      if (list[round]) out.push(list[round]);
-      if (out.length >= count) break;
-    }
-    round++;
-  }
-  return out;
 }
 
 export function formatPrice(price: number, currency: string) {

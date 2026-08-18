@@ -81,7 +81,7 @@ export default function GemstonesPage() {
       </div>
 
       {/* Variety grid */}
-      <section className="mx-auto max-w-6xl px-6 pt-16">
+      <section className="mx-auto max-w-[1600px] px-6 pt-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {STONES.map((s) => (
             <div

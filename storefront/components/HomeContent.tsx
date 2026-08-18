@@ -1,22 +1,36 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ProductCard } from "@/components/ProductCard";
 import { Reveal } from "@/components/Reveal";
-import { getFeatured } from "@/lib/products";
+import { SignatureCarousel, type CarouselItem } from "@/components/SignatureCarousel";
+import { getSignaturePieces } from "@/lib/catalog-store";
 
 // The home page body, rendered by the real route (app/page.tsx).
-export function HomeContent() {
-  const signature = getFeatured(4);
+export async function HomeContent() {
+  const signature = await getSignaturePieces(20);
+  const signatureItems: CarouselItem[] = signature.map((p) => ({
+    handle: p.handle,
+    title: p.title,
+    image: p.image,
+    metal: p.metal,
+    stone: p.stone,
+    price: p.price,
+    currency: p.currency,
+    oneOfAKind: p.oneOfAKind,
+  }));
 
   return (
     <div>
       {/* Full-bleed campaign hero — image with overlaid text (Swarovski-style) */}
-      <section className="relative w-full min-h-[80vh] md:min-h-screen flex items-end justify-center overflow-hidden bg-porcelain pb-4 md:pb-6">
+      <section className="relative w-full min-h-[80vh] md:min-h-screen flex items-end justify-start overflow-hidden bg-porcelain pb-[16vh] md:pb-[20vh]">
         <div
-          className="absolute inset-0 bg-[center_48%] bg-no-repeat mix-blend-multiply"
-          style={{ backgroundImage: "url('/images/hero-ruby-ring.webp')", backgroundSize: "auto 88%" }}
+          className="absolute inset-0 bg-no-repeat mix-blend-multiply"
+          style={{
+            backgroundImage: "url('/images/hero-ruby-ring-gold.webp')",
+            backgroundSize: "auto 90%",
+            backgroundPosition: "center calc(50% + 40px)",
+          }}
         />
-        <div className="relative text-center px-6">
+        <div className="relative text-left pl-6 pr-6 md:pl-16">
           <h1 className="font-sans text-lg leading-[1.08] md:whitespace-nowrap text-balance text-ink">
             Hand Crafted Fabulous Jewels
           </h1>
@@ -33,19 +47,15 @@ export function HomeContent() {
 
       <SectionRule />
 
-      {/* Signature Pieces */}
+      {/* Signature Pieces — auto-rotating, centre-highlight carousel */}
       <Reveal className="py-20">
-        <section className="mx-auto max-w-6xl px-6">
-          <div className="text-center mb-12">
+        <section>
+          <div className="mx-auto max-w-[1600px] px-6 text-center mb-12">
             <p className="text-[13px] tracking-[0.2em] uppercase text-gold mb-3">The House</p>
             <h2 className="font-display text-3xl sm:text-4xl text-ink">Signature Pieces</h2>
           </div>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-            {signature.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
-          <div className="text-center mt-12">
+          <SignatureCarousel items={signatureItems} />
+          <div className="mx-auto max-w-[1600px] px-6 text-center mt-10">
             <Link
               href="/jewellery"
               className="text-[11px] tracking-[0.16em] uppercase text-ink border-b border-gold pb-1 hover:text-gold transition-colors"
@@ -60,7 +70,7 @@ export function HomeContent() {
 
       {/* Bespoke challenge */}
       <Reveal className="py-20">
-        <div className="mx-auto grid max-w-6xl items-center gap-8 bg-porcelain px-6 md:grid-cols-[1.1fr_0.9fr] lg:gap-14">
+        <div className="mx-auto grid max-w-[1600px] items-center gap-8 bg-porcelain px-6 md:grid-cols-[1.1fr_0.9fr] lg:gap-14">
           {/* The Seraphine ring, drawn from the collection */}
           <div className="flex items-center justify-center py-10 md:py-0">
             <Image
@@ -108,7 +118,7 @@ export function HomeContent() {
 
       {/* Bridal — mirrored layout */}
       <Reveal className="py-20">
-        <div className="mx-auto grid max-w-6xl items-center gap-8 bg-porcelain px-6 md:grid-cols-[0.9fr_1.1fr] lg:gap-14">
+        <div className="mx-auto grid max-w-[1600px] items-center gap-8 bg-porcelain px-6 md:grid-cols-[0.9fr_1.1fr] lg:gap-14">
           {/* The promise */}
           <div className="order-2 flex items-center py-8 md:order-1 md:py-0">
             <div className="mx-auto max-w-md">

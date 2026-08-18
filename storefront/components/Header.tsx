@@ -40,12 +40,14 @@ export function Header() {
   return (
     <header
       className={`${isHome ? "fixed" : "sticky"} inset-x-0 top-0 z-40 transition-[background-color,box-shadow] duration-500 ${
-        scrolled
-          ? "bg-white/95 backdrop-blur border-b border-line shadow-[0_14px_30px_-18px_rgba(28,27,25,0.5)]"
-          : "bg-white border-b border-line shadow-[0_12px_26px_-16px_rgba(28,27,25,0.4)]"
+        overlay
+          ? "bg-white/60 backdrop-blur-sm shadow-[0_12px_26px_-16px_rgba(28,27,25,0.4)]"
+          : scrolled
+            ? "bg-white/95 backdrop-blur border-b border-line shadow-[0_14px_30px_-18px_rgba(28,27,25,0.5)]"
+            : "bg-white border-b border-line shadow-[0_12px_26px_-16px_rgba(28,27,25,0.4)]"
       }`}
     >
-      <div className="mx-auto max-w-6xl px-6">
+      <div className="mx-auto max-w-[1600px] px-6">
         {/* Masthead row: hamburger (mobile) · centered wordmark · bag */}
         <div
           className={`grid grid-cols-[1fr_auto_1fr] items-center transition-all duration-500 ${
@@ -61,15 +63,16 @@ export function Header() {
             aria-label="Taygerian — home"
             className="group flex flex-col items-center justify-self-center"
           >
+            {/* Wordmark — Philosopher (humanist serif), plain ink text.
+                Condenses/animates across the overlay / scrolled / plain states. */}
             <span
-              className={`font-display font-semibold uppercase leading-none whitespace-nowrap transition-all duration-500 ${
-                "text-ink"
-              } ${
+              style={{ fontFamily: "var(--font-philosopher), Georgia, serif" }}
+              className={`uppercase leading-none whitespace-nowrap text-[#46443f] transition-all duration-500 ${
                 overlay
-                  ? "text-4xl tracking-[0.28em] sm:text-6xl sm:tracking-[0.38em] mr-[-0.28em] sm:mr-[-0.38em]"
+                  ? "text-4xl tracking-[0.22em] sm:text-6xl sm:tracking-[0.3em] mr-[-0.22em] sm:mr-[-0.3em]"
                   : scrolled
-                    ? "text-base tracking-[0.28em] sm:text-lg sm:tracking-[0.32em] mr-[-0.28em] sm:mr-[-0.32em]"
-                    : "text-xl tracking-[0.34em] sm:text-3xl sm:tracking-[0.44em] mr-[-0.34em] sm:mr-[-0.44em]"
+                    ? "text-base tracking-[0.22em] sm:text-lg sm:tracking-[0.26em] mr-[-0.22em] sm:mr-[-0.26em]"
+                    : "text-xl tracking-[0.28em] sm:text-3xl sm:tracking-[0.36em] mr-[-0.28em] sm:mr-[-0.36em]"
               }`}
             >
               Taygerian
