@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { CartLink } from "./CartLink";
+import { SocialLinks } from "./SocialLinks";
 import { MobileMenu } from "./MobileMenu";
 
 const NAV = [
@@ -79,7 +80,8 @@ export function Header() {
             </span>
           </Link>
 
-          <div className="flex items-center justify-self-end">
+          <div className="flex items-center gap-4 justify-self-end sm:gap-5">
+            <SocialLinks light={overlay} className="hidden sm:flex" />
             <CartLink light={overlay} />
           </div>
         </div>

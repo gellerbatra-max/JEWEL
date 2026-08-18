@@ -37,7 +37,7 @@ export default async function JewelleryPage() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {collections.map((c) => {
           const { image, count } = categoryMeta(c.handle);
           return (
@@ -51,7 +51,7 @@ export default async function JewelleryPage() {
                   src={image}
                   alt={c.title}
                   fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 384px"
                   className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
                 />
               </div>

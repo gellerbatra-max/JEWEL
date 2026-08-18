@@ -24,14 +24,27 @@ export function RotatingImage({
   const [i, setI] = useState(0);
   const [visible, setVisible] = useState(true);
   const ref = useRef<HTMLDivElement>(null);
+  const wasVisible = useRef(false);
 
+  // Start at index 0 on the server/first paint (so hydration matches), then each
+  // time the section scrolls into view — and on load if it's already in view —
+  // jump to a RANDOM photo so it doesn't always begin with the same one.
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const io = new IntersectionObserver(([e]) => setVisible(e.isIntersecting), { threshold: 0.2 });
+    const io = new IntersectionObserver(
+      ([e]) => {
+        setVisible(e.isIntersecting);
+        if (e.isIntersecting && !wasVisible.current && n > 1) {
+          setI(Math.floor(Math.random() * n));
+        }
+        wasVisible.current = e.isIntersecting;
+      },
+      { threshold: 0.2 }
+    );
     io.observe(el);
     return () => io.disconnect();
-  }, []);
+  }, [n]);
 
   useEffect(() => {
     if (n <= 1 || !visible) return;
