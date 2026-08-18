@@ -13,6 +13,9 @@ const FILE = path.join(process.cwd(), "data", "site-config.json");
 type SiteConfig = {
   // category handle -> the product id whose photo represents that category
   categoryCovers?: Partial<Record<CollectionHandle, string>>;
+  // up to 5 photos that auto-rotate in each home section
+  bespokeImages?: string[]; // "Made to Order"
+  bridalImages?: string[]; // "Bridal"
 };
 
 let writeChain: Promise<unknown> = Promise.resolve();
@@ -47,6 +50,32 @@ export async function setCategoryCover(handle: CollectionHandle, productId: stri
     if (productId) covers[handle] = productId;
     else delete covers[handle];
     cfg.categoryCovers = covers;
+    await write(cfg);
+  });
+}
+
+export const MAX_SECTION_IMAGES = 5;
+
+export async function getBespokeImages(): Promise<string[]> {
+  return (await read()).bespokeImages ?? [];
+}
+
+export async function setBespokeImages(paths: string[]): Promise<void> {
+  return withWriteLock(async () => {
+    const cfg = await read();
+    cfg.bespokeImages = paths.slice(0, MAX_SECTION_IMAGES);
+    await write(cfg);
+  });
+}
+
+export async function getBridalImages(): Promise<string[]> {
+  return (await read()).bridalImages ?? [];
+}
+
+export async function setBridalImages(paths: string[]): Promise<void> {
+  return withWriteLock(async () => {
+    const cfg = await read();
+    cfg.bridalImages = paths.slice(0, MAX_SECTION_IMAGES);
     await write(cfg);
   });
 }

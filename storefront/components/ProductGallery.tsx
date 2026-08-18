@@ -103,11 +103,7 @@ export function ProductGallery({ images, alt }: { images: string[]; alt: string 
                   className="group block shrink-0"
                   style={{ height: "calc((100% - 1.5rem) / 3)" }}
                 >
-                  <div
-                    className={`relative h-full w-full overflow-hidden bg-porcelain transition-opacity duration-300 ${
-                      i === active ? "opacity-100" : "opacity-50 group-hover:opacity-90"
-                    }`}
-                  >
+                  <div className="relative h-full w-full overflow-hidden bg-porcelain">
                     {isVideo(src) ? (
                       <>
                         <video

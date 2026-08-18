@@ -37,10 +37,10 @@ export function SignatureCarousel({ items }: { items: CarouselItem[] }) {
   // always lands in the hidden zone.
   const side = Math.max(0, Math.min(2, Math.floor((n - 1) / 2)));
 
-  // Graduated size + fade by distance from centre — this is what makes it read
-  // as elegant depth rather than a crowded row.
+  // Graduated size by distance from centre gives the coverflow its depth; the
+  // side cards stay at full brightness (no dimming) — the larger centre card and
+  // its frame are what mark it as active.
   const scaleFor = (o: number) => (o === 0 ? 1 : Math.abs(o) === 1 ? 0.8 : 0.6);
-  const opacityFor = (o: number) => (o === 0 ? 1 : Math.abs(o) === 1 ? 0.5 : 0.28);
 
   // Signed circular distance from the active card to card i, e.g. -2..+2.
   const offsetOf = (i: number) => {
@@ -106,7 +106,7 @@ export function SignatureCarousel({ items }: { items: CarouselItem[] }) {
             style={{
               width: "var(--cardw)",
               transform: `translateX(calc(-50% + ${slot} * var(--step))) scale(${scaleFor(off)})`,
-              opacity: shown ? opacityFor(off) : 0,
+              opacity: shown ? 1 : 0,
               zIndex: 20 - Math.abs(off),
               pointerEvents: shown ? "auto" : "none",
               transition: shown ? "transform 0.6s ease, opacity 0.6s ease" : "none",

@@ -14,11 +14,16 @@ import {
   saveUploadedImage,
   type ProductInput,
 } from "@/lib/catalog-store";
-import { setCategoryCover } from "@/lib/site-config-store";
+import {
+  setCategoryCover,
+  setBespokeImages,
+  setBridalImages,
+  MAX_SECTION_IMAGES,
+} from "@/lib/site-config-store";
 import type { CollectionHandle, Certification } from "@/lib/products";
 import { SECTION_DEFS, type ProductSections } from "@/lib/product-sections";
 
-export type FormState = { error?: string };
+export type FormState = { error?: string; images?: string[] };
 
 const COLLECTIONS: CollectionHandle[] = [
   "rings", "necklaces", "pendants", "earrings", "bracelets", "bangles",
@@ -157,4 +162,33 @@ export async function setCategoryCoverAction(handle: string, productId: string):
   if (!COLLECTIONS.includes(handle as CollectionHandle)) return;
   await setCategoryCover(handle as CollectionHandle, productId);
   revalidatePath("/", "layout");
+}
+
+// --- Home section rotating photos ------------------------------------------
+
+// Shared parsing for a section image manager (existing paths + new uploads).
+async function collectSectionImages(formData: FormData): Promise<string[]> {
+  const existing = formData.getAll("existingImages").map(String).filter(Boolean);
+  const files = formData
+    .getAll("newImages")
+    .filter((f): f is File => f instanceof File && f.size > 0);
+  const uploaded: string[] = [];
+  for (const f of files) uploaded.push(await saveUploadedImage(f));
+  return [...existing, ...uploaded].slice(0, MAX_SECTION_IMAGES);
+}
+
+export async function saveBespokeImagesAction(_prev: FormState, formData: FormData): Promise<FormState> {
+  await assertAuthed();
+  const images = await collectSectionImages(formData);
+  await setBespokeImages(images);
+  revalidatePath("/", "layout");
+  return { images };
+}
+
+export async function saveBridalImagesAction(_prev: FormState, formData: FormData): Promise<FormState> {
+  await assertAuthed();
+  const images = await collectSectionImages(formData);
+  await setBridalImages(images);
+  revalidatePath("/", "layout");
+  return { images };
 }

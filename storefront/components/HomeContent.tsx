@@ -1,12 +1,21 @@
 import Link from "next/link";
-import Image from "next/image";
 import { Reveal } from "@/components/Reveal";
 import { SignatureCarousel, type CarouselItem } from "@/components/SignatureCarousel";
+import { RotatingImage } from "@/components/RotatingImage";
 import { getSignaturePieces } from "@/lib/catalog-store";
+import { getBespokeImages, getBridalImages } from "@/lib/site-config-store";
 
 // The home page body, rendered by the real route (app/page.tsx).
 export async function HomeContent() {
   const signature = await getSignaturePieces(20);
+  const bespokeSaved = await getBespokeImages();
+  const bespokeImages = bespokeSaved.length
+    ? bespokeSaved
+    : ["/images/catalog/rings/rings-004-1.avif"];
+  const bridalSaved = await getBridalImages();
+  const bridalImages = bridalSaved.length
+    ? bridalSaved
+    : ["/images/catalog/rings/rings-007-1.avif"];
   const signatureItems: CarouselItem[] = signature.map((p) => ({
     handle: p.handle,
     title: p.title,
@@ -73,13 +82,11 @@ export async function HomeContent() {
         <div className="mx-auto grid max-w-[1600px] items-center gap-8 bg-porcelain px-6 md:grid-cols-[1.1fr_0.9fr] lg:gap-14">
           {/* The Seraphine ring, drawn from the collection */}
           <div className="flex items-center justify-center py-10 md:py-0">
-            <Image
-              src="/images/catalog/rings/rings-004-1.avif"
-              alt="Seraphine Ring — star pavé in 18k gold"
-              width={1200}
-              height={1200}
+            <RotatingImage
+              images={bespokeImages}
+              alt="Made to order — bespoke Ceylon jewellery"
+              className="aspect-square w-full max-w-[560px]"
               sizes="(max-width: 768px) 70vw, 460px"
-              className="w-full max-w-[560px] h-auto mix-blend-multiply"
             />
           </div>
 
@@ -122,23 +129,24 @@ export async function HomeContent() {
           {/* The promise */}
           <div className="order-2 flex items-center py-8 md:order-1 md:py-0">
             <div className="mx-auto max-w-md">
-              <p className="mb-5 text-[13px] tracking-[0.24em] uppercase text-gold">Bridal</p>
+              <p className="mb-5 text-[13px] tracking-[0.24em] uppercase text-gold">Craftsmanship</p>
               <h2 className="font-display text-4xl sm:text-5xl leading-[1.05] text-balance text-ink">
                 The Only One in the Universe
               </h2>
               <p className="mt-6 text-lg leading-relaxed text-stone">
-                Designed to your dream theme and hand-made to your preference, each bridal piece
-                is made only once — no duplicate, no second casting. What you wear on your day is
-                truly one of a kind, yours alone: a keepsake to remember it by, forever.
+                Every Taygerian piece is shaped by hand in our Colombo atelier — Ceylon stones cut
+                and matched, settings raised, and each facet finished by master craftsmen. No moulds,
+                no shortcuts: only patient, generational skill, so the piece you wear carries the mark
+                of the hand that made it.
               </p>
               <div className="mt-9">
                 <a
-                  href="https://wa.me/94000000000?text=Hi%20Taygerian%2C%20I%27d%20love%20to%20design%20a%20one-of-a-kind%20bridal%20piece%20for%20my%20day."
+                  href="https://wa.me/94000000000?text=Hi%20Taygerian%2C%20I%27d%20love%20to%20commission%20a%20hand-made%20piece%20from%20your%20atelier."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-block bg-ink px-8 py-3.5 text-[12px] tracking-[0.16em] uppercase text-porcelain transition-colors hover:bg-gold"
                 >
-                  Begin Your Bridal Piece
+                  Commission a Piece
                 </a>
               </div>
             </div>
@@ -146,13 +154,11 @@ export async function HomeContent() {
 
           {/* The Isolde ring, drawn from the collection */}
           <div className="order-1 flex items-center justify-center py-10 md:order-2 md:py-0">
-            <Image
-              src="/images/catalog/rings/rings-007-1.avif"
-              alt="Isolde Ring — cushion-cut white sapphire halo in 18k gold"
-              width={1200}
-              height={1200}
+            <RotatingImage
+              images={bridalImages}
+              alt="Craftsmanship — hand-finished Ceylon jewellery"
+              className="aspect-square w-full max-w-[560px]"
               sizes="(max-width: 768px) 70vw, 460px"
-              className="w-full max-w-[560px] h-auto mix-blend-multiply"
             />
           </div>
         </div>
