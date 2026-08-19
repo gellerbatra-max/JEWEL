@@ -24,6 +24,7 @@ const COLUMNS: Col[] = [
       { href: "/shipping", label: "Shipping & Delivery" },
       { href: "/returns", label: "Returns & Exchanges" },
       { href: "/care", label: "Jewellery Care" },
+      { href: "/size-guide", label: "Ring Size Guide" },
       { href: "/faq", label: "FAQ" },
       { href: "/contact", label: "Contact" },
     ],

@@ -38,7 +38,7 @@ export function PurchasePanel({ product }: { product: Product }) {
               Ring Size{requiresSize ? "" : " (optional)"}
             </span>
             <a
-              href="/taygerian-ring-size-guide.pdf"
+              href="/size-guide"
               target="_blank"
               rel="noopener noreferrer"
               className="text-[11px] tracking-[0.06em] uppercase text-stone underline underline-offset-2 hover:text-gold transition-colors"
