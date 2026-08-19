@@ -6,7 +6,13 @@
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import { headers } from "next/headers";
 import { isAuthed, verifyPassword, startSession, endSession } from "@/lib/admin-auth";
+import {
+  loginBlockedSeconds,
+  recordLoginFailure,
+  recordLoginSuccess,
+} from "@/lib/login-rate-limit";
 import {
   upsertProduct,
   deleteProduct,
@@ -18,6 +24,8 @@ import {
   setCategoryCover,
   setBespokeImages,
   setBridalImages,
+  pruneCategoryCoverForProduct,
+  pruneSectionImages,
   MAX_SECTION_IMAGES,
 } from "@/lib/site-config-store";
 import type { CollectionHandle, Certification } from "@/lib/products";
@@ -40,10 +48,22 @@ async function assertAuthed(): Promise<void> {
 // --- Auth ------------------------------------------------------------------
 
 export async function loginAction(_prev: FormState, formData: FormData): Promise<FormState> {
+  const h = await headers();
+  const ip =
+    h.get("x-forwarded-for")?.split(",")[0]?.trim() || h.get("x-real-ip") || "local";
+
+  const blockedFor = loginBlockedSeconds(ip);
+  if (blockedFor > 0) {
+    const mins = Math.ceil(blockedFor / 60);
+    return { error: `Too many attempts. Please try again in ${mins} minute${mins === 1 ? "" : "s"}.` };
+  }
+
   const password = String(formData.get("password") || "");
   if (!verifyPassword(password)) {
+    recordLoginFailure(ip);
     return { error: "Incorrect password. Please try again." };
   }
+  recordLoginSuccess(ip);
   await startSession();
   redirect("/admin");
 }
@@ -148,7 +168,12 @@ export async function saveProductAction(_prev: FormState, formData: FormData): P
 export async function deleteProductAction(id: string): Promise<void> {
   await assertAuthed();
   if (id) {
-    await deleteProduct(id);
+    // Delete the piece, then clean up anything that referenced it: its uploaded
+    // photos (removed from disk by deleteProduct), any category cover pointing at
+    // it, and any home-section rotating photos that used those now-gone files.
+    const removedUploads = await deleteProduct(id);
+    await pruneCategoryCoverForProduct(id);
+    await pruneSectionImages(removedUploads);
     revalidatePath("/", "layout");
   }
   redirect("/admin");

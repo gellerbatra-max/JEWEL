@@ -229,10 +229,29 @@ export async function upsertProduct(input: ProductInput): Promise<Product> {
   });
 }
 
-export async function deleteProduct(id: string): Promise<void> {
+// Deletes a product and removes its uploaded photos that no other product still
+// uses. Returns the paths of the upload files it deleted (so callers can prune
+// any site-config references to them).
+export async function deleteProduct(id: string): Promise<string[]> {
   return withWriteLock(async () => {
     const all = await readCatalog();
-    await writeCatalog(all.filter((p) => p.id !== id));
+    const victim = all.find((p) => p.id === id);
+    const remaining = all.filter((p) => p.id !== id);
+    await writeCatalog(remaining);
+    if (!victim) return [];
+
+    const stillUsed = new Set(remaining.flatMap((p) => p.images ?? []));
+    const removedUploads = (victim.images ?? []).filter(
+      (src) => src.startsWith(`${UPLOAD_PUBLIC}/`) && !stillUsed.has(src)
+    );
+    await Promise.all(
+      removedUploads.map((src) =>
+        fs
+          .rm(path.join(process.cwd(), "public", src.replace(/^\//, "")), { force: true })
+          .catch(() => {})
+      )
+    );
+    return removedUploads;
   });
 }
 

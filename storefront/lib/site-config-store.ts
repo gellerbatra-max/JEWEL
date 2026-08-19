@@ -86,3 +86,42 @@ export async function setBridalImages(paths: string[]): Promise<void> {
     await write({ ...cfg, bridalImages: paths.slice(0, MAX_SECTION_IMAGES) });
   });
 }
+
+// --- Cleanup when a product is deleted -------------------------------------
+
+// Drop any category cover that pointed at a now-deleted product, so the
+// Jewellery page falls back to its default cover instead of a broken image.
+export async function pruneCategoryCoverForProduct(productId: string): Promise<void> {
+  if (!productId) return;
+  return withWriteLock(async () => {
+    const cfg = await read();
+    if (!cfg.categoryCovers) return;
+    const covers = { ...cfg.categoryCovers };
+    let changed = false;
+    for (const handle of Object.keys(covers) as CollectionHandle[]) {
+      if (covers[handle] === productId) {
+        delete covers[handle];
+        changed = true;
+      }
+    }
+    if (changed) await write({ ...cfg, categoryCovers: covers });
+  });
+}
+
+// Remove any home-section rotating photos that referenced now-deleted image
+// files (e.g. a deleted product's uploaded photos), so those sections don't
+// point at files that no longer exist on disk.
+export async function pruneSectionImages(removedPaths: string[]): Promise<void> {
+  if (removedPaths.length === 0) return;
+  return withWriteLock(async () => {
+    const cfg = await read();
+    const gone = new Set(removedPaths);
+    const bespoke = (cfg.bespokeImages ?? []).filter((p) => !gone.has(p));
+    const bridal = (cfg.bridalImages ?? []).filter((p) => !gone.has(p));
+    const bespokeChanged = bespoke.length !== (cfg.bespokeImages?.length ?? 0);
+    const bridalChanged = bridal.length !== (cfg.bridalImages?.length ?? 0);
+    if (bespokeChanged || bridalChanged) {
+      await write({ ...cfg, bespokeImages: bespoke, bridalImages: bridal });
+    }
+  });
+}
