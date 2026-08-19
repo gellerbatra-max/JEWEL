@@ -11,6 +11,7 @@ import { ProductJsonLd } from "@/components/ProductJsonLd";
 import { RelatedProducts } from "@/components/RelatedProducts";
 import { RecentlyViewed } from "@/components/RecentlyViewed";
 import { WishlistButton } from "@/components/WishlistButton";
+import { TryOnButton } from "@/components/TryOnButton";
 import { getCollection, formatPrice } from "@/lib/products";
 import { toWishItem } from "@/lib/wishlist";
 import { getProduct, getAllProducts } from "@/lib/catalog-store";
@@ -91,6 +92,9 @@ export default async function ProductPage(props: PageProps<"/products/[handle]">
 
         <div className="space-y-3">
           <PurchasePanel product={product} />
+          {product.isRing && product.image && (
+            <TryOnButton ringImage={product.image} ringTitle={product.title} />
+          )}
           <ConsultationCTA productTitle={product.title} />
         </div>
 
