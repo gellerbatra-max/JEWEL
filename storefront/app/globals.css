@@ -5,7 +5,7 @@
    use. Warm off-white ground, deep ink text, gold + sapphire accents
    used sparingly. */
 :root {
-  --porcelain: #fbfaf7;
+  --porcelain: #ffffff; /* pure white ground */
   --cloud: #f3f0e9;
   --ink: #1c1b19;
   --stone: #6e6a63;
