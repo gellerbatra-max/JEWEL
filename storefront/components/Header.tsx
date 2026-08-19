@@ -11,6 +11,7 @@ const NAV = [
   { href: "/jewellery", label: "Jewellery" },
   { href: "/gemstones", label: "Gemstones" },
   { href: "/dynasty", label: "Dynasty" },
+  { href: "/contact", label: "Contact" },
 ];
 
 // True once the page is scrolled past `threshold` px. Mirrors the pattern
@@ -104,9 +105,7 @@ export function Header() {
               href={item.href}
               className={`relative py-1 transition-colors ${
                 i === NAV.length - 1 ? navTrail : ""
-              } ${
-                "hover:text-ink"
-              } after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-center after:scale-x-0 after:bg-gold after:transition-transform after:duration-300 hover:after:scale-x-100`}
+              } hover:text-ink after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-center after:scale-x-0 after:bg-gold after:transition-transform after:duration-300 hover:after:scale-x-100`}
             >
               {item.label}
             </Link>

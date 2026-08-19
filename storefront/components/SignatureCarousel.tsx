@@ -16,57 +16,147 @@ export type CarouselItem = {
   oneOfAKind: boolean;
 };
 
-// Circular centre-highlight carousel for the home "Signature Pieces" row.
+const ANGLE = 20; // deg of Y-tilt per step from centre
+const BASE_SPEED = 0.006; // index-units advanced per frame (~one piece / 2.8s)
+
+// Smooth size ramp by distance from centre: 0→1, 1→0.8, 2→0.6.
+function scaleFor(o: number) {
+  const a = Math.abs(o);
+  if (a >= 2) return 0.6;
+  if (a >= 1) return 0.8 - (a - 1) * 0.2;
+  return 1 - a * 0.2;
+}
+
+// Faux-3D coverflow for the home "Signature Pieces" row.
 //
-// It's a *ring*: the piece before the centred one always wraps around to fill
-// the left, and the piece after fills the right — so neither side is ever empty,
-// at first load or mid-rotation. Cards are positioned with CSS transforms (which
-// run on the compositor), only a small window around the centre is visible, and
-// auto-advance pauses off-screen / on hover / for reduced-motion. Light and smooth
-// even at 20 pieces.
+// Keeps the same spaced object-cover tiles as before, but adds depth: a shared
+// perspective + per-card Y-tilt (centre faces forward, previews fan back) and a
+// continuous glide driven by one requestAnimationFrame loop writing transforms
+// imperatively — so it flows seamlessly rather than stepping. Performance
+// safeguards: the loop runs ONLY while the row is on-screen, restyles just the
+// few visible cards each frame, uses no blend modes, and halts on hover / for
+// reduced motion. A closed ring; scrolling adds momentum; a quick intro spin.
 export function SignatureCarousel({ items }: { items: CarouselItem[] }) {
   const n = items.length;
-  const [active, setActive] = useState(0);
-  const [hovering, setHovering] = useState(false);
-  const [visible, setVisible] = useState(true);
-  const rootRef = useRef<HTMLDivElement>(null);
-
-  // Coverflow: up to two graduated preview cards on each side of the centre.
-  // With plenty of pieces this shows 5 (big centre, medium + small previews);
-  // with few it gracefully drops to 3. Kept below n/2 so the wrap-around seam
-  // always lands in the hidden zone.
   const side = Math.max(0, Math.min(2, Math.floor((n - 1) / 2)));
 
-  // Graduated size by distance from centre gives the coverflow its depth; the
-  // side cards stay at full brightness (no dimming) — the larger centre card and
-  // its frame are what mark it as active.
-  const scaleFor = (o: number) => (o === 0 ? 1 : Math.abs(o) === 1 ? 0.8 : 0.6);
+  const rootRef = useRef<HTMLDivElement>(null);
+  const cardsRef = useRef<Array<HTMLDivElement | null>>([]);
+  const posRef = useRef(0); // fractional centre index
+  const burstRef = useRef(0); // extra velocity (intro spin + scroll), decays
+  const rafRef = useRef(0);
+  const runningRef = useRef(false);
+  const hoverRef = useRef(false);
+  const reducedRef = useRef(false);
+  const snapRef = useRef<number | null>(null); // target index to glide to on click
+  const dwellRef = useRef(0); // hold-centred-until timestamp after a click
+  const [center, setCenter] = useState(0);
 
-  // Signed circular distance from the active card to card i, e.g. -2..+2.
-  const offsetOf = (i: number) => {
-    let d = ((i - active) % n + n) % n;
-    if (d > n / 2) d -= n;
-    return d;
-  };
-
-  const go = (dir: number) => setActive((a) => ((a + dir) % n + n) % n);
-
-  // Pause auto-advance while the row is scrolled out of view.
   useEffect(() => {
+    reducedRef.current = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
+
+    const layout = (): number => {
+      const pos = posRef.current;
+      let nearest = 0;
+      let nd = Infinity;
+      for (let i = 0; i < n; i++) {
+        const el = cardsRef.current[i];
+        if (!el) continue;
+        let off = (((i - pos) % n) + n) % n;
+        if (off > n / 2) off -= n;
+        const a = Math.abs(off);
+        if (a < nd) {
+          nd = a;
+          nearest = i;
+        }
+        if (a > side + 1.02) {
+          if (el.style.opacity !== "0") {
+            el.style.opacity = "0";
+            el.style.pointerEvents = "none";
+          }
+          continue;
+        }
+        const clamped = Math.max(-2, Math.min(2, off));
+        const op = a <= side ? 1 : Math.max(0, 1 - (a - side));
+        el.style.transform = `translateX(calc(-50% + ${off.toFixed(3)} * var(--step))) scale(${scaleFor(
+          off
+        ).toFixed(3)}) rotateY(${(-clamped * ANGLE).toFixed(2)}deg)`;
+        el.style.opacity = op.toFixed(3);
+        el.style.zIndex = String(100 - Math.round(a * 10));
+        el.style.pointerEvents = "auto";
+      }
+      return nearest;
+    };
+
+    const tick = (t: number) => {
+      const snap = snapRef.current;
+      if (snap !== null) {
+        // Glide toward a clicked side piece (shortest way round the ring).
+        let d = (((snap - posRef.current) % n) + n) % n;
+        if (d > n / 2) d -= n;
+        if (Math.abs(d) < 0.008) {
+          posRef.current = snap;
+          snapRef.current = null;
+          dwellRef.current = t + 2200; // hold it centred briefly before resuming
+        } else {
+          posRef.current += d * 0.14;
+        }
+      } else if (!hoverRef.current && !reducedRef.current && t >= dwellRef.current) {
+        posRef.current += BASE_SPEED + burstRef.current;
+      }
+      burstRef.current *= 0.94;
+      posRef.current = ((posRef.current % n) + n) % n;
+      const nearest = layout();
+      setCenter((c) => (c === nearest ? c : nearest));
+      rafRef.current = requestAnimationFrame(tick);
+    };
+
+    const start = () => {
+      if (runningRef.current) return;
+      runningRef.current = true;
+      rafRef.current = requestAnimationFrame(tick);
+    };
+    const stop = () => {
+      runningRef.current = false;
+      cancelAnimationFrame(rafRef.current);
+    };
+
+    layout(); // static coverflow before it animates
+
     const el = rootRef.current;
     if (!el) return;
-    const io = new IntersectionObserver(([e]) => setVisible(e.isIntersecting), { threshold: 0.25 });
+    const io = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting) {
+          burstRef.current = 0.05; // speedy intro spin whenever it enters view
+          start();
+        } else {
+          stop();
+        }
+      },
+      { threshold: 0.15 }
+    );
     io.observe(el);
-    return () => io.disconnect();
-  }, []);
+    return () => {
+      io.disconnect();
+      stop();
+    };
+  }, [n, side]);
 
-  // Auto-advance (respects reduced-motion, hover, and visibility).
+  // Scrolling through the section adds a little momentum to the glide.
   useEffect(() => {
-    if (n <= 1 || hovering || !visible) return;
-    if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) return;
-    const id = setInterval(() => setActive((a) => (a + 1) % n), 3600);
-    return () => clearInterval(id);
-  }, [n, hovering, visible]);
+    if (typeof window === "undefined") return;
+    let lastY = window.scrollY;
+    const onScroll = () => {
+      const y = window.scrollY;
+      const dy = y - lastY;
+      lastY = y;
+      if (!runningRef.current || reducedRef.current) return;
+      burstRef.current += dy * 0.0009;
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   if (n === 0) return null;
 
@@ -78,87 +168,67 @@ export function SignatureCarousel({ items }: { items: CarouselItem[] }) {
         {
           "--cardw": "min(62vw, 280px)",
           "--step": "calc(var(--cardw) * 1.06)",
+          perspective: "1600px",
+          perspectiveOrigin: "center 46%",
         } as React.CSSProperties
       }
-      onMouseEnter={() => setHovering(true)}
-      onMouseLeave={() => setHovering(false)}
+      onMouseEnter={() => {
+        hoverRef.current = true;
+      }}
+      onMouseLeave={() => {
+        hoverRef.current = false;
+      }}
     >
-      {/* Invisible sizer establishes the row height so the absolute cards can
-          overlay it responsively. Mirrors a framed card's box (p-3 + border). */}
-      <div className="mx-auto invisible border border-transparent p-3" style={{ width: "var(--cardw)" }} aria-hidden>
+      {/* Invisible sizer establishes the row height for the absolute cards. */}
+      <div className="mx-auto invisible p-3" style={{ width: "var(--cardw)" }} aria-hidden>
         <div className="aspect-[4/5]" />
-        {/* min-h reserves room for a two-line title + two-line subtitle + price,
-            so no card's price is ever clipped and the frame height stays steady. */}
         <div className="mt-4 min-h-[8rem]" />
       </div>
 
-      {items.map((it, i) => {
-        const off = offsetOf(i);
-        const shown = Math.abs(off) <= side;
-        const isCenter = off === 0;
-        // Parked (hidden) cards sit just past the last visible slot, with no
-        // transition, so the wrap-around never animates across the whole row.
-        const slot = shown ? off : Math.sign(off) * (side + 1);
-        return (
-          <div
-            key={it.handle}
-            className="absolute left-1/2 top-0"
-            style={{
-              width: "var(--cardw)",
-              transform: `translateX(calc(-50% + ${slot} * var(--step))) scale(${scaleFor(off)})`,
-              opacity: shown ? 1 : 0,
-              zIndex: 20 - Math.abs(off),
-              pointerEvents: shown ? "auto" : "none",
-              transition: shown ? "transform 0.6s ease, opacity 0.6s ease" : "none",
+      {items.map((it, i) => (
+        <div
+          key={it.handle}
+          ref={(el) => {
+            cardsRef.current[i] = el;
+          }}
+          className="absolute left-1/2 top-0"
+          style={{ width: "var(--cardw)", transformStyle: "preserve-3d", opacity: 0 }}
+        >
+          <Link
+            href={`/products/${it.handle}`}
+            onClick={(e) => {
+              // Centre piece opens; a side piece glides to the centre instead.
+              let off = (((i - posRef.current) % n) + n) % n;
+              if (off > n / 2) off -= n;
+              if (Math.abs(off) < 0.5) return;
+              e.preventDefault();
+              snapRef.current = i;
+              burstRef.current = 0;
             }}
+            className="group block p-3"
           >
-            <Link
-              href={`/products/${it.handle}`}
-              onClick={(e) => {
-                // Side cards recentre instead of navigating; the centred one opens.
-                if (!isCenter) {
-                  e.preventDefault();
-                  setActive(i);
-                }
-              }}
-              className={`group block border p-3 transition-all duration-500 ease-out ${
-                isCenter
-                  ? "border-line bg-porcelain shadow-[0_26px_54px_-28px_rgba(28,27,25,0.5)]"
-                  : "border-transparent"
-              }`}
-              tabIndex={isCenter ? 0 : -1}
-              aria-hidden={!isCenter}
-            >
-              <div className="relative aspect-[4/5] overflow-hidden bg-cloud">
-                <Image
-                  src={it.image}
-                  alt={it.title}
-                  fill
-                  sizes="(max-width: 640px) 62vw, 280px"
-                  className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-                />
-              </div>
-              <div className="mt-4 min-h-[8rem] text-center">
-                <h3 className="line-clamp-2 font-display text-xl text-ink">{it.title}</h3>
-                <p className="mt-1 line-clamp-2 text-[11px] tracking-[0.14em] uppercase text-stone">
-                  {it.metal}
-                  {it.stone && it.stone !== "—" ? ` · ${it.stone}` : ""}
-                </p>
-                <p className="mt-2 font-display text-[15px] text-ink tabular-nums">
-                  {it.oneOfAKind ? "Price on Request" : formatPrice(it.price, it.currency)}
-                </p>
-              </div>
-            </Link>
-          </div>
-        );
-      })}
-
-      {n > 1 && (
-        <>
-          <CarouselArrow side="left" onClick={() => go(-1)} />
-          <CarouselArrow side="right" onClick={() => go(1)} />
-        </>
-      )}
+            <div className="relative aspect-[4/5] overflow-hidden bg-cloud shadow-[0_18px_44px_-30px_rgba(28,27,25,0.45)]">
+              <Image
+                src={it.image}
+                alt={it.title}
+                fill
+                sizes="(max-width: 640px) 62vw, 280px"
+                className="object-cover"
+              />
+            </div>
+            <div className="mt-4 min-h-[8rem] text-center">
+              <h3 className="line-clamp-2 font-display text-xl text-ink">{it.title}</h3>
+              <p className="mt-1 line-clamp-2 text-[11px] tracking-[0.14em] uppercase text-stone">
+                {it.metal}
+                {it.stone && it.stone !== "—" ? ` · ${it.stone}` : ""}
+              </p>
+              <p className="mt-2 font-display text-[15px] text-ink tabular-nums">
+                {it.oneOfAKind ? "Price on Request" : formatPrice(it.price, it.currency)}
+              </p>
+            </div>
+          </Link>
+        </div>
+      ))}
 
       {n > 1 && (
         <div className="mt-9 flex flex-wrap justify-center gap-2">
@@ -167,31 +237,17 @@ export function SignatureCarousel({ items }: { items: CarouselItem[] }) {
               key={it.handle}
               type="button"
               aria-label={`Show ${it.title}`}
-              onClick={() => setActive(i)}
+              onClick={() => {
+                posRef.current = i;
+                burstRef.current = 0;
+              }}
               className={`h-1.5 rounded-full transition-all duration-300 ${
-                i === active ? "w-5 bg-gold" : "w-1.5 bg-line hover:bg-stone"
+                i === center ? "w-5 bg-gold" : "w-1.5 bg-line hover:bg-stone"
               }`}
             />
           ))}
         </div>
       )}
     </div>
-  );
-}
-
-function CarouselArrow({ side, onClick }: { side: "left" | "right"; onClick: () => void }) {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      aria-label={side === "left" ? "Previous" : "Next"}
-      className={`absolute top-[38%] z-30 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-line bg-white/85 text-ink shadow-sm backdrop-blur transition-colors hover:bg-white sm:flex ${
-        side === "left" ? "left-2 lg:left-6" : "right-2 lg:right-6"
-      }`}
-    >
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
-        {side === "left" ? <path d="M15 6l-6 6 6 6" /> : <path d="M9 6l6 6-6 6" />}
-      </svg>
-    </button>
   );
 }

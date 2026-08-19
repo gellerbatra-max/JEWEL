@@ -29,9 +29,9 @@ const IconParcel = (
 
 function Item({ icon, label }: { icon: ReactNode; label: string }) {
   return (
-    <li className="flex flex-col items-center gap-3 text-center">
+    <li className="flex flex-col items-center gap-2 px-2 text-center">
       <span className="text-gold" aria-hidden="true">{icon}</span>
-      <span className="text-[10.5px] sm:text-[11px] tracking-[0.14em] uppercase text-ink leading-[1.6] max-w-[16ch]">
+      <span className="text-[9.5px] sm:text-[10px] tracking-[0.1em] uppercase text-ink leading-[1.5] max-w-[12ch]">
         {label}
       </span>
     </li>
@@ -41,7 +41,7 @@ function Item({ icon, label }: { icon: ReactNode; label: string }) {
 export function ProductAssurances() {
   return (
     <div className="mt-8 border-y border-line py-8">
-      <ul className="grid grid-cols-2 gap-x-6 gap-y-8">
+      <ul className="grid grid-cols-4 divide-x divide-line">
         <Item icon={IconWarranty} label="Lifetime Warranty" />
         <Item icon={IconExchange} label="Lifetime Buy Back" />
         <Item icon={IconGlobe} label="Worldwide Delivery" />
