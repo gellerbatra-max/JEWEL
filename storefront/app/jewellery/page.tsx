@@ -6,7 +6,7 @@ import { getAllProducts } from "@/lib/catalog-store";
 import { getCategoryCovers } from "@/lib/site-config-store";
 
 export const metadata: Metadata = {
-  title: "Jewellery — Taygerian",
+  title: "Jewellery",
   description: "Explore Taygerian jewellery by category: rings, necklaces, pendants, earrings, bracelets, and bangles.",
 };
 

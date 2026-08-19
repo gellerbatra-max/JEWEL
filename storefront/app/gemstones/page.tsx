@@ -4,7 +4,7 @@ import { FacetMark } from "@/components/FacetMark";
 import { ConsultationCTA } from "@/components/ConsultationCTA";
 
 export const metadata: Metadata = {
-  title: "Ceylon Gemstones — Taygerian",
+  title: "Ceylon Gemstones",
   description:
     "The Ceylon gemstones behind Taygerian — cornflower sapphire, padparadscha, yellow and white sapphire, star sapphire, and Ceylon ruby, mined in Ratnapura and cut in-house.",
 };

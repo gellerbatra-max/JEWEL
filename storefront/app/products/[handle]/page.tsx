@@ -7,6 +7,7 @@ import { ProductAccordion } from "@/components/ProductAccordion";
 import { ProductAssurances } from "@/components/ProductAssurances";
 import { ShareButtons } from "@/components/ShareButtons";
 import { ProductGallery } from "@/components/ProductGallery";
+import { ProductJsonLd } from "@/components/ProductJsonLd";
 import { getCollection, formatPrice } from "@/lib/products";
 import { getProduct, getAllProducts } from "@/lib/catalog-store";
 
@@ -21,18 +22,25 @@ export async function generateMetadata(
   const { handle } = await props.params;
   const product = await getProduct(handle);
   if (!product) return {};
-  const title = `${product.title} — Taygerian`;
+  const ogTitle = `${product.title} — Taygerian`;
   const description = product.description;
   return {
-    title,
+    title: product.title, // brand appended by the root title template
     description,
+    alternates: { canonical: `/products/${product.handle}` },
     openGraph: {
-      title,
+      title: ogTitle,
       description,
-      images: [{ url: product.image }],
+      images: product.image ? [{ url: product.image }] : undefined,
+      url: `/products/${product.handle}`,
       type: "website",
     },
-    twitter: { card: "summary_large_image", title, description, images: [product.image] },
+    twitter: {
+      card: "summary_large_image",
+      title: ogTitle,
+      description,
+      images: product.image ? [product.image] : undefined,
+    },
   };
 }
 
@@ -43,6 +51,7 @@ export default async function ProductPage(props: PageProps<"/products/[handle]">
 
   return (
     <div className="mx-auto max-w-[1500px] px-6 py-16 grid gap-12 sm:grid-cols-2 lg:grid-cols-[2fr_1fr] lg:gap-16">
+      <ProductJsonLd product={product} />
       <ProductGallery images={product.images} alt={product.title} />
 
       <div className="sm:pt-6">

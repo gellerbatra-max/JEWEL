@@ -64,3 +64,89 @@ video {
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
+/* Long-form copy for the info / policy / guide pages (see components/Prose.tsx).
+   Semantic markup in, consistent editorial typography out. */
+.prose-lux {
+  color: var(--stone);
+  font-size: 15.5px;
+  line-height: 1.75;
+}
+.prose-lux > * + * {
+  margin-top: 1.1rem;
+}
+.prose-lux h2 {
+  font-family: var(--font-display);
+  color: var(--ink);
+  font-size: 1.42rem;
+  letter-spacing: 0.02em;
+  line-height: 1.25;
+  margin-top: 2.6rem;
+}
+.prose-lux h3 {
+  color: var(--ink);
+  font-weight: 600;
+  font-size: 0.82rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-top: 1.9rem;
+}
+.prose-lux p,
+.prose-lux li {
+  color: var(--stone);
+}
+.prose-lux .lead {
+  font-size: 1.06rem;
+  color: var(--ink);
+  line-height: 1.7;
+}
+.prose-lux strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+.prose-lux a {
+  color: var(--gold);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.prose-lux a:hover {
+  color: var(--ink);
+}
+.prose-lux ul,
+.prose-lux ol {
+  padding-left: 1.2rem;
+}
+.prose-lux ul {
+  list-style: none;
+  padding-left: 0;
+}
+.prose-lux ul > li {
+  position: relative;
+  padding-left: 1.3rem;
+}
+.prose-lux ul > li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.66em;
+  width: 5px;
+  height: 5px;
+  background: var(--gold);
+  border-radius: 50%;
+}
+.prose-lux ol > li::marker {
+  color: var(--gold);
+}
+.prose-lux li + li {
+  margin-top: 0.45rem;
+}
+.prose-lux hr {
+  border: none;
+  border-top: 1px solid var(--line);
+  margin: 2.4rem 0;
+}
+.prose-lux .muted {
+  font-size: 13px;
+  color: var(--stone);
+  font-style: italic;
+}

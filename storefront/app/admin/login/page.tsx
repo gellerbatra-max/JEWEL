@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 import { isAuthed, isAdminConfigured } from "@/lib/admin-auth";
 import { LoginForm } from "@/app/admin/LoginForm";
 
-export const metadata: Metadata = { title: "Manage — Taygerian" };
+export const metadata: Metadata = { title: { absolute: "Manage · Taygerian" } };
 
 export default async function AdminLoginPage() {
   if (await isAuthed()) redirect("/admin");
