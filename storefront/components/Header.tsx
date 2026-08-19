@@ -7,6 +7,7 @@ import { CartLink } from "./CartLink";
 import { SocialLinks } from "./SocialLinks";
 import { HeaderSearch } from "./HeaderSearch";
 import { WishlistLink } from "./WishlistLink";
+import { AccountLink } from "./AccountLink";
 import { MobileMenu } from "./MobileMenu";
 
 const NAV = [
@@ -85,10 +86,25 @@ export function Header() {
             </span>
           </Link>
 
-          <div className="flex items-center gap-4 justify-self-end sm:gap-5">
+          <div className="flex items-center gap-3.5 justify-self-end sm:gap-4">
             <SocialLinks light={overlay} className="hidden lg:flex" />
-            <HeaderSearch light={overlay} />
+            <span className="hidden sm:block">
+              <HeaderSearch light={overlay} />
+            </span>
             <WishlistLink light={overlay} />
+            <AccountLink light={overlay} />
+            <Link
+              href="/contact"
+              aria-label="Find us"
+              className={`hidden transition-colors sm:block ${
+                overlay ? "text-ink/75 hover:text-ink" : "text-stone hover:text-ink"
+              }`}
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+                <path d="M12 21s7-6.2 7-11a7 7 0 0 0-14 0c0 4.8 7 11 7 11z" />
+                <circle cx="12" cy="10" r="2.5" />
+              </svg>
+            </Link>
             <CartLink light={overlay} />
           </div>
         </div>

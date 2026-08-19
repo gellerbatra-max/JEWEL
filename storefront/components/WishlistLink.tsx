@@ -11,7 +11,7 @@ export function WishlistLink({ light = false }: { light?: boolean }) {
       href="/wishlist"
       aria-label={`Saved pieces${ready && count ? ` (${count})` : ""}`}
       className={`relative transition-colors ${
-        light ? "text-white/90 hover:text-white" : "text-ink hover:text-gold"
+        light ? "text-ink/75 hover:text-ink" : "text-stone hover:text-ink"
       }`}
     >
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">

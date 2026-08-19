@@ -26,7 +26,7 @@ export function HeaderSearch({ light = false }: { light?: boolean }) {
         type="button"
         onClick={() => setOpen(true)}
         aria-label="Search"
-        className={`transition-colors ${light ? "text-white/90 hover:text-white" : "text-ink hover:text-gold"}`}
+        className={`transition-colors ${light ? "text-ink/75 hover:text-ink" : "text-stone hover:text-ink"}`}
       >
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
           <circle cx="11" cy="11" r="7" />

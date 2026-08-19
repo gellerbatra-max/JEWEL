@@ -31,6 +31,7 @@ import {
 import { setEnquiryRead, deleteEnquiry } from "@/lib/enquiry-store";
 import { removeSubscriber } from "@/lib/newsletter-store";
 import { upsertPost, deletePost } from "@/lib/journal-store";
+import { deleteCustomer } from "@/lib/customer-store";
 import type { CollectionHandle, Certification } from "@/lib/products";
 import { SECTION_DEFS, type ProductSections } from "@/lib/product-sections";
 
@@ -266,6 +267,15 @@ export async function removeSubscriberAction(email: string): Promise<void> {
   if (!email) return;
   await removeSubscriber(email);
   revalidatePath("/admin/newsletter");
+}
+
+// --- Customers -------------------------------------------------------------
+
+export async function deleteCustomerAction(id: string): Promise<void> {
+  await assertAuthed();
+  if (!id) return;
+  await deleteCustomer(id);
+  revalidatePath("/admin/customers");
 }
 
 // --- Journal ---------------------------------------------------------------

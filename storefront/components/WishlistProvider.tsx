@@ -5,6 +5,7 @@ import {
   useCallback,
   useContext,
   useEffect,
+  useRef,
   useState,
   type ReactNode,
 } from "react";
@@ -45,6 +46,52 @@ export function WishlistProvider({ children }: { children: ReactNode }) {
     } catch {
       /* ignore */
     }
+  }, [items, ready]);
+
+  // Sync with the signed-in customer's profile: on load, merge the server's
+  // saved pieces with this device's, then keep the server copy updated. If the
+  // visitor isn't signed in, the endpoint reports authed:false and we do nothing.
+  const itemsRef = useRef(items);
+  itemsRef.current = items;
+  const syncedRef = useRef(false);
+
+  useEffect(() => {
+    if (!ready) return;
+    let cancelled = false;
+    (async () => {
+      try {
+        const res = await fetch("/api/account/wishlist");
+        const data = (await res.json()) as { authed?: boolean; items?: WishItem[] };
+        if (!cancelled && data.authed && Array.isArray(data.items)) {
+          const map = new Map(itemsRef.current.map((i) => [i.handle, i]));
+          for (const it of data.items) if (!map.has(it.handle)) map.set(it.handle, it);
+          const merged = [...map.values()];
+          setItems(merged);
+          fetch("/api/account/wishlist", {
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify({ items: merged }),
+          }).catch(() => {});
+        }
+      } catch {
+        /* not signed in / offline — ignore */
+      } finally {
+        if (!cancelled) syncedRef.current = true;
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [ready]);
+
+  // After the initial merge, push later changes to the profile (no-op if not signed in).
+  useEffect(() => {
+    if (!ready || !syncedRef.current) return;
+    fetch("/api/account/wishlist", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ items }),
+    }).catch(() => {});
   }, [items, ready]);
 
   // Keep other tabs in sync.
