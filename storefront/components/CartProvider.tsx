@@ -1,6 +1,13 @@
 "use client";
 
-import { createContext, useCallback, useContext, useSyncExternalStore, type ReactNode } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useState,
+  useSyncExternalStore,
+  type ReactNode,
+} from "react";
 
 type CartLine = {
   lineId: string;
@@ -10,6 +17,8 @@ type CartLine = {
   currency: string;
   qty: number;
   size?: string;
+  image?: string;
+  oneOfAKind?: boolean;
 };
 
 type CartContextValue = {
@@ -17,6 +26,9 @@ type CartContextValue = {
   count: number;
   add: (line: Omit<CartLine, "qty" | "lineId">) => void;
   remove: (lineId: string) => void;
+  isOpen: boolean;
+  open: () => void;
+  close: () => void;
 };
 
 const CartContext = createContext<CartContextValue | null>(null);
@@ -69,21 +81,29 @@ function getServerSnapshot(): CartLine[] {
 
 export function CartProvider({ children }: { children: ReactNode }) {
   const lines = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+  const [isOpen, setIsOpen] = useState(false);
 
   // Every add is its own line item — no merging into quantity, so the same
-  // piece added twice (or in two sizes) shows as two distinct lines.
+  // piece added twice (or in two sizes) shows as two distinct lines. Adding a
+  // piece slides the bag open.
   const add = useCallback((line: Omit<CartLine, "qty" | "lineId">) => {
     setLines([...getSnapshot(), { ...line, lineId: newLineId(), qty: 1 }]);
+    setIsOpen(true);
   }, []);
 
   const remove = useCallback((lineId: string) => {
     setLines(getSnapshot().filter((l) => l.lineId !== lineId));
   }, []);
 
+  const open = useCallback(() => setIsOpen(true), []);
+  const close = useCallback(() => setIsOpen(false), []);
+
   const count = lines.reduce((sum, l) => sum + l.qty, 0);
 
   return (
-    <CartContext.Provider value={{ lines, count, add, remove }}>{children}</CartContext.Provider>
+    <CartContext.Provider value={{ lines, count, add, remove, isOpen, open, close }}>
+      {children}
+    </CartContext.Provider>
   );
 }
 

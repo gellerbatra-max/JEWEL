@@ -1,14 +1,14 @@
 "use client";
 
-import Link from "next/link";
 import { useCart } from "./CartProvider";
 
-// Bag icon in the masthead, with a small count badge when the cart is non-empty.
+// Bag icon in the masthead — opens the slide-out bag, with a small count badge.
 export function CartLink({ light = false }: { light?: boolean }) {
-  const { count } = useCart();
+  const { count, open } = useCart();
   return (
-    <Link
-      href="/cart"
+    <button
+      type="button"
+      onClick={open}
       aria-label={count > 0 ? `Bag (${count} item${count === 1 ? "" : "s"})` : "Bag"}
       className={`relative inline-flex items-center transition-colors ${
         light ? "text-ink/75 hover:text-ink" : "text-stone hover:text-ink"
@@ -35,6 +35,6 @@ export function CartLink({ light = false }: { light?: boolean }) {
           {count}
         </span>
       )}
-    </Link>
+    </button>
   );
 }

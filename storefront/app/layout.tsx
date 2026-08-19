@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { CartProvider } from "@/components/CartProvider";
 import { WishlistProvider } from "@/components/WishlistProvider";
+import { CartDrawerMount } from "@/components/CartDrawerMount";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SiteChrome } from "@/components/SiteChrome";
@@ -78,6 +79,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             <Header />
           </SiteChrome>
           <main className="flex-1">{children}</main>
+          <SiteChrome>
+            <CartDrawerMount />
+          </SiteChrome>
           <SiteChrome>
             <Footer />
           </SiteChrome>

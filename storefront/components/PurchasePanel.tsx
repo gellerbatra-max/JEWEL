@@ -22,6 +22,8 @@ export function PurchasePanel({ product }: { product: Product }) {
       price: product.price,
       currency: product.currency,
       size: size ?? undefined,
+      image: product.image,
+      oneOfAKind: product.oneOfAKind,
     });
     setAdded(true);
     window.setTimeout(() => setAdded(false), 1800);
