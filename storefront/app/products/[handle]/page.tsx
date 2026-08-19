@@ -8,7 +8,11 @@ import { ProductAssurances } from "@/components/ProductAssurances";
 import { ShareButtons } from "@/components/ShareButtons";
 import { ProductGallery } from "@/components/ProductGallery";
 import { ProductJsonLd } from "@/components/ProductJsonLd";
+import { RelatedProducts } from "@/components/RelatedProducts";
+import { RecentlyViewed } from "@/components/RecentlyViewed";
+import { WishlistButton } from "@/components/WishlistButton";
 import { getCollection, formatPrice } from "@/lib/products";
+import { toWishItem } from "@/lib/wishlist";
 import { getProduct, getAllProducts } from "@/lib/catalog-store";
 
 export async function generateStaticParams() {
@@ -50,6 +54,7 @@ export default async function ProductPage(props: PageProps<"/products/[handle]">
   if (!product) notFound();
 
   return (
+    <>
     <div className="mx-auto max-w-[1500px] px-6 py-16 grid gap-12 sm:grid-cols-2 lg:grid-cols-[2fr_1fr] lg:gap-16">
       <ProductJsonLd product={product} />
       <ProductGallery images={product.images} alt={product.title} />
@@ -98,7 +103,8 @@ export default async function ProductPage(props: PageProps<"/products/[handle]">
           />
         </div>
 
-        <div className="mt-6">
+        <div className="mt-6 flex items-center gap-6">
+          <WishlistButton item={toWishItem(product)} withLabel />
           <ShareButtons title={product.title} />
         </div>
 
@@ -107,5 +113,9 @@ export default async function ProductPage(props: PageProps<"/products/[handle]">
         <ProductAssurances />
       </div>
     </div>
+
+      <RecentlyViewed current={toWishItem(product)} />
+      <RelatedProducts product={product} />
+    </>
   );
 }

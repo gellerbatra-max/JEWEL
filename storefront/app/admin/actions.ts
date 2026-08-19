@@ -86,6 +86,7 @@ export async function saveProductAction(_prev: FormState, formData: FormData): P
   const collectionHandle = String(formData.get("collectionHandle") || "") as CollectionHandle;
   const metal = String(formData.get("metal") || "").trim();
   const stone = String(formData.get("stone") || "").trim();
+  const colour = String(formData.get("colour") || "").trim();
   const currencyRaw = (String(formData.get("currency") || "USD").trim() || "USD").toUpperCase();
   // Allow-list: an invalid code would crash Intl.NumberFormat on every page that
   // renders this product's price, so fall back to USD.
@@ -153,6 +154,7 @@ export async function saveProductAction(_prev: FormState, formData: FormData): P
     collectionHandle,
     metal: metal || "—",
     stone: stone || "—",
+    colour: colour || undefined,
     price: Number.isFinite(price) ? price : 0,
     currency,
     oneOfAKind,

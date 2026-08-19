@@ -3,6 +3,7 @@ import { Cinzel } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import { CartProvider } from "@/components/CartProvider";
+import { WishlistProvider } from "@/components/WishlistProvider";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SiteChrome } from "@/components/SiteChrome";
@@ -71,6 +72,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col bg-porcelain text-ink font-sans antialiased">
         <SiteJsonLd />
         <CartProvider>
+         <WishlistProvider>
           <MediaProtection />
           <SiteChrome>
             <Header />
@@ -85,6 +87,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <SiteChrome>
             <Analytics />
           </SiteChrome>
+         </WishlistProvider>
         </CartProvider>
       </body>
     </html>

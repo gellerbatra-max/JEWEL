@@ -157,6 +157,7 @@ export type ProductInput = {
   collectionHandle: CollectionHandle;
   metal: string;
   stone: string;
+  colour?: string;
   price: number;
   currency: string;
   oneOfAKind: boolean;
@@ -182,6 +183,7 @@ export async function upsertProduct(input: ProductInput): Promise<Product> {
         collectionHandle: input.collectionHandle,
         metal: input.metal,
         stone: input.stone,
+        colour: input.colour || undefined,
         price: input.price,
         currency: input.currency,
         oneOfAKind: input.oneOfAKind,
@@ -211,6 +213,7 @@ export async function upsertProduct(input: ProductInput): Promise<Product> {
       collectionHandle: input.collectionHandle,
       metal: input.metal,
       stone: input.stone,
+      colour: input.colour || undefined,
       price: input.price,
       currency: input.currency,
       oneOfAKind: input.oneOfAKind,

@@ -3,7 +3,13 @@
 import { useActionState, useState } from "react";
 import Image from "next/image";
 import { saveProductAction, type FormState } from "./actions";
-import { collections, type Product } from "@/lib/products";
+import {
+  collections,
+  METAL_OPTIONS,
+  STONE_OPTIONS,
+  COLOUR_OPTIONS,
+  type Product,
+} from "@/lib/products";
 import { SECTION_DEFS, sectionText, type SectionKey } from "@/lib/product-sections";
 
 const CURRENCIES = ["USD", "LKR", "EUR", "GBP", "AUD"];
@@ -60,13 +66,32 @@ export function ProductForm({ product }: { product?: Product }) {
         </Field>
       </div>
 
-      {/* Metal + stone */}
-      <div className="grid gap-6 sm:grid-cols-2">
-        <Field label="Metal" hint="e.g. 18k Gold, Platinum, White Gold">
-          <input name="metal" defaultValue={product?.metal ?? ""} placeholder="18k Gold" className={inputCls} />
+      {/* Metal + stone + colour — pick from the list so the shop filters stay
+          consistent, or choose "Other…" to type a custom value. */}
+      <div className="grid gap-6 sm:grid-cols-3">
+        <Field label="Metal" hint="Choose one, or “Other…” to type your own.">
+          <SelectOrCustom
+            name="metal"
+            options={METAL_OPTIONS}
+            defaultValue={product?.metal && product.metal !== "—" ? product.metal : ""}
+            placeholder="Type the metal"
+          />
         </Field>
-        <Field label="Stone" hint="e.g. Ceylon Blue Sapphire, oval cut">
-          <input name="stone" defaultValue={product?.stone ?? ""} placeholder="Ceylon Blue Sapphire" className={inputCls} />
+        <Field label="Stone" hint="Choose one, or “Other…” to type your own.">
+          <SelectOrCustom
+            name="stone"
+            options={STONE_OPTIONS}
+            defaultValue={product?.stone && product.stone !== "—" ? product.stone : ""}
+            placeholder="Type the stone"
+          />
+        </Field>
+        <Field label="Gemstone colour" hint="Used for the colour filter in the shop.">
+          <SelectOrCustom
+            name="colour"
+            options={COLOUR_OPTIONS}
+            defaultValue={product?.colour ?? ""}
+            placeholder="Type the colour"
+          />
         </Field>
       </div>
 
@@ -256,6 +281,51 @@ export function ProductForm({ product }: { product?: Product }) {
 
 const inputCls =
   "w-full border border-line bg-white px-3.5 py-2.5 text-ink outline-none focus:border-gold";
+
+const OTHER = "__other__";
+
+// A dropdown of canonical options plus an "Other…" choice that reveals a text
+// box. Submits a single clean value under `name`, so the shop filters stay tidy
+// while the owner can still enter something bespoke.
+function SelectOrCustom({
+  name,
+  options,
+  defaultValue = "",
+  placeholder,
+}: {
+  name: string;
+  options: string[];
+  defaultValue?: string;
+  placeholder?: string;
+}) {
+  const isKnown = defaultValue !== "" && options.includes(defaultValue);
+  const [mode, setMode] = useState(defaultValue === "" ? "" : isKnown ? defaultValue : OTHER);
+  const [custom, setCustom] = useState(isKnown ? "" : defaultValue);
+  const value = mode === OTHER ? custom : mode;
+
+  return (
+    <>
+      <input type="hidden" name={name} value={value} />
+      <select value={mode} onChange={(e) => setMode(e.target.value)} className={inputCls}>
+        <option value="">— Select —</option>
+        {options.map((o) => (
+          <option key={o} value={o}>
+            {o}
+          </option>
+        ))}
+        <option value={OTHER}>Other…</option>
+      </select>
+      {mode === OTHER && (
+        <input
+          value={custom}
+          onChange={(e) => setCustom(e.target.value)}
+          placeholder={placeholder}
+          className={`${inputCls} mt-2`}
+        />
+      )}
+    </>
+  );
+}
 
 function Field({
   label,

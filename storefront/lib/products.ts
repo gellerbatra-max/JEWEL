@@ -29,6 +29,7 @@ export type Product = {
   collectionHandle: CollectionHandle;
   metal: string;
   stone: string;
+  colour?: string; // gemstone colour, used for filtering (e.g. "Blue", "Pink")
   price: number;
   currency: string;
   oneOfAKind: boolean;
@@ -50,6 +51,47 @@ export type Product = {
 // Maximum number of pieces that can be featured in the home "Signature Pieces"
 // carousel at once.
 export const MAX_SIGNATURE = 20;
+
+// Canonical attribute options offered in the admin form. Using a fixed list (with
+// an "Other…" escape) keeps values consistent so the storefront filters group
+// pieces correctly instead of splitting "18k Gold" from "18K gold".
+export const METAL_OPTIONS = [
+  "18k Yellow Gold",
+  "18k White Gold",
+  "18k Rose Gold",
+  "22k Yellow Gold",
+  "Platinum",
+  "Yellow Gold",
+  "White Gold",
+  "Rose Gold",
+  "Silver",
+];
+
+export const STONE_OPTIONS = [
+  "Ceylon Blue Sapphire",
+  "Ceylon Pink Sapphire",
+  "Ceylon Yellow Sapphire",
+  "White Sapphire",
+  "Padparadscha Sapphire",
+  "Ruby",
+  "Emerald",
+  "Spinel",
+  "Aquamarine",
+  "Tourmaline",
+  "Moonstone",
+  "Diamond",
+];
+
+export const COLOUR_OPTIONS = [
+  "Blue",
+  "Pink",
+  "Yellow",
+  "White",
+  "Padparadscha",
+  "Green",
+  "Purple",
+  "Multi",
+];
 
 // US ring sizes offered. Made-to-order sizing available on request.
 export const RING_SIZES = [

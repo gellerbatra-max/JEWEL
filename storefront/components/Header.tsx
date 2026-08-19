@@ -5,11 +5,15 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { CartLink } from "./CartLink";
 import { SocialLinks } from "./SocialLinks";
+import { HeaderSearch } from "./HeaderSearch";
+import { WishlistLink } from "./WishlistLink";
 import { MobileMenu } from "./MobileMenu";
 
 const NAV = [
   { href: "/jewellery", label: "Jewellery" },
   { href: "/gemstones", label: "Gemstones" },
+  { href: "/bespoke", label: "Bespoke" },
+  { href: "/journal", label: "Journal" },
   { href: "/dynasty", label: "Dynasty" },
   { href: "/contact", label: "Contact" },
 ];
@@ -82,7 +86,9 @@ export function Header() {
           </Link>
 
           <div className="flex items-center gap-4 justify-self-end sm:gap-5">
-            <SocialLinks light={overlay} className="hidden sm:flex" />
+            <SocialLinks light={overlay} className="hidden lg:flex" />
+            <HeaderSearch light={overlay} />
+            <WishlistLink light={overlay} />
             <CartLink light={overlay} />
           </div>
         </div>

@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { ProductCard } from "@/components/ProductCard";
+import { CollectionBrowser } from "@/components/CollectionBrowser";
 import { getCollection, collections } from "@/lib/products";
 import { getProductsByCollection } from "@/lib/catalog-store";
 
@@ -21,11 +21,7 @@ export default async function CollectionPage(props: PageProps<"/collections/[han
         <h1 className="font-display text-4xl text-ink mb-4">{collection.title}</h1>
         <p className="text-lg text-stone leading-relaxed">{collection.description}</p>
       </div>
-      <div className="grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {items.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
-      </div>
+      <CollectionBrowser items={items} />
     </div>
   );
 }
