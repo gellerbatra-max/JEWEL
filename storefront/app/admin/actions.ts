@@ -24,9 +24,12 @@ import {
   setCategoryCover,
   setBespokeImages,
   setBridalImages,
+  setInstagramImages,
+  setPressItems,
   pruneCategoryCoverForProduct,
   pruneSectionImages,
   MAX_SECTION_IMAGES,
+  MAX_PRESS_ITEMS,
 } from "@/lib/site-config-store";
 import { setEnquiryRead, deleteEnquiry } from "@/lib/enquiry-store";
 import { removeSubscriber } from "@/lib/newsletter-store";
@@ -36,7 +39,7 @@ import { setReviewApproved, deleteReview } from "@/lib/review-store";
 import type { CollectionHandle, Certification } from "@/lib/products";
 import { SECTION_DEFS, type ProductSections } from "@/lib/product-sections";
 
-export type FormState = { error?: string; images?: string[] };
+export type FormState = { error?: string; images?: string[]; saved?: boolean };
 
 const COLLECTIONS: CollectionHandle[] = [
   "rings", "necklaces", "pendants", "earrings", "bracelets", "bangles",
@@ -243,6 +246,33 @@ export async function saveBridalImagesAction(_prev: FormState, formData: FormDat
   await setBridalImages(images);
   revalidatePath("/", "layout");
   return { images };
+}
+
+export async function saveInstagramImagesAction(_prev: FormState, formData: FormData): Promise<FormState> {
+  await assertAuthed();
+  let images: string[];
+  try {
+    images = await collectSectionImages(formData);
+  } catch (e) {
+    return { error: e instanceof Error ? e.message : "A photo couldn't be uploaded." };
+  }
+  await setInstagramImages(images);
+  revalidatePath("/", "layout");
+  return { images };
+}
+
+// --- Press ("As featured in") ----------------------------------------------
+
+export async function savePressAction(_prev: FormState, formData: FormData): Promise<FormState> {
+  await assertAuthed();
+  const items = String(formData.get("press") || "")
+    .split("\n")
+    .map((s) => s.trim())
+    .filter(Boolean)
+    .slice(0, MAX_PRESS_ITEMS);
+  await setPressItems(items);
+  revalidatePath("/", "layout");
+  return { saved: true };
 }
 
 // --- Enquiries inbox -------------------------------------------------------

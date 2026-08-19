@@ -33,8 +33,10 @@ export default function TermsPage() {
         <p>
           Prices shown are an invitation to enquire, not a completed sale. A binding order forms when
           we issue you a written quote for a specific piece and you accept it and pay as instructed.
-          We may decline or cancel an order — for example if a one-of-a-kind piece has already sold,
-          or a stone is no longer available — and will refund any payment taken.
+          Orders placed electronically through this site are legally valid under Sri Lanka&apos;s{" "}
+          <strong>Electronic Transactions Act, No. 19 of 2006</strong>. We may decline or cancel an
+          order — for example if a one-of-a-kind piece has already sold, or a stone is no longer
+          available — and will refund any payment taken.
         </p>
 
         <h2>3. Pricing</h2>
@@ -78,13 +80,17 @@ export default function TermsPage() {
           their laboratory report — see <Link href="/certification">Certification &amp;
           Authenticity</Link>. Natural gemstones vary; small natural inclusions and variations are
           inherent, not defects. This warranty does not cover ordinary wear, accidental damage, or
-          unauthorised alteration.
+          unauthorised alteration. It is in addition to the implied conditions as to description,
+          quality, and fitness under the <strong>Sale of Goods Ordinance</strong> and your consumer
+          protections under the <strong>Consumer Affairs Authority Act, No. 9 of 2003</strong>, which
+          are not excluded.
         </p>
 
         <h2>8. Our content</h2>
         <p>
           All imagery, designs, and text on this site are the property of Taygerian or used with
-          permission and may not be reproduced without our consent.
+          permission, protected under the <strong>Intellectual Property Act, No. 36 of 2003</strong>,
+          and may not be reproduced without our consent.
         </p>
 
         <h2>9. Liability</h2>
@@ -92,13 +98,16 @@ export default function TermsPage() {
           Nothing in these terms limits liability that cannot lawfully be limited (including for
           fraud, or death or personal injury caused by negligence). Otherwise, our liability in
           connection with an order is limited to the price paid for the piece. Nothing here affects
-          your non-excludable statutory consumer rights in your country.
+          your non-excludable statutory rights — including those under the Consumer Affairs Authority
+          Act, No. 9 of 2003, or the equivalent consumer law where you live.
         </p>
 
-        <h2>10. Governing law</h2>
+        <h2>10. Governing law &amp; complaints</h2>
         <p>
-          These terms are governed by the laws of Sri Lanka, without affecting any mandatory consumer
-          protections available to you where you live.
+          These terms are governed by the laws of Sri Lanka and subject to the jurisdiction of its
+          courts, without affecting any mandatory consumer protections available to you where you
+          live. Consumers in Sri Lanka may also raise a complaint with the{" "}
+          <strong>Consumer Affairs Authority (CAA)</strong>.
         </p>
 
         <h2>11. Contact</h2>
@@ -109,8 +118,10 @@ export default function TermsPage() {
 
         <hr />
         <p className="muted">
-          These terms are a working template for the prototype and must be reviewed and finalised
-          with a qualified legal adviser — reflecting your registered entity, payment terms, and the
+          These terms are a working template written to reflect Sri Lankan law (the Electronic
+          Transactions Act, the Sale of Goods Ordinance, the Consumer Affairs Authority Act, and the
+          Intellectual Property Act). They must still be reviewed and finalised with a qualified Sri
+          Lankan legal adviser — reflecting your registered entity, payment terms, and the
           jurisdictions you sell into — before the store goes live.
         </p>
       </Prose>

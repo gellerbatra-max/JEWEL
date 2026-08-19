@@ -16,6 +16,8 @@ type SiteConfig = {
   // up to 5 photos that auto-rotate in each home section
   bespokeImages?: string[]; // "Made to Order"
   bridalImages?: string[]; // "Bridal"
+  instagramImages?: string[]; // home-page "Follow us on Instagram" grid
+  pressItems?: string[]; // "As featured in" publication names
 };
 
 let writeChain: Promise<unknown> = Promise.resolve();
@@ -84,6 +86,36 @@ export async function setBridalImages(paths: string[]): Promise<void> {
   return withWriteLock(async () => {
     const cfg = await read();
     await write({ ...cfg, bridalImages: paths.slice(0, MAX_SECTION_IMAGES) });
+  });
+}
+
+export const MAX_INSTAGRAM_IMAGES = 6;
+
+export async function getInstagramImages(): Promise<string[]> {
+  return (await read()).instagramImages ?? [];
+}
+
+export async function setInstagramImages(paths: string[]): Promise<void> {
+  return withWriteLock(async () => {
+    const cfg = await read();
+    await write({ ...cfg, instagramImages: paths.slice(0, MAX_INSTAGRAM_IMAGES) });
+  });
+}
+
+export const MAX_PRESS_ITEMS = 8;
+
+export async function getPressItems(): Promise<string[]> {
+  return (await read()).pressItems ?? [];
+}
+
+export async function setPressItems(items: string[]): Promise<void> {
+  return withWriteLock(async () => {
+    const cfg = await read();
+    const clean = items
+      .map((s) => s.trim())
+      .filter(Boolean)
+      .slice(0, MAX_PRESS_ITEMS);
+    await write({ ...cfg, pressItems: clean });
   });
 }
 

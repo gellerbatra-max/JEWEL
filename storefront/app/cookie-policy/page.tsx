@@ -42,7 +42,9 @@ export default function CookiePolicyPage() {
         <p>
           When you first visit, we ask whether to enable analytics. You can pick{" "}
           <strong>Essential only</strong> or <strong>Accept all</strong>. Nothing optional runs until
-          you accept it.
+          you accept it. Optional cookies load only on your <strong>consent</strong>, in line with
+          Sri Lanka&apos;s Personal Data Protection Act, No. 9 of 2022 — and you can withdraw that
+          consent at any time.
         </p>
 
         <h2>Changing your mind</h2>
@@ -60,8 +62,9 @@ export default function CookiePolicyPage() {
 
         <hr />
         <p className="muted">
-          This policy is a working template for the prototype and should be reviewed with a qualified
-          legal adviser — listing the exact cookies your live tools set — before the store goes live.
+          This policy is a working template aligned with Sri Lanka&apos;s Personal Data Protection
+          Act, No. 9 of 2022, and should be reviewed with a qualified Sri Lankan legal adviser —
+          listing the exact cookies your live tools set — before the store goes live.
         </p>
       </Prose>
     </div>

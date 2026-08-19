@@ -1,17 +1,29 @@
 import { getAllProducts } from "@/lib/catalog-store";
 import { getCollection, MAX_SIGNATURE } from "@/lib/products";
-import { getBespokeImages, getBridalImages } from "@/lib/site-config-store";
+import {
+  getBespokeImages,
+  getBridalImages,
+  getInstagramImages,
+  getPressItems,
+} from "@/lib/site-config-store";
 import { HomeSelectGrid } from "@/app/admin/HomeSelectGrid";
 import { SectionImagesManager } from "@/app/admin/SectionImagesManager";
-import { saveBespokeImagesAction, saveBridalImagesAction } from "@/app/admin/actions";
+import { PressManager } from "@/app/admin/PressManager";
+import {
+  saveBespokeImagesAction,
+  saveBridalImagesAction,
+  saveInstagramImagesAction,
+} from "@/app/admin/actions";
 
 export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
-  const [products, bespoke, bridal] = await Promise.all([
+  const [products, bespoke, bridal, instagram, press] = await Promise.all([
     getAllProducts(),
     getBespokeImages(),
     getBridalImages(),
+    getInstagramImages(),
+    getPressItems(),
   ]);
   const catalog = products
     .filter((p) => p.image)
@@ -59,6 +71,32 @@ export default async function HomePage() {
           to use the default image.
         </p>
         <SectionImagesManager initial={bridal} catalog={catalog} action={saveBridalImagesAction} />
+      </section>
+
+      {/* Instagram grid */}
+      <section>
+        <h2 className="mb-1 font-display text-xl text-ink">Instagram grid</h2>
+        <p className="mb-4 max-w-2xl text-sm text-stone">
+          Photos for the <strong className="text-ink">&ldquo;Follow us on Instagram&rdquo;</strong>{" "}
+          grid on the home page. Choose from your catalogue or upload Instagram-style shots. Leave
+          empty to show a default set of your pieces.
+        </p>
+        <SectionImagesManager
+          initial={instagram}
+          catalog={catalog}
+          action={saveInstagramImagesAction}
+        />
+      </section>
+
+      {/* Press / "As featured in" */}
+      <section>
+        <h2 className="mb-1 font-display text-xl text-ink">Press — &ldquo;As featured in&rdquo;</h2>
+        <p className="mb-4 max-w-2xl text-sm text-stone">
+          Publications that have featured you. This strip appears under the hero{" "}
+          <strong className="text-ink">only when you add names here</strong> — so nothing shows until
+          you have real press.
+        </p>
+        <PressManager initial={press} />
       </section>
 
       {/* Signature Pieces selection */}

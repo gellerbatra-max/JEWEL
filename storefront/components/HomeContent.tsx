@@ -3,8 +3,15 @@ import Link from "next/link";
 import { Reveal } from "@/components/Reveal";
 import { SignatureCarousel, type CarouselItem } from "@/components/SignatureCarousel";
 import { RotatingImage } from "@/components/RotatingImage";
+import { PressStrip } from "@/components/PressStrip";
+import { InstagramFeed } from "@/components/InstagramFeed";
 import { getSignaturePieces } from "@/lib/catalog-store";
-import { getBespokeImages, getBridalImages } from "@/lib/site-config-store";
+import {
+  getBespokeImages,
+  getBridalImages,
+  getInstagramImages,
+  getPressItems,
+} from "@/lib/site-config-store";
 
 // The home page body, rendered by the real route (app/page.tsx).
 export async function HomeContent() {
@@ -12,12 +19,19 @@ export async function HomeContent() {
   // hint it early so it starts downloading immediately — improves LCP.
   preload("/images/hero-ruby-ring-gold.webp", { as: "image", fetchPriority: "high" });
 
-  // One batched pass over the stores instead of three sequential awaits.
-  const [signature, bespokeSaved, bridalSaved] = await Promise.all([
+  // One batched pass over the stores instead of sequential awaits.
+  const [signature, bespokeSaved, bridalSaved, instaSaved, pressItems] = await Promise.all([
     getSignaturePieces(12),
     getBespokeImages(),
     getBridalImages(),
+    getInstagramImages(),
+    getPressItems(),
   ]);
+  // Instagram grid: owner's picks, or fall back to signature pieces so the
+  // "Follow us" module always looks intentional.
+  const instaImages = (
+    instaSaved.length ? instaSaved : signature.slice(0, 6).map((p) => p.image)
+  ).filter(Boolean);
   const bespokeImages = bespokeSaved.length
     ? bespokeSaved
     : ["/images/catalog/rings/rings-004-1.avif"];
@@ -57,6 +71,9 @@ export async function HomeContent() {
           </div>
         </div>
       </section>
+
+      {/* "As featured in" — shows only when the owner has added press names */}
+      <PressStrip items={pressItems} />
 
       <SectionRule />
 
@@ -166,6 +183,13 @@ export async function HomeContent() {
             />
           </div>
         </div>
+      </Reveal>
+
+      <SectionRule />
+
+      {/* Follow us on Instagram */}
+      <Reveal>
+        <InstagramFeed images={instaImages} />
       </Reveal>
     </div>
   );

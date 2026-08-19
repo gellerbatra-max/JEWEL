@@ -24,8 +24,11 @@ export default function PrivacyPage() {
         <h2>Who we are</h2>
         <p>
           Taygerian (&ldquo;we,&rdquo; &ldquo;us&rdquo;) is a fine-jewellery house based in Sri
-          Lanka, selling to clients in Sri Lanka and internationally. We are the controller of the
-          personal data described here. Contact us any time at{" "}
+          Lanka, selling to clients in Sri Lanka and internationally. We are the &ldquo;data
+          controller&rdquo; of the personal data described here. We handle your data in accordance
+          with Sri Lanka&apos;s <strong>Personal Data Protection Act, No. 9 of 2022 (PDPA)</strong> —
+          overseen by the Data Protection Authority of Sri Lanka — and, for clients abroad, with the
+          data-protection laws that apply to them. Contact us any time at{" "}
           <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>.
         </p>
 
@@ -55,9 +58,12 @@ export default function PrivacyPage() {
 
         <h2>Our lawful basis</h2>
         <p>
-          We rely on your <strong>consent</strong> (newsletter and analytics cookies), the{" "}
+          As required by the PDPA, we process personal data only where we have a lawful basis: your{" "}
+          <strong>consent</strong> (newsletter and analytics cookies), the{" "}
           <strong>performance of a contract or steps you request</strong> (handling your enquiry and
-          order), and our <strong>legitimate interests</strong> in running and securing our business.
+          order), compliance with a <strong>legal obligation</strong> (tax and accounting records),
+          and our <strong>legitimate interests</strong> in running and securing our business. We keep
+          data accurate and up to date, and process it transparently.
         </p>
 
         <h2>Sharing</h2>
@@ -84,11 +90,19 @@ export default function PrivacyPage() {
 
         <h2>Your rights</h2>
         <p>
-          Depending on where you live (including under the EU/UK GDPR, Australia&apos;s Privacy Act,
-          and Japan&apos;s APPI), you may have the right to access, correct, delete, or port your
-          data, and to object to or restrict certain uses. To exercise any of these, email{" "}
-          <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>. You may also withdraw cookie
-          consent at any time — see our <Link href="/cookie-policy">Cookie Policy</Link>.
+          Under Sri Lanka&apos;s PDPA you have the right to <strong>access</strong> the data we hold
+          about you, to have it <strong>corrected or completed</strong>, to request its{" "}
+          <strong>erasure</strong>, to <strong>withdraw consent</strong> at any time, and to{" "}
+          <strong>object to</strong> automated decision-making that significantly affects you. To
+          exercise any of these, email <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>. If
+          you are not satisfied with our response, you may complain to the{" "}
+          <strong>Data Protection Authority of Sri Lanka</strong>.
+        </p>
+        <p>
+          Clients outside Sri Lanka may have additional or equivalent rights under their own laws —
+          including the EU/UK GDPR, Australia&apos;s Privacy Act, and Japan&apos;s APPI — and we will
+          honour those. You can withdraw cookie consent at any time; see our{" "}
+          <Link href="/cookie-policy">Cookie Policy</Link>.
         </p>
 
         <h2>Contact</h2>
@@ -99,9 +113,12 @@ export default function PrivacyPage() {
 
         <hr />
         <p className="muted">
-          This policy is a working template for the prototype and should be reviewed and finalised
-          with a qualified legal adviser — reflecting your registered entity, real service providers,
-          and the jurisdictions you sell into — before the store goes live.
+          This policy is a working template written to reflect Sri Lanka&apos;s Personal Data
+          Protection Act, No. 9 of 2022. It should still be reviewed and finalised with a qualified
+          Sri Lankan legal adviser — including whether your business must register with the Data
+          Protection Authority or appoint a Data Protection Officer, and reflecting your registered
+          entity, real service providers, and the jurisdictions you sell into — before the store goes
+          live.
         </p>
       </Prose>
     </div>
