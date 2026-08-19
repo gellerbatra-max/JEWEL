@@ -32,37 +32,35 @@ export function CookieConsent() {
 
   if (!show) return null;
 
+  // A small, quiet card in the bottom-left corner — it stays out of the way of
+  // the content and never blocks the page. Sits below modals (z-40).
   return (
     <div
       role="dialog"
       aria-label="Cookie preferences"
-      className="fixed inset-x-0 bottom-0 z-50 border-t border-line bg-white/95 backdrop-blur"
+      className="consent-enter fixed bottom-4 left-4 right-4 z-40 max-w-sm border border-line bg-white/95 p-4 shadow-[0_20px_50px_-24px_rgba(28,27,25,0.5)] backdrop-blur sm:right-auto"
     >
-      <div className="mx-auto flex max-w-[1100px] flex-col gap-4 px-6 py-4 sm:flex-row sm:items-center sm:justify-between">
-        <p className="text-[13px] leading-relaxed text-stone">
-          We use essential cookies to run the site. With your consent we also use analytics to
-          improve it. See our{" "}
-          <Link href="/cookie-policy" className="text-gold underline underline-offset-2">
-            Cookie Policy
-          </Link>
-          .
-        </p>
-        <div className="flex shrink-0 gap-3">
-          <button
-            type="button"
-            onClick={() => choose("essential")}
-            className="border border-line px-4 py-2 text-[11px] tracking-[0.12em] uppercase text-ink transition-colors hover:border-ink"
-          >
-            Essential only
-          </button>
-          <button
-            type="button"
-            onClick={() => choose("all")}
-            className="bg-ink px-4 py-2 text-[11px] tracking-[0.12em] uppercase text-porcelain transition-colors hover:bg-gold"
-          >
-            Accept all
-          </button>
-        </div>
+      <p className="text-[12.5px] leading-relaxed text-stone">
+        We use essential cookies to run the site, and — only if you agree — analytics to improve it.{" "}
+        <Link href="/cookie-policy" className="text-gold underline underline-offset-2">
+          Learn more
+        </Link>
+      </p>
+      <div className="mt-3 flex gap-2.5">
+        <button
+          type="button"
+          onClick={() => choose("all")}
+          className="flex-1 bg-ink px-3 py-2 text-[10.5px] tracking-[0.12em] uppercase text-porcelain transition-colors hover:bg-gold"
+        >
+          Accept all
+        </button>
+        <button
+          type="button"
+          onClick={() => choose("essential")}
+          className="flex-1 border border-line px-3 py-2 text-[10.5px] tracking-[0.12em] uppercase text-ink transition-colors hover:border-ink"
+        >
+          Essential only
+        </button>
       </div>
     </div>
   );

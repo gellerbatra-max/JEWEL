@@ -150,3 +150,23 @@ video {
   color: var(--stone);
   font-style: italic;
 }
+
+/* Cookie card entrance — gentle, and disabled for reduced-motion users. */
+@keyframes fadein {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.consent-enter {
+  animation: fadein 0.4s ease-out;
+}
+@media (prefers-reduced-motion: reduce) {
+  .consent-enter {
+    animation: none;
+  }
+}

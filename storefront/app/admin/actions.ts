@@ -28,6 +28,9 @@ import {
   pruneSectionImages,
   MAX_SECTION_IMAGES,
 } from "@/lib/site-config-store";
+import { setEnquiryRead, deleteEnquiry } from "@/lib/enquiry-store";
+import { removeSubscriber } from "@/lib/newsletter-store";
+import { upsertPost, deletePost } from "@/lib/journal-store";
 import type { CollectionHandle, Certification } from "@/lib/products";
 import { SECTION_DEFS, type ProductSections } from "@/lib/product-sections";
 
@@ -236,4 +239,86 @@ export async function saveBridalImagesAction(_prev: FormState, formData: FormDat
   await setBridalImages(images);
   revalidatePath("/", "layout");
   return { images };
+}
+
+// --- Enquiries inbox -------------------------------------------------------
+
+export async function markEnquiryReadAction(id: string, read: boolean): Promise<void> {
+  await assertAuthed();
+  if (!id) return;
+  await setEnquiryRead(id, read);
+  revalidatePath("/admin/enquiries");
+}
+
+export async function deleteEnquiryAction(id: string): Promise<void> {
+  await assertAuthed();
+  if (!id) return;
+  await deleteEnquiry(id);
+  revalidatePath("/admin/enquiries");
+}
+
+// --- Newsletter subscribers ------------------------------------------------
+
+export async function removeSubscriberAction(email: string): Promise<void> {
+  await assertAuthed();
+  if (!email) return;
+  await removeSubscriber(email);
+  revalidatePath("/admin/newsletter");
+}
+
+// --- Journal ---------------------------------------------------------------
+
+function slugify(s: string): string {
+  return s
+    .toLowerCase()
+    .normalize("NFKD")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+export async function saveJournalAction(_prev: FormState, formData: FormData): Promise<FormState> {
+  await assertAuthed();
+
+  const originalSlug = String(formData.get("originalSlug") || "").trim() || undefined;
+  const title = String(formData.get("title") || "").trim();
+  if (!title) return { error: "Please enter a title." };
+
+  const slug = slugify(String(formData.get("slug") || "").trim() || title);
+  if (!slug) return { error: "Please enter a valid title or web address." };
+
+  const excerpt = String(formData.get("excerpt") || "").replace(/\r\n/g, "\n").trim();
+  const body = String(formData.get("body") || "").replace(/\r\n/g, "\n").trim();
+  if (!body) return { error: "Please write the story." };
+
+  const dateRaw = String(formData.get("date") || "").trim();
+  const date = /^\d{4}-\d{2}-\d{2}$/.test(dateRaw)
+    ? dateRaw
+    : new Date().toISOString().slice(0, 10);
+  const published = formData.get("published") === "on";
+
+  // Cover: keep the existing one, or replace with a newly uploaded file.
+  let cover = String(formData.get("existingCover") || "").trim();
+  const file = formData
+    .getAll("cover")
+    .find((f): f is File => f instanceof File && f.size > 0);
+  if (file) {
+    try {
+      cover = await saveUploadedImage(file);
+    } catch (e) {
+      return { error: e instanceof Error ? e.message : "The cover photo couldn't be uploaded." };
+    }
+  }
+
+  await upsertPost({ originalSlug, slug, title, excerpt, body, cover, date, published });
+  revalidatePath("/", "layout");
+  redirect("/admin/journal");
+}
+
+export async function deleteJournalAction(slug: string): Promise<void> {
+  await assertAuthed();
+  if (slug) {
+    await deletePost(slug);
+    revalidatePath("/", "layout");
+  }
+  redirect("/admin/journal");
 }

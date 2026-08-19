@@ -6,11 +6,7 @@
 // first time a shopper actually opens one of the modals (via next/dynamic).
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
-
-const MEDUSA_URL = process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL || "http://localhost:9000";
-const MEDUSA_KEY =
-  process.env.NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY ||
-  "pk_1ccd81cbea3aabf7179a817f978adcf584f950fe3e4a70f0edb724fa26e05708";
+import { getAttribution, track } from "@/lib/analytics";
 
 export type Action = "hint" | "appointment" | "customise";
 
@@ -21,12 +17,24 @@ const VIDEO = (
   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="7" y="3" width="10" height="18" rx="2" /><circle cx="12" cy="17.5" r="0.7" fill="currentColor" /></svg>
 );
 
+// Send an enquiry to our own inbox (/api/enquiries), tagged with first-touch
+// attribution so each lead records the channel that produced it, and record a
+// conversion event for analytics.
 function post(payload: Record<string, unknown>) {
-  fetch(`${MEDUSA_URL}/store/enquiries`, {
+  const a = getAttribution();
+  fetch("/api/enquiries", {
     method: "POST",
-    headers: { "content-type": "application/json", "x-publishable-api-key": MEDUSA_KEY },
-    body: JSON.stringify(payload),
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({
+      ...payload,
+      attr_source: a.source,
+      attr_medium: a.medium,
+      attr_campaign: a.campaign,
+      attr_referrer: a.referrer,
+      attr_landing: a.landingPath,
+    }),
   }).catch(() => {});
+  track("enquiry_submitted", { type: payload.type, piece: payload.product_title });
 }
 
 function Overlay({ onClose, children, size = "sm" }: { onClose: () => void; children: ReactNode; size?: "sm" | "lg" | "xl" }) {

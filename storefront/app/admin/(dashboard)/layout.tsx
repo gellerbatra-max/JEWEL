@@ -1,11 +1,13 @@
 import Link from "next/link";
 import { requireAuth } from "@/lib/admin-auth";
 import { logoutAction } from "@/app/admin/actions";
+import { getUnreadCount } from "@/lib/enquiry-store";
 
 // Guards every route in the (dashboard) group: unauthenticated visitors are
 // redirected to /admin/login before any content renders.
 export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
   await requireAuth();
+  const unread = await getUnreadCount();
 
   return (
     <div className="min-h-screen bg-porcelain">
@@ -17,8 +19,25 @@ export default async function DashboardLayout({ children }: { children: React.Re
               <span className="text-[11px] tracking-[0.16em] uppercase text-gold">Manage</span>
             </Link>
             <nav className="hidden items-center gap-5 text-[12px] tracking-[0.1em] uppercase text-stone sm:flex">
+              <Link href="/admin/insights" className="hover:text-ink">
+                Insights
+              </Link>
               <Link href="/admin" className="hover:text-ink">
                 Pieces
+              </Link>
+              <Link href="/admin/enquiries" className="flex items-center gap-1.5 hover:text-ink">
+                Enquiries
+                {unread > 0 && (
+                  <span className="inline-flex min-w-[18px] items-center justify-center rounded-full bg-gold px-1.5 py-0.5 text-[10px] leading-none text-porcelain">
+                    {unread}
+                  </span>
+                )}
+              </Link>
+              <Link href="/admin/newsletter" className="hover:text-ink">
+                Newsletter
+              </Link>
+              <Link href="/admin/journal" className="hover:text-ink">
+                Journal
               </Link>
               <Link href="/admin/home" className="hover:text-ink">
                 Home page
