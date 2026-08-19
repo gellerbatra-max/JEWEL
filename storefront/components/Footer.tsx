@@ -34,6 +34,7 @@ const COLUMNS: Col[] = [
       { href: "/bespoke", label: "Bespoke & Commissions" },
       { href: "/certification", label: "Certification" },
       { href: "/sourcing", label: "Responsible Sourcing" },
+      { href: "/reviews", label: "Reviews" },
     ],
   },
 ];

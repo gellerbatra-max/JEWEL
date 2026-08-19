@@ -2,12 +2,13 @@ import Link from "next/link";
 import { requireAuth } from "@/lib/admin-auth";
 import { logoutAction } from "@/app/admin/actions";
 import { getUnreadCount } from "@/lib/enquiry-store";
+import { getPendingCount } from "@/lib/review-store";
 
 // Guards every route in the (dashboard) group: unauthenticated visitors are
 // redirected to /admin/login before any content renders.
 export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
   await requireAuth();
-  const unread = await getUnreadCount();
+  const [unread, pendingReviews] = await Promise.all([getUnreadCount(), getPendingCount()]);
 
   return (
     <div className="min-h-screen bg-porcelain">
@@ -38,6 +39,14 @@ export default async function DashboardLayout({ children }: { children: React.Re
               </Link>
               <Link href="/admin/customers" className="hover:text-ink">
                 Customers
+              </Link>
+              <Link href="/admin/reviews" className="flex items-center gap-1.5 hover:text-ink">
+                Reviews
+                {pendingReviews > 0 && (
+                  <span className="inline-flex min-w-[18px] items-center justify-center rounded-full bg-gold px-1.5 py-0.5 text-[10px] leading-none text-porcelain">
+                    {pendingReviews}
+                  </span>
+                )}
               </Link>
               <Link href="/admin/journal" className="hover:text-ink">
                 Journal

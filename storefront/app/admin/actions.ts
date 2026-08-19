@@ -32,6 +32,7 @@ import { setEnquiryRead, deleteEnquiry } from "@/lib/enquiry-store";
 import { removeSubscriber } from "@/lib/newsletter-store";
 import { upsertPost, deletePost } from "@/lib/journal-store";
 import { deleteCustomer } from "@/lib/customer-store";
+import { setReviewApproved, deleteReview } from "@/lib/review-store";
 import type { CollectionHandle, Certification } from "@/lib/products";
 import { SECTION_DEFS, type ProductSections } from "@/lib/product-sections";
 
@@ -276,6 +277,23 @@ export async function deleteCustomerAction(id: string): Promise<void> {
   if (!id) return;
   await deleteCustomer(id);
   revalidatePath("/admin/customers");
+}
+
+// --- Reviews ---------------------------------------------------------------
+
+export async function approveReviewAction(id: string, approved: boolean): Promise<void> {
+  await assertAuthed();
+  if (!id) return;
+  await setReviewApproved(id, approved);
+  // Product pages are static; refresh so the review appears/disappears publicly.
+  revalidatePath("/", "layout");
+}
+
+export async function deleteReviewAction(id: string): Promise<void> {
+  await assertAuthed();
+  if (!id) return;
+  await deleteReview(id);
+  revalidatePath("/", "layout");
 }
 
 // --- Journal ---------------------------------------------------------------

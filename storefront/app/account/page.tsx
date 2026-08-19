@@ -24,10 +24,14 @@ export default async function AccountPage() {
 
   const [saved, allEnquiries] = await Promise.all([getSaved(customer.id), getEnquiries()]);
   const email = customer.email.toLowerCase();
-  const mine = allEnquiries.filter(
-    (e) =>
-      e.contact.toLowerCase().includes(email) || e.recipientEmail.toLowerCase() === email
-  );
+  const phone = (customer.phone || "").replace(/[^\d]/g, "");
+  const mine = allEnquiries.filter((e) => {
+    const byEmail =
+      !!email && (e.contact.toLowerCase().includes(email) || e.recipientEmail.toLowerCase() === email);
+    const byPhone = !!phone && e.contact.replace(/[^\d]/g, "").includes(phone);
+    return byEmail || byPhone;
+  });
+  const contactLine = customer.email || (customer.phone ? `WhatsApp · +${customer.phone}` : "");
 
   return (
     <div className="mx-auto max-w-[1100px] px-6 py-16">
@@ -38,7 +42,7 @@ export default async function AccountPage() {
           <h1 className="mt-2 font-display text-4xl text-ink">
             Welcome, {customer.name.split(" ")[0] || "there"}
           </h1>
-          <p className="mt-2 text-[14px] text-stone">{customer.email}</p>
+          <p className="mt-2 text-[14px] text-stone">{contactLine}</p>
         </div>
         <form action={logoutAction}>
           <button
@@ -50,8 +54,8 @@ export default async function AccountPage() {
         </form>
       </div>
 
-      {/* Verify banner */}
-      {!customer.emailVerified && (
+      {/* Verify banner — only for email accounts */}
+      {!!customer.email && !customer.emailVerified && (
         <div className="mb-10 flex flex-wrap items-center justify-between gap-3 border border-gold/40 bg-gold/[0.06] px-5 py-4">
           <p className="text-[14px] text-ink">Please verify your email to secure your account.</p>
           <Link

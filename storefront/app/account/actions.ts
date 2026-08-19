@@ -5,6 +5,7 @@ import { headers, cookies } from "next/headers";
 import {
   createCustomer,
   authenticate,
+  createOrGetWhatsappCustomer,
   setVerificationCode,
   confirmVerification,
   getPublicCustomerById,
@@ -77,6 +78,26 @@ export async function registerAction(
   await startCustomerSession(res.customer.id);
   await issueCode(res.customer.id, res.customer.email);
   redirect("/account/verify");
+}
+
+// Low-friction WhatsApp signup: just a name and number, no password, one step.
+export async function whatsappSignupAction(
+  _prev: AccountFormState,
+  formData: FormData
+): Promise<AccountFormState> {
+  if (!isCustomerAuthConfigured()) {
+    return { error: "Accounts aren't enabled yet — a session secret needs to be set." };
+  }
+  const name = String(formData.get("name") || "").trim();
+  const phone = String(formData.get("phone") || "").trim();
+  const digits = phone.replace(/[^\d]/g, "");
+  if (!name) return { error: "Please enter your name." };
+  if (digits.length < 7) {
+    return { error: "Please enter your WhatsApp number, including country code." };
+  }
+  const { id } = await createOrGetWhatsappCustomer({ name, phone: digits });
+  await startCustomerSession(id);
+  redirect("/account");
 }
 
 export async function loginAction(

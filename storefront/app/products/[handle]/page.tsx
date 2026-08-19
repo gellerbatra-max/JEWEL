@@ -10,6 +10,7 @@ import { ProductGallery } from "@/components/ProductGallery";
 import { ProductJsonLd } from "@/components/ProductJsonLd";
 import { RelatedProducts } from "@/components/RelatedProducts";
 import { RecentlyViewed } from "@/components/RecentlyViewed";
+import { ProductReviews } from "@/components/ProductReviews";
 import { WishlistButton } from "@/components/WishlistButton";
 import { getCollection, formatPrice } from "@/lib/products";
 import { toWishItem } from "@/lib/wishlist";
@@ -114,6 +115,7 @@ export default async function ProductPage(props: PageProps<"/products/[handle]">
       </div>
     </div>
 
+      <ProductReviews handle={product.handle} title={product.title} />
       <RecentlyViewed current={toWishItem(product)} />
       <RelatedProducts product={product} />
     </>

@@ -1,7 +1,12 @@
 "use client";
 
 import { useActionState, useState } from "react";
-import { loginAction, registerAction, type AccountFormState } from "@/app/account/actions";
+import {
+  loginAction,
+  registerAction,
+  whatsappSignupAction,
+  type AccountFormState,
+} from "@/app/account/actions";
 
 const field =
   "w-full border border-line bg-white px-3.5 py-2.5 text-sm text-ink outline-none transition-colors focus:border-gold";
@@ -35,11 +40,52 @@ export function AccountAuth() {
 
       {mode === "login" ? <LoginForm /> : <RegisterForm />}
 
+      {/* Quick, one-step WhatsApp signup */}
+      <div className="my-7 flex items-center gap-4">
+        <span className="h-px flex-1 bg-line" />
+        <span className="text-[11px] tracking-[0.14em] uppercase text-stone">or</span>
+        <span className="h-px flex-1 bg-line" />
+      </div>
+      <WhatsappSignup />
+
       <p className="mt-6 text-center text-[13px] leading-relaxed text-stone">
-        Creating an account lets you keep your favourites and see your enquiries in one place. We
-        never share your details.
+        An account lets you keep your favourites and see your enquiries in one place. We never share
+        your details.
       </p>
     </div>
+  );
+}
+
+function WhatsappSignup() {
+  const [state, action, pending] = useActionState<AccountFormState, FormData>(
+    whatsappSignupAction,
+    {}
+  );
+  return (
+    <form action={action} className="space-y-3">
+      <div className="grid gap-3 sm:grid-cols-2">
+        <input name="name" required placeholder="Your name" className={field} />
+        <input
+          name="phone"
+          required
+          inputMode="tel"
+          placeholder="WhatsApp no. (+94…)"
+          className={field}
+        />
+      </div>
+      {state.error && <p className="text-[13px] text-risk">{state.error}</p>}
+      <button
+        type="submit"
+        disabled={pending}
+        className="flex w-full items-center justify-center gap-2 border border-ink py-3 text-[12px] tracking-[0.14em] uppercase text-ink transition-colors hover:border-gold hover:text-gold disabled:opacity-60"
+      >
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.8-1.5A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.4-1.1-2.7 0-1.3.7-1.9.9-2.2.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.3 0 .5l-.4.6c-.2.2-.4.4-.2.7.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.2.1.4.1.6-.1l.7-.9c.2-.2.4-.2.6-.1l1.9.9c.3.1.4.2.5.3.1.3.1.7-.1 1.3z" />
+        </svg>
+        {pending ? "Continuing…" : "Continue with WhatsApp"}
+      </button>
+      <p className="text-center text-[11px] text-stone">One step — no password needed.</p>
+    </form>
   );
 }
 

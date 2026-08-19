@@ -63,10 +63,16 @@ export default async function CustomersPage() {
               {customers.map((c) => (
                 <tr key={c.id} className="border-b border-line-soft bg-white last:border-0">
                   <td className="px-4 py-3 text-ink">{c.name}</td>
-                  <td className="px-4 py-3 text-stone">{c.email}</td>
+                  <td className="px-4 py-3 text-stone">
+                    {c.email || (c.phone ? `WhatsApp · +${c.phone}` : "—")}
+                  </td>
                   <td className="px-4 py-3">
-                    <span className={`text-[11px] uppercase tracking-[0.1em] ${c.emailVerified ? "text-gold" : "text-stone"}`}>
-                      {c.emailVerified ? "Verified" : "Unverified"}
+                    <span
+                      className={`text-[11px] uppercase tracking-[0.1em] ${
+                        c.via === "whatsapp" ? "text-sapphire" : c.emailVerified ? "text-gold" : "text-stone"
+                      }`}
+                    >
+                      {c.via === "whatsapp" ? "WhatsApp" : c.emailVerified ? "Verified" : "Unverified"}
                     </span>
                   </td>
                   <td className="px-4 py-3 tabular-nums text-stone">{c.savedCount}</td>

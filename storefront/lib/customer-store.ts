@@ -16,8 +16,10 @@ const DATA_FILE = path.join(process.cwd(), "data", "customers.json");
 type Customer = {
   id: string;
   name: string;
-  email: string; // lowercased, unique
-  passwordHash: string; // "salt:hashHex"
+  email: string; // lowercased, unique (email accounts); "" for WhatsApp accounts
+  phone?: string; // digits only (WhatsApp accounts)
+  via?: "email" | "whatsapp";
+  passwordHash: string; // "salt:hashHex"; "" for WhatsApp accounts
   saved: WishItem[];
   createdAt: string;
   emailVerified?: boolean;
@@ -83,6 +85,8 @@ const publicView = (c: Customer): PublicCustomer => ({
   id: c.id,
   name: c.name,
   email: c.email,
+  phone: c.phone ?? "",
+  via: c.via ?? "email",
   createdAt: c.createdAt,
   savedCount: c.saved?.length ?? 0,
   emailVerified: !!c.emailVerified,
@@ -109,6 +113,36 @@ export async function createCustomer(input: {
     };
     await write([...all, customer]);
     return { ok: true, customer: publicView(customer) };
+  });
+}
+
+// Low-friction WhatsApp signup: identified by phone number, no password. If an
+// account already exists for that number we return it (so returning visitors
+// don't create duplicates). NOTE: without an OTP this trusts the entered number,
+// which is a deliberate low-friction trade-off — add WhatsApp/SMS OTP for
+// stronger identity when a verification provider is connected.
+export async function createOrGetWhatsappCustomer(input: {
+  name: string;
+  phone: string;
+}): Promise<{ id: string; created: boolean }> {
+  const phone = input.phone.replace(/[^\d]/g, "");
+  return withWriteLock(async () => {
+    const all = await read();
+    const existing = all.find((c) => c.via === "whatsapp" && (c.phone ?? "") === phone);
+    if (existing) return { id: existing.id, created: false };
+    const customer: Customer = {
+      id: `c_${Date.now()}_${crypto.randomBytes(4).toString("hex")}`,
+      name: input.name.trim().slice(0, 120),
+      email: "",
+      phone,
+      via: "whatsapp",
+      passwordHash: "",
+      saved: [],
+      createdAt: new Date().toISOString(),
+      emailVerified: false,
+    };
+    await write([...all, customer]);
+    return { id: customer.id, created: true };
   });
 }
 

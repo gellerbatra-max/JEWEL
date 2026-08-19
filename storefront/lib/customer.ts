@@ -3,7 +3,9 @@
 export type PublicCustomer = {
   id: string;
   name: string;
-  email: string;
+  email: string; // "" for WhatsApp accounts
+  phone: string; // "" for email accounts
+  via: "email" | "whatsapp";
   createdAt: string;
   savedCount: number;
   emailVerified: boolean;
