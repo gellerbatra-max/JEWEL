@@ -5,7 +5,10 @@ import { SignatureCarousel, type CarouselItem } from "@/components/SignatureCaro
 import { RotatingImage } from "@/components/RotatingImage";
 import { PressStrip } from "@/components/PressStrip";
 import { InstagramFeed } from "@/components/InstagramFeed";
-import { getSignaturePieces } from "@/lib/catalog-store";
+import { LovedByInfluencers } from "@/components/LovedByInfluencers";
+import { getSignaturePieces, getAllProducts } from "@/lib/catalog-store";
+import { getUgcPosts } from "@/lib/ugc-store";
+import type { UgcCard } from "@/lib/ugc";
 import {
   getBespokeImages,
   getBridalImages,
@@ -20,13 +23,38 @@ export async function HomeContent() {
   preload("/images/hero-ruby-ring-gold.webp", { as: "image", fetchPriority: "high" });
 
   // One batched pass over the stores instead of sequential awaits.
-  const [signature, bespokeSaved, bridalSaved, instaSaved, pressItems] = await Promise.all([
-    getSignaturePieces(12),
-    getBespokeImages(),
-    getBridalImages(),
-    getInstagramImages(),
-    getPressItems(),
-  ]);
+  const [signature, allProducts, bespokeSaved, bridalSaved, instaSaved, pressItems, ugcPosts] =
+    await Promise.all([
+      getSignaturePieces(12),
+      getAllProducts(),
+      getBespokeImages(),
+      getBridalImages(),
+      getInstagramImages(),
+      getPressItems(),
+      getUgcPosts(),
+    ]);
+
+  // Resolve each influencer post to its linked piece (drop any whose piece was removed).
+  const productByHandle = new Map(allProducts.map((p) => [p.handle, p]));
+  const ugcCards: UgcCard[] = ugcPosts.flatMap((post) => {
+    const p = productByHandle.get(post.productHandle);
+    if (!p) return [];
+    return [
+      {
+        id: post.id,
+        media: post.media,
+        name: post.name,
+        product: {
+          handle: p.handle,
+          title: p.title,
+          image: p.image,
+          price: p.price,
+          currency: p.currency,
+          oneOfAKind: p.oneOfAKind,
+        },
+      },
+    ];
+  });
   // Instagram grid: owner's picks, or fall back to signature pieces so the
   // "Follow us" module always looks intentional.
   const instaImages = (
@@ -97,6 +125,16 @@ export async function HomeContent() {
       </Reveal>
 
       <SectionRule />
+
+      {/* Loved by Influencers — shoppable video carousel (hidden until posts exist) */}
+      {ugcCards.length > 0 && (
+        <>
+          <Reveal>
+            <LovedByInfluencers cards={ugcCards} />
+          </Reveal>
+          <SectionRule />
+        </>
+      )}
 
       {/* Bespoke challenge */}
       <Reveal className="py-20">

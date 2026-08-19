@@ -6,9 +6,11 @@ import {
   getInstagramImages,
   getPressItems,
 } from "@/lib/site-config-store";
+import { getUgcPosts } from "@/lib/ugc-store";
 import { HomeSelectGrid } from "@/app/admin/HomeSelectGrid";
 import { SectionImagesManager } from "@/app/admin/SectionImagesManager";
 import { PressManager } from "@/app/admin/PressManager";
+import { UgcManager } from "@/app/admin/UgcManager";
 import {
   saveBespokeImagesAction,
   saveBridalImagesAction,
@@ -18,13 +20,24 @@ import {
 export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
-  const [products, bespoke, bridal, instagram, press] = await Promise.all([
+  const [products, bespoke, bridal, instagram, press, ugcPosts] = await Promise.all([
     getAllProducts(),
     getBespokeImages(),
     getBridalImages(),
     getInstagramImages(),
     getPressItems(),
+    getUgcPosts(),
   ]);
+  const titleByHandle = new Map(products.map((p) => [p.handle, p.title]));
+  const ugcRows = ugcPosts.map((p) => ({
+    id: p.id,
+    media: p.media,
+    name: p.name,
+    productTitle: titleByHandle.get(p.productHandle) ?? "(removed piece)",
+  }));
+  const prodOptions = products
+    .map((p) => ({ handle: p.handle, title: p.title }))
+    .sort((a, b) => a.title.localeCompare(b.title));
   const catalog = products
     .filter((p) => p.image)
     .map((p) => ({ title: p.title, image: p.image }))
@@ -71,6 +84,17 @@ export default async function HomePage() {
           to use the default image.
         </p>
         <SectionImagesManager initial={bridal} catalog={catalog} action={saveBridalImagesAction} />
+      </section>
+
+      {/* Loved by Influencers */}
+      <section>
+        <h2 className="mb-1 font-display text-xl text-ink">Loved by Influencers</h2>
+        <p className="mb-4 max-w-2xl text-sm text-stone">
+          A shoppable carousel of influencer / client <strong className="text-ink">videos and
+          photos</strong>, each linked to a piece. Add your real content — the section stays hidden
+          on the home page until you add at least one post.
+        </p>
+        <UgcManager posts={ugcRows} products={prodOptions} />
       </section>
 
       {/* Instagram grid */}

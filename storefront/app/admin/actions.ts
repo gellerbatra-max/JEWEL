@@ -18,8 +18,10 @@ import {
   deleteProduct,
   setShowOnHome,
   saveUploadedImage,
+  saveUploadedMedia,
   type ProductInput,
 } from "@/lib/catalog-store";
+import { addUgcPost, deleteUgcPost } from "@/lib/ugc-store";
 import {
   setCategoryCover,
   setBespokeImages,
@@ -259,6 +261,35 @@ export async function saveInstagramImagesAction(_prev: FormState, formData: Form
   await setInstagramImages(images);
   revalidatePath("/", "layout");
   return { images };
+}
+
+// --- Loved by Influencers (shoppable UGC) ----------------------------------
+
+export async function saveUgcAction(_prev: FormState, formData: FormData): Promise<FormState> {
+  await assertAuthed();
+  const productHandle = String(formData.get("productHandle") || "").trim();
+  if (!productHandle) return { error: "Please choose which piece this post features." };
+  const name = String(formData.get("name") || "").trim();
+  const file = formData
+    .getAll("media")
+    .find((f): f is File => f instanceof File && f.size > 0);
+  if (!file) return { error: "Please add a video or photo." };
+  let media: string;
+  try {
+    media = await saveUploadedMedia(file);
+  } catch (e) {
+    return { error: e instanceof Error ? e.message : "The file couldn't be uploaded." };
+  }
+  await addUgcPost({ media, productHandle, name });
+  revalidatePath("/", "layout");
+  return { saved: true };
+}
+
+export async function deleteUgcAction(id: string): Promise<void> {
+  await assertAuthed();
+  if (!id) return;
+  await deleteUgcPost(id);
+  revalidatePath("/", "layout");
 }
 
 // --- Press ("As featured in") ----------------------------------------------

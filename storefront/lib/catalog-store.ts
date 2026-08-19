@@ -30,6 +30,10 @@ const UPLOAD_PUBLIC = "/images/uploads";
 const ALLOWED_IMAGE_EXT = new Set(["jpg", "jpeg", "png", "webp", "avif", "gif"]);
 const MAX_UPLOAD_BYTES = 12 * 1024 * 1024; // 12 MB per photo
 
+// For the influencer carousel we also accept short videos.
+const ALLOWED_MEDIA_EXT = new Set([...ALLOWED_IMAGE_EXT, "mp4", "webm", "mov", "m4v"]);
+const MAX_MEDIA_BYTES = 60 * 1024 * 1024; // 60 MB per clip
+
 const ID_PREFIX: Record<CollectionHandle, string> = {
   rings: "RNG",
   necklaces: "NCK",
@@ -300,6 +304,23 @@ export async function saveUploadedImage(file: File): Promise<string> {
   return `${UPLOAD_PUBLIC}/${name}`;
 }
 
+// Save an uploaded photo OR short video (for the influencer carousel).
+export async function saveUploadedMedia(file: File): Promise<string> {
+  const ext = (extFromName(file.name) || extFromType(file.type) || "").toLowerCase();
+  if (!ALLOWED_MEDIA_EXT.has(ext)) {
+    throw new Error(`Unsupported file type: ${file.name || file.type || "unknown"}`);
+  }
+  if (file.size > MAX_MEDIA_BYTES) {
+    throw new Error(`File too large (max ${Math.round(MAX_MEDIA_BYTES / 1024 / 1024)}MB)`);
+  }
+  const bytes = Buffer.from(await file.arrayBuffer());
+  await fs.mkdir(UPLOAD_DIR, { recursive: true });
+  const base = slugify(file.name.replace(/\.[^.]+$/, "")) || "clip";
+  const name = `${base}-${Date.now()}-${Math.floor(Math.random() * 1e6)}.${ext}`;
+  await fs.writeFile(path.join(UPLOAD_DIR, name), bytes);
+  return `${UPLOAD_PUBLIC}/${name}`;
+}
+
 // ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
@@ -346,6 +367,9 @@ function extFromType(type: string): string | null {
     "image/webp": "webp",
     "image/avif": "avif",
     "image/gif": "gif",
+    "video/mp4": "mp4",
+    "video/webm": "webm",
+    "video/quicktime": "mov",
   };
   return map[type] ?? null;
 }
