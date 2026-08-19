@@ -6,12 +6,14 @@ import { RotatingImage } from "@/components/RotatingImage";
 import { PressStrip } from "@/components/PressStrip";
 import { InstagramFeed } from "@/components/InstagramFeed";
 import { LovedByInfluencers } from "@/components/LovedByInfluencers";
+import { CustomerReviews, type ReviewCard } from "@/components/CustomerReviews";
 import { getSignaturePieces, getAllProducts } from "@/lib/catalog-store";
 import { getUgcPosts } from "@/lib/ugc-store";
 import type { UgcCard } from "@/lib/ugc";
+import { getApprovedAll } from "@/lib/review-store";
+import { SAMPLE_REVIEWS } from "@/lib/sample-reviews";
 import {
   getBespokeImages,
-  getBridalImages,
   getInstagramImages,
   getPressItems,
 } from "@/lib/site-config-store";
@@ -23,38 +25,41 @@ export async function HomeContent() {
   preload("/images/hero-ruby-ring-gold.webp", { as: "image", fetchPriority: "high" });
 
   // One batched pass over the stores instead of sequential awaits.
-  const [signature, allProducts, bespokeSaved, bridalSaved, instaSaved, pressItems, ugcPosts] =
+  const [signature, allProducts, bespokeSaved, instaSaved, pressItems, ugcPosts, approvedReviews] =
     await Promise.all([
       getSignaturePieces(12),
       getAllProducts(),
       getBespokeImages(),
-      getBridalImages(),
       getInstagramImages(),
       getPressItems(),
       getUgcPosts(),
+      getApprovedAll(),
     ]);
 
   // Resolve each influencer post to its linked piece (drop any whose piece was removed).
   const productByHandle = new Map(allProducts.map((p) => [p.handle, p]));
-  const ugcCards: UgcCard[] = ugcPosts.flatMap((post) => {
-    const p = productByHandle.get(post.productHandle);
-    if (!p) return [];
-    return [
-      {
-        id: post.id,
-        media: post.media,
-        name: post.name,
-        product: {
-          handle: p.handle,
-          title: p.title,
-          image: p.image,
-          price: p.price,
-          currency: p.currency,
-          oneOfAKind: p.oneOfAKind,
-        },
-      },
-    ];
+  const snapshot = (p: (typeof allProducts)[number]) => ({
+    handle: p.handle,
+    title: p.title,
+    image: p.image,
+    price: p.price,
+    currency: p.currency,
+    oneOfAKind: p.oneOfAKind,
   });
+  const ownerCards: UgcCard[] = ugcPosts.flatMap((post) => {
+    const p = productByHandle.get(post.productHandle);
+    return p ? [{ id: post.id, media: post.media, name: post.name, product: snapshot(p) }] : [];
+  });
+  // Preview fallback so the section is visible before the owner adds real
+  // influencer clips — uses pieces not already in the Signature carousel above.
+  const sigHandles = new Set(signature.map((p) => p.handle));
+  const previewPool = allProducts.filter((p) => p.image && !sigHandles.has(p.handle));
+  const previewProducts = (
+    previewPool.length >= 4 ? previewPool : allProducts.filter((p) => p.image)
+  ).slice(0, 8);
+  const ugcCards: UgcCard[] = ownerCards.length
+    ? ownerCards
+    : previewProducts.map((p) => ({ id: p.handle, media: p.image, name: "", product: snapshot(p) }));
   // Instagram grid: owner's picks, or fall back to signature pieces so the
   // "Follow us" module always looks intentional.
   const instaImages = (
@@ -63,9 +68,19 @@ export async function HomeContent() {
   const bespokeImages = bespokeSaved.length
     ? bespokeSaved
     : ["/images/catalog/rings/rings-004-1.avif"];
-  const bridalImages = bridalSaved.length
-    ? bridalSaved
-    : ["/images/catalog/rings/rings-007-1.avif"];
+  // Customer reviews carousel: approved reviews if any, else sample reviews as a preview.
+  const reviewCards: ReviewCard[] = approvedReviews.length
+    ? approvedReviews.map((r) => ({
+        id: r.id,
+        name: r.name,
+        rating: r.rating,
+        title: r.title || undefined,
+        body: r.body,
+        productTitle: r.productHandle ? productByHandle.get(r.productHandle)?.title : undefined,
+      }))
+    : SAMPLE_REVIEWS;
+  const reviewCount = reviewCards.length;
+  const reviewAvg = reviewCount ? reviewCards.reduce((a, r) => a + r.rating, 0) / reviewCount : 0;
   const signatureItems: CarouselItem[] = signature.map((p) => ({
     handle: p.handle,
     title: p.title,
@@ -211,16 +226,27 @@ export async function HomeContent() {
             </div>
           </div>
 
-          {/* The Isolde ring, drawn from the collection */}
+          {/* Craftsmanship in motion — a stone being hand-set */}
           <div className="order-1 flex items-center justify-center py-10 md:order-2 md:py-0">
-            <RotatingImage
-              images={bridalImages}
-              alt="Craftsmanship — hand-finished Ceylon jewellery"
-              className="aspect-square w-full max-w-[560px]"
-              sizes="(max-width: 768px) 70vw, 460px"
+            <video
+              src="/videos/craftsmanship.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              aria-label="Craftsmanship — a Ceylon stone being hand-set in our atelier"
+              className="aspect-square w-full max-w-[560px] object-cover"
             />
           </div>
         </div>
+      </Reveal>
+
+      <SectionRule />
+
+      {/* Loved By Our Customers — reviews carousel */}
+      <Reveal>
+        <CustomerReviews reviews={reviewCards} avg={reviewAvg} count={reviewCount} />
       </Reveal>
 
       <SectionRule />
