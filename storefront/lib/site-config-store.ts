@@ -25,17 +25,27 @@ function withWriteLock<T>(fn: () => Promise<T>): Promise<T> {
   return next as Promise<T>;
 }
 
+// Cached for this process; invalidated on write.
+let cache: SiteConfig | null = null;
+
 async function read(): Promise<SiteConfig> {
+  if (cache) return cache;
+  let parsed: unknown = null;
   try {
-    return JSON.parse(await fs.readFile(FILE, "utf8")) as SiteConfig;
+    parsed = JSON.parse(await fs.readFile(FILE, "utf8"));
   } catch {
-    return {};
+    parsed = null; // missing or corrupt — fall back to empty config
   }
+  cache = parsed && typeof parsed === "object" && !Array.isArray(parsed) ? (parsed as SiteConfig) : {};
+  return cache;
 }
 
 async function write(cfg: SiteConfig): Promise<void> {
   await fs.mkdir(path.dirname(FILE), { recursive: true });
-  await fs.writeFile(FILE, JSON.stringify(cfg, null, 2), "utf8");
+  const tmp = `${FILE}.${process.pid}.tmp`;
+  await fs.writeFile(tmp, JSON.stringify(cfg, null, 2), "utf8");
+  await fs.rename(tmp, FILE);
+  cache = cfg;
 }
 
 export async function getCategoryCovers(): Promise<Partial<Record<CollectionHandle, string>>> {
@@ -49,8 +59,7 @@ export async function setCategoryCover(handle: CollectionHandle, productId: stri
     const covers = { ...(cfg.categoryCovers ?? {}) };
     if (productId) covers[handle] = productId;
     else delete covers[handle];
-    cfg.categoryCovers = covers;
-    await write(cfg);
+    await write({ ...cfg, categoryCovers: covers });
   });
 }
 
@@ -63,8 +72,7 @@ export async function getBespokeImages(): Promise<string[]> {
 export async function setBespokeImages(paths: string[]): Promise<void> {
   return withWriteLock(async () => {
     const cfg = await read();
-    cfg.bespokeImages = paths.slice(0, MAX_SECTION_IMAGES);
-    await write(cfg);
+    await write({ ...cfg, bespokeImages: paths.slice(0, MAX_SECTION_IMAGES) });
   });
 }
 
@@ -75,7 +83,6 @@ export async function getBridalImages(): Promise<string[]> {
 export async function setBridalImages(paths: string[]): Promise<void> {
   return withWriteLock(async () => {
     const cfg = await read();
-    cfg.bridalImages = paths.slice(0, MAX_SECTION_IMAGES);
-    await write(cfg);
+    await write({ ...cfg, bridalImages: paths.slice(0, MAX_SECTION_IMAGES) });
   });
 }

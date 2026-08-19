@@ -5,10 +5,9 @@ import Image from "next/image";
 
 const isVideo = (s: string) => /\.(mp4|webm|mov|m4v)$/i.test(s);
 
-// Height of the whole gallery — kept within the viewport so the full image is
-// visible without scrolling the page. The thumbnail rail matches this height and
-// shows three thumbnails at a time.
-const GALLERY_H = "min(74vh, 660px)";
+// The gallery is kept within the viewport height (responsive) so the full image
+// shows without scrolling; the thumbnail rail matches that height. Shorter on
+// phones so the main image isn't a thin, tall sliver.
 
 function PlayBadge({ size = 26 }: { size?: number }) {
   return (
@@ -86,10 +85,10 @@ export function ProductGallery({ images, alt }: { images: string[]; alt: string 
 
   return (
     <>
-      <div className="flex gap-3 sm:gap-4" style={{ height: GALLERY_H }}>
+      <div className="flex h-[min(60vh,520px)] gap-2.5 sm:h-[min(74vh,660px)] sm:gap-4">
         {/* Vertical thumbnail rail (left) — 3 visible, scrolls for more */}
         {list.length > 1 && (
-          <div className="relative h-full w-[104px] shrink-0 sm:w-[150px] lg:w-[186px]">
+          <div className="relative h-full w-[76px] shrink-0 sm:w-[150px] lg:w-[186px]">
             <div
               ref={railRef}
               className="no-scrollbar flex h-full flex-col gap-3 overflow-y-auto scroll-smooth"

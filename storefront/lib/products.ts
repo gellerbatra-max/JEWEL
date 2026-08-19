@@ -101,9 +101,15 @@ export function getCollection(handle: string) {
 }
 
 export function formatPrice(price: number, currency: string) {
-  return new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency,
-    maximumFractionDigits: 0,
-  }).format(price);
+  try {
+    return new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency,
+      maximumFractionDigits: 0,
+    }).format(price);
+  } catch {
+    // Defensive: an invalid currency code would otherwise throw a RangeError and
+    // crash every page that renders this price.
+    return `${currency} ${Math.round(price).toLocaleString("en-US")}`;
+  }
 }

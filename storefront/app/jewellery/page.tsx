@@ -10,7 +10,9 @@ export const metadata: Metadata = {
   description: "Explore Taygerian jewellery by category: rings, necklaces, pendants, earrings, bracelets, and bangles.",
 };
 
-export const dynamic = "force-dynamic";
+// Static: this only changes when the owner edits pieces/covers, and every admin
+// write calls revalidatePath("/", "layout"), which refreshes it on demand — no
+// need to re-render (and re-read the store) on every visitor request.
 
 export default async function JewelleryPage() {
   const [all, covers] = await Promise.all([getAllProducts(), getCategoryCovers()]);

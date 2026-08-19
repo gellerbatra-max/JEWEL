@@ -25,6 +25,11 @@ const DATA_FILE = path.join(process.cwd(), "data", "catalog.json");
 const UPLOAD_DIR = path.join(process.cwd(), "public", "images", "uploads");
 const UPLOAD_PUBLIC = "/images/uploads";
 
+// Only real image types may be written into the public uploads folder (Next
+// serves them same-origin, so an .svg/.html would be a stored-XSS vector).
+const ALLOWED_IMAGE_EXT = new Set(["jpg", "jpeg", "png", "webp", "avif", "gif"]);
+const MAX_UPLOAD_BYTES = 12 * 1024 * 1024; // 12 MB per photo
+
 const ID_PREFIX: Record<CollectionHandle, string> = {
   rings: "RNG",
   necklaces: "NCK",
@@ -62,14 +67,35 @@ function withWriteLock<T>(fn: () => Promise<T>): Promise<T> {
   return next as Promise<T>;
 }
 
+// In-memory cache of the parsed catalog for this process. Invalidated on every
+// write, so reads don't re-read + re-parse the file (and O(n) scan) on every
+// call — a single render often reads several times.
+let cache: Product[] | null = null;
+
 async function readCatalog(): Promise<Product[]> {
+  if (cache) return cache;
   await ensureSeeded();
-  const raw = await fs.readFile(DATA_FILE, "utf8");
-  return JSON.parse(raw) as Product[];
+  let parsed: unknown = null;
+  try {
+    parsed = JSON.parse(await fs.readFile(DATA_FILE, "utf8"));
+  } catch {
+    // Unreadable or corrupt/truncated JSON — fall through to the seed fallback
+    // below rather than throwing (an unguarded throw would 500 the whole site).
+  }
+  // Guard against a corrupt or hand-edited non-array file: fall back to the
+  // committed seed instead of crashing every page that reads the catalog.
+  cache = Array.isArray(parsed) ? (parsed as Product[]) : [...seedProducts];
+  return cache;
 }
 
+// Atomic write: write a temp file, then rename over the target, so a crash or
+// full disk mid-write can't leave a truncated catalog.json. Refreshes the cache
+// only after the rename succeeds, keeping cache and disk consistent.
 async function writeCatalog(list: Product[]): Promise<void> {
-  await fs.writeFile(DATA_FILE, JSON.stringify(list, null, 2), "utf8");
+  const tmp = `${DATA_FILE}.${process.pid}.tmp`;
+  await fs.writeFile(tmp, JSON.stringify(list, null, 2), "utf8");
+  await fs.rename(tmp, DATA_FILE);
+  cache = list;
 }
 
 // ---------------------------------------------------------------------------
@@ -170,8 +196,9 @@ export async function upsertProduct(input: ProductInput): Promise<Product> {
           : existing.homeOrder,
         sections: input.sections,
       };
-      all[idx] = updated;
-      await writeCatalog(all);
+      const next = [...all];
+      next[idx] = updated;
+      await writeCatalog(next);
       return updated;
     }
 
@@ -197,8 +224,7 @@ export async function upsertProduct(input: ProductInput): Promise<Product> {
       homeOrder: input.showOnHome ? nextHomeOrder(all) : undefined,
       sections: input.sections,
     };
-    all.push(created);
-    await writeCatalog(all);
+    await writeCatalog([...all, created]);
     return created;
   });
 }
@@ -223,21 +249,29 @@ export async function setShowOnHome(
       const count = all.filter((p) => p.showOnHome).length;
       if (count >= MAX_SIGNATURE) return { ok: false, atLimit: true };
     }
-    all[idx] = {
+    const next = [...all];
+    next[idx] = {
       ...all[idx],
       showOnHome: show,
       homeOrder: show ? all[idx].homeOrder ?? nextHomeOrder(all) : all[idx].homeOrder,
     };
-    await writeCatalog(all);
+    await writeCatalog(next);
     return { ok: true };
   });
 }
 
 // Save an uploaded photo to public/images/uploads and return its public path.
+// Rejects non-image types and oversized files.
 export async function saveUploadedImage(file: File): Promise<string> {
+  const ext = (extFromName(file.name) || extFromType(file.type) || "").toLowerCase();
+  if (!ALLOWED_IMAGE_EXT.has(ext)) {
+    throw new Error(`Unsupported image type: ${file.name || file.type || "unknown"}`);
+  }
+  if (file.size > MAX_UPLOAD_BYTES) {
+    throw new Error(`Photo too large (max ${Math.round(MAX_UPLOAD_BYTES / 1024 / 1024)}MB)`);
+  }
   const bytes = Buffer.from(await file.arrayBuffer());
   await fs.mkdir(UPLOAD_DIR, { recursive: true });
-  const ext = extFromName(file.name) || extFromType(file.type) || "jpg";
   const base = slugify(file.name.replace(/\.[^.]+$/, "")) || "photo";
   const name = `${base}-${Date.now()}-${Math.floor(Math.random() * 1e6)}.${ext}`;
   await fs.writeFile(path.join(UPLOAD_DIR, name), bytes);
@@ -268,7 +302,7 @@ function nextId(all: Product[], coll: CollectionHandle): string {
   const pfx = ID_PREFIX[coll];
   const nums = all
     .filter((p) => p.id.startsWith(`TAY-${pfx}-`))
-    .map((p) => parseInt(p.id.slice(-3), 10) || 0);
+    .map((p) => parseInt(p.id.split("-").pop() ?? "", 10) || 0);
   const n = (nums.length ? Math.max(...nums) : 0) + 1;
   return `TAY-${pfx}-${String(n).padStart(3, "0")}`;
 }

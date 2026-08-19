@@ -13,15 +13,24 @@ import crypto from "node:crypto";
 const COOKIE = "tay_admin";
 const MAX_AGE = 60 * 60 * 24 * 7; // 7 days, in seconds
 
+// Minimum session-secret length. A short/empty secret makes the HMAC key
+// guessable, which would let anyone forge a session cookie — so we treat it as
+// "not configured" everywhere.
+const MIN_SECRET_LEN = 16;
+
+function secretOk(): boolean {
+  return (process.env.ADMIN_SESSION_SECRET || "").length >= MIN_SECRET_LEN;
+}
+
 function sign(data: string): string {
   const secret = process.env.ADMIN_SESSION_SECRET || "";
   return crypto.createHmac("sha256", secret).update(data).digest("base64url");
 }
 
-// True only when both required secrets are present. Used to show a helpful
-// "not set up yet" message instead of a broken login.
+// True only when the password AND a sufficiently long session secret are set.
+// Used to show a helpful "not set up yet" message instead of a forgeable login.
 export function isAdminConfigured(): boolean {
-  return Boolean(process.env.ADMIN_PASSWORD && process.env.ADMIN_SESSION_SECRET);
+  return Boolean(process.env.ADMIN_PASSWORD) && secretOk();
 }
 
 export function verifyPassword(input: string): boolean {
@@ -40,6 +49,8 @@ function makeToken(): string {
 }
 
 function tokenValid(token: string | undefined): boolean {
+  // No usable secret → no session can be trusted (blocks empty-key forgery).
+  if (!secretOk()) return false;
   if (!token) return false;
   const [payload, sig] = token.split(".");
   if (!payload || !sig) return false;

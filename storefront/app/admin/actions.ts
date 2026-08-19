@@ -29,9 +29,12 @@ const COLLECTIONS: CollectionHandle[] = [
   "rings", "necklaces", "pendants", "earrings", "bracelets", "bangles",
 ];
 const LABS = ["GIA", "GRS", "AGL"] as const;
+const CURRENCIES = ["USD", "LKR", "EUR", "GBP", "AUD"];
 
 async function assertAuthed(): Promise<void> {
-  if (!(await isAuthed())) throw new Error("Not authorised");
+  // Redirect (not throw) so an unauthenticated direct POST lands on the login
+  // page instead of surfacing a raw 500.
+  if (!(await isAuthed())) redirect("/admin/login");
 }
 
 // --- Auth ------------------------------------------------------------------
@@ -60,7 +63,10 @@ export async function saveProductAction(_prev: FormState, formData: FormData): P
   const collectionHandle = String(formData.get("collectionHandle") || "") as CollectionHandle;
   const metal = String(formData.get("metal") || "").trim();
   const stone = String(formData.get("stone") || "").trim();
-  const currency = (String(formData.get("currency") || "USD").trim() || "USD").toUpperCase();
+  const currencyRaw = (String(formData.get("currency") || "USD").trim() || "USD").toUpperCase();
+  // Allow-list: an invalid code would crash Intl.NumberFormat on every page that
+  // renders this product's price, so fall back to USD.
+  const currency = CURRENCIES.includes(currencyRaw) ? currencyRaw : "USD";
   const description = String(formData.get("description") || "").trim();
   const oneOfAKind = formData.get("oneOfAKind") === "on";
   const showOnHome = formData.get("showOnHome") === "on";
@@ -82,7 +88,11 @@ export async function saveProductAction(_prev: FormState, formData: FormData): P
     .getAll("newImages")
     .filter((f): f is File => f instanceof File && f.size > 0);
   const uploaded: string[] = [];
-  for (const f of files) uploaded.push(await saveUploadedImage(f));
+  try {
+    for (const f of files) uploaded.push(await saveUploadedImage(f));
+  } catch (e) {
+    return { error: e instanceof Error ? e.message : "A photo couldn't be uploaded." };
+  }
   const images = [...existing, ...uploaded];
   if (images.length === 0) return { error: "Please add at least one photo of the piece." };
 
@@ -179,7 +189,12 @@ async function collectSectionImages(formData: FormData): Promise<string[]> {
 
 export async function saveBespokeImagesAction(_prev: FormState, formData: FormData): Promise<FormState> {
   await assertAuthed();
-  const images = await collectSectionImages(formData);
+  let images: string[];
+  try {
+    images = await collectSectionImages(formData);
+  } catch (e) {
+    return { error: e instanceof Error ? e.message : "A photo couldn't be uploaded." };
+  }
   await setBespokeImages(images);
   revalidatePath("/", "layout");
   return { images };
@@ -187,7 +202,12 @@ export async function saveBespokeImagesAction(_prev: FormState, formData: FormDa
 
 export async function saveBridalImagesAction(_prev: FormState, formData: FormData): Promise<FormState> {
   await assertAuthed();
-  const images = await collectSectionImages(formData);
+  let images: string[];
+  try {
+    images = await collectSectionImages(formData);
+  } catch (e) {
+    return { error: e instanceof Error ? e.message : "A photo couldn't be uploaded." };
+  }
   await setBridalImages(images);
   revalidatePath("/", "layout");
   return { images };

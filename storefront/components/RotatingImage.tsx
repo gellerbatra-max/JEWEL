@@ -64,7 +64,7 @@ export function RotatingImage({
           alt={idx === 0 ? alt : ""}
           fill
           sizes={sizes}
-          priority={idx === 0}
+          loading="lazy"
           className={`object-contain mix-blend-multiply transition-opacity duration-[1200ms] ease-in-out ${
             idx === i ? "opacity-100" : "opacity-0"
           }`}
