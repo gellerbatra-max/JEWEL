@@ -4,7 +4,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { CartLink } from "./CartLink";
-import { SocialLinks } from "./SocialLinks";
 import { HeaderSearch } from "./HeaderSearch";
 import { WishlistLink } from "./WishlistLink";
 import { AccountLink } from "./AccountLink";
@@ -87,7 +86,6 @@ export function Header() {
           </Link>
 
           <div className="flex items-center gap-3.5 justify-self-end sm:gap-4">
-            <SocialLinks light={overlay} className="hidden lg:flex" />
             <span className="hidden sm:block">
               <HeaderSearch light={overlay} />
             </span>
@@ -100,9 +98,9 @@ export function Header() {
                 overlay ? "text-ink/75 hover:text-ink" : "text-stone hover:text-ink"
               }`}
             >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
-                <path d="M12 21s7-6.2 7-11a7 7 0 0 0-14 0c0 4.8 7 11 7 11z" />
-                <circle cx="12" cy="10" r="2.5" />
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M20 10c0 4.8-8 11-8 11s-8-6.2-8-11a8 8 0 0 1 16 0z" />
+                <circle cx="12" cy="10" r="2.75" />
               </svg>
             </Link>
             <CartLink light={overlay} />

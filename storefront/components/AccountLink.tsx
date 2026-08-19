@@ -11,9 +11,9 @@ export function AccountLink({ light = false }: { light?: boolean }) {
       aria-label="Account"
       className={`transition-colors ${light ? "text-ink/75 hover:text-ink" : "text-stone hover:text-ink"}`}
     >
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
-        <circle cx="12" cy="8" r="3.5" />
-        <path d="M5 20a7 7 0 0 1 14 0" />
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <circle cx="12" cy="8" r="4" />
+        <path d="M5.5 20a6.5 6.5 0 0 1 13 0" />
       </svg>
     </Link>
   );
