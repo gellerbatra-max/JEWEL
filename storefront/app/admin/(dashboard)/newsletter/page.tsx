@@ -51,10 +51,11 @@ export default async function NewsletterPage() {
         </div>
       ) : (
         <div className="overflow-x-auto border border-line">
-          <table className="w-full min-w-[560px] text-left text-[14px]">
+          <table className="w-full min-w-[640px] text-left text-[14px]">
             <thead>
               <tr className="border-b border-line bg-white text-[11px] tracking-[0.1em] uppercase text-stone">
                 <th className="px-4 py-3 font-normal">Email</th>
+                <th className="px-4 py-3 font-normal">WhatsApp</th>
                 <th className="px-4 py-3 font-normal">Source</th>
                 <th className="px-4 py-3 font-normal">Joined</th>
                 <th className="px-4 py-3 font-normal text-right">—</th>
@@ -62,15 +63,16 @@ export default async function NewsletterPage() {
             </thead>
             <tbody>
               {subscribers.map((s) => (
-                <tr key={s.email} className="border-b border-line-soft bg-white last:border-0">
-                  <td className="px-4 py-3 text-ink">{s.email}</td>
+                <tr key={s.email || s.whatsapp} className="border-b border-line-soft bg-white last:border-0">
+                  <td className="px-4 py-3 text-ink">{s.email || "—"}</td>
+                  <td className="px-4 py-3 tabular-nums text-ink">{s.whatsapp || "—"}</td>
                   <td className="px-4 py-3 text-stone">
                     {s.source}
                     {s.medium && s.medium !== "direct" ? ` / ${s.medium}` : ""}
                   </td>
                   <td className="px-4 py-3 tabular-nums text-stone">{when(s.createdAt)}</td>
                   <td className="px-4 py-3 text-right">
-                    <SubscriberRemove email={s.email} />
+                    <SubscriberRemove id={s.email || s.whatsapp} />
                   </td>
                 </tr>
               ))}

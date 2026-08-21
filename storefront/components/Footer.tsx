@@ -32,7 +32,7 @@ const COLUMNS: Col[] = [
   {
     title: "The House",
     links: [
-      { href: "/bespoke", label: "Bespoke & Commissions" },
+      { href: "/bespoke", label: "Design Yours" },
       { href: "/certification", label: "Certification" },
       { href: "/sourcing", label: "Responsible Sourcing" },
       { href: "/reviews", label: "Reviews" },
@@ -45,29 +45,28 @@ export function Footer() {
   return (
     <footer className="mt-28 border-t border-line bg-porcelain">
       <div className="mx-auto max-w-[1600px] px-6 py-16">
-        <div className="grid gap-12 lg:grid-cols-[1.15fr_1.85fr]">
-          {/* Brand + newsletter */}
-          <div>
-            <div className="flex items-center gap-2.5">
-              <FacetMark size={20} className="text-rose" />
-              <span className="font-display text-lg tracking-[0.22em] uppercase text-ink">
-                Taygerian
-              </span>
-            </div>
-            <p className="mt-4 max-w-sm text-[13.5px] leading-relaxed text-stone">
-              Ceylon-provenance fine jewellery — set with certified sapphires and handmade by our own
-              goldsmiths in southern Sri Lanka, in a family tradition spanning generations.
-            </p>
+        {/* Centered brand mark + name */}
+        <div className="flex flex-col items-center text-center">
+          <FacetMark size={26} className="text-rose" />
+          <span className="mt-3 font-display text-xl tracking-[0.28em] uppercase text-ink">
+            Taygerian
+          </span>
+          <p className="mt-3 max-w-sm text-[13.5px] leading-relaxed text-stone">
+            Home to sophisticatedly hand crafted Jewels in the World.
+          </p>
+          <SocialLinks light={false} className="mt-6 flex gap-5" />
+        </div>
 
-            <p className="mt-8 mb-3 text-[11px] tracking-[0.2em] uppercase text-gold">
+        <div className="mt-14 grid gap-12 lg:grid-cols-[1.15fr_1.85fr]">
+          {/* Newsletter */}
+          <div>
+            <p className="mb-3 text-[11px] tracking-[0.2em] uppercase text-gold">
               Join our world
             </p>
             <p className="mb-3 max-w-sm text-[13px] leading-relaxed text-stone">
               New pieces, quietly. First look at one-of-a-kind stones and commissions.
             </p>
             <NewsletterForm />
-
-            <SocialLinks light={false} className="mt-7 flex gap-4" />
           </div>
 
           {/* Link columns */}

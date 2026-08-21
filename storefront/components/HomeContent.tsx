@@ -7,8 +7,10 @@ import { PressStrip } from "@/components/PressStrip";
 import { InstagramFeed } from "@/components/InstagramFeed";
 import { LovedByInfluencers } from "@/components/LovedByInfluencers";
 import { CustomerReviews, type ReviewCard } from "@/components/CustomerReviews";
+import { PromoBanners } from "@/components/PromoBanners";
 import { getSignaturePieces, getAllProducts } from "@/lib/catalog-store";
 import { getUgcPosts } from "@/lib/ugc-store";
+import { getPromoBanners } from "@/lib/promo-store";
 import type { UgcCard } from "@/lib/ugc";
 import { getApprovedAll } from "@/lib/review-store";
 import { SAMPLE_REVIEWS } from "@/lib/sample-reviews";
@@ -25,16 +27,25 @@ export async function HomeContent() {
   preload("/images/hero-ruby-ring-gold.webp", { as: "image", fetchPriority: "high" });
 
   // One batched pass over the stores instead of sequential awaits.
-  const [signature, allProducts, bespokeSaved, instaSaved, pressItems, ugcPosts, approvedReviews] =
-    await Promise.all([
-      getSignaturePieces(12),
-      getAllProducts(),
-      getBespokeImages(),
-      getInstagramImages(),
-      getPressItems(),
-      getUgcPosts(),
-      getApprovedAll(),
-    ]);
+  const [
+    signature,
+    allProducts,
+    bespokeSaved,
+    instaSaved,
+    pressItems,
+    ugcPosts,
+    approvedReviews,
+    promos,
+  ] = await Promise.all([
+    getSignaturePieces(12),
+    getAllProducts(),
+    getBespokeImages(),
+    getInstagramImages(),
+    getPressItems(),
+    getUgcPosts(),
+    getApprovedAll(),
+    getPromoBanners(),
+  ]);
 
   // Resolve each influencer post to its linked piece (drop any whose piece was removed).
   const productByHandle = new Map(allProducts.map((p) => [p.handle, p]));
@@ -117,6 +128,9 @@ export async function HomeContent() {
 
       {/* "As featured in" — shows only when the owner has added press names */}
       <PressStrip items={pressItems} />
+
+      {/* Promotional banners — owner-managed, hidden until one is added */}
+      <PromoBanners banners={promos} />
 
       <SectionRule />
 

@@ -22,6 +22,7 @@ import {
   type ProductInput,
 } from "@/lib/catalog-store";
 import { addUgcPost, deleteUgcPost } from "@/lib/ugc-store";
+import { addPromoBanner, deletePromoBanner } from "@/lib/promo-store";
 import {
   setCategoryCover,
   setBespokeImages,
@@ -292,6 +293,36 @@ export async function deleteUgcAction(id: string): Promise<void> {
   revalidatePath("/", "layout");
 }
 
+// --- Promotional banners ---------------------------------------------------
+
+export async function savePromoAction(_prev: FormState, formData: FormData): Promise<FormState> {
+  await assertAuthed();
+  const heading = String(formData.get("heading") || "").trim();
+  if (!heading) return { error: "Please add a heading." };
+  const subtext = String(formData.get("subtext") || "").trim();
+  const ctaLabel = String(formData.get("ctaLabel") || "").trim();
+  const href = String(formData.get("href") || "").trim();
+  const file = formData.getAll("image").find((f): f is File => f instanceof File && f.size > 0);
+  let image = "";
+  if (file) {
+    try {
+      image = await saveUploadedImage(file);
+    } catch (e) {
+      return { error: e instanceof Error ? e.message : "The image couldn't be uploaded." };
+    }
+  }
+  await addPromoBanner({ heading, subtext, ctaLabel, href, image });
+  revalidatePath("/", "layout");
+  return { saved: true };
+}
+
+export async function deletePromoAction(id: string): Promise<void> {
+  await assertAuthed();
+  if (!id) return;
+  await deletePromoBanner(id);
+  revalidatePath("/", "layout");
+}
+
 // --- Press ("As featured in") ----------------------------------------------
 
 export async function savePressAction(_prev: FormState, formData: FormData): Promise<FormState> {
@@ -324,10 +355,10 @@ export async function deleteEnquiryAction(id: string): Promise<void> {
 
 // --- Newsletter subscribers ------------------------------------------------
 
-export async function removeSubscriberAction(email: string): Promise<void> {
+export async function removeSubscriberAction(id: string): Promise<void> {
   await assertAuthed();
-  if (!email) return;
-  await removeSubscriber(email);
+  if (!id) return;
+  await removeSubscriber(id);
   revalidatePath("/admin/newsletter");
 }
 

@@ -3,6 +3,7 @@
 import { useActionState, useEffect, useState } from "react";
 import { subscribeAction, type PublicFormState } from "@/app/site-actions";
 import { getAttribution, track } from "@/lib/analytics";
+import { PhoneField } from "./PhoneField";
 
 // Footer newsletter signup. Captures the email into the self-owned subscriber
 // store, tagged with first-touch attribution (which channel referred them).
@@ -43,8 +44,8 @@ export function NewsletterForm() {
   }
 
   return (
-    <form action={action} noValidate>
-      <div className="flex max-w-sm items-stretch border border-line bg-white/60 focus-within:border-gold">
+    <form action={action} noValidate className="max-w-sm">
+      <div className="flex items-stretch border border-line bg-white/60 focus-within:border-gold">
         <label htmlFor="nl-email" className="sr-only">
           Email address
         </label>
@@ -52,7 +53,6 @@ export function NewsletterForm() {
           id="nl-email"
           name="email"
           type="email"
-          required
           maxLength={120}
           placeholder="Your email"
           className="min-w-0 flex-1 bg-transparent px-3.5 py-2.5 text-sm text-ink outline-none placeholder:text-stone/60"
@@ -65,6 +65,18 @@ export function NewsletterForm() {
           {pending ? "…" : "Join"}
         </button>
       </div>
+      <div className="mt-2.5">
+        <PhoneField
+          label=""
+          numberName="whatsapp"
+          codeName="whatsapp_code"
+          placeholder="Or WhatsApp number"
+          required={false}
+        />
+      </div>
+      <p className="mt-2 text-[12px] leading-relaxed text-stone">
+        Email or WhatsApp — either is fine.
+      </p>
       <input type="hidden" name="attr_source" value={attr.source} />
       <input type="hidden" name="attr_medium" value={attr.medium} />
       <input type="hidden" name="attr_campaign" value={attr.campaign} />

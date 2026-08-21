@@ -8,9 +8,11 @@ export async function GET(): Promise<Response> {
     return new Response("Unauthorized", { status: 401 });
   }
   const subs = await getSubscribers();
-  const header = ["email", "source", "medium", "campaign", "referrer", "landingPath", "createdAt"];
+  const header = ["email", "whatsapp", "source", "medium", "campaign", "referrer", "landingPath", "createdAt"];
   const rows = subs.map((s) =>
-    [s.email, s.source, s.medium, s.campaign, s.referrer, s.landingPath, s.createdAt].map(cell).join(",")
+    [s.email, s.whatsapp, s.source, s.medium, s.campaign, s.referrer, s.landingPath, s.createdAt]
+      .map(cell)
+      .join(",")
   );
   const csv = [header.join(","), ...rows].join("\r\n");
 

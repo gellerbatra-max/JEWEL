@@ -7,10 +7,12 @@ import {
   getPressItems,
 } from "@/lib/site-config-store";
 import { getUgcPosts } from "@/lib/ugc-store";
+import { getPromoBanners } from "@/lib/promo-store";
 import { HomeSelectGrid } from "@/app/admin/HomeSelectGrid";
 import { SectionImagesManager } from "@/app/admin/SectionImagesManager";
 import { PressManager } from "@/app/admin/PressManager";
 import { UgcManager } from "@/app/admin/UgcManager";
+import { PromoManager } from "@/app/admin/PromoManager";
 import {
   saveBespokeImagesAction,
   saveBridalImagesAction,
@@ -20,13 +22,14 @@ import {
 export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
-  const [products, bespoke, bridal, instagram, press, ugcPosts] = await Promise.all([
+  const [products, bespoke, bridal, instagram, press, ugcPosts, promos] = await Promise.all([
     getAllProducts(),
     getBespokeImages(),
     getBridalImages(),
     getInstagramImages(),
     getPressItems(),
     getUgcPosts(),
+    getPromoBanners(),
   ]);
   const titleByHandle = new Map(products.map((p) => [p.handle, p.title]));
   const ugcRows = ugcPosts.map((p) => ({
@@ -63,6 +66,17 @@ export default async function HomePage() {
         <h1 className="font-display text-3xl text-ink">Home page</h1>
         <p className="mt-1 text-sm text-stone">Manage what appears on your home page.</p>
       </div>
+
+      {/* Promotional banners */}
+      <section>
+        <h2 className="mb-1 font-display text-xl text-ink">Promotional banners</h2>
+        <p className="mb-4 max-w-2xl text-sm text-stone">
+          Banners shown <strong className="text-ink">above Signature Pieces</strong> — offers,
+          competitions, announcements (e.g. &ldquo;Follow us &amp; win a gift voucher&rdquo;). Add
+          several and they rotate. Hidden until you add one.
+        </p>
+        <PromoManager banners={promos} />
+      </section>
 
       {/* Made to Order rotating photos */}
       <section>

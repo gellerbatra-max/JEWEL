@@ -4,7 +4,7 @@ import { PageIntro } from "@/components/PageIntro";
 import { waLink } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Bespoke & Commissions",
+  title: "Design Yours",
   description:
     "Commission a one-of-a-kind piece with Taygerian — designed with you and handmade by our own goldsmiths in southern Sri Lanka, set with a certified Ceylon gemstone.",
 };
@@ -35,7 +35,7 @@ const STEPS = [
 export default function BespokePage() {
   return (
     <div className="mx-auto max-w-[960px] px-6 py-16">
-      <PageIntro eyebrow="Bespoke" title="Commission a Piece">
+      <PageIntro eyebrow="Made to Order" title="Design Yours">
         The rarest thing we make is the one designed for a single person. A Taygerian commission is a
         collaboration — your idea, our stones, and hands that have shaped fine jewellery for
         generations.

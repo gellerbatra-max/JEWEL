@@ -11,7 +11,8 @@ import path from "node:path";
 const DATA_FILE = path.join(process.cwd(), "data", "subscribers.json");
 
 export type Subscriber = {
-  email: string;
+  email: string; // may be "" if they gave only a WhatsApp number
+  whatsapp: string; // may be "" if they gave only an email
   // where this signup came from (first-touch attribution, best-effort)
   source: string;
   medium: string;
@@ -51,7 +52,8 @@ async function write(list: Subscriber[]): Promise<void> {
 }
 
 export type SubscriberInput = {
-  email: string;
+  email?: string;
+  whatsapp?: string;
   source?: string;
   medium?: string;
   campaign?: string;
@@ -62,12 +64,18 @@ export type SubscriberInput = {
 export async function addSubscriber(
   input: SubscriberInput
 ): Promise<{ ok: boolean; already?: boolean }> {
-  const email = input.email.trim().toLowerCase();
+  const email = (input.email || "").trim().toLowerCase();
+  const whatsapp = (input.whatsapp || "").trim();
+  if (!email && !whatsapp) return { ok: false };
   return withWriteLock(async () => {
     const all = await read();
-    if (all.some((s) => s.email === email)) return { ok: true, already: true };
+    // Already on the list if either the email or the WhatsApp number matches.
+    if (all.some((s) => (email && s.email === email) || (whatsapp && s.whatsapp === whatsapp))) {
+      return { ok: true, already: true };
+    }
     const sub: Subscriber = {
       email,
+      whatsapp,
       source: input.source || "direct",
       medium: input.medium || "direct",
       campaign: input.campaign || "",
@@ -84,10 +92,13 @@ export async function getSubscribers(): Promise<Subscriber[]> {
   return [...(await read())].sort((a, b) => (a.createdAt < b.createdAt ? 1 : -1));
 }
 
-export async function removeSubscriber(email: string): Promise<void> {
-  const e = email.trim().toLowerCase();
+// Remove by identifier — matches either the email or the WhatsApp number, so a
+// WhatsApp-only subscriber can be removed too.
+export async function removeSubscriber(id: string): Promise<void> {
+  const key = id.trim();
+  const emailKey = key.toLowerCase();
   return withWriteLock(async () => {
     const all = await read();
-    await write(all.filter((s) => s.email !== e));
+    await write(all.filter((s) => s.email !== emailKey && s.whatsapp !== key));
   });
 }

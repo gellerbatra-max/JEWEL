@@ -3,7 +3,7 @@
 import { useState, useTransition } from "react";
 import { removeSubscriberAction } from "@/app/admin/actions";
 
-export function SubscriberRemove({ email }: { email: string }) {
+export function SubscriberRemove({ id }: { id: string }) {
   const [pending, start] = useTransition();
   const [confirming, setConfirming] = useState(false);
 
@@ -13,7 +13,7 @@ export function SubscriberRemove({ email }: { email: string }) {
         <button
           type="button"
           disabled={pending}
-          onClick={() => start(() => removeSubscriberAction(email))}
+          onClick={() => start(() => removeSubscriberAction(id))}
           className="text-risk hover:underline disabled:opacity-50"
         >
           Confirm

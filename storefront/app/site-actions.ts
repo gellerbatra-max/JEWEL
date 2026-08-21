@@ -15,12 +15,22 @@ export async function subscribeAction(
   formData: FormData
 ): Promise<PublicFormState> {
   const email = String(formData.get("email") || "").trim();
-  if (!EMAIL_RE.test(email) || email.length > 120) {
+  // WhatsApp comes from the country-code PhoneField: dial code + number.
+  const waNumber = String(formData.get("whatsapp") || "").trim();
+  const waCode = String(formData.get("whatsapp_code") || "").trim();
+  const waOk = waNumber.replace(/[^0-9]/g, "").length >= 6;
+  const whatsapp = waOk ? `${waCode} ${waNumber}`.trim() : "";
+
+  if (email && (!EMAIL_RE.test(email) || email.length > 120)) {
     return { error: "Please enter a valid email address." };
+  }
+  if (!email && !whatsapp) {
+    return { error: "Please add your email or WhatsApp number." };
   }
   try {
     const res = await addSubscriber({
       email,
+      whatsapp,
       source: str(formData, "attr_source"),
       medium: str(formData, "attr_medium"),
       campaign: str(formData, "attr_campaign"),

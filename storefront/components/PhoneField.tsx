@@ -75,7 +75,7 @@ export function PhoneField({
 
   return (
     <div>
-      <span className={smallLabel}>{label}</span>
+      {label && <span className={smallLabel}>{label}</span>}
       <div className="flex gap-2">
         <div className="relative shrink-0" ref={ref}>
           <button type="button" onClick={() => setOpen((o) => !o)} aria-label="Country code" className={`${field} flex w-24 items-center justify-between gap-1`}>
