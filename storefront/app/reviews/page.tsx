@@ -59,8 +59,8 @@ export default async function ReviewsPage() {
       <div className="mx-auto max-w-[560px] border-t border-line pt-12">
         <h2 className="mb-2 text-center font-display text-2xl text-ink">Share your experience</h2>
         <p className="mb-6 text-center text-[14px] text-stone">
-          Reviewing a specific piece? You can also leave that on the piece&apos;s own page. Every
-          review is read before it&apos;s published.
+          Tell us about your piece and the service behind it. Every review is read before it&apos;s
+          published.
         </p>
         <ReviewForm />
       </div>

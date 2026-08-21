@@ -8,6 +8,10 @@ export type Review = {
   name: string;
   title: string;
   body: string;
+  // Private — shown only in the admin for verifying the purchase, never public.
+  whatsapp: string;
+  billNumber: string;
+  email: string; // optional
   createdAt: string;
   approved: boolean;
 };

@@ -18,6 +18,12 @@ export async function POST(request: Request): Promise<Response> {
   if (body_.length < 3) {
     return Response.json({ ok: false, error: "Please write a short review." }, { status: 400 });
   }
+  const whatsapp = String(body.whatsapp || "").trim();
+  if (whatsapp.length < 6) {
+    return Response.json({ ok: false, error: "Please add your WhatsApp number." }, { status: 400 });
+  }
+  // Bill / invoice number is optional (helps verify, but not required).
+  const billNumber = String(body.bill_number || "").trim();
 
   const input: ReviewInput = {
     productHandle: body.product_handle == null ? "" : String(body.product_handle),
@@ -26,6 +32,9 @@ export async function POST(request: Request): Promise<Response> {
     name: body.name == null ? "" : String(body.name),
     title: body.title == null ? "" : String(body.title),
     body: body_,
+    whatsapp,
+    billNumber,
+    email: body.email == null ? "" : String(body.email),
   };
 
   try {

@@ -19,6 +19,9 @@ export type ReviewInput = {
   name?: string;
   title?: string;
   body?: string;
+  whatsapp?: string;
+  billNumber?: string;
+  email?: string;
 };
 
 let writeChain: Promise<unknown> = Promise.resolve();
@@ -64,6 +67,9 @@ export async function addReview(input: ReviewInput): Promise<Review> {
       name: clip(input.name, 80) || "Anonymous",
       title: clip(input.title, 120),
       body: clip(input.body, 2000),
+      whatsapp: clip(input.whatsapp, 40),
+      billNumber: clip(input.billNumber, 60),
+      email: clip(input.email, 120),
       createdAt: new Date().toISOString(),
       approved: false,
     };

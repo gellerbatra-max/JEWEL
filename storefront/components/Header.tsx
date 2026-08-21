@@ -47,10 +47,10 @@ export function Header() {
     <header
       className={`${isHome ? "fixed" : "sticky"} inset-x-0 top-0 z-40 transition-[background-color,box-shadow] duration-500 ${
         overlay
-          ? "bg-white/60 backdrop-blur-sm shadow-[0_12px_26px_-16px_rgba(28,27,25,0.4)]"
+          ? "bg-white/45 backdrop-blur-md shadow-[0_14px_34px_-16px_rgba(28,27,25,0.45)]"
           : scrolled
-            ? "bg-white/95 backdrop-blur border-b border-line shadow-[0_14px_30px_-18px_rgba(28,27,25,0.5)]"
-            : "bg-white border-b border-line shadow-[0_12px_26px_-16px_rgba(28,27,25,0.4)]"
+            ? "bg-white/65 backdrop-blur-md shadow-[0_16px_34px_-18px_rgba(28,27,25,0.5)]"
+            : "bg-white/60 backdrop-blur-md shadow-[0_14px_32px_-16px_rgba(28,27,25,0.45)]"
       }`}
     >
       <div className="mx-auto max-w-[1600px] px-6">
@@ -113,10 +113,10 @@ export function Header() {
             "text-stone"
           } ${
             overlay
-              ? "gap-14 pb-6 text-[16px] tracking-[0.26em]"
+              ? "gap-14 pb-6 text-[17px] tracking-[0.26em]"
               : scrolled
-                ? "gap-8 pb-3 text-[11px] tracking-[0.16em]"
-                : "gap-10 pb-5 text-[12px] tracking-[0.2em]"
+                ? "gap-8 pb-3 text-[12px] tracking-[0.16em]"
+                : "gap-10 pb-5 text-[13.5px] tracking-[0.2em]"
           }`}
         >
           {NAV.map((item, i) => (

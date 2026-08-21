@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Link from "next/link";
 import { Stars } from "./Stars";
 
 export type ReviewCard = {
@@ -88,6 +89,15 @@ export function CustomerReviews({
             </figure>
           ))}
         </div>
+      </div>
+
+      <div className="mt-9 text-center">
+        <Link
+          href="/reviews"
+          className="border-b border-gold pb-1 text-[11px] uppercase tracking-[0.16em] text-ink transition-colors hover:text-gold"
+        >
+          Read all &amp; write a review
+        </Link>
       </div>
     </section>
   );

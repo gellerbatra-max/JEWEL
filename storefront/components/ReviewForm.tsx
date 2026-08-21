@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { track } from "@/lib/analytics";
+import { PhoneField } from "./PhoneField";
 
 const field =
   "w-full border border-line bg-white px-3.5 py-2.5 text-sm text-ink outline-none transition-colors focus:border-gold";
@@ -31,6 +32,14 @@ export function ReviewForm({
     }
     const fd = new FormData(e.currentTarget);
     const g = (k: string) => String(fd.get(k) || "").trim();
+    if (!g("name")) {
+      setError("Please add your name.");
+      return;
+    }
+    if (g("whatsapp").length < 6) {
+      setError("Please add your WhatsApp number.");
+      return;
+    }
     if (g("body").length < 3) {
       setError("Please write a few words.");
       return;
@@ -47,6 +56,9 @@ export function ReviewForm({
           name: g("name"),
           title: g("title"),
           body: g("body"),
+          whatsapp: `${g("whatsapp_code")} ${g("whatsapp")}`.trim(),
+          bill_number: g("bill_number"),
+          email: g("email"),
         }),
       });
       if (res.ok) {
@@ -106,8 +118,16 @@ export function ReviewForm({
 
       <div className="grid gap-4 sm:grid-cols-2">
         <input name="name" maxLength={80} placeholder="Your name" className={field} />
-        <input name="title" maxLength={120} placeholder="Headline (optional)" className={field} />
+        <input name="email" type="email" maxLength={120} placeholder="Email (optional)" className={field} />
       </div>
+      <PhoneField
+        label="WhatsApp number *"
+        numberName="whatsapp"
+        codeName="whatsapp_code"
+        placeholder="Your WhatsApp number"
+      />
+      <input name="bill_number" maxLength={60} placeholder="Bill / invoice number (optional)" className={field} />
+      <input name="title" maxLength={120} placeholder="Headline (optional)" className={field} />
       <textarea
         name="body"
         rows={4}
@@ -120,6 +140,10 @@ export function ReviewForm({
         }
         className={`${field} resize-none`}
       />
+      <p className="text-[12px] leading-relaxed text-stone">
+        Your WhatsApp number, invoice number and email stay private — we use them only to verify
+        your purchase. Only your name and review appear publicly.
+      </p>
       {error && <p className="text-[13px] text-risk">{error}</p>}
       <button
         type="submit"

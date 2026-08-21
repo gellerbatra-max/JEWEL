@@ -22,8 +22,9 @@ export default async function ReviewsAdminPage() {
 
       <div className="mb-6 border border-line bg-white/60 px-4 py-3 text-sm text-stone">
         Reviews stay hidden until you <span className="text-gold">approve</span> them. Approved
-        reviews show on the piece&apos;s page (with star ratings that also help your Google listing)
-        and on the Reviews page.
+        reviews show on the Reviews page and in the home-page reviews section. The WhatsApp number,
+        invoice number and email are <span className="text-gold">private</span> — use them to verify
+        the purchase before approving.
       </div>
 
       {reviews.length === 0 ? (
@@ -58,6 +59,40 @@ export default async function ReviewsAdminPage() {
               <p className="mt-1 whitespace-pre-line text-[14px] leading-relaxed text-stone">
                 {r.body}
               </p>
+
+              {/* Private verification details (never shown publicly) */}
+              {(r.whatsapp || r.billNumber || r.email) && (
+                <div className="mt-3 flex flex-wrap gap-x-5 gap-y-1 border-t border-line-soft pt-3 text-[12px] text-stone">
+                  {r.whatsapp && (
+                    <span>
+                      <span className="uppercase tracking-[0.1em] text-stone/70">WhatsApp </span>
+                      <a
+                        href={`https://wa.me/${r.whatsapp.replace(/[^0-9]/g, "")}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-ink underline underline-offset-2 hover:text-gold"
+                      >
+                        {r.whatsapp}
+                      </a>
+                    </span>
+                  )}
+                  {r.billNumber && (
+                    <span>
+                      <span className="uppercase tracking-[0.1em] text-stone/70">Bill </span>
+                      <span className="text-ink">{r.billNumber}</span>
+                    </span>
+                  )}
+                  {r.email && (
+                    <span>
+                      <span className="uppercase tracking-[0.1em] text-stone/70">Email </span>
+                      <a href={`mailto:${r.email}`} className="text-ink underline underline-offset-2 hover:text-gold">
+                        {r.email}
+                      </a>
+                    </span>
+                  )}
+                </div>
+              )}
+
               <div className="mt-3 flex items-center justify-between">
                 <span className="text-[12px] uppercase tracking-[0.1em] text-stone">— {r.name}</span>
                 <ReviewModerate id={r.id} approved={r.approved} />
