@@ -47,10 +47,10 @@ export function Header() {
     <header
       className={`${isHome ? "fixed" : "sticky"} inset-x-0 top-0 z-40 transition-[background-color,box-shadow] duration-500 ${
         overlay
-          ? "bg-white/45 backdrop-blur-md shadow-[0_14px_34px_-16px_rgba(28,27,25,0.45)]"
+          ? "bg-white/12 backdrop-blur-sm shadow-[0_14px_34px_-20px_rgba(28,27,25,0.38)]"
           : scrolled
-            ? "bg-white/65 backdrop-blur-md shadow-[0_16px_34px_-18px_rgba(28,27,25,0.5)]"
-            : "bg-white/60 backdrop-blur-md shadow-[0_14px_32px_-16px_rgba(28,27,25,0.45)]"
+            ? "bg-white/38 backdrop-blur-md shadow-[0_16px_34px_-20px_rgba(28,27,25,0.42)]"
+            : "bg-white/32 backdrop-blur-md shadow-[0_14px_32px_-18px_rgba(28,27,25,0.38)]"
       }`}
     >
       <div className="mx-auto max-w-[1600px] px-6">

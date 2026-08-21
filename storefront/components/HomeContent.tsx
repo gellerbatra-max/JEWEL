@@ -109,7 +109,7 @@ export async function HomeContent() {
       {/* Full-bleed campaign hero — image with overlaid text (Swarovski-style) */}
       <section className="relative w-full min-h-[80vh] md:min-h-screen flex items-end justify-start overflow-hidden bg-porcelain pb-[16vh] md:pb-[20vh]">
         <div
-          className="absolute inset-0 bg-no-repeat mix-blend-multiply [background-position:center_36%] [background-size:auto_55%] sm:[background-position:center_68%] sm:[background-size:auto_74%] md:[background-position:center_76%] md:[background-size:auto_90%]"
+          className="absolute inset-0 bg-no-repeat mix-blend-multiply [background-position:center_52%] [background-size:auto_55%] sm:[background-position:center_84%] sm:[background-size:auto_74%] md:[background-position:center_92%] md:[background-size:auto_90%]"
           style={{ backgroundImage: "url('/images/hero-ruby-ring-gold.webp')" }}
         />
         <div className="relative text-left pl-6 pr-6 md:pl-16">
