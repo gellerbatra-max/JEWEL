@@ -8,6 +8,7 @@ import { InstagramFeed } from "@/components/InstagramFeed";
 import { LovedByInfluencers } from "@/components/LovedByInfluencers";
 import { CustomerReviews, type ReviewCard } from "@/components/CustomerReviews";
 import { PromoBanners } from "@/components/PromoBanners";
+import { CraftVideoBanner } from "@/components/CraftVideoBanner";
 import { getSignaturePieces, getAllProducts } from "@/lib/catalog-store";
 import { getUgcPosts } from "@/lib/ugc-store";
 import { getPromoBanners } from "@/lib/promo-store";
@@ -108,7 +109,7 @@ export async function HomeContent() {
       {/* Full-bleed campaign hero — image with overlaid text (Swarovski-style) */}
       <section className="relative w-full min-h-[80vh] md:min-h-screen flex items-end justify-start overflow-hidden bg-porcelain pb-[16vh] md:pb-[20vh]">
         <div
-          className="absolute inset-0 bg-no-repeat mix-blend-multiply [background-position:center_15%] [background-size:auto_55%] sm:[background-position:center_46%] sm:[background-size:auto_74%] md:[background-position:center_54%] md:[background-size:auto_90%]"
+          className="absolute inset-0 bg-no-repeat mix-blend-multiply [background-position:center_36%] [background-size:auto_55%] sm:[background-position:center_68%] sm:[background-size:auto_74%] md:[background-position:center_76%] md:[background-size:auto_90%]"
           style={{ backgroundImage: "url('/images/hero-ruby-ring-gold.webp')" }}
         />
         <div className="relative text-left pl-6 pr-6 md:pl-16">
@@ -129,8 +130,8 @@ export async function HomeContent() {
       {/* "As featured in" — shows only when the owner has added press names */}
       <PressStrip items={pressItems} />
 
-      {/* Promotional banners — owner-managed, hidden until one is added */}
-      <PromoBanners banners={promos} />
+      {/* Craftsmanship video banner — starts at the stone-setting frame */}
+      <CraftVideoBanner src="/videos/craftsmanship-setting.mp4" startAt={4.5} eyebrow="" />
 
       <SectionRule />
 
@@ -211,50 +212,16 @@ export async function HomeContent() {
 
       <SectionRule />
 
-      {/* Bridal — mirrored layout */}
-      <Reveal className="py-20">
-        <div className="mx-auto grid max-w-[1600px] items-center gap-8 bg-porcelain px-6 md:grid-cols-[0.9fr_1.1fr] lg:gap-14">
-          {/* The promise */}
-          <div className="order-2 flex items-center py-8 md:order-1 md:py-0">
-            <div className="mx-auto max-w-md">
-              <p className="mb-5 text-[13px] tracking-[0.24em] uppercase text-gold">Craftsmanship</p>
-              <h2 className="font-display text-4xl sm:text-5xl leading-[1.05] text-balance text-ink">
-                The Only One in the Universe
-              </h2>
-              <p className="mt-6 text-lg leading-relaxed text-stone">
-                Every Taygerian piece is shaped by hand in our Colombo atelier — Ceylon stones cut
-                and matched, settings raised, and each facet finished by master craftsmen. No moulds,
-                no shortcuts: only patient, generational skill, so the piece you wear carries the mark
-                of the hand that made it.
-              </p>
-              <div className="mt-9">
-                <a
-                  href="https://wa.me/94000000000?text=Hi%20Taygerian%2C%20I%27d%20love%20to%20commission%20a%20hand-made%20piece%20from%20your%20atelier."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block bg-ink px-8 py-3.5 text-[12px] tracking-[0.16em] uppercase text-porcelain transition-colors hover:bg-gold"
-                >
-                  Commission a Piece
-                </a>
-              </div>
-            </div>
-          </div>
-
-          {/* Craftsmanship in motion — a stone being hand-set */}
-          <div className="order-1 flex items-center justify-center py-10 md:order-2 md:py-0">
-            <video
-              src="/videos/craftsmanship.mp4"
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="metadata"
-              aria-label="Craftsmanship — a Ceylon stone being hand-set in our atelier"
-              className="aspect-square w-full max-w-[560px] object-cover"
-            />
-          </div>
-        </div>
-      </Reveal>
+      {/* Craftsmanship — full-width video banner */}
+      <CraftVideoBanner
+        src="/videos/craftsmanship.mp4"
+        startAt={0}
+        eyebrow="Craftsmanship"
+        heading="The Only One in the Universe"
+        subtext="Every Taygerian piece is shaped by hand in our Colombo atelier — Ceylon stones cut and matched, settings raised, and each facet finished by master craftsmen. No moulds, no shortcuts: only patient, generational skill, so the piece you wear carries the mark of the hand that made it."
+        ctaLabel="Commission a Piece"
+        href="/bespoke"
+      />
 
       <SectionRule />
 
@@ -269,6 +236,11 @@ export async function HomeContent() {
       <Reveal>
         <InstagramFeed images={instaImages} />
       </Reveal>
+
+      <SectionRule />
+
+      {/* Promotional banners — owner-managed, at the end of the page */}
+      <PromoBanners banners={promos} />
     </div>
   );
 }

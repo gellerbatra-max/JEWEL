@@ -44,7 +44,7 @@ export function PromoBanners({ banners }: { banners: PromoBanner[] }) {
   return (
     <section className="mx-auto max-w-[1600px] px-6 py-8">
       <div
-        className="relative flex min-h-[190px] items-center justify-center overflow-hidden rounded-xl sm:min-h-[230px]"
+        className="relative flex min-h-[300px] items-center justify-start overflow-hidden rounded-xl sm:min-h-[400px] md:min-h-[440px]"
         onMouseEnter={() => (paused.current = true)}
         onMouseLeave={() => (paused.current = false)}
       >
@@ -52,21 +52,21 @@ export function PromoBanners({ banners }: { banners: PromoBanner[] }) {
         {hasImage ? (
           <>
             <Image src={b.image} alt="" fill sizes="(max-width: 1600px) 100vw, 1600px" className="object-cover" priority={false} />
-            <div className="absolute inset-0 bg-ink/40" />
+            <div className="absolute inset-0 bg-gradient-to-r from-ink/70 via-ink/30 to-transparent" />
           </>
         ) : (
           <div className="absolute inset-0 bg-gradient-to-r from-cloud via-porcelain to-cloud" />
         )}
 
         {/* Content */}
-        <div className={`relative z-10 max-w-2xl px-6 py-10 text-center ${textOnImage ? "text-porcelain" : "text-ink"}`}>
+        <div className={`relative z-10 max-w-lg px-6 py-10 text-left sm:px-10 lg:px-14 ${textOnImage ? "text-porcelain" : "text-ink"}`}>
           {b.heading && (
-            <h2 className={`font-display text-2xl leading-tight sm:text-3xl ${textOnImage ? "drop-shadow-[0_2px_10px_rgba(0,0,0,0.4)]" : ""}`}>
+            <h2 className={`font-display text-3xl leading-tight sm:text-4xl ${textOnImage ? "drop-shadow-[0_2px_12px_rgba(0,0,0,0.45)]" : ""}`}>
               {b.heading}
             </h2>
           )}
           {b.subtext && (
-            <p className={`mx-auto mt-3 max-w-xl text-[15px] leading-relaxed ${textOnImage ? "text-porcelain/90" : "text-stone"}`}>
+            <p className={`mt-3 max-w-md text-[15px] leading-relaxed ${textOnImage ? "text-porcelain/90" : "text-stone"}`}>
               {b.subtext}
             </p>
           )}
